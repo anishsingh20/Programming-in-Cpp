@@ -7,16 +7,12 @@ using namespace std;
 class human 
 {
 	public:
-		human() {
-			age=10;
-			name="Anish";
-			cout<<"Default Constructor is called"<<endl;
-		}
 		
+		//default values of the constructor params
 		human(int iage=19,string iname="Mrinal") {
 			age=iage;
 			name=iname;
-			cout<<"overloaded constructor called"<<endl;
+			cout<<"Object created with default constructor values"<<endl;
 		}
 		
 		void introduce()
@@ -48,11 +44,7 @@ class human
 
 int main() {
 	human obj;//constructor is called as soon as an object is created
-	 //default constructor called
 	obj.introduce();
 	 
-	human obj2;//arguments passed to the object
-	//constructor overloaded
-
-	obj2.introduce();
+	
 }
