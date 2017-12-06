@@ -49,7 +49,7 @@ class human
 };
 
 
-int main() {
+ main() {
 	 
 	 human *obj; //pointer to object of type human
 	 obj = new human(20,"Anish"); //memory block allocated to the object in the HEAP memory
@@ -61,5 +61,5 @@ int main() {
 	//deallocating the memory allocated to the object
 	delete obj;
         	 
-	
+return 0;	
 }
