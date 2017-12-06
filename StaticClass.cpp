@@ -37,7 +37,7 @@ int main () {
 	
 	Human :: totalHuman(); 
 	//can access static variables and methods without using an object of class.
-	cout<<Human :: scount; 
+	cout<< Human :: scount; 
 	
 	
 return 0;	
