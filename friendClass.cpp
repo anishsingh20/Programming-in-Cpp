@@ -1,4 +1,4 @@
-//friend function
+//friend class
 #include<iostream>
 #include<string>
 
