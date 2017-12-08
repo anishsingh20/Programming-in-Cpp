@@ -5,8 +5,7 @@ using namespace std;
 
 class Shape {
 	
-	protected:
-		
+	
 		
 	public:
 		int side;
