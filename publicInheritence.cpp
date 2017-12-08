@@ -6,10 +6,10 @@ using namespace std;
 class Shape {
 	
 	protected:
-		int side;
+		
 		
 	public:
-		
+		int side;
 		int getArea();
 		int volume();
 };
@@ -17,7 +17,7 @@ class Shape {
 
 //PUBLIC inheritence-public members of parent class act as public members of child class 2) Protected member of parent class, as protected member of child class
 
-class square : public Shape {
+class square : protected Shape {
 	public:
 		//constructor
 		square(int a) {
@@ -41,7 +41,7 @@ class square : public Shape {
 
 int main () {
 	
-	square s(4); //object of subclass
+	square s(10); //object of subclass
 	s.getArea();
 	s.perm();
 	s.volume();
