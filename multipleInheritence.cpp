@@ -5,8 +5,8 @@ using namespace std;
 class father {
 	public:
 		int height;
-		father(int h) {
-			height = h ;
+		father() {
+			
 			cout<<"Father constructor called"<<endl;
 			
 		}
@@ -23,9 +23,9 @@ class father {
 class mother {
 	public :
 		string skincolor;
-		mother(string iscolor) {
+		mother() {
 			
-			skincolor = iscolor;
+			
 			cout<<"Mother constructor called"<<endl;
 		}
 		
@@ -38,11 +38,18 @@ class mother {
 
 
 //multiple inheritence
-class child: public father, public mother {
+class child: private father, private mother {
 	
 	public :
+	//making the base class members public in derived class
+	father::height;
+	father::getHt;
+	mother::getColor;
+	mother::skincolor;
 	//calling parent class constructors and passing arguments to them
-		child(int ht,string color) : father(ht) , mother(color) {
+		child(int ht,string color) : father() , mother() {
+			height=ht;
+			skincolor=color;
 			cout<<"Child constructor called"<<endl;
 			
 		}
