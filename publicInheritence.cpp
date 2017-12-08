@@ -31,7 +31,7 @@ class square : public Shape {
 		cout<<"Area is: "<<side*side<<endl;
 		}
 		void volume() {
-			cout<<"Volume is: "<<(side^4) << endl;
+			cout<<"Volume is: "<<pow(side,4) << endl;
 		}
 		void perm() {
 			cout<<"Perimeter is: "<<(side*4)<<endl;
