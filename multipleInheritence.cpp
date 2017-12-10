@@ -12,6 +12,7 @@ class father {
 		}
 		
 		void getHt() {
+			
 			cout<<"Height is "<<height<<endl;
 		}
 		
@@ -42,10 +43,10 @@ class child: private father, private mother {
 	
 	public :
 	//making the base class members public in derived class
-	father::height;
-	father::getHt;
-	mother::getColor;
-	mother::skincolor;
+	using father::height;
+	using father::getHt;
+	using mother::getColor;
+	using mother::skincolor;
 	//calling parent class constructors and passing arguments to them
 		child(int ht,string color) : father() , mother() {
 			height=ht;
