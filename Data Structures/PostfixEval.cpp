@@ -59,6 +59,7 @@ int getResult(string postfix)
 			int operand = 0;
 			//checking if the scanned expression is digit
 			if(isdigit(postfix[i])) {
+				//the below expression converts string operand to integer operant to do calculation 
 				operand = (postfix[i]-'0');
 			}
 			
