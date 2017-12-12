@@ -15,7 +15,7 @@ class Person {
 //or which takes a object of that class as argument
 void printName(Person &p) {
 	//calling Person class member function using the object as argument
-	p.getname();
+	p->getname();
 }
 
 
