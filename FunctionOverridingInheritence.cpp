@@ -20,7 +20,8 @@ class Person {
 class Anish : public Person { //public inheritence
 	public:
 		void intro() {
-			cout<<"Hello I am Anish";
+			cout<<"Hello I am Anish"<<endl;
+			Person::intro();
 		}
 	
 };
@@ -30,5 +31,10 @@ int main() {
 	
 	Anish *a= new Anish;
 	a->intro(); //derived class method is called , not base class . Although derived class has access to base class method too, but it is overidden
+	//to access the Base class overloaded method
+	//use
+	cout<<"\n";
+	//a->Person::intro();
 	
 }
+
