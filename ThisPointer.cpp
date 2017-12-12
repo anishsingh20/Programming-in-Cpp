@@ -21,7 +21,7 @@ class Person {
 			
 		}
 		void getage() {
-			cout<<"My age is "<<age<<endl;
+			cout<<"My age is "<<this->setAge(20)<<endl;
 		}
 		
 	
@@ -31,7 +31,6 @@ class Person {
 int main() {
 	
 	Person p;
-	p.setAge(20);
 	cout<<p.getage();
 	return 0;
 }
