@@ -5,7 +5,8 @@ using namespace std;
 class father {
 	public:
 		int height;
-		father() {
+		father(int ht) {
+			height=ht;
 			
 			cout<<"Father constructor called"<<endl;
 			
@@ -24,7 +25,9 @@ class father {
 class mother {
 	public :
 		string skincolor;
-		mother() {
+		mother(string col) {
+			
+			skincolor=col;
 			
 			
 			cout<<"Mother constructor called"<<endl;
@@ -48,9 +51,9 @@ class child: private father, private mother {
 	using mother::getColor;
 	using mother::skincolor;
 	//calling parent class constructors and passing arguments to them
-		child(int ht,string color) : father() , mother() {
-			height=ht;
-			skincolor=color;
+		child(int ht,string color) : father(ht) , mother(color) {
+//			height=ht;
+//			skincolor=color;
 			cout<<"Child constructor called"<<endl;
 			
 		}
