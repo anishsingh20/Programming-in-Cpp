@@ -13,6 +13,7 @@ int main()
 	//x=20; COMPILE TIME ERROR
 	 
 	cout<<x<<endl;// output=10
+	//cout<<++*ptr produces error as *ptr is read-only i.e const and its value cannot be changed
 	cout<<&x<<endl; // output-memory address of x
 	cout<<&ptr<<endl; // output-memory address of ptr
 	cout<<++x<<endl;//first increment then print-x becomes = 11
