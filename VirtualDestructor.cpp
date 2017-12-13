@@ -30,8 +30,10 @@ int main ()
 {
 	Anish *a= new Anish();
 	//first constructor of Parent goes into stack, followed by Child class. And when memeory is deallocated in LIFO fashion
-	// first child class object is destructed followed by parent class object
-	
+	// first child class object is destructed, followed by the parent class
+	cout<<"\n"<<endl;
+	cout<<"Deleting from Stack"<<endl;
+	cout<<"\n";
 	Person *p = a ;//creating a pointer of type Person which refers to pointer of type Anish class
 	delete(p); // will automatically delete derived class
 	return 0;
