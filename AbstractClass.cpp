@@ -23,7 +23,7 @@ class Anish : public Person {
 		void intro() {//function overridden in derived class
 		
 			cout<<"Hi I am Anish"<<endl;
-			Person::intro(); //calling pure virtual function 		
+			//Person::intro(); //calling pure virtual function 		
 		}
 			
 };
@@ -39,6 +39,8 @@ int main() {
 	Anish a;
 	a.intro();
 	getIntro(&a);
+	a.Person::intro(); //accessing the base class intro() function, though it is a pure virtual function
+	
 	
 	return 0;
 }

@@ -39,7 +39,8 @@ void getIntro(Person *p)
 }
 
 
-int main() {
+int main() 
+{
 	
 	Person *p1,*p2;
 	Anish a;
