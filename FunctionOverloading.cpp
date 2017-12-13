@@ -28,8 +28,8 @@ int main () {
 	const Person p2; //used to access the const member function 
 	
 	cout<<p2.x<<endl;
-	// p2.x=20; with a const object, its data members can never be changed till the lifetime of object.
-	
+	//p2.x=20; with a const object, its data members can never be changed till the lifetime of object.
+		
 	
 	
 	//1)  non-const object of class can be used to call and access the const members(variables and methods) of a class,but.
