@@ -25,24 +25,24 @@ void checkBalance(string exp) {
 		}
 		
 		//if closing parenthesis and stack is not empty pop form TOS
-		else if(!S.empty() && exp[i]==')'|| exp[i]==']' || exp[i]=='}' ) {
+		else if(exp[i]==')'|| exp[i]==']' || exp[i]=='}' ) {
 			//pop from TOS
 			S.pop();
 		}
-		
 		
 	}
 	
 	//coming out of loop after reading the complete expression
 	//now we have to check if the stack is empty of not?
 	
-	//if stack is empty -then the expression is balanced
-		if(S.empty()) {
-			cout<<endl<<"Stack is Empty, hence balanced expression"<<endl;
-		}
-		
-		else {
+	
+		if(!S.empty()) {
 			cout<<endl<<"Unbalanced expression"<<endl;
+			
+		}
+		//if stack is empty -then the expression is balanced
+		else {
+			cout<<endl<<"Stack is Empty, hence balanced expression"<<endl;
 		}
 }
 
