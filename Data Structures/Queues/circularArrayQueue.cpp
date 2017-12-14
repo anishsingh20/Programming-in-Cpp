@@ -187,6 +187,7 @@ int main() {
 				
 				cout<<q.showCount()<<endl;
 				break;
+				
 			default:
 				exit(0);//to exit the entire program
 				break;

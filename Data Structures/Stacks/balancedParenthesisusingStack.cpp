@@ -31,7 +31,7 @@ bool checkBalance(string exp) {
 			if(S.empty()) return false;
 			
 			//on reading a closing brace - if stack is not empty then-
-			else  S.pop(); //if stack has opening parenthesis '(' then pop it when reading a closing parenthesis ')'
+			else S.pop(); //if stack has opening parenthesis '(' then pop it when reading a closing parenthesis ')'
 			
 			
 			

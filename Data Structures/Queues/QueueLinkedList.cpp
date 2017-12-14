@@ -83,8 +83,7 @@ void Queue::Dequeue()
 
 	//SPECIAL CASE-if queue has only one element-then front==rear
 	else if(front == rear) {
-		
-//		
+				
 		front = rear = NULL;//now queue is empty , so both as NULL
 	}
 	
