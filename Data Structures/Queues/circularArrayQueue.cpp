@@ -23,6 +23,7 @@ class Queue{
 		bool isFull();	
 		void showFront();
 		void showLast();
+		int showCount();
 };
 
 bool Queue::isEmpty() {
@@ -59,11 +60,10 @@ void Queue::Enqueue(int n ) {
 		
 	}
 	
-	arr[rear]=n;
+	arr[rear]=n;// insert from rear end
 	
 	
 }
-
 
 void Queue::Dequeue() {
 	
@@ -118,14 +118,29 @@ void Queue::showLast() {
 	}
 }
 
-
+//to print count of elements in queue
+int Queue::showCount() {
+	if(isEmpty()) 
+	{
+	 	 cout<<"queue is empty"<<endl;
+	 	 return -1;
+	}
+	
+	else {
+		cout<<"\n";
+		return (rear+size-front)%size+1;
+		
+	}	
+	
+	
+}
 
 void Queue::display() {
 	
 	//finding number of elements in queue
 	int count;
 	count = ( rear + size - front )%size+1; //counting elements is queue
-	for(int i=0 ; i<count;i++ ){ 
+	for(int i=0 ; i<showCount();i++ ){ 
 	
 		int index= (front+i)%size; //used to print elements in queue from front 
 		cout<<endl<<arr[index]<<endl;
@@ -143,8 +158,9 @@ int main() {
 	
 	while(1) {
 		
-		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Show Front\n5)Show last\n6)Exit\n"<<endl;
+		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Show Front\n5)Show last\n6)Show Count\n7)Exit\n"<<endl;
 		cin>>choice;
+		cout<<"\n";
 		
 		
 		switch(choice) {
@@ -165,6 +181,11 @@ int main() {
 				break;
 			case 5:
 				q.showLast();
+				break;
+				
+			case 6:
+				
+				cout<<q.showCount()<<endl;
 				break;
 			default:
 				exit(0);//to exit the entire program
