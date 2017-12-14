@@ -84,7 +84,7 @@ void Queue::Dequeue()
 	//SPECIAL CASE-if queue has only one element-then front==rear
 	else if(front == rear) {
 		
-//		cout<<"deleted element from front is: "<<temp->data<<endl;
+//		
 		front = rear = NULL;//now queue is empty , so both as NULL
 	}
 	
