@@ -49,7 +49,7 @@ void Queue::Enqueue(int n ) {
 	
 	else if(isEmpty()) {
 		
-	front=rear=0;
+	front=rear=0; //make a new cell for adding element
 	
 	} //array is empty then generate a new cell to insert
 	

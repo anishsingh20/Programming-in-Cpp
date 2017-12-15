@@ -8,6 +8,8 @@ int main() {
 	
 	char *ptr;
 	char name[100];
+	//arrays are always autmoatically passed by reference
+	
 	ptr = name; //ptr now stores address of name array, array's label itself acts as an address of the array
 	int countv=0,countc=0;
 	
