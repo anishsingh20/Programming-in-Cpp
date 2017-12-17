@@ -25,10 +25,10 @@ class marks {
 		//now here I can overload any operator and inside the function implement any opeartion using any operator
 		
 		//let's overload '=' operator
-		marks operator=(marks m) {
+		marks operator^(marks m) {
 			marks temp; // a temperarory object
-			temp.intmark= intmark - m.intmark;
-			temp.extmark = extmark - m.extmark; 
+			temp.intmark= intmark % m.intmark;
+			temp.extmark = extmark % m.extmark; 
 			return temp;
 		}
 };
@@ -43,9 +43,9 @@ void marks::display() {
 
 
 int main () {
-	marks m1(80,60),m2(15,55);
+	marks m1(89,60),m2(15,55);
 	
-	marks m = m1 = m2;//'=' overloaded
+	marks m = m1 ^ m2;//'=' overloaded
 	
 	m.display();
 	
