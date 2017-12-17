@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<stack>
 
 using namespace std; //assigning std namespace to global namesapce
 
@@ -21,8 +21,9 @@ class Queue {
  		}
  		
  		void Enqueue(int n) ;
- 		void Dequeue();
+ 		int Dequeue();
  		void display();
+ 		void ReverseQueue();
  		void showFront();
  		void showLast();
  		bool isEmpty();
@@ -54,8 +55,8 @@ void Queue::showLast() {
 
 void Queue::Enqueue(int n) {
 	Node *temp = new Node(); //making a temp node 
-	cout<<"Enter data in queue"<<endl;
-	cin>>n;
+//	cout<<"Enter data in queue"<<endl;
+//	cin>>n;
 	temp->data = n;
 	temp->next=NULL; //initiall temp is not connected to any node
 	
@@ -73,13 +74,13 @@ void Queue::Enqueue(int n) {
 }
 
 
-void Queue::Dequeue()
+int Queue::Dequeue()
  {
  	Node *temp=front;//initially temp node points to front of queue-i.e first element 
  	//if queue is empty
  	if(front == NULL) {
 		cout<<"Queue is Empty\n";
-		return;
+		return 0;
 	}
 
 	//SPECIAL CASE-if queue has only one element-then front==rear
@@ -95,9 +96,10 @@ void Queue::Dequeue()
  		
 	 }
 	 
-	 cout<<"deleted element from front is : "<<temp->data<<endl;
+	 //cout<<"deleted element from front is : "<<temp->data<<endl;
+	 return(temp->data);
 	 //deallocating memory to the temp node
-	 delete(temp);	
+	 //delete(temp);	
  }
  
  bool Queue::isEmpty() {
@@ -125,7 +127,27 @@ void Queue::Dequeue()
 	 
 }
 
-
+//we will use a stack to Reverse a Queue-
+void Queue::ReverseQueue() {
+	stack<int>s;
+	//until Queue is not empty-Push dequeued elements from Queue to stack
+	while(!isEmpty()) {
+		//PUSH to STACK
+		s.push(Dequeue());
+		
+	}
+		
+	//Now Until Stack is not empty, Enqueue the popped elements from top of Stack to Queue 
+	
+	while(!s.empty()) {
+		Enqueue(s.top()); //inserting top element of stack to queue
+		s.pop();//deleting from top of stack
+	}
+	cout<<"Reversed queue is--:"<<endl;
+	//The queue now has elemens in reversed order
+	display();//calling display function
+ }
+ 
 int main() {
 	
 	Queue q; //object to access and use stack operation methods
@@ -134,13 +156,14 @@ int main() {
 	
 	while(1) {
 		
-		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Show Front\n5)Show last\n6)Exit\n"<<endl;
+		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Reverse Queue\n5)Show Front\n6)Show last\n7)Exit\n"<<endl;
 		cin>>choice;
 		
 		
 		switch(choice) {
 			
 			case 1: 
+				cin>>data;
 				q.Enqueue(data);
 				break;
 			case 2:
@@ -150,9 +173,12 @@ int main() {
 				q.display();
 				break;
 			case 4:
-				q.showFront();
+				q.ReverseQueue();
 				break;
 			case 5:
+				q.showFront();
+				break;
+			case 6:
 				q.showLast();
 				break;
 			default:
