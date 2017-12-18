@@ -26,7 +26,7 @@ class Marks {
 		}
 		
 		Marks operator++(int) {
-			Marks duplicate(*this); //making a duplicate copy of current object
+			Marks duplicate(*this); //making a duplicate object which is copy of current object
 			mark += 1;
 			return duplicate;
 		}
