@@ -27,6 +27,7 @@ class Queue {
  		void showFront();
  		void showLast();
  		bool isEmpty();
+ 		void sortQueue();
 };
 
 
@@ -81,6 +82,7 @@ int Queue::Dequeue()
  	if(front == NULL) {
 		cout<<"Queue is Empty\n";
 		return 0;
+		cout<<endl;
 	}
 
 	//SPECIAL CASE-if queue has only one element-then front==rear
@@ -99,7 +101,7 @@ int Queue::Dequeue()
 	 //cout<<"deleted element from front is : "<<temp->data<<endl;
 	 return(temp->data);
 	 //deallocating memory to the temp node
-	 //delete(temp);	
+	 delete(temp);	
  }
  
  bool Queue::isEmpty() {
@@ -131,6 +133,10 @@ int Queue::Dequeue()
 void Queue::ReverseQueue() {
 	stack<int>s;
 	//until Queue is not empty-Push dequeued elements from Queue to stack
+	if(isEmpty()) {
+		cout<<"Queue is Empty,cannot reverse "<<endl;
+		return;
+	}
 	while(!isEmpty()) {
 		//PUSH to STACK
 		s.push(Dequeue());
@@ -140,12 +146,38 @@ void Queue::ReverseQueue() {
 	//Now Until Stack is not empty, Enqueue the popped elements from top of Stack to Queue 
 	
 	while(!s.empty()) {
+		//calling Enqueue function with top of stack as argument
 		Enqueue(s.top()); //inserting top element of stack to queue
 		s.pop();//deleting from top of stack
 	}
-	cout<<"Reversed queue is--:"<<endl;
+	cout<<"Reversed the queue--:"<<endl;
 	//The queue now has elemens in reversed order
-	display();//calling display function
+	
+ }
+ 
+ 
+ 
+ void Queue::sortQueue() {
+ 	Node *temp=front;
+	 Node *sort=NULL; 
+ 	
+ 
+ 	
+	 while(temp!=NULL) {
+	 	
+ 		if(temp->data <= temp->next->data) {
+ 			sort=temp;
+ 			temp=sort->next;
+ 			cout<<temp->data<<"\t";
+		 }
+		 
+		 else {
+		 	cout<<temp->data<<"\t";
+		 	temp=temp->next;
+		 	
+		 }
+	 }
+	 
  }
  
 int main() {
@@ -156,7 +188,7 @@ int main() {
 	
 	while(1) {
 		
-		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Reverse Queue\n5)Show Front\n6)Show last\n7)Exit\n"<<endl;
+		cout<<"\n1)Insert\n2)Delete\n3)Display\n4)Reverse Queue\n5)Show Front\n6)Show last\n7)Sort Queue\n8)Exit\n"<<endl;
 		cin>>choice;
 		
 		
@@ -167,7 +199,7 @@ int main() {
 				q.Enqueue(data);
 				break;
 			case 2:
-				q.Dequeue();
+				cout<<q.Dequeue()<<endl;;
 				break;
 			case 3:
 				q.display();
@@ -180,6 +212,9 @@ int main() {
 				break;
 			case 6:
 				q.showLast();
+				break;
+			case 7:
+				q.sortQueue();
 				break;
 			default:
 				exit(0);//to exit the entire program
