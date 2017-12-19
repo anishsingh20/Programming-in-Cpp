@@ -111,6 +111,7 @@ int checkConsecutive(stack<int>&s) {
 	
 
 	
+	//again at the end pushing all items back to stack, to avoid errors
 	while(!q.empty()) {
 		s.push(q.front());
 		q.pop();
