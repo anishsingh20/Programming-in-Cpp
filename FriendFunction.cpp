@@ -38,6 +38,7 @@ int main() {
 	Human *obj=new Human(20,2004444,"Anish Singh Walia");
 	display(obj);
 	
+	
 return 0;
 	
 }
