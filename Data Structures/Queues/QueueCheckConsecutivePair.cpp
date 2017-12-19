@@ -11,49 +11,8 @@ void Push(stack<int>&s,int data);
 int Delete(stack<int>&s);
 void display(stack<int>s);
 
-
-void Push(stack<int>&s,int data) {
-	
-	s.push(data); //simply Enqueue data into queue from front
-	
-}
-
-int Delete(stack<int>&s) {
-	
-	if(s.empty()) {
-		cout<<"Stack is empty"<<endl;
-		return 0;
-	}
-	cout<<"\n";
-	//now dequeue from the front of queue
-	int item=s.top();
-	s.pop();
-	
-	return item;
-	
-}
-
-void display(stack<int>s)
-{
-	if(s.empty()) {
-		cout<<"Stack is Empty"<<endl;
-		return;
-	}
-	
-	cout<<"Top->";
-	while(!s.empty()) {
-		
-		
-		cout<<"\t"<<s.top()<<endl;
-		s.pop();
-		
-		cout<<"\t"<<"--"<<endl;
-		
-	}	
-	
-	
-}
-
+//NOTE-Here we are using a stack for storage of data and for temporary storage queue. 
+//Same objective can be achieved by using queue for storage and for temporary storage stack.
 
 // TIME COMPLEXITY and SPACE COMPLEXITY of this function- O(n) ,as transfer of items are being done from queue to stack and stack to queue
 int checkConsecutive(stack<int>&s) { 
@@ -119,12 +78,52 @@ int checkConsecutive(stack<int>&s) {
 		
 	return pairwiseOrdered;	
 	
-	
-	
-	
-	
- 	
 }
+
+
+void Push(stack<int>&s,int data) {
+	
+	s.push(data); //simply Enqueue data into queue from front
+	
+}
+
+int Delete(stack<int>&s) {
+	
+	if(s.empty()) {
+		cout<<"Stack is empty"<<endl;
+		return 0;
+	}
+	cout<<"\n";
+	//now dequeue from the front of queue
+	int item=s.top();
+	s.pop();
+	
+	return item;
+	
+}
+
+void display(stack<int>s)
+{
+	if(s.empty()) {
+		cout<<"Stack is Empty"<<endl;
+		return;
+	}
+	
+	cout<<"Top->";
+	while(!s.empty()) {
+		
+		
+		cout<<"\t"<<s.top()<<endl;
+		s.pop();
+		
+		cout<<"\t"<<"--"<<endl;
+		
+	}	
+	
+	
+}
+
+
 
 
 int main () {
