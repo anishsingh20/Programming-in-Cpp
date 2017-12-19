@@ -2,20 +2,24 @@
 #include<cmath>
 #include<stack>
 #include<queue>
+#include<string>
 
+
+//PROGRAM FOR CHECKING IF SUCCESSIVE PAIRS IN A STACK ARE CONSECUTIVE OR NOT- FOR A CHAR STACK
+//SAME LOGIC CAN BE APPLIED FOR AN INTEGER STACK
 using namespace std;
 
-queue<int>q;
+queue<char>q;
 
-void Push(stack<int>&s,int data);
-int Delete(stack<int>&s);
-void display(stack<int>s);
+void Push(stack<char>&s,char data);
+char Delete(stack<char>&s);
+void display(stack<char>s);
 
 //NOTE-Here we are using a stack for storage of data and for temporary storage queue. 
 //Same objective can be achieved by using queue for storage and for temporary storage stack.
 
 // TIME COMPLEXITY and SPACE COMPLEXITY of this function- O(n) ,as transfer of items are being done from queue to stack and stack to queue
-int checkConsecutive(stack<int>&s) { 
+int checkConsecutive(stack<char>&s) { 
 	
 	if(s.empty()) {
 		
@@ -47,18 +51,19 @@ int checkConsecutive(stack<int>&s) {
 	
 	
 	while(!s.empty()) {
-		int n  = Delete(s);
+		char n  = Delete(s);
 		q.push(n);
 		
 		
 		if(!s.empty()) {
 			
-			int m = Delete(s);
+			char m = Delete(s);
 			q.push(m);
 			
 			
 			//condition if the 2 pairs are not consecutive i.e their absulute diff is not 1
-			if(abs(n-m)!=1) {
+			//int(char) used to get the ascii value of the character
+			if(abs( int(n)-int(m) )!=1) {
 				
 				pairwiseOrdered=0;
 				
@@ -81,13 +86,13 @@ int checkConsecutive(stack<int>&s) {
 }
 
 
-void Push(stack<int>&s,int data) {
+void Push(stack<char>&s,char data) {
 	
 	s.push(data); //simply Enqueue data into queue from front
 	
 }
 
-int Delete(stack<int>&s) {
+char Delete(stack<char>&s) {
 	
 	if(s.empty()) {
 		cout<<"Stack is empty"<<endl;
@@ -95,14 +100,14 @@ int Delete(stack<int>&s) {
 	}
 	cout<<"\n";
 	//now dequeue from the front of queue
-	int item=s.top();
+	char item=s.top();
 	s.pop();
 	
 	return item;
 	
 }
 
-void display(stack<int>s)
+void display(stack<char>s)
 {
 	if(s.empty()) {
 		cout<<"Stack is Empty"<<endl;
@@ -128,7 +133,7 @@ void display(stack<int>s)
 
 int main () {
 	int choice;
-	stack<int>s;
+	stack<char>s;
 	
 	while(1){
 		cout<<"\n";
@@ -139,7 +144,7 @@ int main () {
 		switch(choice) {
 			
 			case 1: 
-				int data;
+				char data;
 				cout<<"Enter data :"<<endl;
 				cin>>data;
 				Push(s,data);
@@ -170,9 +175,8 @@ int main () {
 				
 		}
 	}
-	return 0;
 	
 	
-	;
 	return 0;
+
 }
