@@ -4,7 +4,7 @@
 using namespace std; 
 //making the std namespace as global namespace
 
-#define size 4
+#define size 10
 
 class Queue{
 	public:
@@ -128,7 +128,7 @@ int Queue::showCount() {
 	
 	else {
 		cout<<"\n";
-		return (rear+size-front)%size+1;
+		return (rear+size-front+1)%size;
 		
 	}	
 	
