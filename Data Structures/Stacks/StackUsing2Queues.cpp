@@ -94,14 +94,14 @@ void Stack::Top() {
 		q1.pop();
 		
 		
-		//now again transfer all back to storage queue Q1(storage queue) and make Q2 empty
+		//now again transfer all back to storage queue Q1(storage queue) and make Q2 empty,for the condition of this block to be true
 		while(!q2.empty()) {
 			q1.push(q2.front()); //
 			q2.pop();
 			
 			
 		}
-			
+			//now Q2(temp queue is again empty)
 	}
 	
 	else {

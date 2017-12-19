@@ -10,9 +10,9 @@ void display(queue<int>q);//function declaration-forward scoping
 
 stack <int> s;
 
-void reverseFirstK(queue <int> q) {
+void reverseFirstK(queue <int> &q) {
 	int k;
-	cout<<"Enter K items to reverse"<<endl;
+	cout<<"Enter K items to reverse:"<<endl;
 	cin>>k;
 	//corner cases if K > size of queue and or queue is empty	
 	if(q.empty() || k>q.size()) {
@@ -45,15 +45,14 @@ void reverseFirstK(queue <int> q) {
 		//and print only the first K items in reversed form
 	}
 	
-	//displaying the revered K items in queue
-	display(q);
+	
 	
 	
 	 
 }
 
 
-void display(queue<int>q) 
+void display(queue<int> q) 
 {
 	if(q.empty()) {
 		cout<<"Queue is empty"<<endl;
@@ -72,6 +71,38 @@ void display(queue<int>q)
 	
 }
 
+
+
+//recursive solution
+
+//void reverseQueueFirstKElementsRecur(int k, queue<int>& Queue)
+//{
+//if (k == 0)
+//return;
+//
+//int tmp = Queue.front();
+//Queue.pop();
+//reverseQueueFirstKElementsRecur(k - 1,Queue);
+//Queue.push(tmp);
+//}
+//
+//void reverseQueueFirstKElements(int k, queue<int>& Queue)
+//{
+//if (Queue.empty() == true || k > Queue.size())
+//return;
+//if (k <= 1)
+//return;
+//reverseQueueFirstKElementsRecur(k,Queue);
+//
+//for(unsigned int i = 0; i < Queue.size() - k; ++i)
+//{
+//Queue.push(Queue.front());
+//Queue.pop();
+//}
+//}
+
+
+
 int main() {
 	
 	
@@ -82,12 +113,13 @@ int main() {
 	q.push(40);
 	q.push(50); //Queue -10 20 30 40 50
 	
-	display(q);
+	display(q); 
 	
 	
 	reverseFirstK(q);
-	
-	
+
+
+	display(q); //will print the first K items of queue in reversed order
 	
 	return 0;
 	
