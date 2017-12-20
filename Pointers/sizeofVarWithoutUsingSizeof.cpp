@@ -18,7 +18,7 @@ int main () {
 	
 	 long double a;
 	
-	//calculate the address difference between two consecutive int variables- the difference would be the size of that variable type
+	//Idea is to calculate the address difference between two consecutive variables- the difference would be the size of that variable type
 	
 	cout<<"Address of a :"<<&a<<endl;
 	cout<<"Address of a+1,i.e address of a incremented by 4 bytes :" << &a+1<<endl;//ie address of a incremented by 4 bytes
@@ -30,7 +30,7 @@ int main () {
 
 cout<<"Size of a variable by method 2- "<<endl;
 long double arr[2];
-int size1 = ( (char*)&arr[1]- (char*)&arr[0] );
+int size1 = ( (char*)&arr[1] - (char*)&arr[0] );
 
 cout<<size1<<endl;
 
