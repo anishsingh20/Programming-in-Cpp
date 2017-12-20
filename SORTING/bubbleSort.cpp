@@ -7,6 +7,8 @@ using namespace std;
 
 
 //BUBBLE SORT function- takes argument as an array(pointer) and the size of array
+
+//TIME COMPLEXITY-O(n^2) of BUBBLE SORT-nested loops
 void BubbleSort(int  *arr,int size) {
 	
 	for(int i = 0 ; i < size; i++ ) {
@@ -47,7 +49,7 @@ int main() {
 //		}
 //	}
 	
-	//TIME COMPLEXITY-O(n^2) of BUBBLE SORT
+	
 	
 //	cout<<"Sorted array is: "<<endl;
 //	for(int i=0 ;i<n;i++) {
