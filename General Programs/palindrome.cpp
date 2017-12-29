@@ -1,12 +1,15 @@
 #include<iostream>
 #include<string>
+#include<cstring> //to use the strlen(char) function
+
+//implementing it using a C type string
 
 using namespace std;
 
-int palindrome(string a)
+int palindrome(char *a) 
 {
 	int i=0;
-	int j = a.size()-1;
+	int j = strlen(a)-1;
 	while(i<=j && a[i]==a[j])  {
 		i++;
 		j--;
