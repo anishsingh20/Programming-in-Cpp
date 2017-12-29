@@ -11,6 +11,7 @@ int palindrome(char *a)
 	int i=0;
 	int j = strlen(a)-1;
 	while(i<=j && a[i]==a[j])  {
+		//true condition , simply change i and j indices
 		i++;
 		j--;
 	}
@@ -35,5 +36,6 @@ int palindrome(char *a)
 int main() {
 	
 	palindrome("nitin");
+	palindrome("anish");
 	return 0;
 }
