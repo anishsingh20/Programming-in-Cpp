@@ -12,7 +12,7 @@ using namespace std;
 class Person {
 	public:
 		//does runtime binding of intro() based on the type of object is used to invoke the method
-		void intro() {
+		void virtual intro() {
 			cout<<"Hello I am a Person"<<endl;
 		}
 };
@@ -39,12 +39,19 @@ void getIntro(Person &p) {
 
 int main() {
 	
-	Person p;
+	Person *p1,*p2;
 	Anish a;
 	Mrinal m;
-	a.intro();
-	getIntro(a);//without virtual base function , it would have printed the base method value
-	getIntro(m);
+	p1 = &a;
+	p2= &m;
+	p2 =  &m;
+	
+	//runtime polymorphism
+	p1->intro();//intro() method of class Anish called
+	p2->intro();//intro() method of class Mrinal called 
+//	a.intro();
+//	getIntro(a);//without virtual base function , it would have printed the base method value
+//	getIntro(m);
 	
 	return 0;
 }
