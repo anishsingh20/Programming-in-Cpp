@@ -10,7 +10,7 @@
 //RECURSIVE SOLUTION to MERGING 2 SORTED LINKED LISTS
 Node* MergeLists(Node *headA, Node* headB)
 {
-    Node *temp = NULL;
+    Node *new_head = NULL;
    if(headA==NULL) { //if List A is null-our answer is list B
        return headB;
    }
@@ -21,17 +21,17 @@ Node* MergeLists(Node *headA, Node* headB)
       
     if(headA->data <= headB->data) 
       {
-          temp = headA;
-          temp->next= MergeLists(headA->next,headB);
+          new_head = headA;
+          new_head->next= MergeLists(headA->next,headB);
           
       }
       else {
           
-          temp=headB;
-          temp->next = MergeLists(headB->next,headA);
+          new_head=headB;
+          new_head->next = MergeLists(headB->next,headA);
       }
       
-   return(temp);   
+   return(new_head);   
   
 }
 
