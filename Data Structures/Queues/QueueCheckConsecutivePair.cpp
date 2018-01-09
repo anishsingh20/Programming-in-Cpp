@@ -31,7 +31,7 @@ int checkConsecutive(stack<char>&s) {
 		
 		return 0; //not consecutive as there are odd number of items and all cannot be paired
 		
-	}
+	}    
 	
 	int pairwiseOrdered=1;
 	
