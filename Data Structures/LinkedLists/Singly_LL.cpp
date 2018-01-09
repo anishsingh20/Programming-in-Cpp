@@ -34,11 +34,30 @@ int listlength(struct Node *head) {
 }
 
 
+//iterative solution-returns the new updated head of reversed list
+Node* reverseList() {
+	Node *prev=NULL,*curr,*nextnode;
+	curr=head;
+	
+	while(curr!=NULL) {
+		nextnode=curr->next;
+		curr->next=prev;
+		
+		prev=curr;
+		curr=nextnode;
+		
+	}
+	head=prev;
+	return head;	
+	
+}
+
+
 void InsertList(int data, int pos) {
 	
 	struct Node *temp,*temp1; //temp pointers to be used in operations
 	
-	struct Node *new_node= new Node(); //creating a new Node dynmically at runtime and allocating memory in HEAP using new() function
+	struct Node *new_node = new Node(); //creating a new Node dynmically at runtime and allocating memory in HEAP using new() function
 	int k=1;
 	temp=head;
 	new_node->data = data;
@@ -127,8 +146,13 @@ int main() {
 	InsertList(15,3);
 	InsertList(25,4);
 	
-	DelLast();
+	cout<<listlength(head);
 	
+	cout<<endl;
+	
+	reverseList();
+	
+	cout<<"List reversed:"<<endl;
 	
 
 	cout<<listlength(head);
