@@ -1,14 +1,14 @@
 #include<iostream>
 
 //SINGLY LINKED LIST
-using namesapce std;
+using namespace std;
 
 struct Node {
 	int data;
-	Node *next;
+	struct Node *next;
 };
 
-Node *head;
+
 
 /*BASIC OPERATIONS- 1)INSERTION-Insertion at beginning-O(1) , insertions at end-O(n) , insertion in middle-O(n)
 		    2)DELETION-front,tail and intermediate positions
@@ -17,6 +17,8 @@ Node *head;
 
 
 //Function to traverse the list and return the count of items in LL
+
+struct Node *head;
 
 int listlength() {
 	Node *current = head;
@@ -34,7 +36,7 @@ int listlength() {
 void InsertList(int data, int pos) {
 	
 	Node *temp,*temp1,*new_node;
-	
+	int k=1;
 	temp=head;
 	new_node->data = data;
 	
@@ -45,10 +47,9 @@ void InsertList(int data, int pos) {
 		
 	}
 	
-	int k=1;
 	else {
 		//this condition will work for both insertion at middle and insertion at last
-		while(temp!=NULL) && while(k<pos) {
+		while((temp!=NULL) && (k<pos) ){
 			k++;
 			temp1=temp; //temp1 is the node previous to temp node
 			temp=temp->next;
@@ -61,7 +62,7 @@ void InsertList(int data, int pos) {
 }
 
 //only for deletion at beginning -O(1)
-void DelFront() {
+int DelFront() {
 	
 	Node *temp=head;
 	head=head->next;
@@ -72,7 +73,7 @@ void DelFront() {
 }
 
 //function to delete last node -O(n)
-void DelLast() {
+int DelLast() {
 	Node *prev=head,*tail;
 	
 	while(prev->next->next!=NULL) {
@@ -84,6 +85,41 @@ void DelLast() {
 	delete(tail);
 }
 
+
+
+//function to delete at an intermediate position
+int DelPos(int pos) {
+	
+	Node *prev,*curr;
+	curr=head;//node to delete
+	int k=1;
+	
+	while(k<pos) {
+		k++;
+		prev=curr;
+		curr=curr->next;
+	}
+	prev->next=curr->next;
+	return curr->data;
+	
+	delete(curr);
+	
+}
+	
+	
+int main() {
+	
+		
+
+	InsertList(1,1);
+	InsertList(10,2);
+	InsertList(15,3);
+	InsertList(25,4);
+	
+	cout<<listlength();
+			
+	return 0;	
+}
 
 
 
