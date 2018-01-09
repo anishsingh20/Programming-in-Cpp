@@ -50,13 +50,38 @@ void InsertList(int data, int pos) {
 		//this condition will work for both insertion at middle and insertion at last
 		while(temp!=NULL) && while(k<pos) {
 			k++;
-			temp1=temp; //temp1 is the node previous temp node
+			temp1=temp; //temp1 is the node previous to temp node
 			temp=temp->next;
 		}
+		//more optimal way-
 		
 		temp1->next=new_node;
 		new_node->next=temp;
 	}
+}
+
+//only for deletion at beginning -O(1)
+void DelFront() {
+	
+	Node *temp=head;
+	head=head->next;
+	return temp->data;
+	delete(temp); //disposing temp
+	
+	
+}
+
+//function to delete last node -O(n)
+void DelLast() {
+	Node *prev=head,*tail;
+	
+	while(prev->next->next!=NULL) {
+		prev = prev->next; //prev is the 2nd last node
+	}
+	tail=prev->next;
+	prev->next=NULL;
+	return tail->data;
+	delete(tail);
 }
 
 
