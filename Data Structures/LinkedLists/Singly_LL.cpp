@@ -20,7 +20,7 @@ struct Node {
 
 struct Node *head;
 
-int listlength() {
+int listlength(struct Node *head) {
 	Node *current = head;
 	int count = 0 ;
 	while(current!=NULL) {
@@ -28,14 +28,17 @@ int listlength() {
 		cout<<current->data<<" | "<<"\t";
 		current=current->next;
 	}
-	
 	return count;
+	
+
 }
 
 
 void InsertList(int data, int pos) {
 	
-	Node *temp,*temp1,*new_node;
+	struct Node *temp,*temp1; //temp pointers to be used in operations
+	
+	struct Node *new_node= new Node(); //creating a new Node dynmically at runtime and allocating memory in HEAP using new() function
 	int k=1;
 	temp=head;
 	new_node->data = data;
@@ -110,13 +113,25 @@ int DelPos(int pos) {
 int main() {
 	
 		
-
+	//allocating memory in heap;	
+//	struct Node *head=new Node();
+//	struct Node *sec=new Node();
+//	
+//	
+//	
+//	head->data=10;
+//	head->next=sec;
+//	sec->data=20;
 	InsertList(1,1);
 	InsertList(10,2);
 	InsertList(15,3);
 	InsertList(25,4);
 	
-	cout<<listlength();
+	DelLast();
+	
+	
+
+	cout<<listlength(head);
 			
 	return 0;	
 }
