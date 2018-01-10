@@ -109,6 +109,7 @@ int DelLast() {
 
 
 
+
 //function to delete at an intermediate position
 int DelPos(int pos) {
 	
@@ -126,6 +127,31 @@ int DelPos(int pos) {
 	
 	delete(curr);
 	
+}
+
+
+
+//function to print kth element from the tail-IMP
+int printfromTail(Node *head,int postail) {
+	Node *temp=head;
+	Node *result=head; //a pointer to store the address of kth element from tail
+	
+	int k=0;
+	
+	//traversing the list
+	while(temp!=NULL) {
+		
+		
+		if(k++ > postail) {
+			
+			result=result->next;
+			
+		}
+		
+		temp=temp->next;
+	}
+	
+	return result->data;
 }
 	
 	
@@ -145,9 +171,15 @@ int main() {
 	InsertList(10,2);
 	InsertList(15,3);
 	InsertList(25,4);
+	cout<<"\n";
 	
 	cout<<listlength(head);
 	
+	cout<<"\n";
+	
+	cout<<printfromTail(head,2);
+	
+	cout<<"\n";
 	cout<<endl;
 	
 	reverseList();
