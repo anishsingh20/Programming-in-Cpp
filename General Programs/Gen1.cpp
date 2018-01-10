@@ -2,7 +2,20 @@
 
 using namespace std;
 
-int main() {
+int main() 
+{
+	
+	 enum flag{
+	 	const1,const2,const3,const4,const5
+	 };
+	 
+	 cout<<sizeof(flag);//will print 4 as size of a integer on 32 and 64bit machines is 4 bytes
+	 
+		
+	
+	
+	return 0;
+}
 	
 //PROGRAM 1	
 //	int x=4,y=x;
@@ -31,17 +44,17 @@ int main() {
 
 
 //PROGRAM-3
-int func();
-int i = func(); 
-
-cout<<i; //returns value of 1 ,as function called is true
-
-
-}
-
-int func() {
-	 _AX=1090;
-}
+//int func();
+//int i = func(); 
+//
+//cout<<i; //returns value of 1 ,as function called is true
+//
+//
+//}
+//
+//int func() {
+//	 _AX=1090;
+//}
 
 
 //int func(int x ) {
