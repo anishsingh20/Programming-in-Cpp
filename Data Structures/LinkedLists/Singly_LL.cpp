@@ -113,20 +113,25 @@ int DelLast() {
 //function to delete at an intermediate position
 int DelPos(int pos) {
 	
-	Node *prev,*curr;
-	curr=head;//node to delete
-	int k=1;
+	Node *prev,*del_node;
+	prev=head;
 	
-	while(k<pos) {
-		k++;
-		prev=curr;
-		curr=curr->next;
+	
+	//loop to keep track of the prev node to the node to be deleted to adjust the next pointer of prev node
+	for(int i=1;i<pos-1;i++)
+	{
+		prev=prev->next;
 	}
-	prev->next=curr->next;
-	return curr->data;
 	
-	delete(curr);
+	//or 
+
 	
+	del_node=prev->next;
+	prev->next=del_node->next;
+	//prev->next=curr->next;
+	return del_node->data;
+	
+	delete(del_node);//deallocating memory
 }
 
 
@@ -173,7 +178,7 @@ int main() {
 	InsertList(25,4);
 	cout<<"\n";
 	
-	cout<<listlength(head);
+	cout<<listlength(head)<<endl;
 	
 	cout<<"\n";
 	
@@ -181,6 +186,7 @@ int main() {
 	
 	cout<<"\n";
 	cout<<endl;
+	cout<<DelPos(2)<<endl;
 	
 	reverseList();
 	

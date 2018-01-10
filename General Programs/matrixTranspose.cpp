@@ -41,13 +41,13 @@ int main() {
 	
 	//rows and columns are exchanged
 	
-	//now i=0 to  m(columns) , for non-square matrices
-	for(int i=0;i<m;i++) {
+	
+	for(int i=0;i<n;i++) {
 		
-		//j=0 to n(rows) 
-		for(int j=0;j<n;j++) {
+		
+		for(int j=0;j<m;j++) {
 			
-			
+			//simply changing the subscripts of indices -rows and columns
 			cout<<mat[j][i]<<"\t";
 		}
 		

@@ -13,7 +13,8 @@ int main() {
 	
 	
 	cout<<"&arr + 1 = "<<&arr+1<<endl; // address of complete array incremented by 5*4 bytes 
-	cout<<"arr+1 = "<<arr+1<<endl;//address of 1 element of array incrmented by 4 bytes
+	cout<<"arr+1 = "<<arr+1<<endl;//address of 2 element of array - incrmented by 4 bytes as it is an integer array
+	
 	
 	cout<<&ptr<<endl;
 	cout<<&ptr+1<<endl;//prints address of pointer with increment of 4 
