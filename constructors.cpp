@@ -32,15 +32,32 @@ class human
 			
 		}
 		
-	private:
+	
 		int age;
 		string name;
 	
 	
 };
 
+class anish : private human {
+	public:
+		human::age;
+		human::name;
+		anish () {
+			cout<<"Anish constructor called"<<endl;
+		}
+		void intro(int sage,string sname) {
+			age = sage;
+			name = sname;
+			 
+			cout<<"Hello I am "<< " " << sname << " " <<"age is :"<< sage <<endl;
+		}
+};
+
 
 int main() {
-	human *obj= new human;//constructor is called as soon as an object is created
-	obj->introduce();
+//	human *obj= new human;//constructor is called as soon as an object is created
+//	obj->introduce();
+	anish A;
+	A.intro(20,"anish");
 }
