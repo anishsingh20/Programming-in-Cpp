@@ -25,7 +25,7 @@ int main() {
 	
 //	p1=p; //produces error 
 	//TYPECASTING
-	p1 = (char*)p; //is a char pointer which also stores the address of Byte-1
+	p1 = (char*)p; //is a char pointer which also stores the address of Byte-1 of a
 	
 	cout<<p1<<endl;
 	cout<<p1+1<<endl; //p1 moves 1 byte forward as it is a char pointer , and char is 1 byte long;
