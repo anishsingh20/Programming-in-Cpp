@@ -18,10 +18,11 @@ int main () {
 	
 	 long double a;
 	
-	//Idea is to calculate the address difference between two consecutive variables- the difference would be the size of that variable type
+	//Idea is to calculate the address difference between two consecutive variables which are laid out continiously in memory
+	//- the difference would be the size of that variable type
 	
 	cout<<"Address of a :"<<&a<<endl;
-	cout<<"Address of a+1,i.e address of a incremented by 4 bytes :" << &a+1<<endl;//ie address of a incremented by 4 bytes
+	cout<<"Address of a+1,i.e address of a incremented by" << sizeof(a)<< "bytes :" << &a+1<<endl;//ie address of a incremented by size bytes
 	int sizeof_int = (char*)((&a)+1) - (char*)(&a);
 	cout<<sizeof_int<<endl;
 	
