@@ -28,10 +28,10 @@ int main() {
 	p1 = (char*)p; //is a char pointer which also stores the address of Byte-1 of a
 	
 	cout<<p1<<endl;
-	cout<<p1+1<<endl; //p1 moves 1 byte forward as it is a char pointer , and char is 1 byte long;
-	cout<<*p1<<endl;
-	cout<<*(p1+1);
-	 //decimal value of Byte-1  i.e 00000001 = 1 in decimal
+	cout<<p1+1<<endl; //p1 moves 1 byte forward as it is a char pointer , and char is 1 byte long-so stores add of byte-2
+	cout<<*p1<<endl;//decimal value of Byte-1  i.e 00000001 = 1 in decimal
+	cout<<*(p1+1);//decimal value of Byte-2  i.e 00000100 = 4 in decimal
+	 
 	//this is because char is 1 bytes long and p1 is a char pointer so while dereferencing we looked at only 1 byte
 	 
 	
