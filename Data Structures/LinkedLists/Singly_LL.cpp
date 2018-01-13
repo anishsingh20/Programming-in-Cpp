@@ -139,7 +139,7 @@ int DelPos(int pos) {
 //function to print kth element from the tail-IMP
 int printfromTail(Node *head,int postail) {
 	Node *temp=head;
-	Node *result=head; //a pointer to store the address of kth element from tail
+	Node *result=temp; //a pointer to store the address of kth element from tail
 	
 	int k=0;
 	
@@ -158,6 +158,47 @@ int printfromTail(Node *head,int postail) {
 	
 	return result->data;
 }
+	
+	
+//a single function to handle all delete cases	
+int DelNodePos(int pos) {
+	Node *temp=head;
+	Node *prev;
+//	cout<<"Enter position to delete: "<<endl;
+//	cin>>pos;
+	if(pos<=0) {
+		cout<<"Enter a valid index"<<endl;
+		return 0;
+	}
+	
+	
+	if(pos==1) {
+		
+		head = head->next; //head points to 2nd node
+			
+	}
+	
+	//case which will handle all other posotions and the last node deletion too
+	else {
+		int k = 1;
+		
+		while ((temp!=NULL) && (k<pos)) {
+			k++;
+			prev = temp;
+			temp=temp->next;
+			
+		}
+		
+		//updating the next pointer of prev node
+		
+		prev->next=temp->next;
+	}
+	
+	return temp->data;
+	delete(temp);
+	
+	
+}	
 	
 	
 int main() {
@@ -182,12 +223,15 @@ int main() {
 	
 	cout<<"\n";
 	
-	cout<<printfromTail(head,2);
+	cout<<printfromTail(head,1)<
 	
 	cout<<"\n";
 	cout<<endl;
-	cout<<DelPos(2)<<endl;
+//	cout<<DelPos(2)<<endl;
 	
+	cout<<DelNodePos(1)<<endl;
+	
+		
 	reverseList();
 	
 	cout<<"List reversed:"<<endl;
