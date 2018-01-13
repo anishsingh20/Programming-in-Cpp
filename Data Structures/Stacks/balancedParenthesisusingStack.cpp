@@ -14,34 +14,34 @@ bool checkBalance(string exp) {
 	
 	for(int i=0;i<exp.length();i++) {
 		
-		//if delimitters, continue
-		if(exp[i]==' '|| exp[i]==',') continue;
-		
-		//if opening parenthesis-push it to stack
-		else if(exp[i]=='('|| exp[i]=='[' || exp[i]=='{') {
+		switch(exp[i]) {
 			
-			S.push(exp[i]); //pushing the opening parenthesis
 			
+			//if opening brace then push them to stack
+			case '{' :
+			case '(' :
+			case '[' :
+				S.push(exp[i]);
+				break;
+				
+			case '}' :
+				if(S.top()=='{' && !S.empty()) {
+					S.pop();
+				}
+				break;
+			case ']' :
+				if(S.top()=='[' && !S.empty()) {
+					S.pop();
+				}
+				break;
+			case ')' :
+				if(S.top()=='(' && !S.empty()) {
+					S.pop();
+				}
+				break;
 		}
-		
-		//if closing parenthesis and stack is not empty pop form TOS
-		else if(exp[i]==')'|| exp[i]==']' || exp[i]=='}' ) {
-			
-			//condition if expression contains only closing parenthesis, in that case - stack will be empty too but not a balanced expression
-			if(S.empty()) return false;
-			
-			//on reading a closing brace - if stack is not empty then-
-			else S.pop(); //if stack has opening parenthesis '(' then pop it when reading a closing parenthesis ')'
-			
-			
-			
-			
- 			 
-			
-		}
-		
 	}
-	
+		
 	//coming out of loop after reading the complete expression
 	//now we have to check if the stack is empty of not?
 	return S.empty() ? true : false;
