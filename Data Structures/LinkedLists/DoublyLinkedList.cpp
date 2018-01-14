@@ -5,7 +5,7 @@
 using namespace std;
 
 struct Node{
-	int data;
+	string data;
 	struct Node  *next;
 	struct Node *prev;
 };
@@ -19,11 +19,11 @@ void InsertPos(struct Node **head,int data,int pos);
 		
 Node* traverse(struct Node *head);
 		
-int delPos(int pos);
+string delPos(int pos);
 		
 
 
-void InsertHead(int data) {
+void InsertHead(string data) {
 	
 	Node *new_node = new Node();
 	
@@ -38,7 +38,7 @@ void InsertHead(int data) {
 	
 }
 
-void InsertLast(struct Node** head , int data) {
+void InsertLast(struct Node** head , string data) {
 	
 	Node *new_node = new Node();
 	
@@ -57,7 +57,7 @@ void InsertLast(struct Node** head , int data) {
 
 
 //fuction to handle both insertion at last and intermediate position
-void InsertPos(int pos,int data) {
+void InsertPos(int pos,string data) {
 	
 	Node *new_node = new Node();
 	
@@ -143,6 +143,68 @@ void InsertPos(int pos,int data) {
 //	}
 //}
 
+string  delHead() {
+	Node *temp;
+	temp=head;
+	if(head==NULL) {
+		cout<<"List is empty"<<endl;
+	}
+	
+	else {
+		
+		head = temp->next;
+		head->prev = NULL;
+	
+	}
+	
+	return temp->data;
+	delete(temp);
+	
+	
+}
+
+
+string delPos(int pos) 
+{
+	Node *temp,*temp1;
+	int k=1;
+	temp= head;
+	if(pos<=0) {
+		cout<<"Not a valid index"<<endl;
+	} 
+	
+	if(pos==1) {
+		
+		head= head->next;
+		head->prev = NULL;
+	}
+	
+	//traversing the list
+	while((k < pos) && temp->next!=NULL) {
+		
+		
+		temp=temp->next;
+		k++;
+		
+	}
+	
+	temp1 = temp->prev;
+	temp1->next = temp->next;
+	temp->next->prev = temp1;
+	
+	return temp->data;
+	delete(temp);
+	
+	
+	
+	
+
+	
+	
+	
+}
+
+
 Node* traverse(struct Node *head) {
 	
 	Node *temp=head;
@@ -194,10 +256,21 @@ int main() {
 //	InsertPos(100,3);
 ////	
 
-	InsertHead(10);
-	InsertPos(2,50);
-	InsertPos(3,60);
-	InsertPos(4,70);
+	InsertHead("anish");
+	InsertPos(2,"Mrinal");
+	InsertPos(3,"Vaibhav");
+	InsertPos(4,"Rasila");
+	InsertPos(5,"gandu");
+	InsertPos(6,"mc");
+	
+	cout<<"The list is: "<<endl;
+	
+	traverse(head);	
+	cout<<"\n";
+	cout<<"After deletion:"<<endl;
+	
+	delHead();
+	delPos(5);
 	
 //	InsertLast(&head,20);
 	traverse(head);
