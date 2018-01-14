@@ -177,6 +177,8 @@ string delPos(int pos)
 		
 		head= head->next;
 		head->prev = NULL;
+		return temp->data;
+		delete(temp);
 	}
 	
 	//traversing the list
@@ -270,7 +272,7 @@ int main() {
 	cout<<"After deletion:"<<endl;
 	
 	delHead();
-	delPos(5);
+	delPos(41);
 	
 //	InsertLast(&head,20);
 	traverse(head);
