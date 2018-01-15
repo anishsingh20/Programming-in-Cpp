@@ -226,6 +226,38 @@ Node* traverse(struct Node *head) {
 }
 
 
+/*
+   Reverse a doubly linked list, input list may also be empty
+   Node is defined as
+   struct Node
+   {
+     int data;
+     Node *next;
+     Node *prev;
+   }
+*/
+Node* Reverse(Node* head)
+{
+    Node *temp = head;
+   if(head==NULL) {
+       return head;
+   }
+     
+    while(temp->next!=NULL) {
+        temp = temp->next;
+    }
+        
+    Node *temp1 = temp;
+    head = temp1;
+   while(temp->prev!=NULL) {
+        temp = temp->next;
+    }
+   
+   
+   return head;
+}
+
+
 //int DLL::delPos(int pos) {
 //	
 //	
@@ -267,12 +299,14 @@ int main() {
 	
 	cout<<"The list is: "<<endl;
 	
-	traverse(head);	
-	cout<<"\n";
-	cout<<"After deletion:"<<endl;
+//	traverse(head);	
+//	cout<<"\n";
+//	cout<<"After deletion:"<<endl;
+//	
+//	delHead();
+//	delPos(4);
 	
-	delHead();
-	delPos(41);
+	Reverse(head);
 	
 //	InsertLast(&head,20);
 	traverse(head);

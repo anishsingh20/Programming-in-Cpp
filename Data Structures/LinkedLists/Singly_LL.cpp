@@ -198,6 +198,36 @@ int DelNodePos(int pos) {
 	delete(temp);
 	
 	
+}
+
+
+//a function to remove duplicates from linked list
+Node* RemoveDuplicates(Node *head)
+{
+  // This is a "method-only" submission. 
+  // You only need to complete this method. 
+    Node *temp;
+    Node *temp1;
+    //traversing and finding duplicate elements in list
+    temp=head;
+    while(temp->next!=NULL) {
+        temp1=temp->next;
+        if(temp->data == temp1->data) {
+            
+            temp->next = temp1->next;
+            delete(temp1);
+            
+        }
+        else {
+        	temp=temp->next;
+	}
+	
+        	
+        
+    }
+    
+    return head;
+        
 }	
 	
 	
@@ -216,28 +246,33 @@ int main() {
 	InsertList(1,1);
 	InsertList(10,2);
 	InsertList(15,3);
-	InsertList(25,4);
+	InsertList(15,4);
+	InsertList(1,5);
 	cout<<"\n";
 	
 	cout<<listlength(head)<<endl;
 	
 	cout<<"\n";
 	
-	cout<<printfromTail(head,1)<
+	RemoveDuplicates(head);
 	
-	cout<<"\n";
-	cout<<endl;
-//	cout<<DelPos(2)<<endl;
 	
-	cout<<DelNodePos(1)<<endl;
-	
-		
-	reverseList();
-	
-	cout<<"List reversed:"<<endl;
-	
-
-	cout<<listlength(head);
+	cout<<listlength(head)<<endl;
+//	cout<<printfromTail(head,1);
+//	
+//	cout<<"\n";
+//	cout<<endl;
+////	cout<<DelPos(2)<<endl;
+//	
+//	cout<<DelNodePos(1)<<endl;
+//	
+//		
+//	reverseList();
+//	
+//	cout<<"List reversed:"<<endl;
+//	
+//
+//	cout<<listlength(head);
 			
 	return 0;	
 }
