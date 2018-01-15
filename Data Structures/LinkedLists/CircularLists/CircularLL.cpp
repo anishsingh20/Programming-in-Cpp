@@ -85,6 +85,36 @@ void InsertLast(struct CLLNode** head,int data) {
 } //TIME COMPLEXITY = O(n) , SPCAE COMPLEXITY = O(1)
 
 
+//function to insert at random position
+void InsertPos(struct CLLNode** head,int pos ,int data) {
+	struct CLLNode* new_node = new CLLNode();
+	struct CLLNode* temp = *head;
+	struct CLLNode* temp1;
+	
+	new_node->data = data;
+	new_node->next = new_node;
+	
+	//if list is empty or inseeting at first position
+	if(pos==1 || head==NULL) {
+		
+		*head=new_node;
+	}
+	
+	else {
+		int k=1;
+		while( (k<pos) && temp->next!=*head)
+		{
+			k++;
+			temp1 = temp;//node previous to temp
+			temp=temp->next;
+		}
+		temp1->next = new_node;
+		new_node->next = temp ; 
+		
+		
+	}
+}
+
 
 //4) Deleting a node at head
 void DelFirst(struct CLLNode **head) {
@@ -149,12 +179,15 @@ int main() {
 
 	struct CLLNode* head = NULL;
 	
+	InsertPos(&head,1,200);
 	InsertFirst(&head,10);
 	InsertFirst(&head,20);
 	InsertLast(&head,40);
 	InsertLast(&head,100);
+	InsertFirst(&head,90);
 	
-	DelLast(&head);
+	
+//	DelLast(&head);
 	
 	traverseCLL(head);	
 	
