@@ -162,6 +162,49 @@ void DelLast(struct CLLNode** head){
 }
 
 
+void DelPos(struct CLLNode** head,int pos) {
+	struct CLLNode* curr= *head;
+	struct CLLNode *temp,*temp1 = *head;
+	
+	if(*head==NULL) {
+		cout<<"List Empty"<<endl;
+		return;
+	}
+	
+	if(pos==1)
+	{
+		while(curr->next!=*head) {
+			curr=curr->next;
+	}
+	
+	curr->next = temp->next;
+	//moving head to point to next node
+	*head=temp->next;
+	cout<<"Deleted: "<<temp->data<<endl;
+	delete(temp);
+	
+	} 
+	
+	
+	//position other than front of list
+	else {
+		int k=1;
+		while((k<pos) && curr->next!=*head){
+			k++;
+			temp1=temp;//node previous to temp
+			temp = temp->next;
+			
+		}
+		
+		temp1->next = temp->next;
+		cout<<"Deleted : "<<temp->data<<endl;
+		delete(temp);
+		
+		
+	}
+}
+
+
 int main() {
 	
 //	struct CLLNode *head = new CLLNode();
@@ -179,17 +222,23 @@ int main() {
 
 	struct CLLNode* head = NULL;
 	
-	InsertPos(&head,1,200);
+	InsertFirst(&head,100);
+	
 	InsertFirst(&head,10);
 	InsertFirst(&head,20);
 	InsertLast(&head,40);
-	InsertLast(&head,100);
+	
 	InsertFirst(&head,90);
+	
+	InsertLast(&head,100);
+	traverseCLL(head);
+	
+	
 	
 	
 //	DelLast(&head);
 	
-	traverseCLL(head);	
+//	traverseCLL(head);	
 	
 	 
 	
