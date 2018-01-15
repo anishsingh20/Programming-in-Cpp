@@ -231,6 +231,39 @@ Node* RemoveDuplicates(Node *head)
 }	
 	
 	
+	
+bool has_cycle(Node* head) {
+    // Complete this function
+    // Do not write the main method
+    Node *temp=head;
+    Node *temp1;
+    
+    if(head==NULL){
+    return false;
+    }
+    
+    
+        //traversing the list and checking for cycles
+        while(temp->next!=NULL)
+        {
+            temp1=temp->next;
+            if(temp->next == temp1->next)
+            {
+		cout<<"1"<<endl;
+                return true;
+                 
+            }
+            else{
+            	cout<<"0"<<endl;
+                return false;
+            }
+            
+            temp=temp->next;
+        }
+}         
+           
+	   	
+	
 int main() {
 	
 		
@@ -247,7 +280,7 @@ int main() {
 	InsertList(10,2);
 	InsertList(15,3);
 	InsertList(15,4);
-	InsertList(1,5);
+	InsertList(15,5);
 	cout<<"\n";
 	
 	cout<<listlength(head)<<endl;
@@ -258,6 +291,7 @@ int main() {
 	
 	
 	cout<<listlength(head)<<endl;
+	has_cycle(head);
 //	cout<<printfromTail(head,1);
 //	
 //	cout<<"\n";
