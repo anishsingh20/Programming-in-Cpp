@@ -1,4 +1,4 @@
-#incliude<iostream>
+#include<iostream>
 
 //CIRCULAR LINKED LIST IMPLEMENTATION- NO NODE points to a NULL pointer, LAST NODE POINTS TO THE HEAD NODE
 
@@ -20,7 +20,8 @@ int traverseCLL(struct CLLNode* head) {
 	} 
 	
 	do{
-		cout<<curr->data<<"-->";
+		cout<<"-->";
+		cout<<curr->data;
 		curr=curr->next;
 		count++;
 		
@@ -31,6 +32,21 @@ int traverseCLL(struct CLLNode* head) {
 
 
 int main() {
+	
+	struct CLLNode *head = new CLLNode();
+	struct CLLNode* sec = new CLLNode();
+	struct CLLNode* third = new CLLNode();
+	head->data = 10;
+	sec->data=20;
+	third->data=30;
+	
+	head->next = sec;
+	sec->next = third;
+	third->next = head;
+	cout<<traverseCLL(head);
+	
+	
+	 
 	
 	return 0;
 	
