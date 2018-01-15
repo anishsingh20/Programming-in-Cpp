@@ -89,7 +89,7 @@ void InsertLast(struct CLLNode** head,int data) {
 //4) Deleting a node at head
 void DelFirst(struct CLLNode **head) {
 	struct CLLNode* tail = *head;
-	struct CLLNode* temp=head;//node to delete
+	struct CLLNode* temp=*head;//node to delete
 	
 	if(*head==NULL){
 		cout<<"List Empty"<<endl;
@@ -101,10 +101,10 @@ void DelFirst(struct CLLNode **head) {
 		tail=tail->next;
 	}
 	
-	tail->next = head->next;
+	tail->next = temp->next;
 	//moving head to point to next node
-	head=head->next;
-	return temp->data;
+	*head=temp->next;
+	cout<<"Deleted: "<<temp->data<<endl;
 	delete(temp);
 } //TIME COMPLEXITY = O(n), SPACE COMPLEXITY = O(1)
 
@@ -112,24 +112,51 @@ void DelFirst(struct CLLNode **head) {
 //5)Deleting a node at tail of CLL
 
 void DelLast(struct CLLNode** head){
+	struct CLLNode* tail;
+	struct CLLNode* prev=*head;
 	
+	if(*head==NULL) {
+		cout<<"List Empty"<<endl;
+		return;
+	}
+	
+	//traversing till 2nd last node
+	while(prev->next->next!=*head) {
+		prev=prev->next;
+	}
+	
+	tail = prev->next ; //tail is the last node
+	prev->next = tail->next;
+	cout<<"Deleted : "<<tail->data<<endl;
+	delete(tail);
 }
 
 
 int main() {
 	
-	struct CLLNode *head = new CLLNode();
-	struct CLLNode* sec = new CLLNode();
-	struct CLLNode* third = new CLLNode();
-	head->data = 10;
-	sec->data=20;
-	third->data=30;
+//	struct CLLNode *head = new CLLNode();
+//	struct CLLNode* sec = new CLLNode();
+//	struct CLLNode* third = new CLLNode();
+//	head->data = 10;
+//	sec->data=20;
+//	third->data=30;
+//	
+//	head->next = sec;
+//	sec->next = third;
+//	third->next = head;
+//	cout<<traverseCLL(head);
+
+
+	struct CLLNode* head = NULL;
 	
-	head->next = sec;
-	sec->next = third;
-	third->next = head;
-	cout<<traverseCLL(head);
+	InsertFirst(&head,10);
+	InsertFirst(&head,20);
+	InsertLast(&head,40);
+	InsertLast(&head,100);
 	
+	DelLast(&head);
+	
+	traverseCLL(head);	
 	
 	 
 	
