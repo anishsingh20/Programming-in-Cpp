@@ -42,7 +42,7 @@ void InsertFirst(CLLNode **head,int data) {
 	//initially new node next points to itself
 	new_node->next = new_node;
 	//if list is empty
-	if(head==NULL) {
+	if(*head==NULL) {
 		*head= new_node;
 		return;
 	}
@@ -56,30 +56,57 @@ void InsertFirst(CLLNode **head,int data) {
 	//now head is new node
 	*head = new_node;
 	return;	
-}
+} //TIME COMPLEXITY=O(n),SPACE COMPLEXITY = O(1)
 
-
-
-	
-	
-	
-	
-	
-}
 
 
 //3)Function to insert at tail of CLL
 
 void InsertLast(struct CLLNode** head,int data) {
+	struct CLLNode* new_node=  new CLLNode();
+	struct CLLNode* tail = *head;
 	
-}
+	new_node->data= data;
+	new_node->next = new_node;
+	
+	if(*head==NULL) {
+		*head = new_node;
+		return;
+	
+	}
+	
+	while(tail->next!=*head) {
+		tail = tail->next;
+	}
+	
+	tail->next = new_node;
+	new_node->next = *head;
+	return;
+} //TIME COMPLEXITY = O(n) , SPCAE COMPLEXITY = O(1)
+
 
 
 //4) Deleting a node at head
-
 void DelFirst(struct CLLNode **head) {
+	struct CLLNode* tail = *head;
+	struct CLLNode* temp=head;//node to delete
 	
-}
+	if(*head==NULL){
+		cout<<"List Empty"<<endl;
+		return;
+	}
+	
+	//traversing till end of list
+	while(tail->next!=*head) {
+		tail=tail->next;
+	}
+	
+	tail->next = head->next;
+	//moving head to point to next node
+	head=head->next;
+	return temp->data;
+	delete(temp);
+} //TIME COMPLEXITY = O(n), SPACE COMPLEXITY = O(1)
 
 
 //5)Deleting a node at tail of CLL
