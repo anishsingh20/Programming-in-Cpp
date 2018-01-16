@@ -5,7 +5,7 @@
 using namespace std;
 
 struct Node{
-	string data;
+	int data;
 	struct Node  *next;
 	struct Node *prev;
 };
@@ -19,15 +19,15 @@ void InsertPos(struct Node **head,int data,int pos);
 		
 Node* traverse(struct Node *head);
 		
-string delPos(int pos);
+int delPos(int pos);
 		
 
 
-void InsertHead(string data) {
+void InsertHead(int data) {
 	
 	Node *new_node = new Node();
 	
-	new_node->data= data;
+	new_node->data = data;
 	
 	new_node->next = head;
 	new_node->prev= NULL;
@@ -38,7 +38,7 @@ void InsertHead(string data) {
 	
 }
 
-void InsertLast(struct Node** head , string data) {
+void InsertLast(struct Node** head , int data) {
 	
 	Node *new_node = new Node();
 	
@@ -57,7 +57,7 @@ void InsertLast(struct Node** head , string data) {
 
 
 //fuction to handle both insertion at last and intermediate position
-void InsertPos(int pos,string data) {
+void InsertPos(int pos,int data) {
 	
 	Node *new_node = new Node();
 	
@@ -143,7 +143,7 @@ void InsertPos(int pos,string data) {
 //	}
 //}
 
-string  delHead() {
+int  delHead() {
 	Node *temp;
 	temp=head;
 	if(head==NULL) {
@@ -164,7 +164,7 @@ string  delHead() {
 }
 
 
-string delPos(int pos) 
+int delPos(int pos) 
 {
 	Node *temp,*temp1;
 	int k=1;
@@ -209,17 +209,22 @@ string delPos(int pos)
 
 Node* traverse(struct Node *head) {
 	
-	Node *temp=head;
+	struct Node *temp=head;
+	int count=0;
 	
-	while(temp->next!=NULL) {
+	while(temp!=NULL) {
 		
 		
 		cout<<temp->data<<"->";
 		temp=temp->next;
+		count++;
 		
 		
 	}
-	cout<<"NULL";
+	cout<<"NULL"<<endl;
+	cout<<"Count of items is :"<<count<<endl;
+	
+	
 	
 	return head;
 	
@@ -258,6 +263,89 @@ Node* Reverse(Node* head)
 }
 
 
+//function to insert data in sorted manner in DLL
+/*
+    Insert Node in a doubly sorted linked list 
+    After each insertion, the list should be sorted
+   Node is defined as
+   struct Node
+   {
+     int data;
+     Node *next;
+     Node *prev;
+   }
+*/
+
+
+
+
+Node* SortedInsert(Node **head,int data)
+{
+    // Complete this function
+   // Do not write the main method. 
+    
+    struct Node *new_node = new Node();
+    struct Node* temp = *head;
+    new_node->data = data;
+    
+    //case when List is empty
+    if(*head==NULL) {
+        
+        *head = new_node;
+        return *head;
+        
+    }
+    
+    //insertion at beginning of List
+    else if(data < temp->data) {
+        new_node->next = temp;
+        temp->prev = new_node;
+        *head =  new_node;
+        return *head;
+    }
+    
+    //walking with 2 pointers
+    else{
+        
+        struct Node* temp1 = NULL;
+        
+        //traversing only if new_node has larger data
+        while(temp!= NULL && temp->data < data) {
+            temp1 = temp;//temp1 is node previous to temp
+            temp=temp->next;
+        }
+        
+        //insertion at end of LL
+        if(temp==NULL) {
+            temp1->next = new_node;
+            new_node->prev = temp1;
+            new_node->next = NULL;
+        }
+        
+        //insertion in between
+        //temp1 is node prev to temp
+        //temp is ahead of temp1
+        //new_node has to be inserted between temp and temp1
+        else{
+            temp1->next = new_node;
+            temp->prev = new_node;
+            
+            new_node->next = temp;
+            new_node->prev = temp1;
+        }
+            
+            
+        
+        return *head;
+        
+    }
+    
+}
+    
+    
+    
+
+
 //int DLL::delPos(int pos) {
 //	
 //	
@@ -290,12 +378,19 @@ int main() {
 //	InsertPos(100,3);
 ////	
 
-	InsertHead("anish");
-	InsertPos(2,"Mrinal");
-	InsertPos(3,"Vaibhav");
-	InsertPos(4,"Rasila");
-	InsertPos(5,"gandu");
-	InsertPos(6,"mc");
+//	InsertHead("anish");
+//	InsertPos(2,"Mrinal");
+//	InsertPos(3,"Vaibhav");
+//	InsertPos(4,"Rasila");
+//	InsertPos(5,"gandu");
+//	InsertPos(6,"mc");
+
+
+
+SortedInsert(&head, 10);
+SortedInsert(&head,1);
+SortedInsert(&head,15);
+SortedInsert(&head,100);
 	
 	cout<<"The list is: "<<endl;
 	
@@ -306,7 +401,7 @@ int main() {
 //	delHead();
 //	delPos(4);
 	
-	Reverse(head);
+//	Reverse(head);
 	
 //	InsertLast(&head,20);
 	traverse(head);
