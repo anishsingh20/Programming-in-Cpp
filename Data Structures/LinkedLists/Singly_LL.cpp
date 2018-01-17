@@ -201,7 +201,7 @@ int DelNodePos(int pos) {
 }
 
 
-//a function to remove duplicates from linked list
+//a function to remove duplicates from a sorted linked list
 Node* RemoveDuplicates(Node *head)
 {
   // This is a "method-only" submission. 
@@ -231,12 +231,12 @@ Node* RemoveDuplicates(Node *head)
 }	
 	
 	
-	
+//list should be sorted	
 bool has_cycle(Node* head) {
     // Complete this function
     // Do not write the main method
     Node *temp=head;
-    Node *temp1;
+    Node *temp1=head;//temp1 is a node which is always ahead of temp
     
     if(head==NULL){
     return false;
@@ -244,54 +244,70 @@ bool has_cycle(Node* head) {
     
     
         //traversing the list and checking for cycles
-        while(temp->next!=NULL)
-        {
-            temp1=temp->next;
-            if(temp->next == temp1->next)
-            {
-		cout<<"1"<<endl;
-                return true;
-                 
-            }
-            else{
-            	cout<<"0"<<endl;
-                return false;
-            }
-            
-            temp=temp->next;
-        }
+      while(temp->next!=NULL && temp1!=NULL){
+      	temp=temp->next;
+      	temp1=temp1->next->next; //one node ahead
+      	
+      	
+      	//if temp and temp1 pointers have same addresses
+      	if(temp1==temp) {
+      		cout<<"Has a cycle"<<endl;
+      		return true;
+	      }
+	     
+      }
+      
+      return false;
 }         
-           
+         
+	 
+//function to insert in a Sorted linked list
+Node* sortedInsert() {
+	
+}
+	   
 	   	
 	
 int main() {
 	
 		
 	//allocating memory in heap;	
-//	struct Node *head=new Node();
-//	struct Node *sec=new Node();
-//	
-//	
-//	
-//	head->data=10;
-//	head->next=sec;
-//	sec->data=20;
-	InsertList(1,1);
-	InsertList(10,2);
-	InsertList(15,3);
-	InsertList(15,4);
-	InsertList(15,5);
-	cout<<"\n";
-	
-	cout<<listlength(head)<<endl;
-	
-	cout<<"\n";
-	
-	RemoveDuplicates(head);
+	struct Node *head=new Node();
+	struct Node *sec=new Node();
+	struct Node *thd = new Node();
 	
 	
-	cout<<listlength(head)<<endl;
+	
+	head->data=10;
+	head->next=sec;
+	sec->data=20;
+	sec->next = thd;
+	thd->data=100;
+	
+	thd->next = NULL;
+	
+	listlength(head);
 	has_cycle(head);
+	
+	
+	
+//	InsertList(1,1);
+//	InsertList(10,2);
+//	InsertList(15,3);
+//	InsertList(15,4);
+//	InsertList(1,5);
+//	cout<<"\n";
+//	
+//	cout<<listlength(head)<<endl;
+//	
+//	cout<<"\n";
+//	
+//	//removing duplicates in a sorted list
+//	RemoveDuplicates(head);
+//	
+//	
+//	cout<<listlength(head)<<endl;
+//	has_cycle(head);
 //	cout<<printfromTail(head,1);
 //	
 //	cout<<"\n";
