@@ -262,50 +262,40 @@ bool has_cycle(Node* head) {
          
 	 
 //function to insert in a Sorted linked list
-Node* sortedInsert(struct Node* head,int data) {
+void sortedInsert(struct Node** head,int data) {
 	struct Node *new_node = new Node();//allocating memory
-	struct Node *curr = head;
+	struct Node *curr = *head;
 	
 	new_node->data = data;
 	
-	//case1 if list is empty
-	if(head==NULL) {
-		return new_node;
+	//case1 if list is empty or if new_node has smaller data then one at head of LL
+	if( *head==NULL) {
+		new_node->next = *head;
+		*head = new_node;
+	
 	}
-	//insertion at beginning
-	else if( data < head->data)
+	//insertion at beginning of list
+	else  if( (*head)->data >= data ) 
+	
 	{
-		new_node->next = curr; //or curr
-		head  = new_node;
-		return head;
+		new_node->next = *head; //or curr
+		*head  = new_node;
+		
 	}
 	
 	else {
-		struct Node *temp1 = NULL;
+		
 		//we traverse the list only if new node has larger data
-		while(curr!=NULL && curr->data < data) {
-			temp1 = curr;
+		while(curr->next!=NULL && curr->next->data < data) {
+		
 			curr=curr->next;
 		}
 		
-		//case of insertion at end when new node has largest data
-		if(curr==NULL){
-			//in this case temp1 is tail
-			temp1->next = new_node;
-			new_node->next = NULL;
-			
-		}
+		//new node has larger data then curr , so new node will be inserted after curr node
+		new_node->next = curr->next;
+		curr->next = new_node;	
 		
-		//case of insertion in between temp1 and curr
-		else {
-			temp1->next  = new_node;
-			new_node->next = curr;
-			
-		}
 	}
-	
-	return head;
-	
 	
 }
 	   
@@ -332,10 +322,12 @@ int main() {
 //	cout<<listlength(head);
 //	has_cycle(head);
 
-sortedInsert(head,1);	
-sortedInsert(head,10);
-sortedInsert(head,20);
-cout<<listlength(head);
+sortedInsert(&head,100);
+sortedInsert(&head,1);	
+sortedInsert(&head,20);
+sortedInsert(&head,10);
+
+listlength(head);
 
 
 
