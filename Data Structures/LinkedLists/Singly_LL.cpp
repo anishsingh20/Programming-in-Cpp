@@ -18,10 +18,10 @@ struct Node {
 
 //Function to traverse the list and return the count of items in LL
 
-struct Node *head;
+struct Node *head = NULL;
 
 int listlength(struct Node *head) {
-	Node *current = head;
+	struct Node *current = head;
 	int count = 0 ;
 	while(current!=NULL) {
 		count++;
@@ -262,7 +262,50 @@ bool has_cycle(Node* head) {
          
 	 
 //function to insert in a Sorted linked list
-Node* sortedInsert() {
+Node* sortedInsert(struct Node* head,int data) {
+	struct Node *new_node = new Node();//allocating memory
+	struct Node *curr = head;
+	
+	new_node->data = data;
+	
+	//case1 if list is empty
+	if(head==NULL) {
+		return new_node;
+	}
+	//insertion at beginning
+	else if( data < head->data)
+	{
+		new_node->next = curr; //or curr
+		head  = new_node;
+		return head;
+	}
+	
+	else {
+		struct Node *temp1 = NULL;
+		//we traverse the list only if new node has larger data
+		while(curr!=NULL && curr->data < data) {
+			temp1 = curr;
+			curr=curr->next;
+		}
+		
+		//case of insertion at end when new node has largest data
+		if(curr==NULL){
+			//in this case temp1 is tail
+			temp1->next = new_node;
+			new_node->next = NULL;
+			
+		}
+		
+		//case of insertion in between temp1 and curr
+		else {
+			temp1->next  = new_node;
+			new_node->next = curr;
+			
+		}
+	}
+	
+	return head;
+	
 	
 }
 	   
@@ -272,23 +315,30 @@ int main() {
 	
 		
 	//allocating memory in heap;	
-	struct Node *head=new Node();
-	struct Node *sec=new Node();
-	struct Node *thd = new Node();
-	
-	
-	
-	head->data=10;
-	head->next=sec;
-	sec->data=20;
-	sec->next = thd;
-	thd->data=100;
-	
-	thd->next = NULL;
-	
-	listlength(head);
-	has_cycle(head);
-	
+//	struct Node *head=new Node();
+//	struct Node *sec=new Node();
+//	struct Node *thd = new Node();
+//	
+//	
+//	
+//	head->data=10;
+//	head->next=sec;
+//	sec->data=20;
+//	sec->next = thd;
+//	thd->data=100;
+//	
+//	thd->next = NULL;
+//	
+//	cout<<listlength(head);
+//	has_cycle(head);
+
+sortedInsert(head,1);	
+sortedInsert(head,10);
+sortedInsert(head,20);
+cout<<listlength(head);
+
+
+
 	
 	
 //	InsertList(1,1);
