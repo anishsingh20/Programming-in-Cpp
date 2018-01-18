@@ -275,7 +275,7 @@ void sortedInsert(struct Node** head,int data) {
 	
 	}
 	//insertion at beginning of list
-	else  if( (*head)->data >= data ) 
+	else  if( (*head)->data > data ) 
 	
 	{
 		new_node->next = *head; //or curr
@@ -285,7 +285,18 @@ void sortedInsert(struct Node** head,int data) {
 	
 	else {
 		
+		
 		//we traverse the list only if new node has larger data
+	/* LOGIC
+	find the appropriate node after 
+   	which the input node (let 9) is to be inserted. 
+   	To find the appropriate node start from head, 
+   	keep moving until you reach a node GN (10 in
+   	the below diagram) who's value is greater than 
+   	the input node.
+
+	*/	
+		
 		while(curr->next!=NULL && curr->next->data < data) {
 		
 			curr=curr->next;
@@ -326,6 +337,7 @@ sortedInsert(&head,100);
 sortedInsert(&head,1);	
 sortedInsert(&head,20);
 sortedInsert(&head,10);
+sortedInsert(&head,2);
 
 listlength(head);
 
