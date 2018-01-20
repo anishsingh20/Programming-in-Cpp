@@ -79,8 +79,10 @@ void InsertLast(struct CLLNode** head,int data) {
 		tail = tail->next;
 	}
 	
+	
 	tail->next = new_node;
 	new_node->next = *head;
+	
 	return;
 } //TIME COMPLEXITY = O(n) , SPCAE COMPLEXITY = O(1)
 
