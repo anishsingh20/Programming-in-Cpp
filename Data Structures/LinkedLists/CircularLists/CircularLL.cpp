@@ -144,8 +144,8 @@ void DelFirst(struct CLLNode **head) {
 //5)Deleting a node at tail of CLL
 
 void DelLast(struct CLLNode** head){
-	struct CLLNode* tail;
-	struct CLLNode* prev=*head;
+	struct CLLNode* tail = *head;
+	struct CLLNode* prev;
 	
 	if(*head==NULL) {
 		cout<<"List Empty"<<endl;
@@ -153,14 +153,15 @@ void DelLast(struct CLLNode** head){
 	}
 	
 	//traversing till 2nd last node
-	while(prev->next->next!=*head) {
-		prev=prev->next;
+	while(tail->next!=*head) {
+		prev = tail;//prev is always the node previous to tail
+		tail=tail->next;
 	}
-	
-	tail = prev->next ; //tail is the last node
-	prev->next = tail->next;
-	cout<<"Deleted : "<<tail->data<<endl;
+	//updating next pointer of prev node to point to head of List
+	prev->next = *head;
+	cout<<"deleted : "<<tail->data<<endl;
 	delete(tail);
+	
 }
 
 
@@ -232,8 +233,17 @@ int main() {
 	
 	InsertFirst(&head,90);
 	
-	InsertLast(&head,100);
+	InsertLast(&head,200);
 	traverseCLL(head);
+	cout<<"\n";
+	
+	DelLast(&head);
+	
+	traverseCLL(head);
+	
+
+	
+	
 	
 	
 	
