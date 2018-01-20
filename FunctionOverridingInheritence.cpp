@@ -30,6 +30,7 @@ class Anish : public Person { //public inheritence
 int main() {
 	
 	Anish *a= new Anish;
+	
 	a->intro(); //derived class method is called , not base class . Although derived class has access to base class method too, but it is overidden
 	
 	cout<<"\n";
