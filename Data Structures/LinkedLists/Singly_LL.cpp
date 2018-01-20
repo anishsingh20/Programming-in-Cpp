@@ -296,7 +296,7 @@ void sortedInsert(struct Node** head,int data) {
    	the input node.
 
 	*/	
-		
+/* Locate the node before the point of insertion */		
 		while(curr->next!=NULL && curr->next->data < data) {
 		
 			curr=curr->next;

@@ -24,17 +24,21 @@ class Tiger : virtual public Animal{
 
 
 class Lion : virtual public Animal{
+	
 	public:
+		
 		Lion() {
 			cout<<"Lion constructor called"<<endl;
 		}
 };
 
 
-class Liger:  public Tiger, public Lion {
+class Liger:  public Tiger, private Lion {
 	public:
+		
 		Liger() {
 			cout<<"Liger constructor called"<<endl;
+			
 		}
 };
 
