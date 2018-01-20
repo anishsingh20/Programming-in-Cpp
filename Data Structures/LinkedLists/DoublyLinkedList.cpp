@@ -310,11 +310,11 @@ Node* SortedInsert(Node **head,int data)
         struct Node* temp1 = NULL;
         
         //traversing only if new_node has larger data
-        while(temp!= NULL && temp->data < data) {
+        while(temp!=NULL && temp->data < data) {
             temp1 = temp;//temp1 is node previous to temp
             temp=temp->next;
         }
-        
+
         //insertion at end of LL
         if(temp==NULL) {
             temp1->next = new_node;
@@ -336,10 +336,10 @@ Node* SortedInsert(Node **head,int data)
             
             
         
-        return *head;
+        
         
     }
-    
+    return *head;
 }
     
     
