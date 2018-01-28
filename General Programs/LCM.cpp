@@ -12,33 +12,62 @@ using namespace std;
 //GCD= greatest common divisor/HCF
 //The HCF or GCD of two integers is the largest integer that can exactly divide both numbers (without a remainder).
 
+//int LCM(int a,int b) {
+//	
+//	//converting negetive inputs to positive
+//	a =  (a<0) ? -a : a;
+//	b =  (b<0) ? -b : b;
+//	
+//	int gcd,lcm;
+//	//first finding HCF
+//	for(int i = 1; i<=a && i<=b; i++){
+//		
+//		//checking is i divides a and b
+//		if(a%i==0 && b%i==0) {
+//			gcd = i;
+//				
+//		}
+//	}
+//	
+//	lcm = ( (a*b)/gcd );
+//	
+//	return lcm;
+//	
+//}
+
+
+//METHOD-2 to find LCM 
 int LCM(int a,int b) {
+	int lcm;
 	
-	//converting negetive inputs to positive
+	//converting -ve to +ve no(s)
 	a =  (a<0) ? -a : a;
 	b =  (b<0) ? -b : b;
 	
-	int gcd,lcm;
-	//first finding HCF
-	for(int i = 1; i<=a && i<=b; i++){
+	//lcm = minMultiple is the greater among a or b 
+	lcm = (a>b) ? a : b;
+	
+	//always true
+	while(1) {
 		
-		//checking is i divides a and b
-		if(a%i==0 && b%i==0) {
-			gcd = i;
-				
+		//if the no is divisible by both a and b
+		if(lcm%a==0 && lcm%b==0) {
+			return lcm;
+			break;
 		}
+		
+		lcm++;
+		
 	}
 	
-	lcm = ( (a*b)/gcd );
-	
-	return lcm;
-	
+	return lcm;	
 }
+
 
 int main() {
 	
 	
-	int lcm = LCM(5,-10);
+	int lcm = LCM(-72,-120);
 	
 	cout<<"The LCM is:"<<lcm;
 	
