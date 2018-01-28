@@ -59,7 +59,7 @@ int Isprime(int n ,int i=2) {
 
 int main() {
 	
-	Isprime(5);
+	Isprime(21);
 	
 	
 	return 0;
