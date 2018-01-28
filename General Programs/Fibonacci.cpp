@@ -12,8 +12,10 @@ void fibonacci(int n) {
 		
 		
 		c = a+b;
-		b=a;
-		a=c;
+		a=b;
+		b=c;
+		
+		//or b=a and then a=c
 		cout<<c<<endl;
 		
 		
@@ -23,7 +25,7 @@ void fibonacci(int n) {
 
 int main()  {
 	
-	fibonacci(5);
+	fibonacci(10);
 	
 	
 	return 0;
