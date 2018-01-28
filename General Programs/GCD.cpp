@@ -5,7 +5,12 @@
 using namespace std;
 
 int GCD(int a, int b) {
+	
+	//converting negetive inputs to positive
+	a =  (a<0) ? -a : a;
+	b =  (b<0) ? -b : b;
 	int gcd;
+	
 	for(int i=1 ; i <= a && i <= b; i++) {
 		
 		//checking if i is a factor of a and b-ie i perfectly divides a and b
