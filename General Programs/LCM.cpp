@@ -14,6 +14,10 @@ using namespace std;
 
 int LCM(int a,int b) {
 	
+	//converting negetive inputs to positive
+	a =  (a<0) ? -a : a;
+	b =  (b<0) ? -b : b;
+	
 	int gcd,lcm;
 	//first finding HCF
 	for(int i = 1; i<=a && i<=b; i++){
@@ -34,7 +38,7 @@ int LCM(int a,int b) {
 int main() {
 	
 	
-	int lcm = LCM(5,10);
+	int lcm = LCM(5,-10);
 	
 	cout<<"The LCM is:"<<lcm;
 	
