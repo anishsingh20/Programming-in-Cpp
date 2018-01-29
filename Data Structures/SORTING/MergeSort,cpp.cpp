@@ -4,6 +4,13 @@ using namespace std;
 
 //MERGE SORT-DIVIDE AND CONQUER algorithm
 //TIME COMPLEXITY- O(nlogn)
+/*
+a)Merge Sort works better than quick sort if data is accessed from slow sequential memory.
+b)Merge Sort is stable sort by nature
+c)Merge sort outperforms heap sort in most of the practical situations.
+*/
+
+
 
 //2 functions
 //1) MergeSort(arr,l,m,r)-To merge the 2 halves of arrays in sorted manner
