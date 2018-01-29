@@ -214,6 +214,7 @@ Node* RemoveDuplicates(Node *head) //O(n)-TIME COMPLEXITY
         temp1=temp->next;
         if(temp->data == temp1->data) {
             
+            
             temp->next = temp1->next;
             delete(temp1);
             
@@ -232,7 +233,7 @@ Node* RemoveDuplicates(Node *head) //O(n)-TIME COMPLEXITY
 
 
 
-//a function to remove a dpulicate node from an unsorted List
+//a function to remove a duplicate node from an unsorted List
 
 void RemoveUnsortedDup(struct Node *head) {
 	
@@ -241,7 +242,7 @@ void RemoveUnsortedDup(struct Node *head) {
 	
 	//traversing the list
 	while(temp->next!=NULL) {
-		temp1= temp;
+		temp1 = temp;
 		
 		while(temp1->next!=NULL) 
 		{
@@ -385,14 +386,19 @@ int main() {
 
 	
 	
+
 	InsertList(1,1);
-	InsertList(10,2);
-	InsertList(1,3);
+	InsertList(1,2);
+	InsertList(20,3);
 	InsertList(20,4);
-	InsertList(25,5);
+	InsertList(51,5);
+	InsertList(61,6);
 //	cout<<"\n";
 //	
 	
+	cout<<listlength(head)<<endl;
+	
+	//removing duplicates form unsorted list
 	RemoveUnsortedDup(head);
 	cout<<"After duplicate removal"<<endl;
 	cout<<listlength(head)<<endl;
