@@ -38,6 +38,27 @@ int BinarySearch(int arr[],int l,int r , int x) {
 
 int main() {
 	
+	int n=5,x;
+	int arr[n];
+	
+//	cin>>n; //size of array
+	cin>>x; //element to search
+	
+	for(int i = 0 ;  i<n ; i++) {
+		cin>>arr[i];
+	}
+	
+	int index = BinarySearch(arr,0,n-1,x);
+	
+	
+	if(index==-1)  {
+		cout<<"Element not found"<<endl;
+	} 
+	else 
+	{
+		cout<<"Element "<<x<<" "<<"found at "<<index+1 <<" "<<"position.";
+	}
+			
 	
 	
 	return 0;
