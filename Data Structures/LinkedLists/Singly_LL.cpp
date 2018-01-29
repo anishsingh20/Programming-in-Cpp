@@ -139,7 +139,7 @@ int DelPos(int pos) {
 //function to print kth element from the tail-IMP
 int printfromTail(Node *head,int postail) {
 	Node *temp=head;
-	Node *result=temp; //a pointer to store the address of kth element from tail
+	Node *result=head; //a pointer to store the address of kth element from tail
 	
 	int k=0;
 	
@@ -202,7 +202,7 @@ int DelNodePos(int pos) {
 
 
 //a function to remove duplicates from a sorted linked list
-Node* RemoveDuplicates(Node *head)
+Node* RemoveDuplicates(Node *head) //O(n)-TIME COMPLEXITY
 {
   // This is a "method-only" submission. 
   // You only need to complete this method. 
@@ -229,6 +229,42 @@ Node* RemoveDuplicates(Node *head)
     return head;
         
 }	
+
+
+
+//a function to remove a dpulicate node from an unsorted List
+
+void RemoveUnsortedDup(struct Node *head) {
+	
+	Node *temp = head;
+	Node *temp1;
+	
+	//traversing the list
+	while(temp->next!=NULL) {
+		temp1= temp;
+		
+		while(temp1->next!=NULL) 
+		{
+			//if duplicate is found in the next position, then delete it
+			if(temp->data == temp1->next->data) 
+			{
+				Node *dup = temp1->next;
+				temp1->next = dup->next;
+				delete(dup);
+			}
+			
+			//otherwise simply mode temp1 to next node
+			else {
+				temp1=temp1->next;
+			}
+			
+		}
+		
+		temp=temp->next;
+	
+	}
+
+}// TIME COMPLEXITY-O(N^2)
 	
 	
 //list should be sorted	
@@ -333,26 +369,35 @@ int main() {
 //	cout<<listlength(head);
 //	has_cycle(head);
 
-sortedInsert(&head,100);
-sortedInsert(&head,1);	
-sortedInsert(&head,20);
-sortedInsert(&head,10);
-sortedInsert(&head,2);
+//sortedInsert(&head,100);
+//sortedInsert(&head,1);	
+//sortedInsert(&head,20);
+//sortedInsert(&head,10);
+//sortedInsert(&head,2);
+//
+//listlength(head);
 
-listlength(head);
+//cout<<printfromTail(head,0);
+
+
 
 
 
 	
 	
-//	InsertList(1,1);
-//	InsertList(10,2);
-//	InsertList(15,3);
-//	InsertList(15,4);
-//	InsertList(1,5);
+	InsertList(1,1);
+	InsertList(10,2);
+	InsertList(1,3);
+	InsertList(20,4);
+	InsertList(25,5);
 //	cout<<"\n";
 //	
-//	cout<<listlength(head)<<endl;
+	
+	RemoveUnsortedDup(head);
+	cout<<"After duplicate removal"<<endl;
+	cout<<listlength(head)<<endl;
+	
+	
 //	
 //	cout<<"\n";
 //	
