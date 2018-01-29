@@ -6,45 +6,66 @@ using namespace std;
 //TIME COMPLEXITY- O(nlogn)
 
 //2 functions
-//1) MergeSort(arr,l,m,r)-to divide into 2 subarrays and sort them
-//2) Merge(int arr,l,r) - To recursively merge the 2 sorted halves of arrays
+//1) MergeSort(arr,l,m,r)-To merge the 2 halves of arrays in sorted manner
+//2) Merge(int arr,l,r) - to divide into 2 subarrays and sort them by calling MergeSort()
 
+//function for merging in sorted manner
 void MergeSort(int arr[],int l ,int m,int r) {
-	int i,j,k=0;
+	
+	int i,j,k;
+	int nL = ((m-l) + 1); //number of elements in left subarray
+	int nR =  (r-m); //number of elements in right subarray
+	
+	int L[nL], R[nR];//initialize sub arrays
+	
+	
+	
+	
+	//copying the array elements to temp arrays L[] and R[]
+	
+	for(i=0;i<nL;i++)
+	{
+		L[i] = arr[l+i];
+	}
+		
+	
+	for(j=0;j<nR;j++)
+	{
+		R[j] = arr[m+1+j];
+	}
+		
+		
+	 i=0,j=0,k=l;
 	//i is the index of left subarray
 	//j index in right subarray
 	//k-index of new sorted merged array
 	
-	int nL = m-l + 1; //number of elements in left subarray
-	int nR =  r-m; //number of elements in right subarray
-	
-	int L[nL], R[nR];//initialize sub arrays
 	
 	//traversing the left and right arrays
 	while(i<nL && j<nR) {
 		
-		if(L[i] < R[j] )   {
-			A[k] = L[i];
+		if(L[i] <= R[j] )   {
+			arr[k] = L[i];
 			i++;
-			k++;
+			
 			
 		}
 		else {
-			A[k]==R[j];
+			arr[k]=R[j];
 			j++;
-			k++;
 		}
+		k++;
 	}
 	
 	//if left subarray has left overs,then copy them to A[k]
-	while(i != nL) {
-		A[k]=L[i];
+	while(i < nL) {
+		arr[k]=L[i];
 		i++;
 		k++;
 		
 	}
-	while(j!=nR) {
-		A[k]=R[j];
+	while(j<nR) {
+		arr[k]=R[j];
 		j++;
 		k++;
 	}
@@ -57,7 +78,9 @@ void MergeSort(int arr[],int l ,int m,int r) {
 
 void Merge(int arr[],int l, int r) 
 {
-	if(l<=r) {
+	if(l<r) {
+		//// Same as (l+r)/2, but avoids overflow for
+        	// large l and h
 		int mid = (l + (r-l)/2 ) ;
 		
 		//Call Merge on left subarray
@@ -69,6 +92,28 @@ void Merge(int arr[],int l, int r)
 			//Merge the two halves sorted in step 2 and 3:
 			MergeSort(arr,l,mid,r);
 	}
+	
+}
+
+int main() {
+	int n=10;
+	int ar[n];
+	
+//	cin>>n;	
+	for(int i=0 ; i < n ;i++) {
+		cin>>ar[i];
+	}
+	
+	cout<<"sorting the array: "<<endl;
+	
+	Merge(ar,0,n-1);
+	
+	cout<<"The sorted array is"<<endl;
+	
+	for(int i=0 ; i < n ;i++) {
+		cout<<ar[i]<<"\t";
+	}
+	
 	
 }
 

@@ -44,6 +44,8 @@ int BinarySearch(int arr[],int l,int r , int x) {
 int Binary(int arr[],int l, int r , int x ) {
 	
 	while(r>=l) {
+		// Same as (l+r)/2, but avoids overflow for
+        	// large l and h
 		int mid = (l + (r-l)/2 );
 		
 		if(arr[mid]==x) return mid;
