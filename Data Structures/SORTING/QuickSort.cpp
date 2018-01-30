@@ -9,6 +9,8 @@
 using namespace std;
 /*PROGRAM FOR QUICK-SORT
 TIME COMPLEXITY- WORST CASE - O(n^2) , BEST CASE/AVG CASE - O(nlogn)
+SPACE COMPLEXITY - BEST CASE/AVG CASE = O(logn) -recursive call stack , WORSE CASE  = O(n) 
+Much more effcient space wise, than MERGE SORT
 ALGORITHMIC STRATEGY- DIVIDE AND CONQUER
 
 1)QUICK sort is the best sorting approach for all practical problems, due to its efficiency.
@@ -17,6 +19,8 @@ ALGORITHMIC STRATEGY- DIVIDE AND CONQUER
 
 Another thing is that it does not requires to create new AUX arrays like in Merge Sort to divide the problem into subproblems. It does all the re-arrangements in the
 same array itself. This makes it save some extra memory as compared to MERGE SORT
+
+
 
 */
 
