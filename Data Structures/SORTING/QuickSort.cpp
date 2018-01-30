@@ -3,7 +3,7 @@
 #include<algorithm>
 
 
-# define n 6 //size of array
+# define n 6 //size of vector-DYNAMIC ARRAY
 
 
 using namespace std;
@@ -20,7 +20,9 @@ same array itself. This makes it save some extra memory as compared to MERGE SOR
 
 */
 
-int Partition(int *arr,int start, int end) {
+
+//passing address of a vector as argument
+int Partition(vector<int> &arr,int start, int end) {
 	
 	int Pivot = arr[end]; //PIVOT is the right most element of array
 	
@@ -34,45 +36,48 @@ int Partition(int *arr,int start, int end) {
 			Pindex++;
 		}	
 	}
-	
-	swap(arr[Pindex],Pivot);//swapping PIVOT and element at Pindex
+
+	swap(arr[Pindex],arr[end]);//swapping PIVOT and element at Pindex
 	
 	return Pindex;//now at the end Pindex is the index of the PIVOT
 }
 
-void QuickSort(int *arr,int start, int end) {
+//passing address of a vector as argument
+void QuickSort(vector<int> &arr,int start, int end) {
 	
-	if( start < end ) {
+	
+		if(start>=end) return;
 		
 		int Pindex = Partition(arr,start,end); //calling partition function to rearrange the elements of array in such a way that 
-		// left half has <= PIVOT elements, right half elements > PIVOT. 
+		// left half has <= PIVOT elements, right half elements > PIVOT.
 		
 		//recursively calling Quicksort on left half of array
 		QuickSort(arr,start,Pindex-1);
 		
 		//recursively calling Quicksort on right half of array
 		QuickSort(arr,Pindex+1,end);
-	}
+	
 }
 
 
 int main() {
 	
-	int arr[n];//array with n elements	
+	vector<int> vec(n);	//vector of size n
 
 	//input elements of array
 	for(int i = 0 ; i < n ; i++) {
-		cin>>arr[i];
+		cin>>vec[i];
 		 //insertion from end of vector
 	}
 	
-	QuickSort(arr,0,n-1);
+	QuickSort(vec,0,vec.size()-1);
 	
-	cout<<"Sorted array is :"<<endl;
+	cout<<"Sorted vector is :"<<endl;
 	
-	for(int i = 0 ; i < n ; i++) {
-		cout<<arr[i]<<"\t";
-		 
+	vector<int>::iterator i;
+	
+	for(i = vec.begin(); i != vec.end();i++) {
+		cout<<*i<<"\t";
 	}
 	
 	
