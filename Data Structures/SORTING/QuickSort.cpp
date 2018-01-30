@@ -2,7 +2,7 @@
 
 using namespace std;
 /*PROGRAM FOR QUICK-SORT
-TIME COMPLEXITY- WORST CASE - O(N^2) , BEST CASE/AVG CASE - O(nlogn)
+TIME COMPLEXITY- WORST CASE - O(n^2) , BEST CASE/AVG CASE - O(nlogn)
 ALGORITHMIC STRATEGY- DIVIDE AND CONQUER
 
 QUICK sort is the best sorting approach for all practical problems, due to its efficiency.
@@ -16,7 +16,22 @@ same array itself. This makes it save some extra memory as compared to MERGE SOR
 
 int Partition(int *arr,int start, int end) {
 	
-	return Pindex;
+	int Pivot = arr[end]; //PIVOT is the right most element of array
+	
+	int Pindex  =  start; //Pindex initially set to start index of array
+	
+	//trversing the array
+	for(int i = start ; i < end; i++) 
+	{
+		if(arr[i] <= Pivot) {
+			swap(arr[i],arr[Pindex]);
+			Pindex++;
+		}	
+	}
+	
+	swap(Pivot,arr[Pindex]);//swapping PIVOT and element at Pindex
+	
+	return Pindex;//now at the end Pindex is the index of the PIVOT
 }
 
 void QuickSort(int *arr,int start, int end) {
