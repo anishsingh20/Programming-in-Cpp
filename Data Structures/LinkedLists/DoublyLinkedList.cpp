@@ -11,9 +11,7 @@ struct Node{
 };
 
 
-
-
-struct Node* head  = new Node() ;
+Node *head= new Node();
 
 void InsertPos(struct Node **head,int data,int pos);
 		
@@ -359,6 +357,42 @@ void RemoveDuplicate(Node *head) {
 
 void RemoveDupUnsorted(Node *head) 
 {
+	Node *temp = head;
+	Node *temp1;
+	
+	if(head==NULL) {
+		
+		return;
+	}
+	
+	for(temp=head;temp!=NULL;temp=temp->next) 
+	{
+		
+		temp1 = temp->next;
+		
+		while(temp1!=NULL) 
+		{
+			
+			if(temp->data == temp1->data) {
+				
+				
+				
+				temp->next = temp1->next;
+				temp1->next->prev = temp;
+				
+				cout<<"Deleted:"<<temp1->data<<endl;
+				
+				delete temp1;
+				
+			}
+			
+			else {
+				temp1=temp1->next;
+			}
+			
+		}
+		
+	}
 	
 }
 
@@ -465,6 +499,7 @@ Node* SortedInsert(Node **head,int data)
 int main() {
 	
 	
+	
 //	
 //	struct Node *n1 = new Node();
 //	struct Node *n2 = new Node();
@@ -487,22 +522,26 @@ int main() {
 //	InsertPos(100,3);
 ////	
 
-//	InsertHead("anish");
-//	InsertPos(2,"Mrinal");
-//	InsertPos(3,"Vaibhav");
-//	InsertPos(4,"Rasila");
-//	InsertPos(5,"gandu");
-//	InsertPos(6,"mc");
+	InsertHead(20);
+	InsertPos(2,10);
+	
+	InsertPos(3,10);
+	
+	InsertPos(4,10);
+	InsertPos(5,1);
+	InsertPos(6,13);
+	InsertPos(7,12);
+	InsertPos(8,8);
+	
 
 
-
-SortedInsert(&head, 10);
-SortedInsert(&head,1);
-SortedInsert(&head,1);
-SortedInsert(&head,1);
-SortedInsert(&head,15);
-SortedInsert(&head,100);
-SortedInsert(&head,15);
+//SortedInsert(&head, 10);
+//SortedInsert(&head,1);
+//SortedInsert(&head,1);
+//SortedInsert(&head,1);
+//SortedInsert(&head,15);
+//SortedInsert(&head,100);
+//SortedInsert(&head,15);
 	
 	cout<<"The list is: "<<endl;
 	traverse(head);
