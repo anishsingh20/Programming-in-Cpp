@@ -259,6 +259,72 @@ void ReverseData(Node *head)
 }//TIME COMPLEXITY-O(n)
 
 
+
+//FUNCTION TO REVERSE A DOUBLY LINKED LIST 
+Node* Reverse(Node* head)
+{
+    Node *curr=head;
+    Node *temp;
+    
+	//CASE-1 -if List is empty
+	if(head==NULL) {
+		
+		
+		return head;
+	}
+	
+	
+	//if list has only 1 element
+	if(curr->next == NULL) {
+		
+		return head;
+	}
+	
+	else{
+	
+		while(curr!=NULL) {
+			
+			temp = curr->prev;
+			
+			//changing Links
+			curr->prev = curr->next; //changing prev to next
+			curr->next = temp;//curr next points to its prev node
+				
+			curr=curr->prev;
+		}
+		
+		    if(temp!=NULL)
+		    {
+		    	
+			temp=temp->prev;
+			
+		    }
+		
+		head = temp;
+		
+		while(temp!=NULL) {
+			cout<<"<-->"<<temp->data;
+			temp=temp->next;
+		}
+        	
+	return head;	
+    }	
+    
+   
+   
+   
+}
+
+
+
+//FUNCTION TO REMOVE DUPLICATES IN A SORTED LINKED LIST
+
+void RemoveDuplicate(Node *head) {
+	
+	
+}
+
+
 //function to insert data in sorted manner in DLL
 /*
     Insert Node in a doubly sorted linked list 
@@ -403,9 +469,12 @@ SortedInsert(&head,100);
 //	InsertLast(&head,20);
 	traverse(head);
 	
-	ReverseData(head);
+	//printind data in reversed format
+//	ReverseData(head);
+	Reverse(head);
 	cout<<endl;
-	traverse(head);
+	//list not actually reversed
+
 	
 	return 0;
 }
