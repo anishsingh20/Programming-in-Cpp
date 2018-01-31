@@ -215,13 +215,13 @@ Node* traverse(struct Node *head) {
 	while(temp!=NULL) {
 		
 		
-		cout<<temp->data<<"->";
+		cout<<"<-->"<<temp->data;
 		temp=temp->next;
 		count++;
 		
 		
 	}
-	cout<<"NULL"<<endl;
+	cout<<"->NULL"<<endl;
 	cout<<"Count of items is :"<<count<<endl;
 	
 	
@@ -231,36 +231,35 @@ Node* traverse(struct Node *head) {
 }
 
 
-/*
-   Reverse a doubly linked list, input list may also be empty
-   Node is defined as
-   struct Node
-   {
-     int data;
-     Node *next;
-     Node *prev;
-   }
-*/
-Node* Reverse(Node* head)
+//FUNCTION TO PRINT DATA IN REVRESE ORDER - THE LIST IS NOT REVERSED- we are just traversing till end and with the help of prev pointer we print the data by
+//again traversing from tail to head node
+void ReverseData(Node *head)
 {
     Node *temp = head;
-   if(head==NULL) {
-       return head;
+   if(head==NULL) 
+   {
+   	cout<<"List empty!"<<endl;
+       
    }
-     
-    while(temp->next!=NULL) {
+   
+   //traversing till end of list
+    while(temp->next!=NULL) 
+    {
         temp = temp->next;
     }
+    
+    cout<<"NULL";
+    while(temp->prev!=NULL) 
+    {
+    	cout<<"<-->"<<temp->data;
+    	temp=temp->prev;
+    	
+    }
+    
+    cout<<"->NULL"<<endl;
         
-    Node *temp1 = temp;
-    head = temp1;
-   while(temp->prev!=NULL) {
-        temp = temp->next;
-    }
-   
-   
-   return head;
-}
+
+}//TIME COMPLEXITY-O(n)
 
 
 //function to insert data in sorted manner in DLL
@@ -391,6 +390,7 @@ SortedInsert(&head, 10);
 SortedInsert(&head,1);
 SortedInsert(&head,15);
 SortedInsert(&head,100);
+
 	
 	cout<<"The list is: "<<endl;
 	
@@ -405,6 +405,8 @@ SortedInsert(&head,100);
 	
 //	InsertLast(&head,20);
 	traverse(head);
+	
+	ReverseData(head);
 	
 	return 0;
 }

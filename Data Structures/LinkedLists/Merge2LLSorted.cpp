@@ -22,7 +22,7 @@ Node* MergeLists(Node *headA, Node* headB)
     if(headA->data <= headB->data) 
       {
           new_head = headA;
-          new_head->next= MergeLists(headA->next,headB);
+          new_head->next= MergeLists(headA->next,headB);	
           
       }
       else {
