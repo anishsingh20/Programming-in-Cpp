@@ -317,12 +317,50 @@ Node* Reverse(Node* head)
 
 
 
-//FUNCTION TO REMOVE DUPLICATES IN A SORTED LINKED LIST
-
+//FUNCTION TO REMOVE DUPLICATES IN A SORTED LINKED LIST - No need of 2 while lopps because we already know the list is sorted
 void RemoveDuplicate(Node *head) {
 	
+	Node *temp=head;
+	Node *temp1;
 	
+	//list empty
+	if(head==NULL) {
+		return;
+	}
+	
+	//traversing the list and searching for duplicates
+	while(temp->next!=NULL) {
+		
+		temp1 = temp->next;
+		
+			if(temp->data == temp1->data) 
+			{
+				
+				temp->next = temp1->next;
+				temp1->next->prev = temp;
+				
+				cout<<"Deleted Duplicate:"<<temp1->data<<endl;
+				
+				delete temp1;
+				
+			}
+			
+			else {
+				temp=temp->next;
+			}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 //function to insert data in sorted manner in DLL
@@ -451,29 +489,21 @@ int main() {
 
 SortedInsert(&head, 10);
 SortedInsert(&head,1);
+SortedInsert(&head,1);
+SortedInsert(&head,1);
 SortedInsert(&head,15);
 SortedInsert(&head,100);
-
+SortedInsert(&head,15);
 	
 	cout<<"The list is: "<<endl;
-	
-//	traverse(head);	
-//	cout<<"\n";
-//	cout<<"After deletion:"<<endl;
-//	
-//	delHead();
-//	delPos(4);
-	
-//	Reverse(head);
-	
-//	InsertLast(&head,20);
 	traverse(head);
 	
-	//printind data in reversed format
-//	ReverseData(head);
-	Reverse(head);
+	RemoveDuplicate(head);
+	
+	
 	cout<<endl;
-	//list not actually reversed
+	
+	traverse(head);
 
 	
 	return 0;
