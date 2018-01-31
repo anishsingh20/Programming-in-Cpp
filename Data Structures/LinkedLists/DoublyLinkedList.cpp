@@ -352,6 +352,15 @@ void RemoveDuplicate(Node *head) {
 }
 
 
+/*FUNCTION TO REMOVE DUPLICATES FROM AN UNSORTED LINKED LIST-
+1) Using 2 while loops - Time complexity = O(n^2), ineffieicnt
+2) Sort the List using QUick or Merge sort and then simply remove duplicates from sorted list as used above- TIME COLPLEXITY= O(nlogn), space complexity = O(1)
+*/
+
+void RemoveDupUnsorted(Node *head) 
+{
+	
+}
 
 
 
