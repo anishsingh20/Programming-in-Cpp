@@ -17,7 +17,7 @@ struct Node* head  = new Node() ;
 
 void InsertPos(struct Node **head,int data,int pos);
 		
-Node* traverse(struct Node *head);
+void traverse(struct Node *head);
 		
 int delPos(int pos);
 		
@@ -207,7 +207,7 @@ int delPos(int pos)
 }
 
 
-Node* traverse(struct Node *head) {
+void traverse(Node *head) {
 	
 	struct Node *temp=head;
 	int count=0;
@@ -223,10 +223,7 @@ Node* traverse(struct Node *head) {
 	}
 	cout<<"->NULL"<<endl;
 	cout<<"Count of items is :"<<count<<endl;
-	
-	
-	
-	return head;
+
 	
 }
 
@@ -407,6 +404,8 @@ SortedInsert(&head,100);
 	traverse(head);
 	
 	ReverseData(head);
+	cout<<endl;
+	traverse(head);
 	
 	return 0;
 }
