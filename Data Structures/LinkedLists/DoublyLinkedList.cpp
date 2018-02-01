@@ -404,39 +404,74 @@ void RemoveDupUnsorted(Node *head)
 //Function to partiton the list and find PIVOT
 Node* Partition(Node *l,Node *h) {
 	
-	Node *pivot = h->data; //PIVOT is the last node-Right most
+	int pivot = h->data; //PIVOT is the last node-Right most
 	
-	Node *Pindex = l; //initially the starting node
+	Node *Pindex = l->prev; //initially the starting node
 	
 	
 	//traversing the list
-	for(Node *j = l ; j!=h;j=j->next) {
+	for(Node *j = l ; j!=h ; j=j->next) {
 		
-		if(j->data < pivot) {
+		if(j->data <= pivot) {
+			
+			//similar to incrementing Pindex = Pindex + 1
+			Pindex = (Pindex==NULL) ? l : Pindex->next;
 			
 			swap(j->data,Pindex->data);
 			
-			//similar to incrementing 
-			Pindex = (Pindex==NULL) ? l : Pindex->next;
+			
 		}
 		
 	}
+	
 	Pindex = (Pindex==NULL) ? l : Pindex->next;
 	swap(Pindex->data,h->data);
 	
 	return Pindex; //returns the pointer to PIVOT node	
 			
 }
+
+//function to return the last node of list
+Node *LastNode(struct Node *tail) {
 	
+	while(tail && tail->next) {
+		tail = tail->next;	
+	}
+	return tail;
+}	
 
 
-void QuickSort(Node *l,Node *h) {
+void _QuickSort(Node *l,Node *h) {
 	
-	if(l->data < h->data) {
+	
+	if(h!=NULL &&  l != h &&  l!=h->next) {
+		
+		//calling partition function to return the pointer to PIVOT
+		struct Node *pIndex = Partition(l,h);
+		
+		//QuickSort on the left of Pindex-PIVOT
+		_QuickSort(l,pIndex->prev);
+		
+		//QuickSort on the Right of Pindex-PIVOT node
+		_QuickSort(pIndex->next,h);
 		
 	}
 	
 }
+
+
+//main function to sort list
+void QuickSort(struct Node *head) {
+	
+	Node *temp = LastNode(head);
+	
+	//temp is the last node
+	
+	//calling the recursive _quicksort
+	_QuickSort(head,temp);
+}
+
+
 
 
 
@@ -540,14 +575,26 @@ int main() {
 //	
 //	struct Node *n1 = new Node();
 //	struct Node *n2 = new Node();
+//	struct Node *n3 = new Node();
+//	struct Node *n4 = new Node();
+//	
+//	
+//	//assigning head as first node	
+//	
 //	n1->data=20;
-//	n2->data=30;	
+//	n2->data=3;	
+//	n3->data = 10;
+//	
 //	
 //	n1->next = n2;
+//	n1->prev = NULL;
 //	
 //	
-//	n2->next=NULL;
 //	n2->prev = n1;
+//	n2->next = n3;
+//	n3->prev=n2;
+//	n3->next=NULL;
+	
 //	
 //	n.traverse(n1);
 	
@@ -562,14 +609,14 @@ int main() {
 	InsertHead(20);
 	InsertPos(2,10);
 	
-	InsertPos(3,10);
+	InsertPos(3,11);
 	
-	InsertPos(4,10);
-	InsertPos(5,1);
+	InsertPos(4,5);
+	InsertPos(5,6);
 	InsertPos(6,13);
 	InsertPos(7,12);
 	InsertPos(8,8);
-	
+//	
 
 
 //SortedInsert(&head, 10);
@@ -587,6 +634,11 @@ int main() {
 	
 	
 	cout<<endl;
+	
+	
+	
+	QuickSort(head);
+	
 	
 	traverse(head);
 
