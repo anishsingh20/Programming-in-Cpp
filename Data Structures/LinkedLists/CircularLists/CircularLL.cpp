@@ -22,14 +22,15 @@ int traverseCLL(struct CLLNode* head) {
 	} 
 	
 	do{
-		cout<<"-->";
+		
 		cout<<curr->data;
+		cout<<"-->";
 		curr=curr->next;
 		count++;
 		
 	} while(curr!=head);
 	
-	return count;
+		return count;
 }
 
 
@@ -209,9 +210,89 @@ void DelPos(struct CLLNode** head,int pos) {
 
 //Sorted insertion in a Circular linked list
 
-void SortedInsertion(struct Node **head,int data) 
+void SortedInsert(struct CLLNode **head,int data) 
 {
 	
+	struct CLLNode *new_node = new CLLNode();
+	new_node->data = data;
+	new_node->next = new_node;
+
+	struct CLLNode *curr = (*head);
+
+	struct CLLNode *prev;	
+	
+	
+		
+	//CASE1-if List is empty
+	if( (*head) == NULL) {
+		
+		(*head) = new_node;
+		
+	}
+	
+	// CASE2-insertion at beginning
+	else if(data < (*head)->data) 
+	{
+		//tail a pointer to last node
+		CLLNode *tail = *head;
+		while(tail->next != (*head) ) {
+			tail = tail->next;
+		
+		}
+		
+			new_node->next = *head;
+			tail->next = new_node;
+			*head = new_node;
+			
+	}
+		
+		
+	//CASE3 -Insertion at end or intermediate position- 2 METHODS
+	//we simply nedd to find the appropiate node after which the new_node has to be inserted
+	else {
+		
+		
+		while(curr->next!=(*head) && curr->data < data)  {
+			
+			prev = curr; //node prev to curr
+			curr = curr->next; 
+		}
+		
+		//now curr has data which is  > data
+		
+		//if curr is last node and curr->data < data
+		if(curr->next == (*head) && curr->data < data ) {
+			
+			new_node->next = curr->next;
+			curr->next = new_node;
+	
+			
+		}
+		
+		
+		//CASE-4 :(prev->data < data < curr->data ) -insertion in middle
+		//otherwise new_node inserted between prev and curr. 
+		else {
+			prev->next = new_node;
+			new_node->next = curr;
+			
+		}
+		
+		
+//		//curr is the node after which new node has to be inserted
+//		while(curr->next != *head && curr->next->data < data) {
+//				
+//				curr=curr->next;
+//				
+//			}
+//			
+//		new_node->next = curr->next;
+//		curr->next = new_node;
+			
+			
+	}
+			 
+			
 }
 
 
@@ -233,21 +314,33 @@ int main() {
 
 	struct CLLNode* head = NULL;
 	
-	InsertFirst(&head,100);
+//	InsertFirst(&head,100);
+//	
+//	InsertFirst(&head,10);
+//	InsertFirst(&head,20);
+//	InsertLast(&head,40);
+//	
+//	InsertFirst(&head,90);
+//	
+//	InsertLast(&head,200);
+
 	
-	InsertFirst(&head,10);
-	InsertFirst(&head,20);
-	InsertLast(&head,40);
+	SortedInsert(&head,100);
+	SortedInsert(&head,10);
+	SortedInsert(&head,5);
+	SortedInsert(&head,15);
+	SortedInsert(&head,1);
+	SortedInsert(&head,1200);
+	SortedInsert(&head,20);	
+	SortedInsert(&head,1300);	
 	
-	InsertFirst(&head,90);
-	
-	InsertLast(&head,200);
+		
 	traverseCLL(head);
 	cout<<"\n";
 	
-	DelLast(&head);
+//	DelLast(&head);
 	
-	traverseCLL(head);
+//	traverseCLL(head);
 	
 
 	

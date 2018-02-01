@@ -424,7 +424,7 @@ Node* Partition(Node *l,Node *h) {
 		
 	}
 	
-//	Pindex = (Pindex==NULL) ? l : Pindex->next;
+	Pindex = (Pindex==NULL) ? l : Pindex->next;
 	swap(Pindex->data,h->data);
 	
 	return Pindex; //returns the pointer to PIVOT node	
