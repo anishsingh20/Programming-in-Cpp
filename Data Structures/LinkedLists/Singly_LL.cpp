@@ -320,10 +320,35 @@ void sortedInsert(struct Node** head,int data) {
 		
 	}
 	
+	
+	//CASE-3: 2 methods, when data  > curr->data
 	else {
 		
 		
-		//we traverse the list only if new node has larger data
+		
+		//METHOD-1
+		struct Node *prev = NULL;
+		while(curr->next!=NULL && curr->data < data) {
+			prev = curr;
+			curr=curr->next;
+		}
+		
+		if(curr->next == NULL && curr->data < data) {
+			new_node->next = NULL;
+			curr->next = new_node;
+			
+		}
+		
+		else {
+			
+			prev->next = new_node;
+			new_node->next = curr;
+		}
+		
+		
+		
+	//METHOD-2	
+	//we traverse the list only if new node has larger data
 	/* LOGIC
 	find the appropriate node after 
    	which the input node (let 9) is to be inserted. 
@@ -333,36 +358,31 @@ void sortedInsert(struct Node** head,int data) {
    	the input node.
 
 	*/	
-/* Locate the node before the point of insertion */		
-		while(curr->next!=NULL && curr->next->data < data) {
-		
-			curr=curr->next;
-		}
-		
-		//new node has larger data then curr , so new node will be inserted after curr node
-		new_node->next = curr->next;
-		curr->next = new_node;	
-		
-	}
+/* Locate the node before the point of insertion */	
 	
+//		while(curr->next!=NULL && curr->next->data < data) {
+//		
+//			curr=curr->next;
+//		}
+//		
+//		//new node has larger data then curr , so new node will be inserted after curr node
+//		new_node->next = curr->next;
+//		curr->next = new_node;	
+//		
+//	}
+
+
+	
+
+
+	
+	}	
 }
 
 
 
-//QUICK SORT FOR LINKED LISTS
 
-//Function to partiton the list and find PIVOT
-Node* Partition(Node *l,Node *h) {
-	
-}
 
-void QuickSort(Node *l,Node *h) {
-	
-	if(l->data < h->data) {
-		
-	}
-	
-}
 	   
 	   	
 	
@@ -398,27 +418,33 @@ int main() {
 //cout<<printfromTail(head,0);
 
 
-
-
-
+	sortedInsert(&head,10);
+	sortedInsert(&head,9);
+	sortedInsert(&head,20);
+	sortedInsert(&head,2);
+	sortedInsert(&head,51);
+	sortedInsert(&head,6);
+	sortedInsert(&head,61);
+	sortedInsert(&head,5);
 	
 	
-
-	InsertList(1,1);
-	InsertList(1,2);
-	InsertList(20,3);
-	InsertList(20,4);
-	InsertList(51,5);
-	InsertList(61,6);
 //	cout<<"\n";
 //	
 	
 	cout<<listlength(head)<<endl;
+	cout<<"\n"<<endl;
 	
+	
+	cout<<printfromTail(head,3);
 	//removing duplicates form unsorted list
-	RemoveUnsortedDup(head);
-	cout<<"After duplicate removal"<<endl;
-	cout<<listlength(head)<<endl;
+//	RemoveUnsortedDup(head);
+//	cout<<"After duplicate removal"<<endl;
+//	cout<<listlength(head)<<endl;
+
+
+
+	
+	
 	
 	
 //	

@@ -252,6 +252,7 @@ void SortedInsert(struct CLLNode **head,int data)
 	else {
 		
 		
+		//METHOD-1
 		while(curr->next!=(*head) && curr->data < data)  {
 			
 			prev = curr; //node prev to curr
@@ -263,7 +264,7 @@ void SortedInsert(struct CLLNode **head,int data)
 		//if curr is last node and curr->data < data
 		if(curr->next == (*head) && curr->data < data ) {
 			
-			new_node->next = curr->next;
+			new_node->next = (*head);
 			curr->next = new_node;
 	
 			
@@ -279,6 +280,8 @@ void SortedInsert(struct CLLNode **head,int data)
 		}
 		
 		
+		
+	//METHOD-2
 //		//curr is the node after which new node has to be inserted
 //		while(curr->next != *head && curr->next->data < data) {
 //				
