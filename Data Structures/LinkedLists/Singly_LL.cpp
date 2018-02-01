@@ -350,11 +350,17 @@ void sortedInsert(struct Node** head,int data) {
 
 
 //QUICK SORT FOR LINKED LISTS
+
+//Function to partiton the list and find PIVOT
 Node* Partition(Node *l,Node *h) {
 	
 }
 
 void QuickSort(Node *l,Node *h) {
+	
+	if(l->data < h->data) {
+		
+	}
 	
 }
 	   
