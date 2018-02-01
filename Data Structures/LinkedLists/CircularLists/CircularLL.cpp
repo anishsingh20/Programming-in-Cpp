@@ -207,6 +207,14 @@ void DelPos(struct CLLNode** head,int pos) {
 	}
 }
 
+//Sorted insertion in a Circular linked list
+
+void SortedInsertion(struct Node **head,int data) 
+{
+	
+}
+
+
 
 int main() {
 	
