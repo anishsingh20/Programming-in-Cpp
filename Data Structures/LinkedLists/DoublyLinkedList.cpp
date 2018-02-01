@@ -394,12 +394,49 @@ void RemoveDupUnsorted(Node *head)
 		
 	}
 	
+}//TIME CPMPLEXITY-O(n^2)
+
+
+
+
+//QUICK SORT FOR LINKED LISTS
+
+//Function to partiton the list and find PIVOT
+Node* Partition(Node *l,Node *h) {
+	
+	Node *pivot = h->data; //PIVOT is the last node-Right most
+	
+	Node *Pindex = l; //initially the starting node
+	
+	
+	//traversing the list
+	for(Node *j = l ; j!=h;j=j->next) {
+		
+		if(j->data < pivot) {
+			
+			swap(j->data,Pindex->data);
+			
+			//similar to incrementing 
+			Pindex = (Pindex==NULL) ? l : Pindex->next;
+		}
+		
+	}
+	Pindex = (Pindex==NULL) ? l : Pindex->next;
+	swap(Pindex->data,h->data);
+	
+	return Pindex; //returns the pointer to PIVOT node	
+			
 }
+	
 
 
-
-
-
+void QuickSort(Node *l,Node *h) {
+	
+	if(l->data < h->data) {
+		
+	}
+	
+}
 
 
 

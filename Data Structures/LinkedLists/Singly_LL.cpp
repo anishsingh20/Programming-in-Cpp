@@ -346,6 +346,17 @@ void sortedInsert(struct Node** head,int data) {
 	}
 	
 }
+
+
+
+//QUICK SORT FOR LINKED LISTS
+Node* Partition(Node *l,Node *h) {
+	
+}
+
+void QuickSort(Node *l,Node *h) {
+	
+}
 	   
 	   	
 	
