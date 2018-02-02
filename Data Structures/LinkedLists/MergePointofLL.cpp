@@ -61,10 +61,83 @@ Node *FindMergePoint(Node *headA,Node *headB) {
 //Method-b-using SETS to store address of nodes in list B - SETS are implementd using BST -and the ops have Logarithmic time -O(logn)
 Node *FindMergePointUsingSet(Node *headA , Node *headB) {
 	
+	//lengths of lists A and B
+	int m = length(headA);
+	int n = length(headB);
+	
+	set <Node *> add;
 	
 	
-}
+	//inserting address of nodes in Set
+	for(int i = 0 ; i < n ; i++) { //O(nlogn)
+		
+		add.insert(headB);//O(logn)
+		headB = headB->next;
+	}
+	
+	
+	for(int i = 0 ; i < m; i++) { //O(mlogn)
+		
+		//finding address of List A in SET
+		if(add.find(headA) != add.end()) { //O(logn)
+			
+			cout<<headA->data<<endl;
+			return headA;
+		}
+		
+		headA=headA->next;
+	}
+	
+	return NULL; //if no merge point
+		
+}//Overall TIME CPMPLEXITY = O(nlogn + mlogn) , but has high space complexity  = O(n^2)
 
+
+
+
+//Method-3 :BEST POSSIBLE SOLUTION
+
+Node *FindMergePointUsingDiff(Node *headA, Node *headB) {
+	
+	int m = length(headA);
+	int n = length(headB);
+	
+	int d = (n-m);
+	
+	//if list A is greater in size then simply swap the pointers to head node
+	if(m>n) {
+	
+	  Node *temp = headA;
+	  headA=headB;
+	  headB=temp;
+	  	  
+	  int d = (n-m);
+	  	
+	  
+	}
+	
+	//traversing d nodes in list B to reach at same length of List A
+	for(int i=0 ; i<d ; i++) { //O(m+n)
+		headB = headB->next;
+	}
+	
+	//now both pointers headA and headB are equidistant from the merge point if any-so we only need a single loop
+	
+	while( headA!=NULL && headB!=NULL ) {
+		
+		//comparing the address in lists
+		if(headA==headB) {
+	
+			cout<<headA->data<<endl;
+			return headA;
+		}
+		headA = headA->next;
+		headB = headB->next;
+		
+	}
+	return NULL;
+}
+//Most efficient approach- T(n) = O(m+n) , space complexity = O(1)
 
 
 
@@ -78,7 +151,7 @@ int main() {
 	
 	n1->data = 1;
 	n2->data = 3;
-	n3->data = 4;
+	n3->data = 100;
 	n4->data = 6;
 	
 	//creating links
@@ -110,7 +183,7 @@ int main() {
 	n3->next = NULL;
 	
 	
-	cout<<FindMergePoint(n1,m1);
+	cout<<FindMergePointUsingDiff(n1,m1);
 	//in this case the Merge point is node n3 which is common in both
 
 	
