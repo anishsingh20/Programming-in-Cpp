@@ -1,4 +1,5 @@
 #include<iostream>
+#include<set>
 //Function to find merge point of 2 linked lists
 
 using namespace std;
@@ -55,6 +56,15 @@ Node *FindMergePoint(Node *headA,Node *headB) {
 	return NULL;
 }
 //Inefficient-TIME CPMPLEXITY - O(mn) and high space complexity due to use of pointers
+
+
+//Method-b-using SETS to store address of nodes in list B - SETS are implementd using BST -and the ops have Logarithmic time -O(logn)
+Node *FindMergePointUsingSet(Node *headA , Node *headB) {
+	
+	
+	
+}
+
 
 
 
