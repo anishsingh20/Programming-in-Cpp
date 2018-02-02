@@ -463,7 +463,11 @@ void _QuickSort(Node *l,Node *h) {
 //main function to sort list
 void QuickSort(struct Node *head) {
 	
-	Node *temp = LastNode(head);
+	Node *temp = head;
+	
+	while(temp->next!=NULL) {
+		temp=temp->next;
+	}
 	
 	//temp is the last node
 	
