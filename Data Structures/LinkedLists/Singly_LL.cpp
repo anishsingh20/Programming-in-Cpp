@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<stack>
 //SINGLY LINKED LIST
 using namespace std;
 
@@ -454,37 +454,31 @@ int MiddleNode(struct Node **head,int start=0) {
 	return temp->data; 
 
 }
-	   
-	   	
+
+
+
 	
 int main() {
 	
+	stack<int>s;
 		
 	//allocating memory in heap;	
-//	struct Node *head=new Node();
-//	struct Node *sec=new Node();
-//	struct Node *thd = new Node();
+//	struct Node *n1  = new Node();
+//	struct Node *n2  = new Node();
+//	struct Node *n3  = new Node();
+//	struct Node *n4  = new Node();	
 //	
 //	
-//	
-//	head->data=10;
-//	head->next=sec;
-//	sec->data=20;
-//	sec->next = thd;
-//	thd->data=100;
-//	
-//	thd->next = NULL;
-//	
-//	cout<<listlength(head);
-//	has_cycle(head);
+//	n1->data=2;
+//	n1->next=n2;
+//	n2->data=1;
+//	n2->next = n3;
+//	n3->data=1;
+//	n3->next = n4;
+//	n4->data = 2;
+//	n4->next = NULL;
 
-//sortedInsert(&head,100);
-//sortedInsert(&head,1);	
-//sortedInsert(&head,20);
-//sortedInsert(&head,10);
-//sortedInsert(&head,2);
-//
-//listlength(head);
+
 
 //cout<<printfromTail(head,0);
 
@@ -499,18 +493,20 @@ int main() {
 	sortedInsert(&head,5);
 	sortedInsert(&head,100);
 	
+//	
 	
 	
-	cout<<listlength(head)<<endl;
-	cout<<"\n"<<endl;
 	
 	
 //	cout<<printfromTail(head,3)<<endl;
 	
-	cout<<getNode(head,3)<<endl;
-	
+//	cout<<getNode(head,3)<<endl;
+//	
 	cout<<"Middle element is :"<<MiddleNode(&head);
+
+
 	
+		
 	//removing duplicates form unsorted list
 //	RemoveUnsortedDup(head);
 //	cout<<"After duplicate removal"<<endl;
