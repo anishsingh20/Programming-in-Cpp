@@ -137,29 +137,7 @@ int DelPos(int pos) {
 
 
 
-//function to print kth element from the tail-IMP
-int printfromTail(Node *head,int postail) {
-	Node *temp=head;
-	Node *result=head; //a pointer to store the address of kth element from tail
-	
-	int k=0;
-	
-	//traversing the list
-	while(temp!=NULL) {
-		
-		
-		if(k++ > postail) {
-			
-			result=result->next;
-			
-		}
-		
-		temp=temp->next;
-	}
-	
-	return result->data;
-}
-	
+
 	
 //a single function to handle all delete cases	
 int DelNodePos(int pos) {
@@ -396,11 +374,36 @@ int length(struct Node *head) {
 }
 
 
+//function to print kth element from the tail-IMP
+int printfromTail(Node *head,int postail) {
+	Node *temp=head;
+	Node *result=head; //a pointer to store the address of kth element from tail
+	
+	int k=0;
+	
+	//traversing the list
+	while(temp!=NULL) {
+		
+		
+		if(k++ > postail) {
+			
+			result=result->next;
+			
+		}
+		
+		temp=temp->next;
+	}
+	
+	return result->data;
+}
+	
 
 //function to get Nth node in a list
 
-int getNode(struct Node *head,int pos) {
+int getNode(struct Node *head,int pos) 
+{
 
+	Node *temp = head;
 	int len = length(head); //finding length of list to check for corner cases
 	if(pos > len || pos < 0 ) {
 		cout<<"Invalid position"<<endl;
@@ -409,7 +412,7 @@ int getNode(struct Node *head,int pos) {
 	
 	else {
 		
-		Node *temp = head;
+		
 		struct Node *temp1=head; 
 		int k=0;
 		while(temp!=NULL)
@@ -433,6 +436,24 @@ int getNode(struct Node *head,int pos) {
 //TIME COMPLEXITY = O(n) of traversing the list
 
 
+//function to get the Middle of a list
+int MiddleNode(struct Node **head,int start=0) {
+	
+	
+	if(*head==NULL) 
+	{
+		cout<<"list enpty"<<endl;
+	}
+	
+	int len = length(*head);
+	int mid = (start + (len-start)/2 );
+	struct Node *temp=*head;
+	for(int i=0;i<mid;i++)
+		temp=temp->next;
+		
+	return temp->data; 
+
+}
 	   
 	   	
 	
@@ -476,18 +497,19 @@ int main() {
 	sortedInsert(&head,6);
 	sortedInsert(&head,61);
 	sortedInsert(&head,5);
+	sortedInsert(&head,100);
 	
 	
-//	cout<<"\n";
-//	
 	
 	cout<<listlength(head)<<endl;
 	cout<<"\n"<<endl;
 	
 	
-//	cout<<printfromTail(head,3);
+//	cout<<printfromTail(head,3)<<endl;
 	
-	cout<<getNode(head,20);
+	cout<<getNode(head,3)<<endl;
+	
+	cout<<"Middle element is :"<<MiddleNode(&head);
 	
 	//removing duplicates form unsorted list
 //	RemoveUnsortedDup(head);
