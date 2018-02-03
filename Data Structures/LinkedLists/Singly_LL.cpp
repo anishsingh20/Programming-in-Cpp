@@ -488,6 +488,28 @@ void CountOccurence(struct Node **head,int data)
 	
 }
 
+void SwapList(struct Node *head) {
+	
+	int len = length(head);
+	struct Node  *temp=head;
+	
+	if(head==NULL) {
+		return ;
+	}
+	
+	if(len%2!=0)
+	 {
+	 	cout<<"List not of even length."<<endl;
+	 
+		
+	}
+	else {
+	
+		
+	}
+}
+
+
 //TIME COMPLEXITY = O(n)
 
 	
@@ -516,14 +538,14 @@ int main() {
 
 	sortedInsert(&head,10);
 	sortedInsert(&head,9);
-	sortedInsert(&head,10);
+	sortedInsert(&head,1);
 	sortedInsert(&head,20);
-	sortedInsert(&head,2);
-	sortedInsert(&head,51);
-	sortedInsert(&head,6);
-	sortedInsert(&head,61);
-	sortedInsert(&head,10);
-	sortedInsert(&head,60);
+//	sortedInsert(&head,2);
+//	sortedInsert(&head,51);
+//	sortedInsert(&head,6);
+//	sortedInsert(&head,61);
+//	sortedInsert(&head,10);
+//	sortedInsert(&head,60);
 	
 	
 	
@@ -535,9 +557,13 @@ int main() {
 //	
 	cout<<listlength(head)<<endl;
 	
-	cout<<"Middle element is :"<<MiddleNode(&head)<<endl;
+	SwapList(head);
+	
+	cout<<listlength(head)<<endl;
+	
+		
 
-	CountOccurence(&head,10);
+
 
 	
 		

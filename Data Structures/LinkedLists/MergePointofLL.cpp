@@ -105,7 +105,8 @@ Node *FindMergePointUsingDiff(Node *headA, Node *headB) {
 	int d = (n-m);
 	
 	//if list A is greater in size then simply swap the pointers to head node
-	if(m>n) {
+	if(m>n) 
+	{
 	
 	  Node *temp = headA;
 	  headA=headB;
@@ -151,7 +152,7 @@ int main() {
 	
 	n1->data = 1;
 	n2->data = 3;
-	n3->data = 100;
+	n3->data = 4;
 	n4->data = 6;
 	
 	//creating links

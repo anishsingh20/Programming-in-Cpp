@@ -74,9 +74,10 @@ int Palindrome(struct Node *head,stack<int>&s)
 		
 	return flag;	
 }
-
 //TIME COMPLEXITY  =  O(n)
 	   	
+
+
 	   	
 	   	
 int main() {
@@ -90,13 +91,13 @@ int main() {
 	struct Node *n4  = new Node();	
 	
 	
-	n1->data=1;
+	n1->data=2;
 	n1->next=n2;
-	n2->data=2;
+	n2->data=1;
 	n2->next = n3;
-	n3->data=2;
+	n3->data=1;
 	n3->next = n4;
-	n4->data = 1;
+	n4->data = 2;
 	n4->next = NULL;
 	
 	struct Node *temp=n1;

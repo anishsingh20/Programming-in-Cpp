@@ -41,7 +41,7 @@ int Partition(vector<int> &arr,int start, int end) {
 		}	
 	}
 
-	swap(arr[Pindex],arr[end]);//swapping PIVOT and element at Pindex
+	swap(arr[end],arr[Pindex]);//swapping PIVOT and element at Pindex
 	
 	return Pindex;//now at the end Pindex is the index of the PIVOT
 }
