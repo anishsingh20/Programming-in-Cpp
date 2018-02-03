@@ -10,7 +10,7 @@ using namespace std;
 
 //function to partiton the array into 2 parts
 
-#define n 5
+#define n 8
 
 int Partition(int *arr,int start,int end) {
 	
@@ -84,20 +84,14 @@ int BinarySearch(int *arr , int start, int end, int x )
 			
 			return count;
 		}
-		
-		if(x <= arr[mid]) {
-			
-			
-			return BinarySearch(arr,start,mid-1,x);
-			
-			
-		}
 	
 		if(x > arr[mid]) {
 					
 			return BinarySearch(arr,mid+1,end,x);
 			
-		}		
+		}
+		
+		return BinarySearch(arr,start,mid-1,x);		
 		
 	}
 	
@@ -107,7 +101,7 @@ int BinarySearch(int *arr , int start, int end, int x )
 
 int main () {
 	
-	int arr[n]={3,3,3,3,3};
+	int arr[n]={10,12,15,10,10,1,4,10};
 	
 	
 	//sorting the array
@@ -118,7 +112,7 @@ int main () {
 	}
 	
 	cout<<endl;
-	cout<<BinarySearch(arr,0,n-1,3);
+	cout<<BinarySearch(arr,0,n-1,10);
 	
 	
 	

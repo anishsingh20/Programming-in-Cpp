@@ -136,6 +136,7 @@ int DelPos(int pos) {
 
 
 
+
 //function to print kth element from the tail-IMP
 int printfromTail(Node *head,int postail) {
 	Node *temp=head;
@@ -381,6 +382,55 @@ void sortedInsert(struct Node** head,int data) {
 
 
 
+//finding length of a List
+int length(struct Node *head) {
+	
+	int len = 0;
+	while(head!=NULL) {
+		len++;
+		head = head->next;
+	}
+	
+	return len;
+	
+}
+
+
+
+//function to get Nth node in a list
+
+int getNode(struct Node *head,int pos) {
+
+	int len = length(head); //finding length of list to check for corner cases
+	if(pos > len || pos < 0 ) {
+		cout<<"Invalid position"<<endl;
+		return 0;
+	}
+	
+	else {
+		
+		Node *temp = head;
+		struct Node *temp1=head; 
+		int k=0;
+		while(temp!=NULL)
+		{
+		
+			if( ++k < pos) {
+				
+				
+				temp1=temp1->next;
+				
+			}
+			
+			temp = temp->next;
+		}
+		
+		return temp1->data;
+		
+	}
+}
+
+//TIME COMPLEXITY = O(n) of traversing the list
 
 
 	   
@@ -435,7 +485,10 @@ int main() {
 	cout<<"\n"<<endl;
 	
 	
-	cout<<printfromTail(head,3);
+//	cout<<printfromTail(head,3);
+	
+	cout<<getNode(head,20);
+	
 	//removing duplicates form unsorted list
 //	RemoveUnsortedDup(head);
 //	cout<<"After duplicate removal"<<endl;
