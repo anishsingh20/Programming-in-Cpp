@@ -1,5 +1,5 @@
 #include<iostream>
-#include<stack>
+
 //SINGLY LINKED LIST
 using namespace std;
 
@@ -456,11 +456,42 @@ int MiddleNode(struct Node **head,int start=0) {
 }
 
 
+void CountOccurence(struct Node **head,int data) 
+{
+	int count = 0 ;
+	
+	Node *temp=*head;
+	
+	if(*head==NULL) {
+		return ;
+	}
+
+	while(temp->next!=NULL) 
+	{
+		if(temp->data == data) {
+				
+			count += 1 ;
+		}		
+		
+		temp = temp->next;
+	}
+	
+	//if after traversing count not changed , then not found
+	if(count==0) {
+		
+		cout<<"Not found ."<<endl;
+		return;
+		
+	}
+	
+	cout<<count;	
+	
+}
+
+//TIME COMPLEXITY = O(n)
 
 	
 int main() {
-	
-	stack<int>s;
 		
 	//allocating memory in heap;	
 //	struct Node *n1  = new Node();
@@ -473,7 +504,7 @@ int main() {
 //	n1->next=n2;
 //	n2->data=1;
 //	n2->next = n3;
-//	n3->data=1;
+//	n3->data=3;
 //	n3->next = n4;
 //	n4->data = 2;
 //	n4->next = NULL;
@@ -485,15 +516,15 @@ int main() {
 
 	sortedInsert(&head,10);
 	sortedInsert(&head,9);
+	sortedInsert(&head,10);
 	sortedInsert(&head,20);
 	sortedInsert(&head,2);
 	sortedInsert(&head,51);
 	sortedInsert(&head,6);
 	sortedInsert(&head,61);
-	sortedInsert(&head,5);
-	sortedInsert(&head,100);
+	sortedInsert(&head,10);
+	sortedInsert(&head,60);
 	
-//	
 	
 	
 	
@@ -502,8 +533,11 @@ int main() {
 	
 //	cout<<getNode(head,3)<<endl;
 //	
-	cout<<"Middle element is :"<<MiddleNode(&head);
+	cout<<listlength(head)<<endl;
+	
+	cout<<"Middle element is :"<<MiddleNode(&head)<<endl;
 
+	CountOccurence(&head,10);
 
 	
 		
