@@ -92,6 +92,8 @@ int main() {
 		 //insertion from end of vector
 	}
 	
+
+	
 	QuickSort(vec,0,vec.size()-1);
 	
 	cout<<"Sorted vector is :"<<endl;
