@@ -44,49 +44,57 @@ void Palindrome(string s) {
 //Method-2 :using stack
 
 
-void PalindromeStack(string s) 
+void PalindromeStack(string s,stack <char>&p) 
 {
-	stack <char> p;
+	
 	
 	
 	//pushing contents of string to stack
-	for(int i=0 ; i < s.length() ;  i++) 
+	for(int i=0 ; i < s.length() ;  i++)  //O(n)
 	{
-		p.push(s[i]);
+		p.push(s[i]); //O(1)
 		
 	}
 	
 	//comparing the expression and top of stack
-	for(int i = 0 ; i < s.length()  ; i++)
+//	for(int i = 0 ; i < s.length()  ; i++)
+//	{
+//		if(s[i] == p.top()) 
+//		{
+//			
+//			p.pop();
+//			
+//		}
+//	}
+
+	int i=0;
+	while( i < s.length() && s[i]==p.top())	  //O(n)
 	{
-		if(s[i] == p.top()) 
-		{
-			
-			p.pop();
-			
-		}
-	}
-	
-	if(!s.empty()) {
+		p.pop(); //O(1)
+		i++;
 		
-		cout<<"Not Palindrome."<<endl;
 	}
 	
-	else cout<<"Palindrome."<<endl;
+	if(p.empty()) {
+		cout<<"Palindrome string."<<endl;
+	}
 	
+	else {
+		cout<<"Not a palindrome string."<<endl;
+	}
 	
-}
+     } //Time complexity = O(n) -linear time
 
 
 int main() {
 	
-	
+	stack<char>c;
 	string s;
 	
 	getline(cin,s);
 	
 	
-	PalindromeStack(s);
+	PalindromeStack(s,c);
 	
 	
 	
