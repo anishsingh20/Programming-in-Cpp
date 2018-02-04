@@ -1,14 +1,17 @@
+#include<iostream>
 
+
+using namespace std;
  // Merge two sorted lists A and B as one linked list
   //Node is defined as 
   struct Node
   {
      int data;
      struct Node *next;
-  }
+  };
 
 //RECURSIVE SOLUTION to MERGING 2 SORTED LINKED LISTS
-Node* MergeLists(Node *headA, Node* headB)
+Node* MergeListsRec(Node *headA, Node* headB)
 {
     Node *new_head = NULL;
    if(headA==NULL) { //if List A is null-our answer is list B
@@ -22,14 +25,15 @@ Node* MergeLists(Node *headA, Node* headB)
     if(headA->data <= headB->data) 
       {
           new_head = headA;
-          new_head->next= MergeLists(headA->next,headB);	
+          new_head->next= MergeListsRec(headA->next,headB);	
           
       }
       else {
           
           new_head=headB;
-          new_head->next = MergeLists(headB->next,headA);
+          new_head->next = MergeListsRec(headB->next,headA);
       }
+      
       
    return(new_head);   
   
@@ -81,11 +85,63 @@ Node* MergeList(Node *headA, Node *headB) {
 	if(headA==NULL) temp->next=headB; //when List A is finished
 	if(headB==NULL) temp->next=headA; //when list B is finished
 	
+	while(new_head!=NULL) {
+		
+		cout<<new_head->data<<endl;
+		new_head = new_head->next;
+	}
+	
 	return(new_head); //will return the new header of the sorted merged LL
+}
+
+
+
+int main() 
+{
+	
+	//list-A
+	struct Node *n1 = new Node();
+	struct Node *n2 = new Node();
+	struct Node *n3 = new Node();
+	struct Node *n4 = new Node();
+	
+	
+	//List B
+	struct Node *m1 = new Node();
+	struct Node *m2 = new Node();
+	struct Node *m3 = new Node();
+	struct Node *m4 = new Node();
+	
+	
+	n1->data = 1;
+	n2->data = 2;
+	n3->data = 3;
+	n4->data = 4;
+	
+	n1->next = n2;
+	n2->next = n3;
+	n3->next = n4;
+	n4->next = NULL;
+	
+	
+	
+	m1->data = 5;
+	m2->data = 6;
+	m3->data = 7;
+	m4->data = 8;
+	
+	m1->next = m2;
+	m2->next = m3;
+	m3->next = m4;
+	m4->next = NULL;
+	
+	
+	cout<<MergeList(n1,m2);
 	
 	
 	
 	
+	return 0;
 	
 	
 }

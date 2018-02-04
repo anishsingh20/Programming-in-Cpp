@@ -488,29 +488,7 @@ void CountOccurence(struct Node **head,int data)
 	
 }
 
-void SwapList(struct Node *head) {
-	
-	int len = length(head);
-	struct Node  *temp=head;
-	
-	if(head==NULL) {
-		return ;
-	}
-	
-	if(len%2!=0)
-	 {
-	 	cout<<"List not of even length."<<endl;
-	 
-		
-	}
-	else {
-	
-		
-	}
-}
 
-
-//TIME COMPLEXITY = O(n)
 
 	
 int main() {
