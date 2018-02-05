@@ -10,6 +10,25 @@ struct Node{
 };
 
 void SplitList(struct Node *head, Node *headA, Node *headB)
+{
+	
+}
+
+
+//function to merge 2 linked lists in sorted manner
+Node* SortedMerge(struct Node *headA, struct Node *headB) {
+	
+	
+}
+
+
+
+
+void mergeSort(struct Node *head) 
+{
+	
+	
+}
 
 int main()
 {
