@@ -26,10 +26,12 @@ void SplitList(struct Node *head, Node **headA, Node **headB)
 	if(head==NULL || head->next == NULL)
 	{
 		(*headA) = head;
-		 headB = NULL;	
+		(*headB) = NULL;	
 		 return;	
 	}
 	
+	
+	//assigning headA of sublist as head
 	(*headA) = head;
 	int len = length(head); //O(n)
 	

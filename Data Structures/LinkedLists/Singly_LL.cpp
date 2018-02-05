@@ -437,7 +437,8 @@ int getNode(struct Node *head,int pos)
 
 
 //function to get the Middle of a list
-//int MiddleNode(struct Node **head,int start=0) {
+int MiddleNode(struct Node **head,int start=0) 
+{
 	
 	
 	if(*head==NULL) 
@@ -461,18 +462,22 @@ void CountOccurence(struct Node **head,int data)
 	int count = 0 ;
 	
 	Node *temp=*head;
+	Node *temp1;
 	
 	if(*head==NULL) {
 		return ;
 	}
 
-	while(temp->next!=NULL) 
+	while(temp!=NULL) 
 	{
-		if(temp->data == data) {
-				
-			count += 1 ;
-		}		
 		
+		if(temp->data == data) 
+		{
+			count += 1 ;
+		}
+			
+		
+			
 		temp = temp->next;
 	}
 	
@@ -494,30 +499,30 @@ void CountOccurence(struct Node **head,int data)
 int main() {
 		
 	//allocating memory in heap;	
-//	struct Node *n1  = new Node();
-//	struct Node *n2  = new Node();
-//	struct Node *n3  = new Node();
-//	struct Node *n4  = new Node();	
-//	
-//	
-//	n1->data=2;
-//	n1->next=n2;
-//	n2->data=1;
-//	n2->next = n3;
-//	n3->data=3;
-//	n3->next = n4;
-//	n4->data = 2;
-//	n4->next = NULL;
+	struct Node *n1  = new Node();
+	struct Node *n2  = new Node();
+	struct Node *n3  = new Node();
+	struct Node *n4  = new Node();	
+	
+	
+	n1->data=2;
+	n1->next=n2;
+	n2->data=2;
+	n2->next = n3;
+	n3->data=1;
+	n3->next = n4;
+	n4->data = 2;
+	n4->next = NULL;
 
 
 
 //cout<<printfromTail(head,0);
 
 
-	sortedInsert(&head,10);
-	sortedInsert(&head,9);
-	sortedInsert(&head,1);
-	sortedInsert(&head,20);
+//	sortedInsert(&head,10);
+//	sortedInsert(&head,9);
+//	sortedInsert(&head,9);
+//	sortedInsert(&head,20);
 //	sortedInsert(&head,2);
 //	sortedInsert(&head,51);
 //	sortedInsert(&head,6);
@@ -533,11 +538,11 @@ int main() {
 	
 //	cout<<getNode(head,3)<<endl;
 //	
-	cout<<listlength(head)<<endl;
+	cout<<listlength(n1)<<endl;
 	
-	SwapList(head);
+	CountOccurence(&n1,2);
 	
-	cout<<listlength(head)<<endl;
+//	cout<<listlength(n1)<<endl;
 	
 		
 
