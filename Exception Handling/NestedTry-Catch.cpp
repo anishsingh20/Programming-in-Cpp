@@ -11,7 +11,9 @@ int main()
 	
 	
 	try {
-		
+	
+		//throw("Char error occured");-if in parent try block we throw something , then the child try block is not executed
+			
 		try
 		{
 			throw ("Character error occured");
