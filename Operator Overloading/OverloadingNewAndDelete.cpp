@@ -46,7 +46,8 @@ class student {
 				bad_alloc b;
 				throw b;
 			}
-						
+			
+			return pointer;			
 		}
 		
 		
