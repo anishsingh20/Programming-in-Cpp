@@ -437,7 +437,7 @@ int getNode(struct Node *head,int pos)
 
 
 //function to get the Middle of a list
-int MiddleNode(struct Node **head,int start=0) {
+//int MiddleNode(struct Node **head,int start=0) {
 	
 	
 	if(*head==NULL) 

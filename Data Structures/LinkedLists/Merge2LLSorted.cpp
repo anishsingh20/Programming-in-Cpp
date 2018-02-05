@@ -1,8 +1,9 @@
 #include<iostream>
 
-
+//PROGRAM TO MERGE TO LISTS IN A SORTED MANNER-
+ // Merge two lists A and B as one linked list in a sorted manner
 using namespace std;
- // Merge two sorted lists A and B as one linked list
+
   //Node is defined as 
   struct Node
   {
@@ -14,6 +15,8 @@ using namespace std;
 Node* MergeListsRec(Node *headA, Node* headB)
 {
     Node *new_head = NULL;
+    
+   //BASE CONDITIONS
    if(headA==NULL) { //if List A is null-our answer is list B
        return headB;
    }
@@ -115,8 +118,8 @@ int main()
 	
 	n1->data = 1;
 	n2->data = 2;
-	n3->data = 3;
-	n4->data = 4;
+	n3->data = 10;
+	n4->data = 12;
 	
 	n1->next = n2;
 	n2->next = n3;
@@ -125,9 +128,9 @@ int main()
 	
 	
 	
-	m1->data = 5;
-	m2->data = 6;
-	m3->data = 7;
+	m1->data = 3;
+	m2->data = 4;
+	m3->data = 6;
 	m4->data = 8;
 	
 	m1->next = m2;
