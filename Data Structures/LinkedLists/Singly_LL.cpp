@@ -313,12 +313,14 @@ void sortedInsert(struct Node** head,int data) {
 		}
 		
 		//inssertion at tail of linked list
+		//Important to add curr->data <= data ,otherwise will not insert largest node at end
 		if(curr->next == NULL && curr->data <= data) {
 			new_node->next = NULL;
 			curr->next = new_node;
 			
 		}
 		
+		//else insertion between prev and curr
 		else {
 			
 			prev->next = new_node;
