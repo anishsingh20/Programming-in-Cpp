@@ -9,11 +9,15 @@ using namespace std;
 class OverSpeed : public exception
 {
 	public:
-		int speed = 0;
+		int speed ;
+		OverSpeed() 
+		{
+			speed=0;
+		}
 		//inherits what() of exception class
 		const char* what() 
 		{
-			return "Please slow down, Overspeeding is dangerous.";
+			return "Please slow down, Overspeedying is dangerous.";
 			
 		}
 		
@@ -35,7 +39,12 @@ class OverSpeed : public exception
 class Car {
 	
 	public:
-		int speed = 0 ;
+		int speed ;
+		//constructor
+		Car() 
+		{
+			speed=0;
+		}
 		
 		void getSpeed()
 		{
@@ -51,7 +60,7 @@ class Car {
 				speed += 10;
 				getSpeed();
 				
-				if(speed >= 250) {
+				if(speed >= 150) {
 					
 					OverSpeed obj;
 					
