@@ -8,9 +8,13 @@ using namespace std;
 
 
 //function which can throw int or char or runtime error exceptions
-void test() throw(int ,const char *, runtime_error) {
+void test() throw(const char *,int, runtime_error) {
+	
 	
 	throw runtime_error("Runtime error occured");
+	throw 20;
+	//can throw multiple exceptions inside the function, but will only catch the first defined throwed exception
+	
 }
 
 int main() {
@@ -19,6 +23,12 @@ int main() {
 	{
 		//calling the exception throwing function
 		test()	;
+	}
+	
+	
+	catch(int err) 
+	{
+		cout<<err<<endl;
 	}
 	
 	catch(const char *err)
@@ -33,10 +43,7 @@ int main() {
 		
 	}
 	
-	catch(int err) 
-	{
-		cout<<err<<endl;
-	}
+
 	
 	catch(...)
  	{
