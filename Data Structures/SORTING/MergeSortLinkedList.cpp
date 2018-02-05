@@ -93,7 +93,7 @@ void mergeSort(struct Node **act_head)
 	//now split the list in 2 sublists
 	SplitList( head , &a , &b );
 	
-	//recursively sorting the sublists
+	//recursively splitting sorting  the sublists
 	mergeSort(&a);
 	mergeSort(&b);
 	
@@ -127,11 +127,11 @@ int main()
 	
 	
 	
-	n1->data = 100;
-	n2->data = 2;
-	n3->data = 1;
-	n4->data = 12;
-	n5->data = 10;
+	n1->data = 90;
+	n2->data = 10;
+	n3->data = 80;
+	n4->data = 15;
+	n5->data = 60;
 	
 	n1->next = n2;
 	n2->next = n3;

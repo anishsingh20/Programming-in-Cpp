@@ -307,12 +307,13 @@ void sortedInsert(struct Node** head,int data) {
 		
 		//METHOD-1
 		struct Node *prev = NULL;
-		while(curr->next!=NULL && curr->data < data) {
+		while(curr->next!=NULL && curr->data <= data) {
 			prev = curr;
 			curr=curr->next;
 		}
 		
-		if(curr->next == NULL && curr->data < data) {
+		//inssertion at tail of linked list
+		if(curr->next == NULL && curr->data <= data) {
 			new_node->next = NULL;
 			curr->next = new_node;
 			
@@ -347,16 +348,10 @@ void sortedInsert(struct Node** head,int data) {
 //		//new node has larger data then curr , so new node will be inserted after curr node
 //		new_node->next = curr->next;
 //		curr->next = new_node;	
-//		
-//	}
+		
+	}
+}	
 
-
-	
-
-
-	
-	}	
-}
 
 
 
@@ -499,36 +494,36 @@ void CountOccurence(struct Node **head,int data)
 int main() {
 		
 	//allocating memory in heap;	
-	struct Node *n1  = new Node();
-	struct Node *n2  = new Node();
-	struct Node *n3  = new Node();
-	struct Node *n4  = new Node();	
-	
-	
-	n1->data=2;
-	n1->next=n2;
-	n2->data=2;
-	n2->next = n3;
-	n3->data=1;
-	n3->next = n4;
-	n4->data = 2;
-	n4->next = NULL;
+//	struct Node *n1  = new Node();
+//	struct Node *n2  = new Node();
+//	struct Node *n3  = new Node();
+//	struct Node *n4  = new Node();	
+//	
+//	
+//	n1->data=2;
+//	n1->next=n2;
+//	n2->data=2;
+//	n2->next = n3;
+//	n3->data=1;
+//	n3->next = n4;
+//	n4->data = 3;
+//	n4->next = NULL;
 
 
 
 //cout<<printfromTail(head,0);
 
 
-//	sortedInsert(&head,10);
-//	sortedInsert(&head,9);
-//	sortedInsert(&head,9);
-//	sortedInsert(&head,20);
-//	sortedInsert(&head,2);
-//	sortedInsert(&head,51);
-//	sortedInsert(&head,6);
-//	sortedInsert(&head,61);
-//	sortedInsert(&head,10);
-//	sortedInsert(&head,60);
+	sortedInsert(&head,10);
+	sortedInsert(&head,9);
+	sortedInsert(&head,9);
+	sortedInsert(&head,20);
+	sortedInsert(&head,2);
+	sortedInsert(&head,51);
+	sortedInsert(&head,6);
+	sortedInsert(&head,61);
+	sortedInsert(&head,10);
+	sortedInsert(&head,60);
 	
 	
 	
@@ -538,9 +533,10 @@ int main() {
 	
 //	cout<<getNode(head,3)<<endl;
 //	
-	cout<<listlength(n1)<<endl;
+	cout<<listlength(head)<<endl;
 	
-	CountOccurence(&n1,2);
+	CountOccurence(&head,9);
+	
 	
 //	cout<<listlength(n1)<<endl;
 	
