@@ -6,14 +6,17 @@ using namespace std;
 //Program to show Nested try-catch blocks and re-throwing exceptions
 
 
-int main() {
+int main() 
+{
 	
 	
 	try {
 		
-		try{
+		try
+		{
 			throw ("Character error occured");
 		}
+		
 		catch(const char *err) 
 		{
 			cout<<err<<endl;
@@ -21,7 +24,11 @@ int main() {
 			cout<<"Rethrowing the runtime exception :-"<<endl;
 			
 			//re-throwing another type of exception
+			
+			//only the first re-defined throwed exception is catched not throwed after that
 			throw runtime_error("Runtime exception occured");
+			
+			throw ("Rethrowing char exception");//not caught
 		}
 	}
 	
