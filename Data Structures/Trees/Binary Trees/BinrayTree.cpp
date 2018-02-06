@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stack>
 
 //IMPLEMENTATION OF A BINARY TREE- a tree which can have atmost i.e <= 2 child nodes
 
@@ -25,38 +26,81 @@ struct BinaryTreeNode{
      
 //RECURSIVE IMPLEMENTATION-
 
-void PreOrder(struct BinaryTreeNode *root)
+void PreOrderRec(struct BinaryTreeNode *root)
 {
 	if(root)
 	{
 		cout<<root->data<<" ";
-		PreOrder(root->left);
-		PreOrder(root->right);
+		PreOrderRec(root->left);
+		PreOrderRec(root->right);
 	}
 	
 	
 }
 
-void InOrder(struct BinaryTreeNode *root)
+
+//non recursive implementation using a stack
+void PreOrder(struct BinaryTreeNode *root)
+{
+	stack <BinaryTreeNode*>s;
+	
+	while(1)
+	{
+		while(root)
+		{
+			//visit current node
+			cout<<root->data<<" ";
+		
+			s.push(root);
+			
+			//if left subtree exits then add it to stack
+			root = root->left;
+		}
+		
+		
+	if(s.empty()) break; 
+	
+	//now we have traversed the left subtree and current node
+	//pop from stack
+	root = s.top();
+	s.pop();
+	
+	root = root->right;
+	
+	}
+}
+
+void InOrderRec(struct BinaryTreeNode *root)
 {
 	if(root)
 	{
-		InOrder(root->left);
+		InOrderRec(root->left);
 		cout<<root->data<<" ";
-		InOrder(root->right);
+		InOrderRec(root->right);
 	}	
 }
 
-void PostOrder(struct BinaryTreeNode *root)
+void PostOrderRec(struct BinaryTreeNode *root)
 {
 	if(root)
 	{
-		PostOrder(root->left);
-		PostOrder(root->right);
+		PostOrderRec(root->left);
+		PostOrderRec(root->right);
 		cout<<root->data<<" ";
 	}
 	
 }
+     
+//void levelOrder(struct BinaryTreeNode *root)
+//{
+//	
+//	
+//	if(root)
+//	{
+//		cout<<root->data;
+//		levelOrder(root,root->left,root->right);
+//	}
+//}     
      
      
 int main()
@@ -97,14 +141,20 @@ int main()
 	
 	cout<<endl;
 	
-	cout<<"In order traversal outputs-"<<endl;
-	InOrder(root);
-	
-	cout<<endl;
-	
-	cout<<"Post order traversal outputs-"<<endl;
-	PostOrder(root);
+//	cout<<"In order traversal outputs-"<<endl;
+//	InOrder(root);
+//	
+//	cout<<endl;
+//	
+//	cout<<"Post order traversal outputs-"<<endl;
+//	PostOrder(root);
+//	
+//	cout<<endl;
+//	
+//	cout<<"Level order traversal-"<<endl;
+//	
 
+	
 	
 	return 0;
 }
