@@ -70,6 +70,8 @@ void PreOrder(struct BinaryTreeNode *root)
 	}
 }
 
+
+
 void InOrderRec(struct BinaryTreeNode *root)
 {
 	if(root)
@@ -79,6 +81,49 @@ void InOrderRec(struct BinaryTreeNode *root)
 		InOrderRec(root->right);
 	}	
 }
+
+/*non-recursive inorder traversal using a stack
+The only change is, instead
+of processing the node before going to left subtree, process it after popping (which is indicated
+after completion of left subtree processing).
+*/
+void InOrder(struct BinaryTreeNode *root)
+{
+	//a stack to store the nodes
+	stack <BinaryTreeNode*>s1;
+	
+	while(1)
+	{
+		while(root)
+		{
+			//if left subtree exits then add it to stack
+			//traverse to the left subtree in InOrder
+			s1.push(root);
+			root = root->left;
+			
+		}
+		
+		
+		
+	if(s1.empty() ) 
+		break; 
+	
+	//now we have traversed the left subtree 
+	//pop from stack
+	root = s1.top();
+	s1.pop();
+	
+	//now simply visit the current node
+	cout<<root->data<<" ";
+	
+	//now traverse the right subtree in Inorder
+	root = root->right;
+	
+	}
+}
+
+
+
 
 void PostOrderRec(struct BinaryTreeNode *root)
 {
@@ -90,6 +135,9 @@ void PostOrderRec(struct BinaryTreeNode *root)
 	}
 	
 }
+
+
+
      
 //void levelOrder(struct BinaryTreeNode *root)
 //{
@@ -141,13 +189,13 @@ int main()
 	
 	cout<<endl;
 	
-//	cout<<"In order traversal outputs-"<<endl;
-//	InOrder(root);
-//	
-//	cout<<endl;
-//	
-//	cout<<"Post order traversal outputs-"<<endl;
-//	PostOrder(root);
+	cout<<"In order traversal outputs-"<<endl;
+	InOrder(root);
+	
+	cout<<endl;
+	
+	cout<<"Post order traversal outputs-"<<endl;
+	PostOrderRec(root);
 //	
 //	cout<<endl;
 //	
