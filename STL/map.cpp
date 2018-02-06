@@ -17,9 +17,16 @@ int main()
 	m.insert(pair <int,string> (1,"Anish"));
 	m.insert(pair <int,string> (2,"mrinal"));
 	m.insert(pair <int,string> (3,"Vaibhav"));
-	m.insert(pair <int,string> (4,"Rasila"));	
+	m.insert(pair <int,string> (4,"Rasila"));
+	//can also insert using
+	m.insert(make_pair(10,"Lucky"));	
 	
 	map<int,string>::iterator i;
+	
+	
+	//can also do random access using the key value as subscript-O(1)
+	cout<<m[2]<<endl; //prints mrinal
+	
 	
 	//traversing the map using iterator
 	for(i = m.begin(); i != m.end();i++)
@@ -31,7 +38,7 @@ int main()
 		cout<<endl;
 	}
 	
-
+	
 	
 	cout<<"Erasing--"<<endl;
 	
