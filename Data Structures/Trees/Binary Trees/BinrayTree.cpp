@@ -23,6 +23,42 @@ struct BinaryTreeNode{
 */   
      
      
+//RECURSIVE IMPLEMENTATION-
+
+void PreOrder(struct BinaryTreeNode *root)
+{
+	if(root)
+	{
+		cout<<root->data<<"->";
+		PreOrder(root->left);
+		PreORder(root->right);
+	}
+	
+	
+}
+
+void InOrder(struct BinaryTreeNode *root)
+{
+	if(root)
+	{
+		InOrder(root->left);
+		cout<<root->data<<"->";
+		InOrder(root->right);
+	}	
+}
+
+void PostOrder(struct BinaryTreeNode *root)
+{
+	if(root)
+	{
+		PostOrder(root->left);
+		PostOrder(root->right);
+		cout<<root->data<<"->";
+	}
+	
+}
+     
+     
 int main()
 {
 	
