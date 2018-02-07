@@ -137,6 +137,49 @@ void PostOrderRec(struct BinaryTreeNode *root)
 	
 }
 
+//non recursive implementation of POSTORDER-bit complicated as we visit a root node twice in POSTORDER
+void PostOrder(struct BinaryTreeNode *root)
+{
+	 struct BinaryTreeNode *prev = NULL;
+	 stack<BinaryTreeNode *> s;
+	 do
+	 {
+	 	//traversing the left subtree and pushing the nodes in left subtree to stack
+		 while(root!=NULL)
+		 {
+		 	s.push(root);
+		 	
+		 	//traverse the left subtree
+		 	root = root->left;
+		 }
+		 
+		 //when left subtree has benn completely traversed,
+		 while( root==NULL && !s.empty())
+		 {
+		 	root = s.top(); //root is the top node in stack
+			//case when we enter if it is a leaf node
+			if(root->right==NULL || root->right == prev)
+			{
+				//visit the node
+				cout<<root->data<<" ";
+				s.pop(); 
+				prev = root;
+				root=NULL;
+			}
+			
+			//traverse the right subtree, if not leaf
+			else
+			{
+				root = root->right;
+				
+			}  
+		 	
+		 }
+		 
+	} while(!s.empty());
+	
+}
+
 
 
  //In level order we will use a queue to store the level+1 nodes in queue    
@@ -147,7 +190,7 @@ void levelOrder(struct BinaryTreeNode *root)
 	
 	if(!root) return;
 	
-	q.push(root);
+	q.push(root);//push the root into queue
 	
 	while(!q.empty())
 	{
@@ -169,6 +212,8 @@ void levelOrder(struct BinaryTreeNode *root)
 		}
 	}
 }     //TIME COMPLEXITY = O(n) , SPACE COMPLEXITY = O(n)
+     
+     
      
 int main()
 {
@@ -215,6 +260,11 @@ int main()
 	
 	cout<<"Post order traversal outputs-"<<endl;
 	PostOrderRec(root);
+	
+	cout<<endl;
+	
+	cout<<"Post order traversal outputs-"<<endl;
+	PostOrder(root);
 	
 	cout<<endl;
 	
