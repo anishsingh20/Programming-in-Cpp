@@ -41,7 +41,7 @@ void Queue::Dequeue() {
 	}
 	
 	//will enter this condition only at the first call to Dequeue() after inserting some data in queue
-	//is stack 2 is empty , only then we transfer all items from stack1 to stack2 
+	//if stack 2 is empty , only then we transfer all items from stack1 to stack2 
 	if(s2.empty()){ 
 	
 		//transfering from stack1 to stack2

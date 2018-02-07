@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stack>
+#include<queue>
 
 //IMPLEMENTATION OF A BINARY TREE- a tree which can have atmost i.e <= 2 child nodes
 
@@ -138,18 +139,36 @@ void PostOrderRec(struct BinaryTreeNode *root)
 
 
 
-     
-//void levelOrder(struct BinaryTreeNode *root)
-//{
-//	
-//	
-//	if(root)
-//	{
-//		cout<<root->data;
-//		levelOrder(root,root->left,root->right);
-//	}
-//}     
-     
+ //In level order we will use a queue to store the level+1 nodes in queue    
+void levelOrder(struct BinaryTreeNode *root)
+{
+	struct BinaryTreeNode *temp;
+	queue<BinaryTreeNode *>q;
+	
+	if(!root) return;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		cout<<temp->data<<" ";
+		
+		//pushing temp's left and right child if any to queue
+		//we will keep (level+1) children in the queue
+		if(temp->left)
+		{
+			q.push(temp->left);
+		}
+		
+		if(temp->right)
+		{
+			q.push(temp->right);
+		}
+	}
+}     //TIME COMPLEXITY = O(n) , SPACE COMPLEXITY = O(n)
      
 int main()
 {
@@ -196,11 +215,13 @@ int main()
 	
 	cout<<"Post order traversal outputs-"<<endl;
 	PostOrderRec(root);
-//	
-//	cout<<endl;
-//	
-//	cout<<"Level order traversal-"<<endl;
-//	
+	
+	cout<<endl;
+	
+	cout<<"Level order traversal-"<<endl;
+	
+	levelOrder(root);
+	
 
 	
 	
