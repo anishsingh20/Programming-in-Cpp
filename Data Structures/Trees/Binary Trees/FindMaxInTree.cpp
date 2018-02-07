@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 
 
 /*PROGRAM TO FIND MAXIMUM ELEMENT IN A BINARY TREE-
@@ -46,8 +47,32 @@ int FindMax(struct BinaryTreeNode *root)
 
 int FindMaxUsingLevelOrder(struct BinaryTreeNode *root)
 {
+	queue<BinaryTreeNode *> q;
+	BinaryTreeNode *temp;
+	int max = INT_MIN;
+	if(!root) return -1;
 	
+	q.push(root);//initially enquing root into queue
+	
+	//enqueue the level+1 nodes to queue
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop(); //pop node from front of queue
+		
+		if(max  <  temp->data)
+		{
+			max = temp->data;	
+		}		
+		
+		if(temp->left) q.push(temp->left);
+		
+		if(temp->right) q.push(temp->right);
+	}
+	
+	return max;	
 }
+
 
 
 int main()
@@ -79,6 +104,9 @@ int main()
 	r2->right = r6;
 	
 	cout<<FindMax(root);
+	cout<<endl;
+	
+	cout<<FindMaxUsingLevelOrder(root);
 	
 	return 0;
 }
