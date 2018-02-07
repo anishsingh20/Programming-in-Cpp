@@ -157,7 +157,7 @@ void PostOrder(struct BinaryTreeNode *root)
 		 while( root==NULL && !s.empty())
 		 {
 		 	root = s.top(); //root is the top node in stack
-			//case when we enter if it is a leaf node
+			//case when we enter if it is a leaf node , or when prev is the right child of current root
 			if(root->right==NULL || root->right == prev)
 			{
 				//visit the node
