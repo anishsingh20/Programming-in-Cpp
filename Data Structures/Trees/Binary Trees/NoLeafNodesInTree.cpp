@@ -47,6 +47,51 @@ int LeafNodesUsingLevelOrder(struct BinaryTreeNode *root)
 }
 
 
+int leafNodesRecursion(struct BinaryTreeNode *root)
+{
+//	int lr=0,ll=0;
+	
+	int count = 0;
+	
+		
+//	if(root)
+//	{
+//		ll = leafNodesRecursion(root->left);
+//		if(root->left==NULL && root->right==NULL)
+//		{
+//			lr++;
+//			ll++;
+//			
+//			
+//		}
+//		lr = leafNodesRecursion(root->right);
+//	
+//		
+//		
+//		
+//		
+//	}	
+//	
+//	return (ll+lr);	 leaf = total leaf nodes in left subtree  + leaf in right subtree
+
+	if(root->right==NULL && root->left==NULL)
+	{
+		return 1;
+	}
+	
+	else {
+		int ll = leafNodesRecursion(root->left); //number of leaf nodes in left subtree
+		int lr = leafNodesRecursion(root->right);//number of leaf nodes in right subtree
+		
+		return ll+lr;
+		
+	}
+
+	
+	
+	
+}
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -109,8 +154,14 @@ int main()
 	Insert(&root,2);
 	Insert(&root,3);
 	Insert(&root,4);
-		
+	Insert(&root,5);
+	Insert(&root,6);
+	Insert(&root,7);
+	
+				
 	cout<<LeafNodesUsingLevelOrder(root);
+	cout<<endl;
+	cout<<leafNodesRecursion(root);
 	
 }
 
