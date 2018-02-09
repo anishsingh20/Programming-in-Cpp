@@ -33,6 +33,21 @@ int listlength(struct Node *head) {
 
 }
 
+//recursive function to traverse the list-similar to traversing the tree
+void traverseRec(struct Node *head)
+{
+	
+	if(head!=NULL)
+	{
+		cout<<head->data<<"-->";
+		traverseRec(head->next);
+	}
+	else {
+		return;
+	}
+}
+
+
 
 //iterative solution-returns the new updated head of reversed list
 Node* reverseList() {
@@ -504,11 +519,11 @@ int main() {
 //	
 //	n1->data=2;
 //	n1->next=n2;
-//	n2->data=2;
+//	n2->data=3;
 //	n2->next = n3;
-//	n3->data=1;
+//	n3->data=4;
 //	n3->next = n4;
-//	n4->data = 3;
+//	n4->data = 5;
 //	n4->next = NULL;
 
 
@@ -527,6 +542,7 @@ int main() {
 	sortedInsert(&head,10);
 	sortedInsert(&head,60);
 	
+	traverseRec(head);
 	
 	
 	
@@ -535,7 +551,7 @@ int main() {
 	
 //	cout<<getNode(head,3)<<endl;
 //	
-	cout<<listlength(head)<<endl;
+//	cout<<listlength(head)<<endl;
 	
 	CountOccurence(&head,9);
 	
