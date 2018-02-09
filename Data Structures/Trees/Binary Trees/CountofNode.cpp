@@ -12,14 +12,39 @@ struct Node {
 
 
 //function to return the SIZE of tree - number of descendants of root including itself
-int count(struct Node *root)
+int countRec(struct Node *root)
 {
 	
 	if(root)
 	{
-		return (1 + count(root->left) + count(root->right) );
+		return (1 + countRec(root->left) + countRec(root->right) );
 	}
 	
+}
+
+//non-recursive solution to find size of a binary tree using level-order traversal
+int SizeofTree(struct Node *root)
+{
+	queue<Node *> q;
+	Node *temp;
+	int count=0;
+	
+	if(!root) return 0;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		count++;
+		
+		if(root->left) q.push(root->left);
+		
+		if(root->right) q.push(root->right);
+	}
+	
+	return count;
 }
 
 
@@ -104,7 +129,7 @@ int main()
 	Insert(&root,10);
 	Insert(&root,23);
 		
-	cout<<count(root);
+	cout<<SizeofTree(root);
 	
 	cout<<endl;
 	
