@@ -74,6 +74,7 @@ void Insert( struct BinaryTreeNode **root,int data)
 			
 			
 		}
+		
 		else
 		{
 			q.push(temp->left);
@@ -97,16 +98,48 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
+BinaryTreeNode *InsertRec(struct BinaryTreeNode *root,int data)
+{
+	struct BinaryTreeNode *new_node = new BinaryTreeNode();
+	
+	if(root==NULL)
+	{
+		new_node->data = data;
+		new_node->left	=  new_node->right = NULL;
+		return new_node;
+	}
+	
+	else 
+	{
+		if(root->data >= data)
+			root->left = InsertRec(root->left,data);
+		
+		else
+			root->right = InsertRec(root->right,data);	
+	}
+	
+	return root;
+}
+
+
 
 int main()
 {
 	
 	struct BinaryTreeNode *root=NULL;
-	Insert(&root,1);
-	Insert(&root,2);
-	Insert(&root,3);
-	Insert(&root,4);
-	
+//	Insert(&root,1);
+//	Insert(&root,2);
+//	Insert(&root,3);
+//	Insert(&root,4);
+//	Insert(&root,5);
+//	Insert(&root,10);
+
+
+	InsertRec(root,1);
+	InsertRec(root,2);
+	InsertRec(root,3);
+	InsertRec(root,4);
+			
 	levelOrder(root);
 	
 	return 0;

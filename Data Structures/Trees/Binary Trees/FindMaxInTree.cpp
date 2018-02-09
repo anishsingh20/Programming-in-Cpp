@@ -20,30 +20,33 @@ struct BinaryTreeNode{
 //recursive implementation
 int FindMax(struct BinaryTreeNode *root)
 {
-	int right,left,root_val,max = INT_MIN;
+	int right,left,root_val,mx;
 
 	if(root!=NULL)
 	{
 		root_val = root->data;
-		left  = FindMax(root->left);
-		right = FindMax(root->right);
+//		left  = FindMax(root->left);
+//		right = FindMax(root->right);
+		mx = max( FindMax(root->left), FindMax(root->right) );
 		
-		if(left < right)
-		{
-			max = right;
-			
-		}
-		else{
-			max = left;
-		}
+//		if(left < right)
+//		{
+//			max = right;
+//			
+//		}
+//		
+//		else
+//		{
+//			max = left;
+//		}
 		
-		if(max < root_val)
+		if(mx < root_val)
 		{
-			max = root_val;
+			mx = root_val;
 		}
 	}
 	
-	return max;	
+	return mx;	
 }
 
 int FindMaxUsingLevelOrder(struct BinaryTreeNode *root)
