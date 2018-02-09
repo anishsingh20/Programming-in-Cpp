@@ -188,6 +188,8 @@ int main()
 	Insert(&root,10);
 	Insert(&root,11);
 	Insert(&root,12);
+	Insert(&root,13);
+	Insert(&root,15);
 	
 	levelOrder(root);
 	cout<<endl;
