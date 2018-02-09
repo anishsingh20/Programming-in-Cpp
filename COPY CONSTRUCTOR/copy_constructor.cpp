@@ -1,5 +1,10 @@
 #include<iostream>
 
+//COPY CONSTRUCTOR- it is simply a overloaded constructor which is called or used when we copy a object of type class to another object
+
+// due to copy constructor both the objects will contain the member values at different locations and maintain different values-whether the member values
+//are statically allocated or dynamically allocated during runtime
+
 using namespace std;
 
 class Person
@@ -13,6 +18,15 @@ class Person
 			this->age = age;
 			this->name = new string(name); //allocating new memory block and entering name inside it
 			
+		}
+		
+		//COPY CONSTRUCTOR-takes parameter as a reference to object of class Person
+		Person(const Person &p)
+		{
+			cout<<"calling copy constructor"<<endl;
+			name = new string(*p.name); //allocating a new memory block to the pointer name member of class, so that the copied object can
+			//contain the name variable at a different location 
+			age =  (p.age); 
 		}
 		
 		void changePerson(string name,int age)
