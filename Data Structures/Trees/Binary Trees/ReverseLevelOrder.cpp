@@ -6,17 +6,20 @@
 
 using namespace std;
 
-struct Node {
+struct BinaryTreeNode {
 	int data;
-	Node *left;
-	Node *right;
+	struct BinaryTreeNode *left;
+	struct BinaryTreeNode *right;
 };
 
-void ReverseLevelOrder(struct Node *root)
+
+
+
+void ReverseLevelOrder(struct BinaryTreeNode *root)
 {
-	queue<Node *>q;
-	stack<Node *> s;
-	Node *temp;
+	queue<BinaryTreeNode *>q;
+	stack<BinaryTreeNode *> s;
+	BinaryTreeNode *temp;
 	
 	if(!root) return;
 	
@@ -41,7 +44,7 @@ void ReverseLevelOrder(struct Node *root)
 
 	}
 	
-	//now stack has nodes in reversed order
+	//now stack has BinaryTreeNodes in reversed order
 	while(!s.empty())
 	{
 		cout<<s.top()<<" ";
@@ -52,13 +55,13 @@ void ReverseLevelOrder(struct Node *root)
 
 int main()
 {
-	struct Node *root = new Node();
-	struct Node *r1 = new Node();
-	struct Node *r2 = new Node();
-	struct Node *r3 = new Node();
-	struct Node *r4 = new Node();
-	struct Node *r5 = new Node();
-	struct Node *r6 = new Node();	
+	struct BinaryTreeNode *root = new BinaryTreeNode();
+	struct BinaryTreeNode *r1 = new BinaryTreeNode();
+	struct BinaryTreeNode *r2 = new BinaryTreeNode();
+	struct BinaryTreeNode *r3 = new BinaryTreeNode();
+	struct BinaryTreeNode *r4 = new BinaryTreeNode();
+	struct BinaryTreeNode *r5 = new BinaryTreeNode();
+	struct BinaryTreeNode *r6 = new BinaryTreeNode();	
 	
 	root->data = 1;
 	r1->data = 2;
@@ -81,6 +84,8 @@ int main()
 	r5->right  = r6->right  = NULL;	
 	
 	ReverseLevelOrder(root);
+	
+	DeleteTree(root);
 	
 	
 	return 0;
