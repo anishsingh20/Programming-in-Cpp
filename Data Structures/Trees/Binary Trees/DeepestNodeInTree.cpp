@@ -39,7 +39,6 @@ struct BinaryTreeNode * DeepestNode(struct BinaryTreeNode *root)
 	
 	return temp;
 }
-
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -91,6 +90,7 @@ void Insert( struct BinaryTreeNode **root,int data)
 	
 	
 }
+
 
 
 

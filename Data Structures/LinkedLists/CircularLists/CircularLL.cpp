@@ -298,6 +298,48 @@ void SortedInsert(struct CLLNode **head,int data)
 			
 }
 
+//function to find the length of circular list
+int LengthList(struct CLLNode *head)
+{
+	int count = 0;
+	struct CLLNode *temp = head;
+	if(head==NULL)
+	{
+		return 0;
+	}
+	
+	else {
+		
+		while(temp->next != head)
+		{
+			count++;
+			temp=temp->next;
+		}
+		
+	}
+	
+	return count;
+}
+
+
+//function to split the circular list into 2 halves
+void DivideCList(struct CLLNode *head)
+{
+	struct CLLNode* headA,headB,temp;
+	if(head==NULL) return ;
+	
+	int len = LengthList(head); //finding length of CLL
+	headA = head;
+	
+	int l =0, h= (len-1);
+	int mid = (l + (h-l)/2); //middle index
+	
+	 
+	
+	
+	
+}
+
 
 
 int main() {

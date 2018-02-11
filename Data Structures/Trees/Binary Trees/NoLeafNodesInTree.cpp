@@ -50,8 +50,7 @@ int LeafNodesUsingLevelOrder(struct BinaryTreeNode *root)
 int leafNodesRecursion(struct BinaryTreeNode *root)
 {
 //	int lr=0,ll=0;
-	
-	int count = 0;
+
 	
 		
 //	if(root)
