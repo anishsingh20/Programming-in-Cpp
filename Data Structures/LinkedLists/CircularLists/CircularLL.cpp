@@ -325,7 +325,7 @@ int LengthList(struct CLLNode *head)
 //function to split the circular list into 2 halves
 void DivideCList(struct CLLNode *head)
 {
-	struct CLLNode* headA,headB,temp;
+	struct CLLNode *headA,*headB,*temp=head,*prev;
 	if(head==NULL) return ;
 	
 	int len = LengthList(head); //finding length of CLL
@@ -333,10 +333,35 @@ void DivideCList(struct CLLNode *head)
 	
 	int l =0, h= (len-1);
 	int mid = (l + (h-l)/2); //middle index
+
 	
-	 
+	//traversing till mid index of list
+	for(int i=0 ; i <= mid ;i++)
+	{
+		cout<<temp->data<<"-->";
+		prev = temp; //pointer to the node prev of temp
+		temp = temp->next;
+	}
 	
+	prev->next = headA; //made the 1 circular sublist -left sublist
+
+
+	cout<<endl;
 	
+	//head of right sublist pointing to temp pointer
+	headB = temp;
+
+		
+	
+	cout<<"Data in right half of sublist is-:"<<endl;
+	
+	while(temp != head)
+	{
+		cout<<temp->data<<"-->";
+		temp=temp->next;
+	}
+	
+	temp->next = headB; //second right circular sublist made
 	
 }
 
@@ -378,10 +403,15 @@ int main() {
 	SortedInsert(&head,1200);
 	SortedInsert(&head,20);	
 	SortedInsert(&head,1300);	
-	
+	SortedInsert(&head,12);	
+		
 		
 	traverseCLL(head);
 	cout<<"\n";
+	
+	cout<<"The sublists are-:"<<endl;
+	DivideCList(head);
+	
 	
 //	DelLast(&head);
 	
