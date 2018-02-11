@@ -25,18 +25,21 @@ int height(struct BinaryTreeNode *root)
 	}
 }
 
+
+
 void TopView(struct BinaryTreeNode *root)
 {
 	if(!root) return;
 	
-	//heights of left and right subtree
-	int hl = height(root->left);
 	
-	int hr = height(root->right);
 	
 	
 	if(root)
 	{
+		//heights of left and right subtree
+		int hl = height(root->left);
+		
+		int hr = height(root->right);
 		cout<<root->data<<" ";
 		
 		if(hl >= hr) TopView(root->left);

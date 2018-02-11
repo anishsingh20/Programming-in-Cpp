@@ -216,6 +216,7 @@ int main()
 	levelOrder(root);
 	cout<<endl;
 	
+	cout<<height(root->left)<<endl;
 	cout<<heightLevelOrder(root);
 	
 	cout<<endl;
