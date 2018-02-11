@@ -30,14 +30,14 @@ void ReverseLevelOrder(struct BinaryTreeNode *root)
 		temp = q.front();
 		q.pop();
 		
-		if(root->left)
+		if(temp->left)
 		{
-			q.push(root->left);
+			q.push(temp->left);
 		}
 		
 		if(root->right)
 		{
-			q.push(root->right);
+			q.push(temp->right);
 		}
 		
 		s.push(temp); //pushing the dequed item to stack
@@ -85,7 +85,7 @@ int main()
 	
 	ReverseLevelOrder(root);
 	
-	DeleteTree(root);
+//	DeleteTree(root);
 	
 	
 	return 0;

@@ -88,6 +88,28 @@ int heightLevelOrder(struct BinaryTreeNode *root)
 }
 
 
+void TopView(struct BinaryTreeNode *root)
+{
+	if(!root) return;
+	
+	//heights of left and right subtree
+	int hl = height(root->left);
+	
+	int hr = height(root->right);
+	
+	
+	if(root)
+	{
+		cout<<root->data<<" ";
+		
+		if(hl >= hr) TopView(root->left);
+		
+		else TopView(root->right);
+	}
+	
+}
+
+
 //function to traverse the tree in level order-BFS
 void levelOrder(struct BinaryTreeNode *root)
 {
@@ -185,16 +207,20 @@ int main()
 	Insert(&root,3);
 	Insert(&root,4);
 	Insert(&root,5);
-	Insert(&root,10);
-	Insert(&root,11);
-	Insert(&root,12);
-	Insert(&root,13);
-	Insert(&root,15);
+	
+//	Insert(&root,11);
+//	Insert(&root,12);
+//	Insert(&root,13);
+//	Insert(&root,15);
 	
 	levelOrder(root);
 	cout<<endl;
 	
 	cout<<heightLevelOrder(root);
+	
+	cout<<endl;
+	
+	TopView(root);
 	
 	return 0;
 }
