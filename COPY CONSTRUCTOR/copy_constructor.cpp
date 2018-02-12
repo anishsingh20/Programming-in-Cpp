@@ -6,6 +6,8 @@
 // due to copy constructor both the objects will contain the member values at different locations and maintain different values-whether the member values
 //are statically allocated or dynamically allocated during runtime
 
+//COPY CONSTRUCTOR-takes parameter as a reference to object of class Person , it should be always constant
+
 using namespace std;
 
 class Person
