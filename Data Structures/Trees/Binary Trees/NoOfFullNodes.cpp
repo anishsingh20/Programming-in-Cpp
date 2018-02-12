@@ -13,9 +13,11 @@ struct BinaryTreeNode{
 
 //1) RECURSIVE APPROACH-similar to finding number of leaf nodes
 
+
+
 int FullNodesRec(struct BinaryTreeNode *root)
 {
-	
+	//Approach 1- Inorder approach
 	int ll,lr;
 	if(!root) return 0;
 	
@@ -34,7 +36,21 @@ int FullNodesRec(struct BinaryTreeNode *root)
 		lr = FullNodesRec(root->right);
 	}
 	
-	return ll+lr;
+	return ll+lr; //sum of FULL nodes in left and right subtrees
+	
+	
+/*approach2-The idea is to traverse the tree in postorder. If the current node is full node, we increment result by 1 and add returned values of left and right subtrees.
+	if (root == NULL)
+       return 0;
+  
+    int res = 0;
+    if  (root->left && root->right) 
+       res++;
+  
+    res += (getfullCount(root->left) + 
+            getfullCount(root->right));
+    return res;
+	*/
 
 
 	
