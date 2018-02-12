@@ -6,6 +6,7 @@ using namespace std;
 class Empty {
 	
 	int *x;
+	int y;
 	public:
 	Empty()
 	{
@@ -15,18 +16,20 @@ class Empty {
 	Empty(int i)
 	{
 		cout<<"Parametric constructor called"<<endl;
-		*(this->x) = i;
+		y = i;
+		
 	}
 		
-	Empty(const Empty &e)
-	{
-		x = new int(*e.x);
-		cout<<"Copy constructor called"<<endl;
-	}
+//	Empty(const Empty &e)
+//	{
+//		x = new int((*e.x) ) ;
+//		cout<<"Copy constructor called"<<endl;
+//	}
 	
 	void get()
 	{
-		cout<<x<<endl;
+		cout<<"y is: "<<y<<endl;
+		
 	}
 	
 };
@@ -35,18 +38,22 @@ class Empty {
 int main()
 {
 
-Empty e ; //defauly constructor called
+Empty e ; //default constructor called
 
-Empty t(20);//parametric constructor called
+Empty t(20);//parametric constructor called -  CONVERSION CONSTRUCTOR
 
-Empty c(t); //copy constructor is called
+t = 100; //changing the value of x; 
 
 
+
+//Empty c(t); //copy constructor is called
+
+cout<<sizeof(Empty)<<endl;
 e.get(); //outputs garbage value
 
 t.get(); //prints 20 at a different address
 
-c.get(); //prints 20 //at a different address
+//c.get(); //prints 20 //at a different address
 
 
 
