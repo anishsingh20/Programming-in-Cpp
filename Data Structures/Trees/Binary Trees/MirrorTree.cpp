@@ -1,8 +1,9 @@
 #include<iostream>
 #include<queue>
-
 using namespace std;
 
+
+//PROGRAM TO GENERATE A MIRROT TREE- i.e exchange the left and the right child nodes 
 
 struct BinaryTreeNode
 {
@@ -11,52 +12,24 @@ struct BinaryTreeNode
 	BinaryTreeNode *right;
 };
 
-
-//Recursive implementation
-int SumRecursive(struct BinaryTreeNode *root)
+//function to find the mirror of a binary tree
+BinaryTreeNode* MirrorTree(struct BinaryTreeNode *root)
 {
-	if(!root) return 0;
-	
-	
-	else {
-//		int leftsum  = SumRecursive(root->left);
-//		int rightsum = SumRecursive(root->right);
-//		return root->data + leftsum + rightsum;
-		
-		//or simply
-		
-		return (root->data + SumRecursive(root->left) +  SumRecursive(root->right));
-	}
-	
-	
-		
-	
-}
-
-//level order
-int SumNodes(struct BinaryTreeNode *root)
-{
-	queue<BinaryTreeNode *>q;
-	BinaryTreeNode *temp;
-	int sum=0;
-	
-	if(!root) return 0;
-	
-	q.push(root);
-	
-	while(!q.empty())
+	struct BinaryTreeNode *temp;
+	if(root)
 	{
-		temp = q.front();
-		q.pop();
 		
-		sum += temp->data;
+		MirrorTree(root->left);
+		MirrorTree(root->right);
 		
-		if(temp->left) q.push(temp->left);
+		//swapping the left and the right nodes
+		temp = root->left;
+		root->left = root->right;
 		
-		if(temp->right) q.push(temp->right);
+		root->right = temp;	
 	}
 	
-	return sum;
+	return root;
 }
 
 
@@ -111,7 +84,6 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
-
 void PreOrderRec(struct BinaryTreeNode *root)
 {
 	if(root)
@@ -126,8 +98,10 @@ void PreOrderRec(struct BinaryTreeNode *root)
 
 
 
+
 int main()
 {
+	
 	struct BinaryTreeNode *root1=NULL;
 	
 	Insert(&root1,1);
@@ -137,11 +111,12 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	
+	PreOrderRec(root1);
 	
-	cout<<SumNodes(root1);
 	cout<<endl;
-	cout<<SumRecursive(root1);
-	
 
+	MirrorTree(root1);	
+
+	PreOrderRec(root1);
 	return 0;
 }
