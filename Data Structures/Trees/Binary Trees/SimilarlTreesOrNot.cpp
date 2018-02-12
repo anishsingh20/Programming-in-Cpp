@@ -17,7 +17,7 @@ struct BinaryTreeNode
 
 bool similarTrees(struct BinaryTreeNode *rootA, struct BinaryTreeNode *rootB)
 {
-	bool left,right;
+	
 
 	//if both empty
 	if(rootA==NULL && rootB==NULL)  return true;
@@ -29,6 +29,7 @@ bool similarTrees(struct BinaryTreeNode *rootA, struct BinaryTreeNode *rootB)
 //	return (rootA->data==rootB->data && similarTrees(rootA->left,rootB->left) && similarTrees(rootA->right,rootB->right));	
 	if(rootA->data == rootB->data)
 	{
+		bool left,right;
 		//recur to left subtree and check
 		left = similarTrees(rootA->left,rootB->left);
 		
