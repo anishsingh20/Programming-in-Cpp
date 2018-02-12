@@ -133,7 +133,7 @@ int DelPos(int pos) {
 	
 	
 	//loop to keep track of the prev node to the node to be deleted to adjust the next pointer of prev node
-	for(int i=1;i<pos-1;i++)
+	for(int i=1 ; i < pos-1 ; i++)
 	{
 		prev=prev->next;
 	}
