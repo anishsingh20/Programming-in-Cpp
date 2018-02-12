@@ -20,7 +20,10 @@ int heightTree(struct BinaryTreeNode *root)
 	return 1 + max( heightTree(root->left),heightTree(root->right));
 }
 
+//Recursive Implementation 
 
+
+//Method-1
 int Diameter(struct BinaryTreeNode *root)
 {
 	if(!root) return 0;
@@ -32,6 +35,27 @@ int Diameter(struct BinaryTreeNode *root)
 	int dright = Diameter(root->right);
 	
 	return max(hleft + 1 + hright , max(dleft,dright) ); 
+	
+}
+
+//Method-2
+
+int DiameterTree(struct BinaryTreeNode *root,int *ptr)
+{
+	if(!root) return 0;
+	
+	
+	
+	int left = DiameterTree(root->left,ptr);
+	int right = DiameterTree(root->right,ptr);
+	
+	if( left + right > *ptr)
+	{
+		*ptr = left+right;
+	}
+	return max(left,right) + 1;
+	
+	
 	
 }
 
@@ -102,8 +126,9 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);	
-	cout<<Diameter(root1);
+	cout<<Diameter(root1)<<endl;
 	
+
 	
 	return 0;
 }
