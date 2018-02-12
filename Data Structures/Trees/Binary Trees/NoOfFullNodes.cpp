@@ -51,12 +51,38 @@ int FullNodesRec(struct BinaryTreeNode *root)
             getfullCount(root->right));
     return res;
 	*/
-
-
-	
-	
 }
 
+
+
+//simple iterative approach
+int FullNodesUsingLevelOrder(struct BinaryTreeNode *root)
+{
+	queue<BinaryTreeNode *> q;
+	BinaryTreeNode *temp;
+	int count=0;
+	
+	if(!root) return 0;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		
+		temp = q.front();
+		q.pop();
+		
+		//count full nodes
+		if(temp->left && temp->right) count++;
+		
+		if(temp->left) q.push(temp->left);
+		
+		if(temp->right) q.push(temp->right);
+	}
+	
+	
+	return count;
+}
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -124,7 +150,9 @@ int main()
 	Insert(&root,6);
 	Insert(&root,7);
 	
-	cout<<FullNodesRec(root);
+	cout<<FullNodesRec(root)<<endl;
+	
+	cout<<FullNodesUsingLevelOrder(root);
 	
 	return 0;
 }
