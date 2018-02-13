@@ -47,47 +47,89 @@ BinaryTreeNode *FindNode(struct BinaryTreeNode *root,int data)
 }
 
 
-
-
-BinaryTreeNode *DeleteNode(struct BinaryTreeNode **root,int data)
+struct BinaryTreeNode * DeepestNode(struct BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
 	BinaryTreeNode *temp;
+	if(!root) return NULL;
 	
-	 BinaryTreeNode *del_node = FindNode(*root,data);
-	 
-	 if(!*root) return NULL;
-	 
-	 q.push(*root);
-	 
-	 while(!q.empty())
-	 {
-	 	temp = q.front();
-	 	q.pop();
-	 	
-	 	if(temp->left) q.push(temp->left);
-	 	
-	 	if(temp->right) q.push(temp->right);
-	 	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp->left) 
+		{
+			q.push(temp->left);
+		
+		}
+		
+		if(temp->right)
+		{
+			q.push(temp->right);
+		
+		}
 	}
 	
+	return temp;
+}
+
+
+
+
+
+struct BinaryTreeNode *DeleteNode(struct BinaryTreeNode *root,int data)
+{
 	
-	//if the node to be deleted in simply the deepest node-no need to swap data
-	if(del_node==temp)
+	if(!root) return NULL;
+	
+	 
+	//finding deepest node in Tree
+	BinaryTreeNode *temp = DeepestNode(root); //O(n)
+
+	//finding the node to be deleted
+	BinaryTreeNode *del_node = FindNode(root,data); //O(n)
+	 
+	 if(del_node==temp)
 	{
 		free(del_node);
 		
 	}
-	else {
+	
+	
+	
 		swap(del_node->data,temp->data);
 		cout<<"Deleted: "<<temp->data;
 		free(temp);
-	}
+		
 	
 	
 	
 	
-	return *root;
+	 
+	 
+//	 q.push(*root);
+//	 
+//	 while(!q.empty())
+//	 {
+//	 	temp = q.front();
+//	 	q.pop();
+//	 	
+//	 	if(temp->left) q.push(temp->left);
+//	 	
+//	 	if(temp->right) q.push(temp->right);
+//	 	
+//	}
+	
+	
+	//if the node to be deleted in simply the deepest node-no need to swap data
+	
+	
+	
+	
+	return root;
 }
 
 
@@ -198,12 +240,18 @@ int main()
 	Insert(&root1,4);
 	Insert(&root1,5);
 	Insert(&root1,6);
+	Insert(&root1,7);
+	
+	
+	
+	
 	
 	levelOrder(root1);
 	
 	cout<<endl;
 	
-	DeleteNode(&root1,2);
+	
+	
 	
 	cout<<endl;
 	
