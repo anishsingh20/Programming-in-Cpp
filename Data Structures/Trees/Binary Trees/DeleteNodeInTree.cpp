@@ -82,55 +82,41 @@ struct BinaryTreeNode * DeepestNode(struct BinaryTreeNode *root)
 
 struct BinaryTreeNode *DeleteNode(struct BinaryTreeNode *root,int data)
 {
-	
 	if(!root) return NULL;
 	
-	 
 	//finding deepest node in Tree
 	BinaryTreeNode *temp = DeepestNode(root); //O(n)
-
+	
 	//finding the node to be deleted
 	BinaryTreeNode *del_node = FindNode(root,data); //O(n)
-	 
-	 if(del_node==temp)
-	{
-		free(del_node);
-		
-	}
+		 
 	
 	
+	
+	 	if(del_node==temp)
+	 	{
+	 		free(del_node);
+	 		
+		 }
 	
 		swap(del_node->data,temp->data);
 		cout<<"Deleted: "<<temp->data;
-		free(temp);
+		free(temp);	
 		
-	
-	
-	
-	
-	 
-	 
-//	 q.push(*root);
-//	 
-//	 while(!q.empty())
-//	 {
-//	 	temp = q.front();
-//	 	q.pop();
-//	 	
-//	 	if(temp->left) q.push(temp->left);
-//	 	
-//	 	if(temp->right) q.push(temp->right);
-//	 	
-//	}
-	
-	
-	//if the node to be deleted in simply the deepest node-no need to swap data
-	
-	
-	
-	
-	return root;
+
+	 return root;
 }
+	
+	
+	
+	
+	
+	 
+	 
+
+	
+	
+	
 
 
 void levelOrder(struct BinaryTreeNode *root)
@@ -251,7 +237,7 @@ int main()
 	cout<<endl;
 	
 	
-	
+	DeleteNode(root1,3);
 	
 	cout<<endl;
 	

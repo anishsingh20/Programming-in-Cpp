@@ -42,11 +42,6 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 			 if(left) return left;
 			 
 			 else return  findParentNode(root->right,data);
-			
-			
-			
-			
-			
 		}
 	}
 	
@@ -55,16 +50,16 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 
 
 
+
+
 //finding ancestors of a node
 bool findAncestors(struct BinaryTreeNode *root,int data)
 {
-
 	if(root)
-	
 	{
 	
 
-		if(root->data == data || root->data==data)
+		if(root->data == data)
 		{
 			return true;
 		}
@@ -72,8 +67,8 @@ bool findAncestors(struct BinaryTreeNode *root,int data)
 		//else recur down to the left and right subtrees
 		else 
 		{
-			bool left = findParentNode(root->left,data);
-			bool right = findParentNode(root->right,data);
+			bool left = findAncestors(root->left,data);
+			bool right = findAncestors(root->right,data);
 			
 			if(left || right) 
 			{
@@ -157,7 +152,10 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 	
-	cout<<findParentNode(root1,7)->data;
+	cout<<findParentNode(root1,5)->data;
+	cout<<endl;
+	
+	findAncestors(root1,5);
 
 return 0;	
 }
