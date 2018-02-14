@@ -12,26 +12,33 @@ struct BinaryTreeNode{
 };
 
 
-//Recursive appraoch - Inorder approach 
+//Recursive appraoch
 int HalfRec(struct BinaryTreeNode *root)
 {
+	static int count = 0 ;
 	if(!root) return 0;
 	
-	int hl=0,hr=0;
-	
-	hl = HalfRec(root->left);
-	if( (root->left==NULL && root->right) || ( root->right==NULL && root->left ) )
+	else
 	{
-		hl++;
-		hr++;
+		if(!root->left && root->right || !root->right && root->left)
+		{
+			count++; //count of half nodes
+		}
+		
+		//recur down to left and right subtrees and check for the above condition
+		HalfRec(root->left);
+		HalfRec(root->right);
+		
+	
 	}
-	hr = HalfRec(root->right);
+	
+	return count;
 	
 	
 	
 	
-	return hl+hr;
 	
+		
 //Approach 2 -The idea is to traverse the tree in postorder. If current node is half, we increment result by 1 and add returned values of left and right subtrees.
 //if (root == NULL)
 //       return 0;

@@ -485,7 +485,6 @@ int countOccUsingRecursion(Node *head,int data)
 			count++;
 		}
 		
-		
 		//otherwise recursively traverse the list and check for matches and increment count 
 		countOccUsingRecursion(head->next,data);
 			

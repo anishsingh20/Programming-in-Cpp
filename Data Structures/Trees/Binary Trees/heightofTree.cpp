@@ -22,17 +22,21 @@ int height(struct BinaryTreeNode *root)
 	
 	else
         {
-            htL = height(root->left);
-            htR = height(root->right);
-            
-            if(htL < htR)
-            {
-            	return (1 + htR);
-	    }
-	    else
-	    {
-	    	return (1 + htL);
-	    }
+        	
+        	return 1 + max(height(root->left),height(root->right)) ;
+        	
+        	//or 
+//            htL = height(root->left);
+//            htR = height(root->right);
+//            
+//            if(htL < htR)
+//            {
+//            	return (1 + htR);
+//	    }
+//	    else
+//	    {
+//	    	return (1 + htL);
+//	    }
 	    
         }
         
@@ -216,7 +220,7 @@ int main()
 	levelOrder(root);
 	cout<<endl;
 	
-	cout<<height(root->left)<<endl;
+	cout<<height(root)<<endl;
 	cout<<heightLevelOrder(root);
 	
 	cout<<endl;
