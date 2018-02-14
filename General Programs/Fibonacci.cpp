@@ -21,8 +21,11 @@ ll FibonacciRec(int n)
 	 	return FibonacciRec(n-1)  + FibonacciRec(n-2);
 	 }
 	
-}
-
+} 
+/*Time comlexity eqn  = T(n-1) + T(n-2) + O(1) , on solving the recurrence relation we get O(2^n)
+//What this means is, the time taken to calculate fib(n) is equal to the sum of time taken to calculate subproblems fib(n-1) and fib(n-2). 
+This also includes the constant time to perform the previous addition-but the tight upper bound complexity is O((1.1680)^n) .
+*/
 
 int fibonacci(int n) {
 	long long int a=0,b=1,c=0;
