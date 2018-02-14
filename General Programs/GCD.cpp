@@ -4,6 +4,16 @@
 //GCD- HCF of of 2 numbers is the largest possible number which divides both the numbers-ie without leaving any remainder
 using namespace std;
 
+
+
+//recursive function to find GCD of 2 numbers
+int GCDRecursive(int a , int b)
+{
+	if(b!=0) return GCDRecursive(b, a%b );
+	else return a;
+	
+}
+
 int GCD(int a, int b) {
 	
 	//converting negetive inputs to positive
@@ -27,6 +37,10 @@ int main() {
 
 	int gcd = GCD(120,72);
 	cout<<"The HCF is :"<<gcd; 
+	
+	cout<<endl;
+	
+	cout<<GCDRecursive(120,72);
 	
 	return 0;
 }

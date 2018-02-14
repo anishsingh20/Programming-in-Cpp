@@ -5,10 +5,29 @@ using namespace std;
 //printing the fibonacci sequence
 //next number  p(n+1) = p(n) + p(n-1)
 
-void fibonacci(int n) {
-	long long int a=0,b=1,c;
+#define ll long long
+
+
+//construct a recusion tree to better understand this concept
+ll FibonacciRec(int n)
+{
+	if (n==1 ||  n==2)
+	 {
+	 	return 1;
+	 }
+	 
+	 else {
+	 	
+	 	return FibonacciRec(n-1)  + FibonacciRec(n-2);
+	 }
 	
-	for(int i=0 ; i < n ; i++) {
+}
+
+
+int fibonacci(int n) {
+	long long int a=0,b=1,c=0;
+	
+	for(int i=1 ; i < n ; i++) {
 		
 		
 		c = a+b;
@@ -16,16 +35,22 @@ void fibonacci(int n) {
 		b=c;
 		
 		//or b=a and then a=c
-		cout<<c<<endl;
-		
+//		cout<<c<<endl; to print the complete sequence
+ 		
 		
 		
 	}
+	
+	return c;
 }
 
 int main()  {
 	
-	fibonacci(10);
+	cout<<fibonacci(10);
+	
+	cout<<endl;
+	
+	cout<<FibonacciRec(10);
 	
 	
 	return 0;
