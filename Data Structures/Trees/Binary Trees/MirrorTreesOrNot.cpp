@@ -1,9 +1,9 @@
 #include<iostream>
 #include<queue>
+
 using namespace std;
 
-
-//PROGRAM TO GENERATE A MIRROT TREE- i.e exchange the left and the right child nodes 
+//PROGRAM TO CHECK IF 2 TREES ARE MIRROR OF EACH OTHER 
 
 struct BinaryTreeNode
 {
@@ -12,28 +12,30 @@ struct BinaryTreeNode
 	BinaryTreeNode *right;
 };
 
-//function to find the mirror of a binary tree
-BinaryTreeNode* MirrorTree(struct BinaryTreeNode *root)
-{
-	struct BinaryTreeNode *temp;
-	if(root)
-	{
-		//swapping the left and the right nodes
-		temp = root->left;
-		root->left = root->right;
-		
-		root->right = temp;	
-		
-		//now simply recursing down to left and right subtrees and swapping
-		MirrorTree(root->left);
-		MirrorTree(root->right);
-		
-		
-	}
-	
-	return root;
-}
 
+//recursive program to find if 2 trees are Mirrors of each other or not
+bool MirrorOrNot(struct BinaryTreeNode *root1, struct BinaryTreeNode *root2)
+{
+	if(!root1  && !root2) return true;
+	
+	if(!root1 || !root2) return false;
+	
+
+	if(root1->data != root2->data) return false;
+	
+	else return MirrorOrNot(root1->left,root2->right) && MirrorOrNot(root1->right,root2->left);
+	
+//	else 
+//	{
+//		bool left = MirrorOrNot(root1->left,root2->right);
+//		
+//		bool right = MirrorOrNot(root1->right,root2->left);
+//		
+//		if(left&&right) return true;
+//	}
+	
+
+}
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -86,25 +88,12 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
-void PreOrderRec(struct BinaryTreeNode *root)
-{
-	if(root)
-	{
-		cout<<root->data<<" ";
-		PreOrderRec(root->left);
-		PreOrderRec(root->right);
-	}
-	
-	
-}
-
-
-
 
 int main()
 {
 	
 	struct BinaryTreeNode *root1=NULL;
+	struct BinaryTreeNode *root2 =NULL;
 	
 	Insert(&root1,1);
 	Insert(&root1,2);
@@ -112,13 +101,20 @@ int main()
 	Insert(&root1,4);
 	Insert(&root1,5);
 	Insert(&root1,6);
+	Insert(&root1,7);
 	
-	PreOrderRec(root1);
+
+
+	Insert(&root2,1);
+	Insert(&root2,3);
+	Insert(&root2,2);
+	Insert(&root2,7);
+	Insert(&root2,6);
+	Insert(&root2,5);
+	Insert(&root2,4);
+		
+	cout<<MirrorOrNot(root1,root2);
 	
-	cout<<endl;
-
-	MirrorTree(root1);	
-
-	PreOrderRec(root1);
+	
 	return 0;
 }
