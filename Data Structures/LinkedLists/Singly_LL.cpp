@@ -469,12 +469,38 @@ int MiddleNode(struct Node **head,int start=0)
 }
 
 
+
+int countOccUsingRecursion(Node *head,int data)
+{
+
+//	if(!head) return 0;
+	//need to use static variable- ot maintain 1 copy of count
+	static int count = 0 ;
+	
+	if(head)
+	{
+	
+		if((head)->data==data)
+		{
+			count++;
+		}
+		
+		//otherwise recursively traverse the list and check for matches and increment count 
+		
+		countOccUsingRecursion(head->next,data);
+			
+	}
+	
+	return count;
+	
+}
+
 void CountOccurence(struct Node **head,int data) 
 {
 	int count = 0 ;
 	
 	Node *temp=*head;
-	Node *temp1;
+
 	
 	if(*head==NULL) {
 		return ;
@@ -534,6 +560,7 @@ int main() {
 	sortedInsert(&head,10);
 	sortedInsert(&head,9);
 	sortedInsert(&head,9);
+	
 	sortedInsert(&head,20);
 	sortedInsert(&head,2);
 	sortedInsert(&head,51);
@@ -553,7 +580,12 @@ int main() {
 //	
 //	cout<<listlength(head)<<endl;
 	
+	cout<<endl;
 	CountOccurence(&head,9);
+	
+	cout<<endl;
+	
+	cout<<countOccUsingRecursion(head,10);
 	
 	
 //	cout<<listlength(n1)<<endl;

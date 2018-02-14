@@ -37,6 +37,30 @@ using namespace std;
 
 
 //METHOD-2 to find LCM 
+
+int LCMRecursive(int a, int b)
+{
+	//static variable lcm to maintain just one copy of the lcm variable
+	static int lcm = 1;
+	
+	//lcm will increment until it is divisible by both a and b
+	if(lcm%a==0 && lcm%b==0) return lcm;
+	
+	else
+	{
+		
+		lcm++;
+		//recur until lcm variable becomes divisible by a and b
+		LCMRecursive(a,b);
+	}
+		
+		
+
+	
+	
+	
+}
+
 int LCM(int a,int b) {
 	int lcm;
 	
@@ -70,6 +94,10 @@ int main() {
 	int lcm = LCM(-72,-120);
 	
 	cout<<"The LCM is:"<<lcm;
+	
+	cout<<endl;
+	
+	cout<<LCMRecursive(72,120);
 	
 	return 0;
 }
