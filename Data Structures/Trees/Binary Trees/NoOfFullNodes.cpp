@@ -18,28 +18,45 @@ struct BinaryTreeNode{
 int FullNodesRec(struct BinaryTreeNode *root)
 {
 	//Approach 1- Inorder approach
-	int ll,lr;
+//	int ll,lr;
+//	if(!root) return 0;
+//	
+//	
+//	else{
+//		
+//		//first recur to the left subtree and count full nodes
+//		ll = FullNodesRec(root->left);
+//		
+//		if(root->left && root->right)
+//		{
+//			ll++; //increment 
+//			lr++;
+//		}
+//		//go to the right subtree and find Full nodes
+//		lr = FullNodesRec(root->right);
+//	}
+//	
+//	return ll+lr; //sum of FULL nodes in left and right subtrees
+
+
+//Approach 2- static counter approach
+	
+	static int count = 0;
 	if(!root) return 0;
-	
-	
-	else{
+	else
+	{
+		if(root->left && root->right) count++;
 		
-		//first recur to the left subtree and count full nodes
-		ll = FullNodesRec(root->left);
+		//recur down to left and right subtrees
+		FullNodesRec(root->left);
+		FullNodesRec(root->right);
 		
-		if(root->left && root->right)
-		{
-			ll++; //increment 
-			lr++;
-		}
-		//go to the right subtree and find Full nodes
-		lr = FullNodesRec(root->right);
 	}
+	return count;
 	
-	return ll+lr; //sum of FULL nodes in left and right subtrees
 	
-	
-/*approach2-The idea is to traverse the tree in postorder. If the current node is full node, we increment result by 1 and add returned values of left and right subtrees.
+/*approach3-without using a static counter var
+The idea is to traverse the tree in postorder. If the current node is full node, we increment result by 1 and add returned values of left and right subtrees.
 	if (root == NULL)
        return 0;
   
