@@ -482,8 +482,9 @@ int countOccUsingRecursion(Node *head,int data)
 	
 		if((head)->data==data)
 		{
-			return 1;
+			count++;
 		}
+		
 		
 		//otherwise recursively traverse the list and check for matches and increment count 
 		countOccUsingRecursion(head->next,data);
