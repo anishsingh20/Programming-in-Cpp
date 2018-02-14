@@ -43,7 +43,7 @@ int LCMRecur(int a, int b)
 	//static variable lcm to maintain just one copy of the lcm variable
 	static int lcm = 1;
 	
-	//lcm will increment until it is divisible by both a and b
+	//lcm will increment until it is prefectly divisible by both a and b or is  multiple of a and b
 	if(lcm%a==0 && lcm%b==0) return lcm;
 	
 	else

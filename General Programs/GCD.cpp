@@ -9,8 +9,10 @@ using namespace std;
 //recursive function to find GCD of 2 numbers
 int GCDRecur(int a , int b)
 {
-	if(b!=0) return GCDRecursive(b, a%b );
+	
+	if(b!=0) return GCDRecur(b, a%b );
 	else return a;
+	
 	
 }
 
