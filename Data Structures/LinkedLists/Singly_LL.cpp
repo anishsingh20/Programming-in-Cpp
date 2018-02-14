@@ -482,7 +482,7 @@ int countOccUsingRecursion(Node *head,int data)
 	
 		if((head)->data==data)
 		{
-			return 1;
+			count++;
 		}
 		
 		//otherwise recursively traverse the list and check for matches and increment count 
@@ -559,10 +559,10 @@ int main() {
 	sortedInsert(&head,10);
 	sortedInsert(&head,9);
 	sortedInsert(&head,9);
-	
 	sortedInsert(&head,20);
 	sortedInsert(&head,2);
 	sortedInsert(&head,51);
+	sortedInsert(&head,9);
 	sortedInsert(&head,6);
 	sortedInsert(&head,61);
 	sortedInsert(&head,10);
@@ -584,7 +584,7 @@ int main() {
 	
 	cout<<endl;
 	
-	cout<<countOccUsingRecursion(head,10);
+	cout<<countOccUsingRecursion(head,9);
 	
 	
 //	cout<<listlength(n1)<<endl;
