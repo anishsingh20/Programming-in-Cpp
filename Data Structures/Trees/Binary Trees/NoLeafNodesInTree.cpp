@@ -49,45 +49,66 @@ int LeafNodesUsingLevelOrder(struct BinaryTreeNode *root)
 
 int leafNodesRecursion(struct BinaryTreeNode *root)
 {
-//	int lr=0,ll=0;
-
+/*	int lr=0,ll=0;
+METHOD-1
 	
 		
-//	if(root)
-//	{
-//		ll = leafNodesRecursion(root->left);
-//		if(root->left==NULL && root->right==NULL)
-//		{
-//			lr++;
-//			ll++;
-//			
-//			
-//		}
-//		lr = leafNodesRecursion(root->right);
-//	
-//		
-//		
-//		
-//		
-//	}	
-//	
-//	return (ll+lr);	 leaf = total leaf nodes in left subtree  + leaf in right subtree
-
-	if(root->right==NULL && root->left==NULL)
+	if(root)
 	{
-		return 1;
+		ll = leafNodesRecursion(root->left);
+		if(root->left==NULL && root->right==NULL)
+		{
+			lr++;
+			ll++;
+			
+			
+		}
+		lr = leafNodesRecursion(root->right);
+	
+		
+		
+		
+		
+	}	
+	
+	return (ll+lr);	 leaf = total leaf nodes in left subtree  + leaf in right subtree
+*/
+
+//Method-2 (Using a static count variable)
+	static int count = 0; 
+	if(root)
+	{
+		if(root->right==NULL && root->left==NULL)
+		{
+			count++;
+		}
+	
+		//otherwise simply traverse to the left and right subtrees
+		leafNodesRecursion(root->left);
+		leafNodesRecursion(root->right);
+		
 	}
 	
-	else {
-		int ll = leafNodesRecursion(root->left); //number of leaf nodes in left subtree
-		int lr = leafNodesRecursion(root->right);//number of leaf nodes in right subtree
+	return count;
+	
+	
+/*method 3
+	if(root)
+	{
+		if(root->left==NULL && root->right==NULL)
+		{
+			return 1;
+		}
 		
-		return ll+lr;
-		
+		else
+		{
+			return leafNodesRecursion(root->left) + leafNodesRecursion(root->right);
+				
+		}
 	}
 
 	
-	
+*/	
 	
 }
 

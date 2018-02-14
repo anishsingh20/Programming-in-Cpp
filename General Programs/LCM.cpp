@@ -36,7 +36,7 @@ using namespace std;
 //}
 
 
-//METHOD-2 to find LCM 
+//METHOD-2 to find LCM recursively and iteratively
 
 int LCMRecursive(int a, int b)
 {
@@ -54,12 +54,9 @@ int LCMRecursive(int a, int b)
 		LCMRecursive(a,b);
 	}
 		
-		
-
-	
-	
-	
 }
+
+
 
 int LCM(int a,int b) {
 	int lcm;
@@ -97,7 +94,7 @@ int main() {
 	
 	cout<<endl;
 	
-	cout<<LCMRecursive(72,120);
+	cout<<LCMRecursive(3,4);
 	
 	return 0;
 }

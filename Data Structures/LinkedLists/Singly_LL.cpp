@@ -474,7 +474,7 @@ int countOccUsingRecursion(Node *head,int data)
 {
 
 //	if(!head) return 0;
-	//need to use static variable- ot maintain 1 copy of count
+	//need to use static variable- to maintain 1 copy of count
 	static int count = 0 ;
 	
 	if(head)
@@ -482,11 +482,10 @@ int countOccUsingRecursion(Node *head,int data)
 	
 		if((head)->data==data)
 		{
-			count++;
+			return 1;
 		}
 		
 		//otherwise recursively traverse the list and check for matches and increment count 
-		
 		countOccUsingRecursion(head->next,data);
 			
 	}
