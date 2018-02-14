@@ -7,7 +7,7 @@ using namespace std;
 
 
 //recursive function to find GCD of 2 numbers
-int GCDRecursive(int a , int b)
+int GCDRecur(int a , int b)
 {
 	if(b!=0) return GCDRecursive(b, a%b );
 	else return a;
@@ -40,7 +40,7 @@ int main() {
 	
 	cout<<endl;
 	
-	cout<<GCDRecursive(120,72);
+	cout<<GCDRecur(120,72);
 	
 	return 0;
 }
