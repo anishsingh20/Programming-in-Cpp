@@ -4,6 +4,7 @@ using namespace std;
 
 //UGLY NUMBERS program-finding Nth sequence of ugly number
 
+//METHOD-1 BRUTE FORCE APPROACH
 
 //function which divides a numeber a by greatest divisible power fo b 
 int greatestDivide(int a, int b)
@@ -31,7 +32,7 @@ int CheckUgly(int n)
 int getNthUglyNo(int n)
 {
 
-	int i=1;
+	int i=1;//ugly number sequence
 	int count = 1; //ugly number count
 	
 	while(n > count)
@@ -47,7 +48,7 @@ int getNthUglyNo(int n)
 
 	return i;	
 
-}
+}//TIME COMPLEXITY  = O(n) , Space complexity = O(1)
 
 
 
