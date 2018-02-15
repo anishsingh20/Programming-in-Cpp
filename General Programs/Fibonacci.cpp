@@ -8,7 +8,7 @@ using namespace std;
 #define ll long long
 
 
-//construct a recusion tree to better understand this concept
+//construct a recusion tree to better understand this concept- REcursive implementation is very inefficient for Fibonacci sequence and is an Exponential time algorithm-O(2^n)
 ll FibonacciRec(int n)
 {
 	if (n==1 ||  n==2)
@@ -45,15 +45,15 @@ int fibonacci(int n) {
 	}
 	
 	return c;
-}
+} //TIME COMPLEXITY- O(n)- linear algorithm
 
 int main()  {
 	
-	cout<<fibonacci(10);
+	cout<<fibonacci(1000000000);
 	
 	cout<<endl;
 	
-	cout<<FibonacciRec(10);
+//	cout<<FibonacciRec(50);
 	
 	
 	return 0;

@@ -23,16 +23,17 @@ bool MirrorOrNot(struct BinaryTreeNode *root1, struct BinaryTreeNode *root2)
 
 	if(root1->data != root2->data) return false;
 	
-	else return MirrorOrNot(root1->left,root2->right) && MirrorOrNot(root1->right,root2->left);
+//	else
+//		 return MirrorOrNot(root1->left,root2->right) && MirrorOrNot(root1->right,root2->left);
+//	
 	
-//	else 
-//	{
-//		bool left = MirrorOrNot(root1->left,root2->right);
-//		
-//		bool right = MirrorOrNot(root1->right,root2->left);
-//		
-//		if(left&&right) return true;
-//	}
+		
+		bool left = MirrorOrNot(root1->left,root2->right);
+		
+		bool right = MirrorOrNot(root1->right,root2->left);
+		
+		if(left&&right) return true;
+	
 	
 
 }
