@@ -8,11 +8,8 @@ using namespace std;
 //function which divides a numeber a by greatest divisible power fo b 
 int greatestDivide(int a, int b)
 {
-		while(a%b==0)
-		{
-			a = a/b;
-			
-		}
+	while(a%b==0)
+		a=a/b;
 		
 	return a;
 }
@@ -27,29 +24,28 @@ int CheckUgly(int n)
 	n = greatestDivide(n,5);
 	
 	return (n==1) ? 1 : 0;
+
 } //when we finally get 1 this means it is a ugly number
 
 
 int getNthUglyNo(int n)
 {
-//	if(n==0) return 0;
-//	if(n <= 6) return n;
+
 	int i=1;
 	int count = 1; //ugly number count
 	
-	while(n>count)
+	while(n > count)
 	{
-		i++;	
-		if(CheckUgly(i)==1)
+		i++;
+		if(CheckUgly(i))
 		{
 			count++;		
 		}
 		
-		return i;
-		
+				
 	}	
 
-	
+	return i;	
 
 }
 
@@ -59,6 +55,6 @@ int main()
 {
 
 
-	cout<<CheckUgly(17);
+	cout<<getNthUglyNo(150);
 		
 }
