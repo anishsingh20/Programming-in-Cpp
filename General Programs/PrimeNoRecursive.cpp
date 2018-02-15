@@ -7,8 +7,6 @@ using namespace std;
 int PrimeRec(int n,int i=2)
 {
 	
-	//corner cases
-	if(n==0 || n==1 || n%i == 0) return 0;
 	
 
 	//will recur until i < n and check for the condition defined inside
@@ -17,14 +15,19 @@ int PrimeRec(int n,int i=2)
 		if(n%i!=0)
 		{
 			
-			return PrimeRec(n,++i);
+			return PrimeRec(n,i++);
 			
 			
 		} 
-		
+		//case when n is divisible by i-//base condition
+		else
+			return 0;
+			
 	}
 	
-	return 1;		
+	//control comes here when above n > i becomes false
+	return 1;
+	
 	
 } //TIME COMPLEXITY - O(n)
 
@@ -32,6 +35,6 @@ int PrimeRec(int n,int i=2)
 int main()
 {
 
-	cout<<PrimeRec(0);
+	cout<<PrimeRec(14);
 		
 }
