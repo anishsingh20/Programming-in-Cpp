@@ -36,6 +36,10 @@ int ModExpo(int x, int n , int M)
 	}
 }
 
+//TIme complexity  = O(logn) , as T(n) = T(n/2) + c for n = even
+//for n=odd , T(n) = T(n-1) + c2, so upper bound we consider T(n) = T(n/2) + C ,
+//on solving the above recurrence relation we get T(N) =  O(logn)
+
 int main()
 {
 	
