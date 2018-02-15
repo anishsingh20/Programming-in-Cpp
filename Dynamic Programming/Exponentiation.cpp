@@ -13,8 +13,8 @@ long long int Pow(int x,int n)
 		return 1;
 		
 	return x*Pow(x,n-1);
-} //Time complexity  = O(n) = linear , but very high SPACE COMPLEXITY
-
+} //Time complexity  = O(n) = linear , but very high SPACE COMPLEXITY due to very large recursion tree proportional to n
+//So the stack space required to store the state of function calls is proportional to n
 
 //Method-2 , more efficient, LESSER SPACE COMPLEXITY due to lesser funcition calls states stored in stack 
 long long int Pow1(int x,int n)
