@@ -139,17 +139,19 @@ int FindLCAsimple(struct BinaryTreeNode *root,BinaryTreeNode *n1, BinaryTreeNode
 	if(root==NULL)
 		return -1;
 	
-	//if n2 is left or right child of n1, then n1 is the LCA
-	if(n1->left==n2 || n1->right==n2) return n1->data;
 	
-	//if n1 is left or right child of n2, then n2 is the LCA
-	if(n2->left==n1 || n2->right==n1) return n2->data;
 	
 	//if both nodes n1 and n2 have same parents- then return their parent as in this case it is their LCA
 	if(parent1==parent2)
 	{
 		return parent1->data;
 	}
+	
+	//if n2 is left or right child of n1, then n1 is the LCA
+	if(n1->left==n2 || n1->right==n2) return n1->data;
+	
+	//if n1 is left or right child of n2, then n2 is the LCA
+	if(n2->left==n1 || n2->right==n1) return n2->data;
 	
 	
 	//if none of the conditions is true , then the LCA of n1 and n2 is the root node obviously
@@ -209,17 +211,49 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
+
+//Method 3- using a single traversal
+
+BinaryTreeNode *FindLCAusingSingleTraversal(struct BinaryTreeNode *root, int n1,int n2)
+{
+	
+	if( !FindNode(root,n1) && !FindNode(root,n2))
+		return NULL;
+	
+	
+	
+		//base condition
+		if(root==NULL) return NULL;
+		
+		if(root->data==n1 || root->data==n2)
+		 	return root;
+		
+		//otherwise recur down to left and right subtrees
+		BinaryTreeNode *left = FindLCAusingSingleTraversal(root->left,n1,n2);
+		BinaryTreeNode *right = FindLCAusingSingleTraversal(root->right,n1,n2);
+		
+		//if both left and right funcion calls return non-NULL then we have found the LCA , and its is their parent
+		if(left&&right)	return root;
+		
+		return (left) ? left : right;
+
+	
+	
+	
+}
+
+
 int main()
 {
-//	struct BinaryTreeNode *root1=NULL;
-//	
-//	Insert(&root1,1);
-//	Insert(&root1,2);
-//	Insert(&root1,3);
-//	Insert(&root1,4);
-//	Insert(&root1,5);
-//	Insert(&root1,6);
-//	Insert(&root1,7);
+	struct BinaryTreeNode *root1=NULL;
+	
+	Insert(&root1,1);
+	Insert(&root1,2);
+	Insert(&root1,3);
+	Insert(&root1,4);
+	Insert(&root1,5);
+	Insert(&root1,6);
+	Insert(&root1,7);
 
 	struct BinaryTreeNode *root = new BinaryTreeNode();
 	struct BinaryTreeNode *r1 = new BinaryTreeNode();
@@ -251,7 +285,12 @@ int main()
 	r5->right  = r6->right  = NULL;	
 	
 		
-	cout<<FindLCAsimple(root,r3,r6);
+	cout<<FindLCAsimple(root,r1,r3);
+	
+	cout<<endl;
+	
+	
+	cout<<FindLCAusingSingleTraversal(root1,2,7)->data;
 	
 	return 0;
 }
