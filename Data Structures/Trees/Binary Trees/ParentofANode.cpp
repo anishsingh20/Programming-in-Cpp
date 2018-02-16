@@ -48,7 +48,7 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 }
 
 
-
+//level order method to find the parent of a node
 bool FindParentUsingLevelOrder(struct BinaryTreeNode *root,int data)
 {
 	if(!root)
