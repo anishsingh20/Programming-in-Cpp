@@ -16,23 +16,28 @@ struct BinaryTreeNode
 //recursive program to find if 2 trees are Mirrors of each other or not
 bool MirrorOrNot(struct BinaryTreeNode *root1, struct BinaryTreeNode *root2)
 {
+	//base condition
 	if(!root1  && !root2) return true;
 	
 	if(!root1 || !root2) return false;
 	
 
+	//condition to check if the 2 roots are same or not
 	if(root1->data != root2->data) return false;
 	
 //	else
 //		 return MirrorOrNot(root1->left,root2->right) && MirrorOrNot(root1->right,root2->left);
 //	
 	
-		
+		//now recur down to left and right of 1 and 2 trees
 		bool left = MirrorOrNot(root1->left,root2->right);
 		
 		bool right = MirrorOrNot(root1->right,root2->left);
-		
-		if(left&&right) return true;
+		return left&&right;
+		//OR we can also do below
+		//if both left and right 
+//		if(left&&right) return true;
+//		else return false;
 	
 	
 

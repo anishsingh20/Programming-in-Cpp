@@ -8,16 +8,17 @@ using namespace std;
 string ReverseRec(string str)
 {
 	
-	static int i=0,j=str.size()-1;
-	if(i==j) return str;
+ 	static int i=0,j=str.size()-1;
+	
+	//base condition-terminating condition -recursion stops here
+	if(i>j) return str; //or when i==j
 			
-	else
-	{
+	
 		swap(str[i],str[j]);
 		i++;
 		j--;
 		return ReverseRec(str);
-	}	
+		
 		
 }
 

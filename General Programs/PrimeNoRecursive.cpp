@@ -6,9 +6,6 @@ using namespace std;
 
 int PrimeRec(int n,int i=2)
 {
-	
-	
-
 	//will recur until i < n and check for the condition defined inside
 	if( n > i)
 	{
