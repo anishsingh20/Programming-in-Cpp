@@ -14,26 +14,37 @@ struct BinaryTreeNode{
 //Revirsive implementation
 bool FindNode(struct BinaryTreeNode *root, int data)
 {
-	bool temp;
-	if(root!=NULL)
-	{
-		if(data==root->data)
-		{
-			return true;
-		}
-		else
-		{
-			temp =  FindNode(root->left,data);
-			if(temp) return temp;
-			
-			//otherwise search in right subtree
-			else return FindNode(root->right,data);
-		}	
-	}
+//	bool temp;
+//	if(root!=NULL)
+//	{
+		//if data present at root
+//		if(data==root->data)
+//		{
+//			return true;
+//		}
+//		else
+//		{
+//			temp =  FindNode(root->left,data);
+//			if(temp) return temp;
+//			
+//			//otherwise search in right subtree
+//			else return FindNode(root->right,data);
+//		}	
+//	}
+//	
+//	else
+//		return false;
+
+//Method2- 
+
+	if(root==NULL) return false;
 	
-	else
-		return false;
-	
+	/// If key is present at root, or in left subtree or right subtree,
+    // return true;
+	if(root->data==data || FindNode(root->left,data) || FindNode(root->right,data))
+		return true;
+		
+	else return false;
 }
 
 
@@ -102,14 +113,17 @@ int main()
 	r2->left = r5;
 	r2->right = r6;
 	
-	if(FindInTreeUsingLevelOrder(root,100))
-	{
-		cout<<"Found"<<endl;
-	}
-	else
-	{
-		cout<<"Not found"<<endl;
-	}
-	
+//	if(FindInTreeUsingLevelOrder(root,100))
+//	{
+//		cout<<"Found"<<endl;
+//	}
+//	else
+//	{
+//		cout<<"Not found"<<endl;
+//	}
+
+	//boolalpha is a manipulator
+//	cout.setf(ios::boolalpha); - to set the flag
+	cout<<boolalpha<<FindNode(root,7);
 	return 0;
 }

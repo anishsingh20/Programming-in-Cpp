@@ -25,7 +25,7 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 //		return NULL;
 		
 
-	else
+	if(root)
 	
 	{
 	
@@ -36,13 +36,12 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 		}
 		
 		//else recur down to the left and right subtrees
-		else 
-		{
+		
 			 BinaryTreeNode *left = findParentNode(root->left,data);
 			 if(left) return left;
 			 
 			 else return  findParentNode(root->right,data);
-		}
+		
 	}
 	
 	
@@ -152,10 +151,10 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 	
-	cout<<findParentNode(root1,7)->data;
+	cout<<findParentNode(root1,5)->data;
 	cout<<endl;
 	
-	findAncestors(root1,5);
+	findAncestors(root1,7);
 
 return 0;	
 }
