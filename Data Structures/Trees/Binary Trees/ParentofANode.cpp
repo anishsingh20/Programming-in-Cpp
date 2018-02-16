@@ -152,7 +152,7 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 	
-	cout<<findParentNode(root1,5)->data;
+	cout<<findParentNode(root1,7)->data;
 	cout<<endl;
 	
 	findAncestors(root1,5);
