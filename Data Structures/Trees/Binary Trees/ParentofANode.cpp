@@ -49,6 +49,36 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 
 
 
+bool FindParentUsingLevelOrder(struct BinaryTreeNode *root,int data)
+{
+	if(!root)
+		return false;
+		
+	queue<BinaryTreeNode *> q;
+	BinaryTreeNode *temp;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp=q.front();
+		q.pop();
+		
+		if(temp->left->data==data || temp->right->data==data)
+		{
+			cout<<temp->data;
+			return true;
+			
+		}
+		
+		if(temp->left)	q.push(temp->left);
+		
+		if(temp->right)	q.push(temp->right);
+	}
+	
+	return false;
+}
+
 
 
 //finding ancestors of a node
@@ -150,11 +180,15 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);
+	Insert(&root1,8);
+	Insert(&root1,9);
+	Insert(&root1,10);
+	Insert(&root1,11);
 	
-	cout<<findParentNode(root1,5)->data;
+	cout<<findParentNode(root1,11)->data;
 	cout<<endl;
 	
-	findAncestors(root1,7);
+	FindParentUsingLevelOrder(root1,8);
 
 return 0;	
 }
