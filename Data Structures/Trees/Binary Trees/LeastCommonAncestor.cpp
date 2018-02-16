@@ -233,7 +233,7 @@ BinaryTreeNode *FindLCAusingSingleTraversal(struct BinaryTreeNode *root, int n1,
 		BinaryTreeNode *right = FindLCAusingSingleTraversal(root->right,n1,n2);
 		
 		//if both left and right funcion calls return non-NULL then we have found the LCA , and its is their parent
-		if(left&&right)	return root;
+		if(left && right)	return root;
 		
 		return (left) ? left : right;
 

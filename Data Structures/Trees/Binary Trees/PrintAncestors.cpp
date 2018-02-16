@@ -40,46 +40,21 @@ bool FindAncestors(struct BinaryTreeNode *root,int data)
 }
 
 
-int LevelOrderAncestors(struct BinaryTreeNode *root,int data)
+bool PrintAncestors(struct BinaryTreeNode *root,int data)
 {
-	if(!root) return 0;
-	
-	queue<BinaryTreeNode *> q;
-	BinaryTreeNode *temp,*temp1;
-	vector<int> v;
+	if(root==NULL) return false;
 	
 	
-	q.push(root);
-	v.push_back(root->data);
 	
-	while(!q.empty())
+	if(root->left->data==data || root->right->data==data || PrintAncestors(root->left,data) || PrintAncestors(root->right,data))
 	{
-		temp = q.front();
-		q.pop();
-
-			if(temp->left->data==data || temp->right->data==data)
-			{
-			
-				v.push_back(temp->data);
-				vector<int>::iterator i;
-				for(i=v.begin();i!=v.end();i++)
-				{
-					cout<<*i<<" ";	
-				}
-				return 1;	
-			}
-		
-		
-		if(temp->left)	q.push(temp->left);
-			
-		if(temp->right) q.push(temp->right);
-		
-	
-		
+		cout<<root->data<<" ";
+		return true;
 	}
 	
-	return 0;
+	return false;
 }
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -155,6 +130,7 @@ int main()
 	
 	cout<<endl;
 	
-	LevelOrderAncestors(root1,11);
+	PrintAncestors(root1,7);
+	
 	return 0;
 }
