@@ -53,17 +53,18 @@ int FindLCA(struct BinaryTreeNode *root,int n1, int n2)
 		return -1;
 	
 	//compare the paths to get first different value
+	//Traverse both paths till the values in arrays are same. Return the common element just before the mismatch.
 	int i;
 	for(i=0;i<path1.size() && i<path2.size();i++)
 	{
-		if(path1[i]==path2[i])
+		//stay inside the loop and iterate until we have same nodes in both path vectors
+		if(path1[i]!=path2[i])
 			break;
-		
-		else
-			return path1[i-1];
-
 	}
-	
+	//after coming out of loop  return 
+	cout<<i<<endl;	
+	return path1[i-1];
+
 	
 }
 
@@ -129,8 +130,9 @@ int main()
 	Insert(&root1,4);
 	Insert(&root1,5);
 	Insert(&root1,6);
+	Insert(&root1,7);
 	
-	cout<<FindLCA(root1,5,6);
+	cout<<FindLCA(root1,4,5);
 	
 	return 0;
 }
