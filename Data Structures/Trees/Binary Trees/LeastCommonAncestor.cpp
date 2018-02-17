@@ -77,7 +77,7 @@ int FindLCA(struct BinaryTreeNode *root,int n1, int n2)
 
 
 //function to find the parent of a node
-struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
+int findParentNode(struct BinaryTreeNode *root,int data)
 {
 	
 	//checking if root is NULL
@@ -97,12 +97,12 @@ struct BinaryTreeNode *findParentNode(struct BinaryTreeNode *root,int data)
 		//checking for root's left and right subtree to avoid errors
 		if( root->left && root->left->data == data || root->right &&  root->right->data==data)
 		{
-			return root;
+			return root->data;
 		}
 		
 		//else recur down to the left and right subtrees
 		
-			 BinaryTreeNode *left = findParentNode(root->left,data);
+			 int left = findParentNode(root->left,data);
 			 if(left) return left;
 			 
 			 else return  findParentNode(root->right,data);
@@ -139,8 +139,8 @@ int FindLCAsimple(struct BinaryTreeNode *root,BinaryTreeNode *n1, BinaryTreeNode
 	}
 		
 	
-	BinaryTreeNode *parent1 = findParentNode(root,n1->data);
-	BinaryTreeNode *parent2 = findParentNode(root,n2->data);
+	int parent1 = findParentNode(root,n1->data);
+	int parent2 = findParentNode(root,n2->data);
 	
 	if(root==NULL)
 		return -1;
@@ -150,7 +150,7 @@ int FindLCAsimple(struct BinaryTreeNode *root,BinaryTreeNode *n1, BinaryTreeNode
 	//if both nodes n1 and n2 have same parents- then return their parent as in this case it is their LCA
 	if(parent1==parent2)
 	{
-		return parent1->data;
+		return parent1;
 	}
 	
 	//if n2 is left or right child of n1, then n1 is the LCA
@@ -338,10 +338,10 @@ int main()
 	r5->left  = r6->left  = NULL;
 	r5->right  = r6->right  = NULL;	
 	
-//		
-//	cout<<FindLCAsimple(root,r1,r3);
-//	
-//	cout<<endl;
+		
+	cout<<FindLCAsimple(root,r5,r6);
+	
+	cout<<endl;
 	
 	
 	cout<<FindLCAusingSingleTraversal(root1,2,7)->data;
