@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<queue>
+#include<map>
 
 /*Program to find least common ancestor of 2 nodes
 
@@ -9,13 +10,18 @@ Method-1 ) a) Finding paths from root to node n1 , and root to node n2 ad strori
 	   
 This method does 2 traversals of tree to store the paths and then consumes extra memory due to involvement of storing paths
 Time complexity=O(n)
+
+
+METHOD 2 )FINDING PARENTS 
+METHOD 3) SINGLE TRAVERSAL
+METHOD 4) USING PARENT POINTER AND MAPS 
 */
 
 using namespace std;
 
 struct BinaryTreeNode{
 	int data;
-	BinaryTreeNode *left;
+	BinaryTreeNode *left,*parent;
 	BinaryTreeNode *right;
 };
 
@@ -185,9 +191,10 @@ void Insert( struct BinaryTreeNode **root,int data)
 		if(temp->left==NULL)
 		{
 			temp->left = new_node;
+			new_node->parent = temp;
 			return;
 			
-			
+			    
 		}
 		
 		else
@@ -198,6 +205,7 @@ void Insert( struct BinaryTreeNode **root,int data)
 		if(temp->right==NULL)
 		{
 			temp->right = new_node;
+			new_node->parent = temp;
 			return;
 			
 		}	
@@ -243,6 +251,41 @@ BinaryTreeNode *FindLCAusingSingleTraversal(struct BinaryTreeNode *root, int n1,
 }
 
 
+
+//Method-4 using a simple Hash Map to store all ancestors of n1 and then finding the firt matching parent with n2
+
+BinaryTreeNode *findLCAParentPointer(BinaryTreeNode *n1,BinaryTreeNode *n2)
+{
+	
+	if(!n1 || !n2) return NULL;
+	map<BinaryTreeNode *,bool> m;
+	
+	//insert all ancestors of n1 into  map
+	while(n1!=NULL)
+	{
+		m[n1] = true;
+		n1 = n1->parent;
+	}
+	
+	//checking if n2 or any of its ancestors is in map
+	while(n2!=NULL)
+	{
+		if(m.find(n2) != m.end())
+			return n2;
+		
+		
+		n2 = n2->parent;
+	}
+	
+	
+	
+} 
+/*Time complexity = O(hlogh) , as maps are implemented using BST, so each of its operation such as insertion , deletion ,findind is
+O(logh), and then we traverse the tree from bottom to root fashion fidning parents nodes. This method is efficient but it consumes some extra
+memory & space due to involment of maps
+*/
+
+
 int main()
 {
 	struct BinaryTreeNode *root1=NULL;
@@ -255,6 +298,7 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 
+
 	struct BinaryTreeNode *root = new BinaryTreeNode();
 	struct BinaryTreeNode *r1 = new BinaryTreeNode();
 	struct BinaryTreeNode *r2 = new BinaryTreeNode();
@@ -266,11 +310,20 @@ int main()
 	
 	root->data = 1;
 	r1->data = 2;
+	r1->parent = root;
 	r2->data = 3;
+	r2->parent = root;
+	
 	r3->data = 4;
+	r3->parent = r1;
 	r4->data = 5;
+	r4->parent = r1;
+	
 	r5->data = 6;
+	r5->parent = r2;
 	r6->data = 7;
+	
+	r6->parent = r2;
 	
 	root->left  = r1;
 	root->right = r2;
@@ -284,14 +337,17 @@ int main()
 	r5->left  = r6->left  = NULL;
 	r5->right  = r6->right  = NULL;	
 	
-		
-	cout<<FindLCAsimple(root,r1,r3);
-	
-	cout<<endl;
+//		
+//	cout<<FindLCAsimple(root,r1,r3);
+//	
+//	cout<<endl;
 	
 	
 	cout<<FindLCAusingSingleTraversal(root1,2,7)->data;
 	
+	cout<<endl;
+	
+	cout<<findLCAParentPointer(r5,r6)->data;
 	return 0;
 }
 

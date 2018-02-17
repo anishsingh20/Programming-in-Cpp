@@ -35,6 +35,10 @@ bool FindAncestors(struct BinaryTreeNode *root,int data)
 			
 		}
 		
+		
+		
+		
+		
 			
 		
 }
@@ -130,7 +134,7 @@ int main()
 	
 	cout<<endl;
 	
-	PrintAncestors(root1,7);
+//	PrintAncestors(root1,7);
 	
 	return 0;
 }

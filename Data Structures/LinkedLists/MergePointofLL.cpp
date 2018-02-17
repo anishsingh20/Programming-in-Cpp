@@ -95,6 +95,40 @@ Node *FindMergePointUsingSet(Node *headA , Node *headB) {
 
 
 
+//Recursive implementation to find merge point of 2 linked lists
+int MergePointRecursion(Node *headA, Node *headB)
+{
+	//base condition
+	if(headA==NULL && headB==NULL)
+		return 0;
+				
+	if(headA==headB)
+	{
+//		cout<<headA->data;
+		return headA->data;
+	}
+		
+	if(headA && headB)
+	{
+		
+		//recursively traverse the list A and compare the addresses
+	
+		int A = MergePointRecursion(headA->next,headB);
+		
+		if(A) 
+		{
+			return A;
+		}
+		
+		//recursively traverse the list B and compare the addresses
+		else return MergePointRecursion(headA,headB->next);
+	}
+	
+	
+}
+
+
+
 //Method-3 :BEST POSSIBLE SOLUTION
 
 Node *FindMergePointUsingDiff(Node *headA, Node *headB) {
@@ -129,7 +163,6 @@ Node *FindMergePointUsingDiff(Node *headA, Node *headB) {
 		//comparing the address in lists
 		if(headA==headB) {
 	
-			cout<<headA->data<<endl;
 			return headA;
 		}
 		headA = headA->next;
@@ -152,7 +185,7 @@ int main() {
 	
 	n1->data = 1;
 	n2->data = 3;
-	n3->data = 4;
+	n3->data = 10;
 	n4->data = 6;
 	
 	//creating links
@@ -184,7 +217,10 @@ int main() {
 	n3->next = NULL;
 	
 	
-	cout<<FindMergePointUsingDiff(n1,m1);
+	cout<<FindMergePointUsingDiff(n1,m1)->data;
+	cout<<endl;
+	
+	cout<<MergePointRecursion(n1,m1);
 	//in this case the Merge point is node n3 which is common in both
 
 	
