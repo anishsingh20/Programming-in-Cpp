@@ -263,8 +263,9 @@ BinaryTreeNode *findLCAParentPointer(BinaryTreeNode *n1,BinaryTreeNode *n2)
 	//insert all ancestors of n1 into  map
 	while(n1!=NULL)
 	{
-		m[n1] = true;
-		n1 = n1->parent;
+		//inserting inside the map 
+		m.insert(make_pair(n1,true)); //can also do m[n1] = true
+ 		n1 = n1->parent;
 	}
 	
 	//checking if n2 or any of its ancestors is in map
