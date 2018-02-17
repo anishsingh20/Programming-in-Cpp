@@ -2,7 +2,7 @@
 #include<stack>
 #include<queue>
 
-//PROGRAM TO TRAVERSE A TREE IN ZIG ZAG FASHION-using 2 stacks to store current level nodes and next level nodes
+//PROGRAM TO TRAVERSE A TREE IN SPIRAL FASHION-using 2 stacks. One to print from left to right order, and other to print from right to left order
 using namespace std;
 
 
@@ -12,40 +12,40 @@ struct BinaryTreeNode{
 	BinaryTreeNode *right;
 };
 
-void ZigZag(BinaryTreeNode *root)
+
+
+///We will use 2 stacks, One stack to print data from left to right, another satck to print data from right to left order
+void SpiralTraversal(BinaryTreeNode *root)
 {
 	if(!root) return;
+	BinaryTreeNode  *temp;
+	stack<BinaryTreeNode *>s1; //stack to print from right to left
+	stack<BinaryTreeNode *>s2;//satck to print from left to right
 	
-	stack<BinaryTreeNode *>currLevel;
-	stack<BinaryTreeNode *>nextLevel;
-	bool leftToright  = true;
+	s1.push(root);
 	
-	currLevel.push(root);
-	
-	while(!currLevel.empty())
+	while(!s1.empty() || !s2.empty() )
 	{
-		BinaryTreeNode *temp = currLevel.top();
-		currLevel.pop();
-		
-		if(temp)
+		while(!s1.empty())
 		{
+			temp = s1.top();
+			s1.pop();
 			cout<<temp->data<<" ";
-			if(leftToright)
-			{
-				if(temp->left) nextLevel.push(temp->left);
-				if(temp->right) nextLevel.push(temp->right);	
-			}
 			
-			else {
-				if(temp->right) nextLevel.push(temp->right);
-				if(temp->left) nextLevel.push(temp->left);
-			}
+			if(temp->right) s2.push(temp->right);
+			if(temp->left)  s2.push(temp->left);
 		}
-		
-		if(currLevel.empty())
+	
+		while(!s2.empty())	
 		{
-			leftToright = false;
-			swap(currLevel,nextLevel);
+			temp = s2.top();
+			s2.pop();
+			
+			cout<<temp->data<<" ";
+			
+			if(temp->left) s1.push(temp->left);
+			
+			if(temp->right) s1.push(temp->right);
 		}
 	}
 	
@@ -104,29 +104,6 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 //TIME COMPLEXITY = O(N) ,  SPACE COMPLEXITY = O(n)
 
-int ZigZagRec(struct BinaryTreeNode *root)
-{
-	bool leftToright = true;
-	
-	if(!root) return 0;
-	if(root)
-	{
-		
-		if(leftToright)
-		{
-			
-			
-			ZigZagRec(root->left);
-			
-			ZigZagRec(root->right);
-			
-			
-			
-		}
-	}
-	
-	return 1;
-}
 
 int main()
 {
@@ -139,12 +116,10 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);
+
+	
+	SpiralTraversal(root1);
 	
 	
-	ZigZag(root1);
-	
-	cout<<endl;
-	
-	ZigZagRec(root1);	
 	return 0;
 }
