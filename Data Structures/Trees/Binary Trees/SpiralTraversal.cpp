@@ -52,6 +52,16 @@ void SpiralTraversal(BinaryTreeNode *root)
 	
 }
 
+
+//Recursive implementation
+bool SpiralRec(struct BinaryTreeNode *root)
+{
+	
+	
+}
+
+
+
 	
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -119,6 +129,10 @@ int main()
 
 	
 	SpiralTraversal(root1);
+	
+	cout<<endl;
+	
+	SpiralRec(root1);
 	
 	
 	return 0;
