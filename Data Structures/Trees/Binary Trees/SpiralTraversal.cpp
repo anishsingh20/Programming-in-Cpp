@@ -2,7 +2,10 @@
 #include<stack>
 #include<queue>
 
-//PROGRAM TO TRAVERSE A TREE IN SPIRAL FASHION-using 2 stacks. One to print from left to right order, and other to print from right to left order
+/*PROGRAM TO TRAVERSE A TREE IN SPIRAL FASHION- at eac level we need to print data in alternating order
+a) Using 2 stacks. One to print from left to right order, and other to print from right to left order-T(n) = O(n)
+b) Usig recursive implementation-T(n) = O(n^2)
+*/
 using namespace std;
 
 
@@ -11,6 +14,67 @@ struct BinaryTreeNode{
 	BinaryTreeNode *left,*parent;
 	BinaryTreeNode *right;
 };
+
+//b) Recursive Implementation
+
+//function to get the height of tree
+int heightTree(struct BinaryTreeNode *root)
+{
+	if(root==NULL) return 0;
+	
+	else return (1 + max(heightTree(root->left),heightTree(root->right ) ) );
+}
+
+void printTree(struct BinaryTreeNode *root,int level, bool ltr)
+{
+	//base condition
+	if(root==NULL) return;
+	
+	
+	if(level==0) 
+	{
+		cout<<root->data<<" ";
+	}
+		
+	else if(level  > 0 )
+	{
+		//if order is to traverse from left to right
+		if(ltr)
+		{
+			printTree(root->left,level-1,ltr);
+			printTree(root->right,level-1,ltr);	
+		}
+		
+		//when order is to print from right to left
+		else
+		{
+			printTree(root->right,level-1,ltr);
+			printTree(root->left,level-1,ltr);
+		}
+	}
+}
+
+
+
+
+void PrintSpiral(struct BinaryTreeNode* root)
+{
+	if(root==NULL) return;
+	
+	bool ltr = false;//after visiting each level we will reverse it
+	
+	int ht_tree = heightTree(root);//finding height of tree
+	
+	for(int level = 0 ; level < ht_tree ; level++)
+	{
+		printTree(root,level,ltr);
+		ltr = !ltr;//revrsing ltr order for printing in revrese order at next level
+	}
+}
+
+
+
+
 
 
 
@@ -129,6 +193,9 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 
+	printTree(root1,2,true);
+	
+	cout<<endl;
 	
 	SpiralTraversal(root1);
 	
