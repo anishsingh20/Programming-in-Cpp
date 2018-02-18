@@ -19,12 +19,13 @@ int heightTree(struct BinaryTreeNode *root)
 		return (1+max(heightTree(root->left),heightTree(root->right)) );
 }
 
-struct BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
+BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 {
 	//base condition
 	if(root==NULL) return NULL;
 	
-	//finding depths or heighs of left and right subtrees
+	
+	//finding depths or heights of left and right subtrees
 	int hsl = heightTree(root->left);
 	int hsr = heightTree(root->right);
 	
@@ -36,10 +37,29 @@ struct BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 	
 	if(hsl > hsr)
 		return DeepestLeftLeaf(root->left);
-	else 
-		return DeepestLeftLeaf(root->right);
+	
+	//if height of right subtree is more, then go and search in right subtree
+	else if(hsr > hsl)
+	{
+		return DeepestLeftLeaf(root->right->left);
+		
+	}
+			
+	//if heights of left an right subtrees are same then
+	else return DeepestLeftLeaf(root->left);
 		
 }
+
+
+//Using level order taversal technique
+BinaryTreeNode *DeepestLeftLeafLevelOrder(BinaryTreeNode *root)
+{
+	BinaryTreeNode *temp;
+	queue<BinaryTreeNode *>q;
+	
+	if(root==NULL) return NULL;
+}
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -109,7 +129,17 @@ int main()
 	struct BinaryTreeNode *r3 = new BinaryTreeNode();
 	struct BinaryTreeNode *r4 = new BinaryTreeNode();
 	struct BinaryTreeNode *r5 = new BinaryTreeNode();
-	struct BinaryTreeNode *r6 = new BinaryTreeNode();	
+	struct BinaryTreeNode *r6 = new BinaryTreeNode();
+	struct BinaryTreeNode *r7 = new BinaryTreeNode();
+	struct BinaryTreeNode *r8 = new BinaryTreeNode();
+	struct BinaryTreeNode *r9 = new BinaryTreeNode();
+	struct BinaryTreeNode *r10 = new BinaryTreeNode();
+		
+	
+			
+	
+
+	
 	
 	root->data = 1;
 	r1->data = 2;
@@ -118,15 +148,27 @@ int main()
 	r4->data = 5;
 	r5->data = 6;
 	r6->data = 7;
+	r7->data = 8;
+	r8->data = 9;
+	r9->data = 10;
+	r10->data = 11;
+	
 	
 	root->left  = r1;
 	root->right = r2;
 	
 	r1->left = r3;
-	r1->right = r4;
+
 	
-	r2->left = r5;
-	r5->left = r6;
+	r2->left = r4;
+	r2->right = r5;
+	
+	r4->right = r6;
+	r6->left  = r8;
+	
+	r5->right = r7;
+	r7->right = r9;
+	r9->left = r10;
 	
 //	r5->left  = r6->left  = NULL;
 //	r5->right  = r6->right  = NULL;		
