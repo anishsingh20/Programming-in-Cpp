@@ -21,6 +21,8 @@ void SpiralTraversal(BinaryTreeNode *root)
 	BinaryTreeNode  *temp;
 	stack<BinaryTreeNode *>s1; //stack to print from right to left
 	stack<BinaryTreeNode *>s2;//satck to print from left to right
+/*the concept is , if we want to print in left to right order, then in the stack first we need to push the right child first and then on top should be the
+left child.So this will preserve as stack will print in reverse order*/  
 	
 	s1.push(root);
 	
