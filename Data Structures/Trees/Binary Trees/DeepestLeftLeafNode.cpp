@@ -6,7 +6,7 @@ using namespace std;
 
 struct BinaryTreeNode{
 	int data;
-	BinaryTreeNode *left,*parent;
+	BinaryTreeNode *left;
 	BinaryTreeNode *right;
 };
 
@@ -52,12 +52,38 @@ BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 
 
 //Using level order taversal technique
-BinaryTreeNode *DeepestLeftLeafLevelOrder(BinaryTreeNode *root)
+struct BinaryTreeNode *DeepestLeftLeafLevelOrder(struct BinaryTreeNode *root)
 {
-	BinaryTreeNode *temp;
+	struct BinaryTreeNode *temp;
+	BinaryTreeNode *leftLeaf=NULL;
 	queue<BinaryTreeNode *>q;
 	
-	if(root==NULL) return NULL;
+	if(!root) return NULL;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		// Since we go level by level, the last 
+        	// stored left leaf node is deepest one,
+		if(temp->left)
+		{
+			q.push(temp->left);
+			leftLeaf = temp->left; //the deepest left leaf node
+		}
+		
+		if(temp->right)
+		{
+			q.push(temp->right);
+		}
+		
+	}
+	
+	return leftLeaf;
+	
 }
 
 
@@ -158,21 +184,38 @@ int main()
 	root->right = r2;
 	
 	r1->left = r3;
+	r1->right=NULL;
 
+	r3->left = NULL;
+	r3->right=NULL;
 	
 	r2->left = r4;
 	r2->right = r5;
 	
 	r4->right = r6;
-	r6->left  = r8;
+	r4->left = NULL;
+	
+	r6->left = NULL;
+	r6->right  = r8;
 	
 	r5->right = r7;
+	r5->left = NULL;
 	r7->right = r9;
-	r9->left = r10;
+	r7->left = NULL;
+	r9->right = r10;
+	r9->left = NULL;
 	
 //	r5->left  = r6->left  = NULL;
 //	r5->right  = r6->right  = NULL;		
 	
-	cout<<DeepestLeftLeaf(root)->data;
+//	cout<<DeepestLeftLeaf(root)->data;
+	
+	cout<<endl;
+	
+	BinaryTreeNode *result = DeepestLeftLeafLevelOrder(root);
+	
+	if(result) cout<<result->data;
+	else cout<<"Not found";
+	
 	return 0;
 }
