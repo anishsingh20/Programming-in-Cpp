@@ -14,11 +14,24 @@ struct Node {
 //function to return the SIZE of tree - number of descendants of root including itself
 int countRec(struct Node *root)
 {
+	//need to declare static variable
+	static int size=0;
 	
 	if(root)
 	{
-		return (1 + countRec(root->left) + countRec(root->right) );
+		size++;
+		countRec(root->left)  ;
+		countRec(root->right) ;
 	}
+	
+	return size;
+	
+	
+	/*method -2
+	
+	if(root)
+		return (1 + countRec(root->left)  + countRec(root->right));
+	*/
 	
 }
 
@@ -128,8 +141,9 @@ int main()
 	Insert(&root,5);
 	Insert(&root,10);
 	Insert(&root,23);
+	Insert(&root,43);
 		
-	cout<<SizeofTree(root);
+	cout<<countRec(root);
 	
 	cout<<endl;
 	

@@ -14,7 +14,7 @@ struct BinaryTreeNode{
 
 
 
-///We will use 2 stacks, One stack to print data from left to right, another satck to print data from right to left order
+///We will use 2 stacks, One stack to print data from left to right, another stack to print data from right to left order
 void SpiralTraversal(BinaryTreeNode *root)
 {
 	if(!root) return;
