@@ -2,13 +2,53 @@
 #include<queue>
 
 using namespace std;
-
+//finding deepest left leaf node in a binary tree using simple level order taversal
 
 struct BinaryTreeNode{
 	int data;
 	BinaryTreeNode *left;
 	BinaryTreeNode *right;
 };
+
+
+
+//Using level order taversal technique
+struct BinaryTreeNode *DeepestLeftLeafLevelOrder(struct BinaryTreeNode *root)
+{
+	struct BinaryTreeNode *temp;
+	BinaryTreeNode *leftLeaf=NULL;
+	queue<BinaryTreeNode *>q;
+	
+	if(!root) return NULL;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		// Since we go level by level, the last 
+        	// stored left leaf node is deepest one,
+		if(temp->left)
+		{
+			q.push(temp->left);
+			leftLeaf = temp->left; //the deepest left leaf node
+		}
+		
+		if(temp->right)
+		{
+			q.push(temp->right);
+		}
+		
+	}
+	
+	return leftLeaf;
+	
+}
+
+
+
 
 //finding height of tree
 int heightTree(struct BinaryTreeNode *root)
@@ -51,40 +91,6 @@ BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 }
 
 
-//Using level order taversal technique
-struct BinaryTreeNode *DeepestLeftLeafLevelOrder(struct BinaryTreeNode *root)
-{
-	struct BinaryTreeNode *temp;
-	BinaryTreeNode *leftLeaf=NULL;
-	queue<BinaryTreeNode *>q;
-	
-	if(!root) return NULL;
-	
-	q.push(root);
-	
-	while(!q.empty())
-	{
-		temp = q.front();
-		q.pop();
-		
-		// Since we go level by level, the last 
-        	// stored left leaf node is deepest one,
-		if(temp->left)
-		{
-			q.push(temp->left);
-			leftLeaf = temp->left; //the deepest left leaf node
-		}
-		
-		if(temp->right)
-		{
-			q.push(temp->right);
-		}
-		
-	}
-	
-	return leftLeaf;
-	
-}
 
 
 void Insert( struct BinaryTreeNode **root,int data)
