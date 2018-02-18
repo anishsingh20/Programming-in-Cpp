@@ -11,6 +11,39 @@ struct BinaryTreeNode{
 };
 
 
+
+int heightTree(BinaryTreeNode *root)
+{
+	if(root==NULL) return 0;
+	
+	else
+		return (1 + max(heightTree(root->left),heightTree(root->right)));
+}
+
+//recursive program to find the deepst node in the tree
+struct BinaryTreeNode *DeepestNodeRec(struct BinaryTreeNode *root)
+{
+	//base condition
+	if(root==NULL)	return NULL;
+	
+	//finding depths or height of left and right subtrees and moving in the direction of max depth
+	int ht_ls = heightTree(root->left);
+	int ht_rs = heightTree(root->right);
+	
+	//if a deepest leaf node condition
+	if(root->left==NULL && root->right==NULL)
+	{
+		return root;
+	}
+	
+	if(ht_rs > ht_ls) return DeepestNodeRec(root->right);
+	
+	else return DeepestNodeRec(root->left);
+	
+	
+	
+}
+
 struct BinaryTreeNode * DeepestNode(struct BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
@@ -166,7 +199,7 @@ int main()
 	r2->left = r5;
 	r2->right = r6;
 	
-	r5->left  = r7;
+	r3->left  = r7;
 	
 	r7->left  = r6->left = NULL ;
 	r7->right  = NULL;
@@ -177,8 +210,14 @@ int main()
 	
 	cout<<endl;
 	
+	cout<<heightTree(root->right)<<endl;
+	
 	cout<<"The deepest Node us->"<<endl;
 	cout<<DeepestNode(root)->data;
+	cout<<endl;
+	
+	
+	cout<<DeepestNodeRec(root)->data;
 	
 	
 	return 0;
