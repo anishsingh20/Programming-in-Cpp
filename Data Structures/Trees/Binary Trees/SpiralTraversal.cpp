@@ -15,7 +15,7 @@ struct BinaryTreeNode{
 	BinaryTreeNode *right;
 };
 
-//b) Recursive Implementation
+//METHOD-1 : USING RECURSION and LEVEL ORDER TRAVERSAL
 
 //function to get the height of tree
 int heightTree(struct BinaryTreeNode *root)
@@ -25,6 +25,8 @@ int heightTree(struct BinaryTreeNode *root)
 	else return (1 + max(heightTree(root->left),heightTree(root->right ) ) );
 }
 
+
+//level wise traversal using recursion
 void printTree(struct BinaryTreeNode *root,int level, bool ltr)
 {
 	//base condition
@@ -68,7 +70,7 @@ void PrintSpiral(struct BinaryTreeNode* root)
 	for(int level = 0 ; level < ht_tree ; level++)
 	{
 		printTree(root,level,ltr);
-		ltr = !ltr;//revrsing ltr order for printing in revrese order at next level
+		ltr = !ltr;//reversing ltr order for printing in revrese order at next level
 	}
 }
 
@@ -77,6 +79,8 @@ void PrintSpiral(struct BinaryTreeNode* root)
 
 
 
+
+//METHOD-2 USING 2 STACKS
 
 ///We will use 2 stacks, One stack to print data from left to right, another stack to print data from right to left order
 void SpiralTraversal(BinaryTreeNode *root)
@@ -117,15 +121,6 @@ left child.So this will preserve as stack will print in reverse order*/
 	
 	
 }
-
-
-//Recursive implementation
-bool SpiralRec(struct BinaryTreeNode *root)
-{
-	
-	
-}
-
 
 
 	
@@ -193,15 +188,15 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 
-	printTree(root1,2,true);
+
+	cout<<"Using Recursive implementation"<<endl;
+	PrintSpiral(root1);
 	
 	cout<<endl;
 	
+	cout<<"Implementation using stacks"<<endl;
 	SpiralTraversal(root1);
 	
-	cout<<endl;
-	
-	SpiralRec(root1);
 	
 	
 	return 0;
