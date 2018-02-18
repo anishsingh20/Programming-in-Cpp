@@ -73,6 +73,7 @@ void PrintSpiral(struct BinaryTreeNode* root)
 		ltr = !ltr;//reversing ltr order for printing in revrese order at next level
 	}
 }
+//TIME COMPLEXITY = O(n^2), space complexity = O(n) for stack space for storing recursion calls
 
 
 
