@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include<iomanip>
 
 using namespace std;
 
@@ -20,10 +21,27 @@ int main()
 		cout<<"Writing data to file"<<endl;
 		
 		//now as many time we re-run the program the below statement is goind to be appended to the file
-		file << "Hi I am Anish."<<endl;
-		cout<<file.tellp();
-		cout<<file.tellg();
+		file << "Hi I am Anish Singh Walia."<<endl;
+		cout<<file.tellp()<<endl;
+		cout<<file.tellg()<<endl;// get position currently set to last position
 		
+		//we need to manually set get position to 0 to read data from file from beginning
+		file.seekg(0);
+		file.seekp(0);
+		
+		
+		
+		//reading from the file
+		while(!file.eof())
+		{
+			string line;
+			
+			getline(file,line);
+			
+			cout<<line<<endl;
+			
+		}
+		cout<<boolalpha<<file.eof();
 		
 		file.close();
 	}
