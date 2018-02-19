@@ -45,6 +45,51 @@ void printTree(struct BinaryTreeNode *root,int level, bool ltr)
 }
 
 
+//function the get the height of tree
+int height(BinaryTreeNode *root)
+{
+	if(root==NULL) return 0;
+	
+	else return (1 + max(height(root->left),height(root->right)));
+}
+
+BinaryTreeNode *printleafTree(struct BinaryTreeNode *root,int level)
+{
+	//base condition
+	if(root==NULL) return NULL;
+	
+	BinaryTreeNode *l,*r;
+	
+	int htl = height(root->left);
+	int htr = height(root->right);
+	if(level==0) 
+	{
+		return root;	
+	}
+		
+	else if(level  > 0 )
+	{
+		//if order is to traverse from left to right
+		
+		if(htl > htr)
+			l = printleafTree(root->left,level-1);
+			if(l->left==NULL && l->right==NULL)
+			{
+				return l;
+			}
+		else
+		{
+			r=printleafTree(root->right,level-1);
+			if(r->left==NULL && r->right==NULL) return r;
+		}
+				
+	
+		
+		//when order is to print from right to left
+	}
+}
+
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -98,13 +143,7 @@ void Insert( struct BinaryTreeNode **root,int data)
 
 
 
-//function the get the height of tree
-int height(BinaryTreeNode *root)
-{
-	if(root==NULL) return 0;
-	
-	else return (1 + max(height(root->left),height(root->right)));
-}
+
 
 
 int main()
@@ -120,7 +159,7 @@ int main()
 	
 	for(int i =  0 ; i < height(root1); i++)
 	{
-		printTree(root1,i,false);
+		cout<<printleafTree(root1,i)->data;
 	}
 	
 }

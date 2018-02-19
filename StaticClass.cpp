@@ -7,16 +7,26 @@ using namespace std;
 class Human {
 	public:
 	static int scount;//cannot be defined inside a class
-	int count;
+	int count=0;
 	//constructor
 	Human() {
 		scount++;
 		count++;
-		cout<<"Number of humans"<<" "<<scount<<endl;
+		cout<<"Number of static humans"<<" "<<scount<<endl;
+		
+	}
+	
+	//destructor
+	~Human()
+	{
+		cout<<endl;
+		cout<<"There are now "<<scount<<" humans reamining"<<endl;
+		scount--;
 	}
 	
 	static void totalHuman() {
 		cout<<"There are "<<scount<< " "<< "people"<<endl;
+//		cout<<"There are "<<count<< " "<< "people"<<endl;-Produces Error as static member function can only access, static class variable
 		
 	}
 	

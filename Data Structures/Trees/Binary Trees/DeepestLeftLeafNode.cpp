@@ -92,6 +92,37 @@ BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 
 
 
+BinaryTreeNode *printleafTree(struct BinaryTreeNode *root,int level)
+{
+	//base condition
+	if(root==NULL) return;
+	
+	int htl = heightTree(root->left);
+	int htr = heightTree(root->right);
+	if(level==0) 
+	{
+		if(root->left==NULL && root->right==NULL)
+		{
+			return root;
+		}
+		
+		
+	}
+		
+	else if(level  > 0 )
+	{
+		//if order is to traverse from left to right
+		
+		if(htl > htr)
+			return printTree(root->left,level-1);
+		else
+			return printTree(root->right->left,level-1);	
+	
+		
+		//when order is to print from right to left
+	}
+}
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
