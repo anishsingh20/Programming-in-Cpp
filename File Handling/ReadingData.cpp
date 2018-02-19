@@ -9,9 +9,7 @@ using namespace std;
 int main()
 {
 	//creating an object of class ifstream
-	ifstream file;
-	
-	file.open("anish.txt");
+	ifstream file("anish.txt");
 	
 	if(!file.is_open())
 	{
