@@ -7,13 +7,14 @@ using namespace std;
 class Person {
 	public:
 		//const class data member
-		int age;
+		const int age=20;//has to be initialized, when declared, cannot be initialized inside a constructor
 		string name;
 		//constructor
 		Person(int iage,string iname){
-			//age=iage; //initializing  const data age using constructor
-			age=iage;
-			name= iname;
+			
+//			age=iage; initializing  const data age using constructor produces error
+			
+			name = iname;
 		}
 
 		void getage() const {
@@ -25,7 +26,7 @@ class Person {
 		
 		void getname() { //a non const function which cannot be called by a const object
 			
-			age++;
+			//age++;
 			cout<<"My name is :"<<name<<endl;
 			
 		}
@@ -37,9 +38,11 @@ int main () {
 	Person p(20,"anish");
 	Person const p1(30,"Mrinal"); // a const object and a data member cannot be changed using a const object throughtout its lifetime
 	
+	
+	
 	p.getage(); //const member function can be called using non-const object too.
 	p.getname();
-	p.age=25;
+//	p.age=25; error produced- age is read only
 	p.getage();//value of age is now 25
 
 	//using const object only for const member functions
