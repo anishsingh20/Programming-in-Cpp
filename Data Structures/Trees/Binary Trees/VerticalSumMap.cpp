@@ -19,11 +19,15 @@ using namespace std;
 //Method-1 Using a hash map
 
 //traverse the tree in Inorder and recursively go to left and store different HD nodes in map
+//this function is similar to finding horizontal distance of a node, but this time we simply,
+//insert all the HD of nodes inside the MAP
 void VerticalSumUtil(BinaryTreeNode *root,map<int,int>&Map,int hd)
 {
 	//base condition
 	if(root==NULL) return;
 	
+	
+
 	//recur to left subtree
 	VerticalSumUtil(root->left,Map,hd-1);
 	
@@ -31,6 +35,7 @@ void VerticalSumUtil(BinaryTreeNode *root,map<int,int>&Map,int hd)
 	Map[hd] += root->data;
 	
 	//recur to right subtree
+	
 	VerticalSumUtil(root->right,Map,hd+1);
 }
 	
@@ -56,7 +61,7 @@ void VerticalSum(BinaryTreeNode *root)
 	
 }	
 
-
+//TIME COMPLEXITY = O(n) , but extra space is consumed due to using MAPS
 
 
 
