@@ -39,7 +39,6 @@ void HD(BinaryTreeNode *root,int data,int hd=0)
 	
 }
 
-
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -106,6 +105,8 @@ int main()
 	Insert(&root1,9);
 	
 	HD(root1,8);
+	cout<<endl;
+	cout<<HDLevelOrder(root1,2);
 	return 0;
 	
 }
