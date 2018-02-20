@@ -127,8 +127,8 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);
-	Insert(&root1,8);
-	Insert(&root1,9);
+//	Insert(&root1,8);
+//	Insert(&root1,9);
 	
 	VerticalSum(root1);
 	
