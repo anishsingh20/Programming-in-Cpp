@@ -26,9 +26,12 @@ void HD(BinaryTreeNode *root,int data,int hd=0)
 		cout<<hd;
 		
 	}
+
 	
 	//recur to left subtree and check for the node to be found and also substract hd-1 for left subtree
 	HD(root->left,data,hd-1);
+	
+	
 	
 	//recur to right subtree and check for the node to be found and also add hd+1 for right subtree
 	HD(root->right,data,hd+1);
@@ -105,8 +108,6 @@ int main()
 	Insert(&root1,9);
 	
 	HD(root1,8);
-	cout<<endl;
-	cout<<HDLevelOrder(root1,2);
 	return 0;
 	
 }
