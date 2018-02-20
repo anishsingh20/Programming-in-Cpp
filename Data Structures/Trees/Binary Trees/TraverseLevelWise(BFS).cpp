@@ -15,7 +15,7 @@ struct BinaryTreeNode{
 
 //function to traverse a tree level wise in any order form left to right or right to left- Breadth first traversal
 //ltr is the order of traversing, whether to traverse from left to right or from right to left subtree
-void printTree(struct BinaryTreeNode *root,int level, bool ltr)
+void printTree(struct BinaryTreeNode *root,int level)
 {
 	//base condition
 	if(root==NULL) return;
@@ -28,19 +28,22 @@ void printTree(struct BinaryTreeNode *root,int level, bool ltr)
 		
 	else if(level  > 0 )
 	{
-		//if order is to traverse from left to right
-		if(ltr)
-		{
-			printTree(root->left,level-1,ltr);
-			printTree(root->right,level-1,ltr);	
-		}
 		
-		//when order is to print from right to left
-		else
-		{
-			printTree(root->right,level-1,ltr);
-			printTree(root->left,level-1,ltr);
-		}
+		printTree(root->left,level-1);
+		printTree(root->right,level-1);
+		//if order is to traverse from left to right
+//		if(ltr)
+//		{
+//			printTree(root->left,level-1,ltr);
+//			printTree(root->right,level-1,ltr);	
+//		}
+//		
+//		//when order is to print from right to left
+//		else
+//		{
+//			printTree(root->right,level-1,ltr);
+//			printTree(root->left,level-1,ltr);
+//		}
 	}
 }
 
@@ -156,10 +159,11 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);
+	Insert(&root1,8);
 	
 	for(int i =  0 ; i < height(root1); i++)
 	{
-		cout<<printleafTree(root1,i)->data;
+		printTree(root1,i);
 	}
 	
 }

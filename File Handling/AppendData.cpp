@@ -26,11 +26,9 @@ int main()
 		cout<<file.tellg()<<endl;// get position currently set to last position
 		
 		//we need to manually set get position to 0 to read data from file from beginning
-		file.seekg(0);
-		file.seekp(0);
 		
-		
-		
+		file.seekg(15);
+	
 		//reading from the file
 		while(!file.eof())
 		{
