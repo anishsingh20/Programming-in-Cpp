@@ -16,11 +16,17 @@ struct BinaryTreeNode{
 
 void StoreSumLevel(struct BinaryTreeNode *root, map <int,int> &Map,int level=0)
 {
+	
 	//base condition
 	if(root==NULL)	return;
 	
 	//otherwise simply store sum of nodes at each different level in map
-	Map[level] += root->data;
+	//3 different method of inserting in a map
+//	Map[level] += root->data;
+
+//	Map.insert(make_pair(level,root->data));
+	Map.insert(pair<int,int>(level,root->data));
+	
 	
 		
 	//recur to left subtree and keep incrementing level till we reach leaf
@@ -40,8 +46,12 @@ void traverseMap(BinaryTreeNode *root)
 	//populate the map by calling above function
 	StoreSumLevel(root,SMap);
 	
+	map<int,int>cmap;
+	
+	//copying contents of SMap to cmap till we find key=2
+	cmap.insert(SMap.begin(),SMap.find(2));	
 	cout<<"Level"<<" - "<<"Sum"<<endl;
-	for(it = SMap.begin(); it!=SMap.end() ;it++)
+	for(it = cmap.begin(); it!=cmap.end() ;it++)
 	{
 		cout<<it->first<<setw(10)<<it->second<<endl;
 	}
@@ -114,6 +124,7 @@ int main()
 	Insert(&root1,9);
 	
 	traverseMap(root1);
+
 	return 0;	
 		
 }
