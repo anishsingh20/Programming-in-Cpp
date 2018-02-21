@@ -4,7 +4,11 @@
 using namespace std;
 
 /*program to find distance between 2 nodes in a Binary tree
-distance(n1,n2) = dist(root,n1) + dist(root,n2) - 2*dist(root,LCA(n1,n2)) 
+1)distance(n1,n2) = dist(root,n1) + dist(root,n2) - 2*dist(root,LCA(n1,n2)) 
+ or 
+2)another better solution is to find dist(n1,n2) = dist(LCA(n1,n2),n1)  + dist(LCA(n1,n2),n2) -in this approach we simply 
+find the distance from the LCA(n1,n2) node to n1 and n2 and add them
+We first find LCA(n1.n2) ,then we find distance from LCA to two nodes.
 */
 
 struct BinaryTreeNode{
@@ -15,7 +19,8 @@ struct BinaryTreeNode{
 
 
 
-//function to find the distance from a root to a node
+//function to find the distance from a root to a node--
+//this function can also be used to find level of node n1
 int dist(BinaryTreeNode *root,int n1,int d=0)
 {
 	
@@ -69,17 +74,19 @@ BinaryTreeNode *FindLCAusingSingleTraversal(struct BinaryTreeNode *root, int n1,
 //function to find distance between 2 nodes-i.e the number of edges between them, or length of path
 int DistNode(BinaryTreeNode *root,int n1,int n2)
 {
-	int d1 = dist(root,n1);
-	
-	int d2 = dist(root,n2);
+//	int d1 = dist(root,n1);
+//	
+//	int d2 = dist(root,n2);
 	
 	//finding LCA of n1 and n2 nodes
 	BinaryTreeNode *LCA = FindLCAusingSingleTraversal(root,n1,n2);
 	
 	//distance between root and LCA of n1 and n2
-	int dLCA= dist(root,LCA->data);
-	
-	return (d1+d2-2*dLCA);
+	int n1LCA= dist(LCA,n1);
+	int n2LCA = dist(LCA,n2);
+//	return (d1+d2-2*dLCA);
+
+	return n1LCA + n2LCA;
 }
 
 void Insert( struct BinaryTreeNode **root,int data)
@@ -147,6 +154,6 @@ int main()
 	Insert(&root1,8);
 	Insert(&root1,9);
 
-	cout<<DistNode(root1,2,8);
+	cout<<DistNode(root1,2,9);
 	return 0;
 }
