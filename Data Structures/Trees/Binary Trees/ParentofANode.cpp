@@ -188,7 +188,9 @@ int main()
 	cout<<findParentNode(root1,11)->data;
 	cout<<endl;
 	
-	FindParentUsingLevelOrder(root1,8);
+	FindParentUsingLevelOrder(root1,10);
+	cout<<endl;
+	findAncestors(root1,11);
 
 return 0;	
 }

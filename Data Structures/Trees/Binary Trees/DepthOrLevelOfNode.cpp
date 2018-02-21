@@ -22,6 +22,8 @@ struct BinaryTreeNode{
 //this function can also be used to find level of node n1,or depth of a node
 int DepthOrLevel(BinaryTreeNode *root,int n1,int d=0)
 {
+	if(root==NULL)
+		return -1;
 	
 	if(root)
 	{
@@ -40,6 +42,44 @@ int DepthOrLevel(BinaryTreeNode *root,int n1,int d=0)
 	}	
 	
 }
+
+
+//height of tree
+int height(BinaryTreeNode *root)
+{
+	if(root==NULL)
+		return 0;
+	
+	return (1+max(height(root->left),height(root->right)));
+}
+
+
+BinaryTreeNode *deepestNode(BinaryTreeNode *root)
+{
+	//base condition
+	if(root==NULL) return NULL;
+	
+	//findind depths of left and right subtree
+	int hl = height(root->left);
+	int hr = height(root->right);
+	
+	//if we have found the deepest leaf node-i.e both left and right pointer NULL
+	if(root->left==NULL && root->right==NULL)
+	{
+		return root;
+	}
+	
+	//othewise recur to left and right subtree to find it-whichever has greater depth/or height
+	
+	if(hl > hr)
+	{
+		return deepestNode(root->left);
+	}
+	
+	else
+		return deepestNode(root->right);
+}
+
 
 
 
@@ -107,6 +147,8 @@ int main()
 	Insert(&root1,7);
 	Insert(&root1,8);
 	Insert(&root1,9);
+	
+	cout<<deepestNode(root1)->data<<endl;
 	
 	cout<<DepthOrLevel(root1,9);
 	

@@ -339,7 +339,7 @@ int main()
 	r5->right  = r6->right  = NULL;	
 	
 		
-	cout<<FindLCAsimple(root,r5,r6);
+	cout<<FindLCAsimple(root,r5,r2);
 	
 	cout<<endl;
 	
