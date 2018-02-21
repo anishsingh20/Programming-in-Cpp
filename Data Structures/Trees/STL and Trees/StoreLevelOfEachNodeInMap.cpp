@@ -105,8 +105,6 @@ void Insert( struct BinaryTreeNode **root,int data)
 	
 }
 
-map<int,int>DistMap;
-
 int main()
 {
 	struct BinaryTreeNode *root1= NULL;
