@@ -35,11 +35,9 @@ int dist(BinaryTreeNode *root,int n1,int d=0)
 		int l = dist(root->left,n1,d+1);
 		
 		//recur to the right subtree and increment d, until the node n1 is found
-		int r = dist(root->right,n1,d+1);
-		
 		//if l is non-zero
 		if(l) return l;
-		else return r;		
+		else dist(root->right,n1,d+1);		
 		
 		
 		
@@ -162,7 +160,8 @@ int main()
 	Insert(&root1,8);
 	Insert(&root1,9);
 
-	cout<<dist(root1,2)<<endl;
+	cout<<dist(root1,3)<<endl;
+	
 	cout<<DistNode(root1,5,9);
 	return 0;
 }

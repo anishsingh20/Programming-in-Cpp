@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ struct BinaryTreeNode{
 
 //function to find the distance from a root to a node--
 //this function can also be used to find level of node n1,or depth of a node
-int DeothOrLevel(BinaryTreeNode *root,int n1,int d=0)
+int DepthOrLevel(BinaryTreeNode *root,int n1,int d=0)
 {
 	
 	if(root)
@@ -30,18 +31,85 @@ int DeothOrLevel(BinaryTreeNode *root,int n1,int d=0)
 		}
 		
 		//recur to the left subtree and increment d, until the node n1 is found
-		int l = dist(root->left,n1,d+1);
+		int l = DepthOrLevel(root->left,n1,d+1);
 		
 		//recur to the right subtree and increment d, until the node n1 is found
-		int r = dist(root->right,n1,d+1);
+		if(!l) return DepthOrLevel(root->right,n1,d+1);
 		
-		//if l is non-zero
-		if(l) return l;
-		else return r;		
-		
-		
-		
+		else return l;
 	}	
 	
+}
+
+
+
+void Insert( struct BinaryTreeNode **root,int data)
+{
+	struct BinaryTreeNode *new_node = new BinaryTreeNode();
+	struct BinaryTreeNode *temp;
+	queue<BinaryTreeNode *> q;
+	new_node->data = data;
+	new_node->left=NULL;
+	new_node->right=NULL;
+	
+	if(*root==NULL)
+	{
+		*root = new_node;
+		return;
+	}
+	
+	q.push(*root);
+	
+	while(!q.empty())
+	{
+		temp  = q.front();
+		q.pop();
+		
+		if(temp->left==NULL)
+		{
+			temp->left = new_node;
+			return;
+			
+			
+		}
+		
+		else
+		{
+			q.push(temp->left);
+		}
+			
+		if(temp->right==NULL)
+		{
+			temp->right = new_node;
+			return;
+			
+		}	
+		
+		else
+		{
+			q.push(temp->right);
+		}
+	}
+	
+}
+
+
+int main()
+{
+	struct BinaryTreeNode *root1= NULL;
+	
+	Insert(&root1,1);
+	Insert(&root1,2);
+	Insert(&root1,3);
+	Insert(&root1,4);
+	Insert(&root1,5);
+	Insert(&root1,6);
+	Insert(&root1,7);
+	Insert(&root1,8);
+	Insert(&root1,9);
+	
+	cout<<DepthOrLevel(root1,9);
+	
+	return 0;
 }
 
