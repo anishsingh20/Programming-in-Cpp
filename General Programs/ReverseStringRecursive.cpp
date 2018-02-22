@@ -5,19 +5,23 @@
 
 using namespace std;
 
-string ReverseRec(string str)
+string ReverseRec(string str,int i,int j)
 {
 	
- 	static int i=0,j=str.size()-1;
+  	
 	
 	//base condition-terminating condition -recursion stops here
 	if(i>j) return str; //or when i==j
-			
 	
+	else
+	{
+		//otherwise simply swap the characters until above base condition is rached i.e i>j
 		swap(str[i],str[j]);
-		i++;
-		j--;
-		return ReverseRec(str);
+		
+		return ReverseRec(str,i+1,j-1);
+	}
+	
+		
 		
 		
 }
@@ -25,7 +29,8 @@ string ReverseRec(string str)
 
 int main()
 {
-	
-	cout<<ReverseRec("anish singh walia");
+	string name ;
+	name= "anish singh walia";
+	cout<<ReverseRec(name,0,name.size()-1);
 	return 0;
 }
