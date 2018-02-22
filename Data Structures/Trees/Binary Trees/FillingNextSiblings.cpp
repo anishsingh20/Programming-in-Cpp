@@ -40,6 +40,46 @@ void FillNextSiblings(BinaryTreeNode *root)
 //TIME COMPLEXITY = O(n)
 
 
+//Level order traversal-need to maintain a marker for completion of current level by pusing NULL in queue
+int FillNextSiblingLevelOrder(BinaryTreeNode* root)
+{
+	queue<BinaryTreeNode *>q;
+	BinaryTreeNode *temp;
+	
+	if(root==NULL) return 0;
+	
+	q.push(root);
+	q.push(NULL); //marker for completion for level 0 of tree by pushing NULL
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp==NULL)
+		{
+			//another marker for completion of current level
+			if(!q.empty())
+			{
+				q.push(NULL);
+			}
+		}
+		
+		else
+		{
+			//making the connection
+			temp->nextSibling = q.front();
+			
+			if(temp->left) q.push(temp->left);
+			
+			if(temp->right) q.push(temp->right);
+		}
+	}
+	return 1;
+}
+
+
+
 int main()
 {
 	struct BinaryTreeNode *root = new BinaryTreeNode();
@@ -71,9 +111,10 @@ int main()
 	r5->right  = r6->right  = NULL;	
 	
 	//filling nextSibling pointers
-	FillNextSiblings(root);
-	
-	cout<<r1->nextSibling->data;
+//	FillNextSiblings(root);
+
+	FillNextSiblingLevelOrder(root);	
+	cout<<r5->nextSibling->data;
 	
 	return 0;
 	

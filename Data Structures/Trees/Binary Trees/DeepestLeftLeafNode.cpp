@@ -95,7 +95,7 @@ BinaryTreeNode *DeepestLeftLeaf(struct BinaryTreeNode *root)
 BinaryTreeNode *printleafTree(struct BinaryTreeNode *root,int level)
 {
 	//base condition
-	if(root==NULL) return;
+	if(!root) return NULL;
 	
 	int htl = heightTree(root->left);
 	int htr = heightTree(root->right);
@@ -114,9 +114,9 @@ BinaryTreeNode *printleafTree(struct BinaryTreeNode *root,int level)
 		//if order is to traverse from left to right
 		
 		if(htl > htr)
-			return printTree(root->left,level-1);
+			return printleafTree(root->left,level-1);
 		else
-			return printTree(root->right->left,level-1);	
+			return printleafTree(root->right->left,level-1);	
 	
 		
 		//when order is to print from right to left
@@ -253,6 +253,9 @@ int main()
 	
 	if(result) cout<<result->data;
 	else cout<<"Not found";
+	cout<<endl;
+	
+
 	
 	return 0;
 }
