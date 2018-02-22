@@ -17,6 +17,8 @@ struct BinaryTreeNode{
 };
 
 
+//function to find the next sibling of node
+                                          
 
 //recursive implementation
 void FillNextSiblings(BinaryTreeNode *root)
@@ -80,6 +82,29 @@ int FillNextSiblingLevelOrder(BinaryTreeNode* root)
 
 
 
+//Recursive function to find the next sibling of node in a tree
+BinaryTreeNode *findNextSiblingNode(BinaryTreeNode *root,int data)
+{
+	if(root==NULL) return NULL;
+	
+	//if data found at current root, then return root's next sibling
+	if(root->data==data)
+	{
+		return root->nextSibling;
+	}
+	
+	//otherwise simply traverse to left and right subtrees to find next sibling
+	else
+	{
+		BinaryTreeNode *leftsibling = findNextSiblingNode(root->left,data);
+		if(leftsibling) return leftsibling;
+		
+		else return findNextSiblingNode(root->right,data);
+	}
+}
+
+
+
 int main()
 {
 	struct BinaryTreeNode *root = new BinaryTreeNode();
@@ -111,10 +136,11 @@ int main()
 	r5->right  = r6->right  = NULL;	
 	
 	//filling nextSibling pointers
-//	FillNextSiblings(root);
+	FillNextSiblings(root);
 
-	FillNextSiblingLevelOrder(root);	
-	cout<<r5->nextSibling->data;
+
+
+	cout<<findNextSiblingNode(root,r4->data)->data;
 	
 	return 0;
 	
