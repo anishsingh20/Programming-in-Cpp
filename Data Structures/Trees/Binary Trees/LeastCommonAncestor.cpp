@@ -191,6 +191,7 @@ void Insert( struct BinaryTreeNode **root,int data)
 		if(temp->left==NULL)
 		{
 			temp->left = new_node;
+			//creating the parent link
 			new_node->parent = temp;
 			return;
 			
