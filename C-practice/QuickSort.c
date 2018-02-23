@@ -25,6 +25,20 @@ void Swap(int *a,int *b)
 
 }
 
+
+//implementing randomized quick sort by choosing pivot element as random element, instead of last element
+int RandomizedQuickSort(int *arr,int low,int high)
+{
+	//choosing random pivot element
+	int Pindex = random(low,high);
+	
+	Swap(&arr[Pindex],&arr[high]);
+	
+
+	
+	return Partition(arr,low,high);
+}
+
 int Partition(int *arr,int low,int high)
 {
 	 
