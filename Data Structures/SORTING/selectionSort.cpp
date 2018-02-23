@@ -15,7 +15,7 @@ void SelectionSort(int  *arr,int size) {
 		
 		for(int j=i+1 ; j < size ; j ++ ) {
 			
-			if(arr[j]<arr[min]) {
+			if(arr[j] < arr[min]) {
 				
 				min = j;
 				swap(arr[i],arr[min]);	

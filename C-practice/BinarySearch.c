@@ -4,6 +4,43 @@
 
 //program to do binary search in c-recursive implementation
 
+//selection sort has minimum number of swaps
+
+void Swap(int *a,int *b)
+{
+
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+	
+
+}
+
+
+void SelectionSort(int *arr, int size)
+{
+
+	for(int i = 0; i < size;i++)
+	{
+		int min = i;
+		
+		for(int j = i+1 ; j<size;j++ )
+		
+		{
+			if(arr[j] < arr[i])
+			{
+				min = j;
+				Swap(&arr[min],&arr[i]);
+			}
+		}
+	}
+	
+		for(int i=0;i<size;i++) {
+		printf("%d\t",arr[i]);
+	}
+}
+
+
 int BinarySearch(int *arr,int data,int low,int high)
 {
 	//base condition
@@ -28,7 +65,14 @@ int BinarySearch(int *arr,int data,int low,int high)
 
 int main()
 {
-	int arr[] = {10,20,30,40,50};
+	int arr[] = {50,40,10,20,30};
 	
-	printf("%d",BinarySearch(arr,9,0,4));
+	int size = sizeof(arr)/sizeof(arr[1]);
+	
+	SelectionSort(arr,size);
+	printf("\n");
+	
+	
+	
+	printf("%d",BinarySearch(arr,10,0,size));
 }
