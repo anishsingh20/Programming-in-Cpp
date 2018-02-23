@@ -9,7 +9,7 @@ void SortedMerge(int *arr,int low,int mid ,int high)
 	int nl,nr;
 	
 	
-	nl = (mid - low) + 1; //number of elements in left sub array
+	nl = (mid - low + 1); //number of elements in left sub array
 	
 	nr = (high - mid); //number of elements in right subarray
 	
