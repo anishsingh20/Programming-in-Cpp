@@ -24,7 +24,8 @@ void Queue::Enqueue(int data) { //simply push into stack S1
 	
 	
 	//simply push data into stack s1
-	s1.push(data);
+	
+		s1.push(data);
 
 
 		
@@ -67,24 +68,30 @@ void Queue::Dequeue() {
 
 	
 	cout<<"\n";
-			
+		
+
+	
+	
 	
 }
 
 
 
-int main() {
+int main()
+{
 	
 	Queue q; //creating object of class Queue
 	int choice,data;
 	
 	
-	while(1){
+	while(1)
+	{
 		cout<<"\n1)Insert\n2)Delete\n3)Exit\n"<<endl;
 		cin>>choice;
 		
 		
-		switch(choice) {
+		switch(choice) 
+		{
 			
 			case 1: 
 				cout<<"Enter data :"<<endl;

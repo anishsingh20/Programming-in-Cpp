@@ -82,7 +82,7 @@ void Queue::Dequeue() {
 	else {
 		//increment the front index
 		cout<<"Deleted :"<<arr[front]<<endl;
-		front= (front+1)%size;
+		front = (front+1)%size;
 	}
 	
 	

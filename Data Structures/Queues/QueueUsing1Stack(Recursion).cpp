@@ -38,7 +38,7 @@ int Queue::dequeue() {
 	}
 	
 	
-	//case when stack has only one element
+	//case when stack has only one element-base condition
 	if(S1.size()==1) { //if stack has only one element
 		
 		x = S1.top();
@@ -48,14 +48,14 @@ int Queue::dequeue() {
 		
 	}
 	
-	else { //recursively call dequeue()
+	else { //recursively call dequeue(), until stack has only 1 item left and above conditon is true
 		
 		y = S1.top();
 		S1.pop();
 		
 		res = dequeue(); //res stores the last popped element
 		
-		//push everything back to stack
+		//push everything back to stack, leaving the last item in stack, which is returned
 		
 		S1.push(y);
 		
