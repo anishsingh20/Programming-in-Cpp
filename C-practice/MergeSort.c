@@ -31,6 +31,8 @@ void SortedMerge(int *arr,int low,int mid ,int high)
 	
 	int i=0,j=0,k=low;
 	
+	
+	//sorting and merging the 2 auxillary subarrays into 1
 	while(i < nl && j < nr)
 	{
 		if(arr_left[i] < arr_right[j])
