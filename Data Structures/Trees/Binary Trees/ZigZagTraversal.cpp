@@ -36,7 +36,8 @@ void ZigZag(BinaryTreeNode *root)
 				if(temp->right) nextLevel.push(temp->right);	
 			}
 			
-			else {
+			else 
+			{
 				if(temp->right) nextLevel.push(temp->right);
 				if(temp->left) nextLevel.push(temp->left);
 			}
@@ -44,6 +45,8 @@ void ZigZag(BinaryTreeNode *root)
 		
 		if(currLevel.empty())
 		{
+			//whenever curr level stack gets empty, we reverse the lefttoright in order to preserver
+			//the Zig-zag traversal order
 			leftToright = false;
 			swap(currLevel,nextLevel);
 		}
@@ -104,9 +107,9 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 //TIME COMPLEXITY = O(N) ,  SPACE COMPLEXITY = O(n)
 
-int ZigZagRec(struct BinaryTreeNode *root)
+int ZigZagRec(struct BinaryTreeNode *root,bool leftToright)
 {
-	bool leftToright = true;
+
 	
 	if(!root) return 0;
 	if(root)
@@ -115,13 +118,17 @@ int ZigZagRec(struct BinaryTreeNode *root)
 		if(leftToright)
 		{
 			
+			cout<<root->data<<" ";
+			ZigZagRec(root->left,leftToright);
 			
-			ZigZagRec(root->left);
+			ZigZagRec(root->right,leftToright);
 			
-			ZigZagRec(root->right);
-			
-			
-			
+		}
+		else 
+		{
+			cout<<root->data<<" ";
+			ZigZagRec(root->right,!leftToright);
+			ZigZagRec(root->left,!leftToright);
 		}
 	}
 	
@@ -145,6 +152,6 @@ int main()
 	
 	cout<<endl;
 	
-	ZigZagRec(root1);	
+	ZigZagRec(root1,true);	
 	return 0;
 }

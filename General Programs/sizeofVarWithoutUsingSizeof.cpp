@@ -22,7 +22,7 @@ int main () {
 	//- the difference would be the size of that variable type
 	
 	cout<<"Address of a :"<<&a<<endl;
-	cout<<"Address of a+1,i.e address of a incremented by" << sizeof(a)<< "bytes :" << &a+1<<endl;//ie address of a incremented by size bytes
+	cout<<"Address of a+1,i.e address of a i2ncremented by" << sizeof(a)<< "bytes :" << &a+1<<endl;//ie address of a incremented by size bytes
 	int sizeof_int = (char*)((&a)+1) - (char*)(&a);
 	cout<<sizeof_int<<endl;
 	

@@ -531,6 +531,66 @@ void CountOccurence(struct Node **head,int data)
 }
 
 
+Node *ReverseListRec(Node *head)
+{
+	struct Node *new_head;
+	//base condition
+
+	if(head->next==NULL)
+	{
+		new_head = head;
+		
+	}
+	
+	//simply travese the list recursively until we reach last node
+	
+		
+		ReverseListRec(head->next);
+		
+		struct Node *prev;
+		
+		prev = head->next;
+		prev->next = head;
+		head->next=NULL;
+		
+		
+	
+	
+	return new_head;
+
+	
+	
+}
+
+
+//recursive program to print a list in reverse fashion-similar to postorder traverasl.
+//we first recur till end of list , and then simply print 
+void RecReversePrint(Node *head)
+{
+	
+	if(head==NULL) return; 
+	
+	//rec till end of list
+	RecReversePrint(head->next);
+	
+	//then start printing
+	cout<<head->data<<"-->";
+	
+}
+
+//recursive program to traverse a list
+void TraverseRecursive(Node *head)
+{
+	
+	if(head==NULL) return; 
+	
+	//first print the data
+	cout<<head->data<<"-->";
+	
+	//rec till end of list
+	TraverseRecursive(head->next);
+		
+}
 
 	
 int main() {
@@ -569,7 +629,14 @@ int main() {
 	sortedInsert(&head,60);
 	
 	traverseRec(head);
+	cout<<endl;
 	
+	RecReversePrint(head);
+	cout<<endl;
+	
+	traverseRec(head);
+	
+//	ReverseListRec(head);
 	
 	
 	
@@ -578,14 +645,14 @@ int main() {
 //	cout<<getNode(head,3)<<endl;
 //	
 //	cout<<listlength(head)<<endl;
-	
-	cout<<endl;
-	CountOccurence(&head,9);
-	
-	cout<<endl;
-	
-	cout<<countOccUsingRecursion(head,9);
-	
+//	
+//	cout<<endl;
+//	CountOccurence(&head,9);
+//	
+//	cout<<endl;
+//	
+//	cout<<countOccUsingRecursion(head,9);
+//	
 	
 //	cout<<listlength(n1)<<endl;
 	
