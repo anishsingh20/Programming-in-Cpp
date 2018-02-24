@@ -406,7 +406,7 @@ Node* Partition(Node *l,Node *h) {
 	
 	int pivot = h->data; //PIVOT is the last node-Right most
 	
-	Node *Pindex = l->prev; //initially the starting node
+	Node *Pindex = l->prev; //initially NULL
 	
 	
 	//traversing the list
