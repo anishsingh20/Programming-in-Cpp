@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<conio.h>
-
+#include<math.h>
 
 union u {
 	
@@ -22,6 +22,11 @@ int main()
 char c[] = "";
 
 printf("%d",sizeof(c)); //size is 2 bytes-1 for char and 1 for NUll character
+
+float f = 2.650098;
+
+printf("%.4f",f);
+
 
 //union u u1;
 //struct s s1;

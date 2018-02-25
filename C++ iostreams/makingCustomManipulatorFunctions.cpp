@@ -36,8 +36,12 @@ istream& input(istream &input)
 int main()
 {
 	int x;
+	
+
 	cin>>input>>x;
 	
+	
+	cout<<print<<x;
 
 	return 0;
 }
