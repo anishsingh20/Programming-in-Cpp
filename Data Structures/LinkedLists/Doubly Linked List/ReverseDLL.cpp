@@ -97,14 +97,23 @@ void printAlternateRec(Node *head,bool odd=true)
 	
 	//this bool variable will make sure to print alternate nodes
 	printAlternateRec(head->next,!odd);	
-	
+}
 
+
+
+void printOddEvenNodes(Node *head,bool even=false)
+{
+	if(head==NULL) return;
 	
+	if(even==true)
+	{
 		
-			
-
+		cout<<head->data<<"->";
+		
+		
+	}
 	
-	
+	printOddEvenNodes(head->next,!even);
 }
 
 
@@ -156,7 +165,8 @@ int main()
 	
 	cout<<endl;
 	
-	printAlternateRec(head);
+//	printAlternateRec(head);
+	printOddEvenNodes(head);
 
 	
 	
