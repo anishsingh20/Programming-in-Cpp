@@ -613,12 +613,23 @@ int maxOccuringItem(Node *head)
 //TIME COMPLEXTIY=O(N*N)
     
 
+void printAlternateRec(Node *head,bool odd=true)
+{
+	if(head==NULL) return ;
 
-//int DLL::delPos(int pos) {
-//	
-//	
-//	return
-//}
+	if(odd==true)
+	{
+	
+		
+		cout<<head->data<<"<->";
+		
+		
+	}	
+	
+	//this bool variable will make sure to print alternate nodes
+	printAlternateRec(head->next,!odd);	
+}
+
 
 
 int main() {
