@@ -74,6 +74,7 @@ int getResult(string postfix)
 
 
 int performOps(char opt,int opd1,int opd2) {
+	
 	if(opt=='+') return opd1+opd2;
 	if(opt=='-') return abs(opd1-opd2);
 	if(opt=='*') return opd1*opd2;
