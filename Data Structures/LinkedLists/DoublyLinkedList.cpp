@@ -632,6 +632,21 @@ void printAlternateRec(Node *head,bool odd=true)
 
 
 
+void printOddEvenNodes(Node *head,bool even=false)
+{
+	if(head==NULL) return;
+	
+	if(even==true)
+	{
+		
+		cout<<head->data<<"->";
+		
+		
+	}
+	
+	printOddEvenNodes(head->next,!even);
+}
+
 int main() {
 	
 	
