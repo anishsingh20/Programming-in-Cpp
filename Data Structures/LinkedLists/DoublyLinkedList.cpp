@@ -561,7 +561,56 @@ Node* SortedInsert(Node **head,int data)
     return *head;
 }
     
-    
+
+//function to reverse a doubly linked list using recursion and return the new head
+Node  *reverseRec(Node *head)
+{
+	Node *temp;
+	
+	
+	if(!head) return NULL;
+	
+	//first swap the next and prev pointers
+	temp=head->next;
+	head->next = head->prev;
+	head->prev = temp;
+
+	//if prev becomes NULL, this means we have reversed the list and reached end
+	if(head->prev==NULL)
+	{
+		
+		return head;	
+	}	
+	
+	//otherwise simply keep swapping next nd prev until we reach the end and prev becomes NULL
+	return reverseRec(head->prev);		
+}
+
+
+//function to find the maximum occuring item in list-simple iterative solution   
+int maxOccuringItem(Node *head)
+{
+	if(head==NULL)	return -1;
+	
+	Node *temp=head;
+	Node *temp1;
+	while(temp!=NULL)
+	{
+		temp1 = temp;
+		while(temp1->next!=NULL)
+		{
+			if(temp->data==temp1->next->data)
+			{
+				return temp->data;	
+			}
+			
+			temp1 = temp1->next;
+		}
+		temp =temp->next;
+	}
+	return 0;
+}
+//TIME COMPLEXTIY=O(N*N)
     
 
 

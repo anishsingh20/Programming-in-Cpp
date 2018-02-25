@@ -11,32 +11,84 @@ struct Node {
 
 
 
-//simply traversing the list in reberse order-by first traversong till end of list, then simply swapping next and prev pointers and printing
-void reverseRec(Node *head)
+
+//function to reverse a doubly linked list using recursion and return the new head
+Node  *reverseRec(Node *head)
 {
 	Node *temp;
 	
+	
+	if(!head) return NULL;
+	
+	//first swap the next and prev pointers
+	temp=head->next;
+	head->next = head->prev;
+	head->prev = temp;
+
+	//if prev becomes NULL, this means we have reversed the list and reached end
+	if(head->prev==NULL)
+	{
+		
+		return head;	
+	}	
+	
+	//otherwise simply keep swapping next nd prev until we reach the end and prev becomes NULL
+	return reverseRec(head->prev);		
+}
+
+
+int maxOccuringItem(Node *head)
+{
+	if(head==NULL)	return -1;
+	
+	Node *temp=head;
+	Node *temp1;
+	while(temp!=NULL)
+	{
+		temp1 = temp;
+		while(temp1->next!=NULL)
+		{
+			if(temp->data==temp1->next->data)
+			{
+				return temp->data;	
+			}
+			
+			temp1 = temp1->next;
+		}
+		temp =temp->next;
+	}
+	return 0;
+}
+
+
+//simply traversing the list in reverse order-by first traversong till end of list, then simply swapping next and prev pointers and printing
+void reversePrint(Node *head)
+{
+	Node *temp;
 	if(!head) return;
 	
-	//traverse till end of list
-	reverseRec(head->next);
+	//first reach till end of list
+	reversePrint(head->next);
 	
-		cout<<head->data<<"<->";
-		temp=head->next;
-		head->next = head->prev;
-		head->prev = temp;
-			
-		
-		
-		
+	//now first print and simply swap the next and rprev pointers
+	cout<<head->data<<"<->";
+	
+	//swapping the next and prev pointers
+	temp=head->next;
+	head->next = head->prev;
+	head->prev = temp;
+	
 }
+
+
+
 
 
 void Traverse(Node *head)
 {
 	if(head)
 	{
-		cout<<head->data<<"<->";
+		cout<<(head)->data<<"<->";
 		
 		Traverse(head->next);
 	}
@@ -56,9 +108,9 @@ int main()
 	
 	head->data=1;
 	n1->data=2;
-	n2->data=3;
-	n3->data=4;
-	n4->data=5;
+	n2->data=2;
+	n3->data=1;
+	n4->data=3;
 	
 	
 	head->next = n1;
@@ -75,12 +127,16 @@ int main()
 	n4->prev=n3;
 	
 	
-//	Traverse(head);
+	Traverse(head);
 	
-	reverseRec(head);
-	
-	
-//	Traverse(head);
+	cout<<endl;
+		
+		
+	cout<<maxOccuringItem(head);
+	//storing the new head	
+//	Node *new_head = reverseRec(head);
+//	
+//	Traverse(new_head);//list reversed
 	
 	return 0;
 }
