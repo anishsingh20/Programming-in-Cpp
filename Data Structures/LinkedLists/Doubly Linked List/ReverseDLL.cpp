@@ -71,16 +71,41 @@ void reversePrint(Node *head)
 	reversePrint(head->next);
 	
 	//now first print and simply swap the next and rprev pointers
-	cout<<head->data<<"<->";
-	
-	//swapping the next and prev pointers
-	temp=head->next;
-	head->next = head->prev;
-	head->prev = temp;
-	
+//	cout<<head->data<<"<->";
+//	
+//	//swapping the next and prev pointers
+//	temp=head->next;
+//	head->next = head->prev;
+//	head->prev = temp;
+
+	cout<<head->data<<"<->";	
 }
 
 
+void printAlternateRec(Node *head,bool odd=true)
+{
+	if(head==NULL) return ;
+
+	if(odd==true)
+	{
+	
+		
+		cout<<head->data<<"<->";
+		
+		
+	}	
+	
+	//this bool variable will make sure to print alternate nodes
+	printAlternateRec(head->next,!odd);	
+	
+
+	
+		
+			
+
+	
+	
+}
 
 
 
@@ -108,9 +133,9 @@ int main()
 	
 	head->data=1;
 	n1->data=2;
-	n2->data=2;
-	n3->data=1;
-	n4->data=3;
+	n2->data=3;
+	n3->data=4;
+	n4->data=5;
 	
 	
 	head->next = n1;
@@ -130,9 +155,14 @@ int main()
 	Traverse(head);
 	
 	cout<<endl;
-		
-		
-	cout<<maxOccuringItem(head);
+	
+	printAlternateRec(head);
+
+	
+	
+//	cout<<endl;	
+//		
+//	cout<<maxOccuringItem(head);
 	//storing the new head	
 //	Node *new_head = reverseRec(head);
 //	
