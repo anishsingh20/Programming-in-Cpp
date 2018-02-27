@@ -64,7 +64,7 @@ int main()
 	cout<<NumChild(root);
 	cout<<endl;
 	
-	
+	Inorder(root);
 
 	return 0;
 	
