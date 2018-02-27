@@ -1,8 +1,7 @@
 #include<iostream>
 #include<queue>
 
-//PROGRAM TO FIND NUMBER OF SIBLINGS OF A NODE IN A GENERIC TREE
-
+//PROGRAM TO FIND NO OF CHILD NODES FOR A NODE IN A GENERIC TREE
 using namespace std;
 
 struct TreeNode{
@@ -13,47 +12,6 @@ struct TreeNode{
 
 
 
-
-
-
-
-
-
-int numSiblings(TreeNode *root)
-{
-
-	int count = 0;
-	
-	while(root)
-	{
-		
-		count++;
-		
-		
-		
-		root = root->nextSibling;
-	}
-	
-	return count;
-}
-
-
-
-//simply first go to the first child , and then keep counting all the nextSiblings of current node
-int numChildren(TreeNode *root)
-{
-	int count = 0;
-	
-	root  = root->firstChild;
-	
-	while(root)
-	{
-		count++;
-		root=root->nextSibling;
-	}
-	
-	return count;
-}
 
 int main()
 {
