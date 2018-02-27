@@ -60,10 +60,29 @@ int SumNodesLevelOrder(TreeNode *root)
 
 
 
+int numSiblings(TreeNode *root)
+{
+
+	int count = 0;
+	
+	while(root)
+	{
+		
+		count++;
+		
+		
+		
+		root = root->nextSibling;
+	}
+	
+	return count;
+}
+
+
 void LevelOrderTraversal(TreeNode *root)
 {
 	queue<TreeNode *>q;
-	TreeNode *temp;
+	TreeNode *temp,*temp1;
 
 	if(!root) return;
 	
@@ -75,13 +94,24 @@ void LevelOrderTraversal(TreeNode *root)
 		cout<<temp->data<<" ";
 		q.pop();
 		
+	
+		
 		if(temp->nextSibling)
 		{
-			q.push(temp->nextSibling);
-			
+			temp1 = temp;
+			for(int i=0;i<numSiblings(temp1);i++)
+			{
+		
+				q.push(temp1->nextSibling);
+				temp1 = temp1->nextSibling;
+				
+			}	
 
+//		q.push(temp->nextSibling);
 			
 		}
+		
+		
 		
 		if(temp->firstChild)
 		{
@@ -106,12 +136,14 @@ int main()
 	struct TreeNode *n2= new TreeNode();
 	struct TreeNode *n3= new TreeNode();
 	struct TreeNode *n4= new TreeNode();
+	struct TreeNode *n5= new TreeNode();
 	
 	root->data=1;
 	n1->data=2;
 	n2->data=3;
 	n3->data=4;
 	n4->data=5;
+	n5->data = 6;
 	
 	root->firstChild = n1;
 	
@@ -119,14 +151,19 @@ int main()
 	
 	n2->nextSibling = n3;
 	
+	n2->firstChild = n5;
+	
 	n1->firstChild  = n4;
 	
 	LevelOrderTraversal(root);	
+
+
+//	cout<<numSiblings(n2);
  	
-	cout<<SumNodes(root);
-	cout<<endl;
-	
-	cout<<SumNodesLevelOrder(root);
+//	cout<<SumNodes(root);
+//	cout<<endl;
+//	
+//	cout<<SumNodesLevelOrder(root);
 	return 0;
 	
 	
