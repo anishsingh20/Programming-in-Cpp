@@ -32,6 +32,7 @@ int NumChild(struct TreeNode *root)
 }
 //TIME COMPLEXITY = O(N)
 
+
 int main()
 {
 	
@@ -61,6 +62,9 @@ int main()
 	
 	
 	cout<<NumChild(root);
+	cout<<endl;
+	
+	
 
 	return 0;
 	
