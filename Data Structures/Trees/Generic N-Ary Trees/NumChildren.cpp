@@ -12,6 +12,25 @@ struct TreeNode{
 
 
 
+//simply move to the first child and then keep counting till we have next siblings of that node
+int NumChild(struct TreeNode *root)
+{
+	int count = 0;
+	//first move to the firstchild
+	
+	root = root->firstChild;
+	
+	//now keep counting until we have nextsiblings of first child
+	while(root)
+	{
+		count++;
+		root = root->nextSibling;
+		
+	}
+	
+	return count;
+}
+//TIME COMPLEXITY = O(N)
 
 int main()
 {
@@ -41,7 +60,7 @@ int main()
 	n1->firstChild  = n4;
 	
 	
-	cout<<numChildren(n2);
+	cout<<NumChild(root);
 
 	return 0;
 	
