@@ -632,7 +632,7 @@ void printAlternateRec(Node *head,bool odd=true)
 
 
 
-void printOddEvenNodes(Node *head,bool even=false)
+void printEvenNodes(Node *head,bool even=false)
 {
 	if(head==NULL) return;
 	

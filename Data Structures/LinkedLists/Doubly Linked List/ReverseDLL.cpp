@@ -165,14 +165,19 @@ int main()
 	
 	cout<<endl;
 	
-//	printAlternateRec(head);
+	cout<<"Odd position nodes are:"<<endl;
+	
+	printAlternateRec(head);
+	cout<<endl;
+	
+	cout<<"Even position nodes are:"<<endl;
 	printOddEvenNodes(head);
 
 	
 	
 //	cout<<endl;	
 //		
-//	cout<<maxOccuringItem(head);
+	cout<<maxOccuringItem(head);
 	//storing the new head	
 //	Node *new_head = reverseRec(head);
 //	
