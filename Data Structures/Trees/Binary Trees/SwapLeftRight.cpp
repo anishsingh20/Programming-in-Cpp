@@ -30,7 +30,7 @@ void SwapLeftRight(BinaryTreeNode *root)
 	{
 		temp = q.front();
 		
-		cout<<temp->data<<" ";
+		
 		q.pop();
 		
 		//first simply swap the left and right children of current root-temp
@@ -47,6 +47,59 @@ void SwapLeftRight(BinaryTreeNode *root)
 	}
 }
 
+
+
+void LevelOrderTraversal(BinaryTreeNode *root)
+{
+	if(!root) return;
+	
+	queue<BinaryTreeNode *> q;
+	
+	BinaryTreeNode *temp;
+	
+	q.push(root);
+//	q.push(NULL); //marker for completion of level0
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		
+		cout<<temp->data<<" ";
+		q.pop();
+		
+
+	
+		if(temp->left) q.push(temp->left);
+			
+		if(temp->right)	q.push(temp->right);
+			
+		
+		
+		
+		
+		
+	}
+}
+
+//Recursive function to swap left and right child of a tree
+void SwapRecursive(BinaryTreeNode *root)
+{
+	if(!root) return;
+	
+	
+	//if left and right child exists then swap them
+	if(root->left && root->right)
+	{
+		swap(root->left,root->right);
+	}
+	
+	
+	//otherwise simply recur to left and right subtrees and swap
+	SwapRecursive(root->left);
+	SwapRecursive(root->right);
+}
+
+//TIME COMPLEXITY = O(n)
 
 
 void Insert( struct BinaryTreeNode **root,int data)
@@ -111,7 +164,11 @@ int main()
 	Insert(&root1,6);
 	Insert(&root1,7);
 	
-	SwapLeftRight(root1);	
+//	SwapLeftRight(root1);	
+	
+	SwapRecursive(root1);
+	
+	LevelOrderTraversal(root1);
 	
 return 0;
 }
