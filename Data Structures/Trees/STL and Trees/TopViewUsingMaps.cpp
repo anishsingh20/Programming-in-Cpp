@@ -1,0 +1,12 @@
+#include<iostream>
+#include<queue>
+#include<map>
+
+
+
+/*program to print the TOP VIEW OF A TREE- 
+
+TOP VIEW CONSISTS OF THE NODES WHICH ARE TOP MOST AT THEIR HORIZONTAL DISTANCE
+HORIZONTAL DISTANCE-HD IS - 1 FOR A LEFT EDGE AND +1 FOR A RIGHT EDGE FROM THE HD OF PARENT NODE
+*/
+using namespace std;
