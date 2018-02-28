@@ -67,6 +67,37 @@ void TopViewLevelOrder(BinaryTreeNode *root)
 //TIME COMPLEXITY = O(N)
 
 
+//Method-2
+
+void left(BinaryTreeNode *root)
+{
+    if(root->left)
+            left(root->left);
+    
+    cout<<root->data<<" ";
+}
+
+void right(BinaryTreeNode *root)
+{
+    cout<<root->data<<" ";
+    if(root->right)
+        right(root->right);
+}
+
+void topView(BinaryTreeNode *root)
+{
+    
+   
+    if(root->left)
+        left(root->left);
+        
+    cout<<root->data<<" ";
+    
+   if(root->right)
+        right(root->right);
+}
+
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -118,6 +149,10 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
+
+//Other method to find top view of a tree
+
+
 int main()
 {
 	struct BinaryTreeNode *root1= NULL;
@@ -133,6 +168,9 @@ int main()
 //	Insert(&root1,9);
 
 	TopViewLevelOrder(root1);
+	cout<<endl;
+	
+	topView(root1);
 	
 	return 0;
 	
