@@ -17,11 +17,20 @@ struct BinaryTreeNode{
 
 using namespace std;
 
-//Method-1 Using a hash map
+/*Method-1 Using a hash map
 
-//traverse the tree in Inorder and recursively go to left and store different HD nodes in map
-//this function is similar to finding horizontal distance of a node, but this time we simply,
-//insert all the HD of nodes inside the MAP
+1) traverse the tree in Inorder and recursively go to left and store different HD nodes in map
+2) this function is similar to finding horizontal distance of a node, but this time we simply,
+3) insert all the HD of nodes inside the MAP
+4)Now we also maintain a vector of nodes to store nodes having same HD as key
+This implementation has TIME COMPLEXITY = O(nlogn) , but extra space is consumed due to using MAPS;
+as MAPS in CPP are implemented using self-balancing BST and their ops have T(n) = log(n)
+
+But this implementation might not print nodes in same vertical order as they appear in tree.
+*/
+
+
+
 void VerticalOrderUtil(BinaryTreeNode *root, map < int, vector<int> > &Map,int hd)
 {
 	//base condition
@@ -36,7 +45,7 @@ void VerticalOrderUtil(BinaryTreeNode *root, map < int, vector<int> > &Map,int h
 	
 		//populate the map
 		
-		Map[hd].push_back(root->data);
+		Map[hd].push_back(root->data);//O(logn)
 		
 	
 
@@ -44,10 +53,10 @@ void VerticalOrderUtil(BinaryTreeNode *root, map < int, vector<int> > &Map,int h
 	//recur to right subtree
 	
 	VerticalOrderUtil(root->right,Map,hd+1);
-}
+}//O(nlogn)
 	
 
-//function to find the vertical sum and traverse the map	
+//function to traverse the map	
 void VerticalOrder(BinaryTreeNode *root)
 {
 	//Map to store different HD and their corresponding nodes data lying on same vertical line-i.e same HD
@@ -59,7 +68,7 @@ void VerticalOrder(BinaryTreeNode *root)
 	//fill the map
 	VerticalOrderUtil(root,Map,0);
 	
-	//traverse the map to print the verticals sums of each HD
+	//traverse the map to print in Vertical order i.e nodes lying on same vertical line with same HD
 	cout<<" HD " <<":" <<" Vertical Sum "<<endl;
 	for(it = Map.begin();it!=Map.end();it++)
 	{
@@ -71,7 +80,7 @@ void VerticalOrder(BinaryTreeNode *root)
 	
 }	
 
-//TIME COMPLEXITY = O(n) , but extra space is consumed due to using MAPS
+
 
 
 
