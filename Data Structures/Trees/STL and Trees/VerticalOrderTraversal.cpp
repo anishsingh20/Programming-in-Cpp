@@ -69,7 +69,7 @@ void VerticalOrder(BinaryTreeNode *root)
 	VerticalOrderUtil(root,Map,0);
 	
 	//traverse the map to print in Vertical order i.e nodes lying on same vertical line with same HD
-	cout<<" HD " <<":" <<" Vertical Sum "<<endl;
+	
 	for(it = Map.begin();it!=Map.end();it++)
 	{
 		for(int i=0;i<it->second.size();++i)
@@ -146,8 +146,8 @@ int main()
 	Insert(&root1,5);
 	Insert(&root1,6);
 	Insert(&root1,7);
-//	Insert(&root1,8);
-//	Insert(&root1,9);
+	Insert(&root1,8);
+	Insert(&root1,9);
 	
 	VerticalOrder(root1);
 	

@@ -1,6 +1,7 @@
 #include<iostream>
 #include<queue>
-#include<map>
+#include <map>
+
 
 
 
@@ -9,6 +10,9 @@
 TOP VIEW CONSISTS OF THE NODES WHICH ARE TOP MOST AT THEIR HORIZONTAL DISTANCE
 HORIZONTAL DISTANCE-HD IS - 1 FOR A LEFT EDGE AND +1 FOR A RIGHT EDGE FROM THE HD OF PARENT NODE
 */
+//using namespace std;
+
+
 using namespace std;
 
 
@@ -92,7 +96,7 @@ void topView(BinaryTreeNode *root)
         left(root->left);
         
     cout<<root->data<<" ";
-    vbb44444444444
+  
    if(root->right)
         right(root->right);
 }
