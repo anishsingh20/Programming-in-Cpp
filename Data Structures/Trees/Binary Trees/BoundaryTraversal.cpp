@@ -75,8 +75,8 @@ void rightBoundary(BinaryTreeNode *root)
 	
 	if (root->right)
         {
-            // to ensure top down order, print the node
-            // before calling itself for left subtree
+            // to ensure bottom-up order, print the node
+            // after calling itself for right subtree
             
             rightBoundary(root->right);
             cout<<root->data<<" ";
@@ -90,10 +90,7 @@ void rightBoundary(BinaryTreeNode *root)
         // do nothing if it is a leaf node, this way we avoid
         // duplicates in output
 
-	if(root->right)
-		rightBoundary(root->right);
-			
-	cout<<root->data<<" ";
+	
 }
 
 
