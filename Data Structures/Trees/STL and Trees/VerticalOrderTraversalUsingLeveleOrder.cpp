@@ -125,7 +125,15 @@ int main()
 	Insert(&root1,8);
 	Insert(&root1,9);
 	
-	PrintVerticalOrderUsingLevelOrder(root1);
+	pair<int,string>p,anish;
+	
+	p = make_pair(20,"anish");
+	
+	anish = p;
+	cout<<anish.first<<" "<<anish.second<<endl;
+	
+	
+//	PrintVerticalOrderUsingLevelOrder(root1);
 	
 	return 0;
 }

@@ -2,19 +2,19 @@
 #include<conio.h>
 #include<math.h>
 
-union u {
-	
-	int a;
-	char c;
-	double d;
-}; //size of union prints the maximum size of the data member inside it
-
-struct s{
-	int b;
-	char d;
-	double f;
-};
-
+//union u {
+//	
+//	int a;
+//	char c;
+//	double d;
+//}; //size of union prints the maximum size of the data member inside it
+//
+//struct s{
+//	int b;
+//	char d;
+//	double f;
+//};
+//
 int main()
 {
 
@@ -26,6 +26,7 @@ printf("%d",sizeof(c)); //size is 2 bytes-1 for char and 1 for NUll character
 float f = 2.650098;
 
 printf("%.4f",f);
+}
 
 
 //union u u1;
@@ -61,4 +62,6 @@ printf("%.4f",f);
 //	 i = i + ++i;
 //	 
 //	 printf("%d",i);
-}
+
+
+
