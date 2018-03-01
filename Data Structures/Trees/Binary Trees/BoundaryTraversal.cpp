@@ -53,6 +53,7 @@ void leftBoundary(BinaryTreeNode *root)
         // do nothing if it is a leaf node, this way we avoid
         // duplicates in output		
 	
+	
 }
 
 //visiting only height of right subtree-1 right child nodes
@@ -89,7 +90,10 @@ void rightBoundary(BinaryTreeNode *root)
         // do nothing if it is a leaf node, this way we avoid
         // duplicates in output
 
-
+	if(root->right)
+		rightBoundary(root->right);
+			
+	cout<<root->data<<" ";
 }
 
 
