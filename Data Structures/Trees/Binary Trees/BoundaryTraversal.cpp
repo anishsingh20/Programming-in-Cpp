@@ -236,7 +236,7 @@ int main()
 	
 
 
-//	BoundaryTraversal(root1);
+	BoundaryTraversal(root1);
 	
 }
 
