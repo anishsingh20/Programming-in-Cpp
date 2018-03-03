@@ -17,8 +17,26 @@ struct GenericTree{
 Number of ways an N-ary tree can be traversed is the factorial of the number of children each node has;
 */
 
+//program to find factorial of a number;
+
+int factorial(int n)
+{
+	//base condition
+	if(n<=1)
+	{
+		return n;
+	}
+	
+	else
+	{
+		return n*factorial(n-1);
+	}
+}
+
+
 
 int main()
 {
+	
 	return 0;
 }
