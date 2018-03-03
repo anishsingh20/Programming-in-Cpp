@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<queue>
 
@@ -24,7 +25,7 @@ int height(BinaryTreeNode *root)
 //visiting only height of left subtree-1 left child nodes
 void leftBoundary(BinaryTreeNode *root)
 {
-
+//this approach only valid for full binar trees-otherwise will show same values
 //	int ht_l = height(root->left);
 //	
 //
