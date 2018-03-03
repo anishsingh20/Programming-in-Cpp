@@ -22,7 +22,7 @@ struct BinaryTreeNode{
 int smallest(vector<int> &v)
 {
 	vector<int>::iterator i;
-	int small=INT_MAX;
+	int small = v[0];
 	
 	for(i = v.begin(); i != v.end() ; i++ )
 	{
