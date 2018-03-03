@@ -82,6 +82,59 @@ void SmallestNode(BinaryTreeNode *root)
 
 
 
+//Approach B-using iterative level order traversal
+
+void SmallestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
+{
+	queue<BinaryTreeNode *>q;
+	BinaryTreeNode *temp;
+	if(!root) return;
+	
+	int min = INT_MAX;
+	
+	int level=0;
+	q.push(root);
+	q.push(NULL); //marker for completion of level-0
+	
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp==NULL)
+		{
+			cout<<"At level "<<level<<" minimum node is "<<min<<endl;
+			
+			if(q.empty()) break;
+			
+			q.push(NULL);
+			
+			level++;
+			
+			//resetting min for next level's minimum value
+			min = INT_MAX;
+			
+			continue;
+		}
+		
+		
+		//get minimum at every level
+		if(min > temp->data)
+		{
+			
+			min = temp->data;
+			
+		}
+		
+		
+		if(temp->left) q.push(temp->left);
+		if(temp->right) q.push(temp->right);
+		
+	}
+}
+
+
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -152,8 +205,9 @@ int main()
 		
 	
 	
-	SmallestNode(root1);
+//	SmallestNode(root1);
 	
+	SmallestLevelNodeUsingLevelOrder(root1);	
 	
 	
 	return 0;
