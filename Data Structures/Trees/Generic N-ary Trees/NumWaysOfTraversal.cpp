@@ -13,6 +13,9 @@ struct GenericTree{
 };
 
 
+/*Solution
+Number of ways an N-ary tree can be traversed is the factorial of the number of children each node has;
+*/
 
 
 int main()
