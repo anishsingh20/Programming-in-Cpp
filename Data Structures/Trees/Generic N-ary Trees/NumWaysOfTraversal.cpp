@@ -20,7 +20,7 @@ Number of ways an N-ary tree can be traversed is the factorial of the number of 
 
 //program to find factorial of a number;
 
-int factorial(int n)
+unsigned long long int factorial(int n)
 {
 	//base condition
 	if(n<=1)
@@ -37,7 +37,8 @@ int factorial(int n)
 
 //function to count total possible ways a N-ary tree can be traversed
 //using level order traversal(BFS) to count the number of child each parent node has at each level
-int numTraversals(struct GenericTree *root)
+//usingned long long int inorder to avoid overflow becasue factorials can take very large values
+unsigned long long int numTraversals(struct GenericTree *root)
 {
 	int ways = 1;
 	if(!root) return;
@@ -54,9 +55,17 @@ int numTraversals(struct GenericTree *root)
 		
 		// The number of ways is the product of
          	// factorials of number of children of each node
+         	ways = ways*factorial(temp->child.size());
          	
+         	//now enqueue all children of the dequed item
+         	
+         	for(int i=0; i < temp->child.size();i++)
+         	{
+         		q.push(temp->child[i]);
+		}
 	}
 	
+	return ways;
 }
 
 
