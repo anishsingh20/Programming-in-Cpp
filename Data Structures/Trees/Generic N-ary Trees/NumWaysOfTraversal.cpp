@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<queue>
 
 //program to find the number of ways a N-ary tree can be traversed
 
@@ -24,13 +25,38 @@ int factorial(int n)
 	//base condition
 	if(n<=1)
 	{
-		return n;
+		return 1;
 	}
 	
 	else
 	{
 		return n*factorial(n-1);
 	}
+}
+
+
+//function to count total possible ways a N-ary tree can be traversed
+//using level order traversal(BFS) to count the number of child each parent node has at each level
+int numTraversals(struct GenericTree *root)
+{
+	int ways = 1;
+	if(!root) return;
+	queue<GenericTree *> q;
+	struct GenericTree *temp;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		
+		// The number of ways is the product of
+         	// factorials of number of children of each node
+         	
+	}
+	
 }
 
 
