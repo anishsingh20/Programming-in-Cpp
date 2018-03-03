@@ -182,49 +182,53 @@ void Insert( struct BinaryTreeNode **root,int data)
 
 int main()
 {
-//	struct BinaryTreeNode *root1= NULL;
+	struct BinaryTreeNode *root1= NULL;
 //	
-//	Insert(&root1,1);
-//	Insert(&root1,2);
-//	Insert(&root1,3);
-//	Insert(&root1,4);
-//	Insert(&root1,5);
-//	Insert(&root1,6);
-//	Insert(&root1,7);
-//	Insert(&root1,8);
-//	Insert(&root1,9);
-//	
+	Insert(&root1,1);
+	Insert(&root1,2);
+	Insert(&root1,3);
+	Insert(&root1,4);
+	Insert(&root1,5);
+	Insert(&root1,6);
+	Insert(&root1,7);
+	Insert(&root1,8);
+	Insert(&root1,9);
+	Insert(&root1,10);
+	
+	
 
-	struct BinaryTreeNode *root = new BinaryTreeNode();
-	struct BinaryTreeNode *r1 = new BinaryTreeNode();
-	struct BinaryTreeNode *r2 = new BinaryTreeNode();
-	struct BinaryTreeNode *r3 = new BinaryTreeNode();
-	struct BinaryTreeNode *r4 = new BinaryTreeNode();
-	struct BinaryTreeNode *r5 = new BinaryTreeNode();
-	struct BinaryTreeNode *r6 = new BinaryTreeNode();	
-	struct BinaryTreeNode *r7 = new BinaryTreeNode();
-	
-	root->data = 20;
-	r1->data = 8;
-	r2->data = 22;
-	r3->data = 4;
-	r4->data = 12;
-	r5->data = 10;
-	r6->data = 14;
-	r7->data = 25;
-		
-	root->left  = r1;
-	root->right = r2;
-	
-	r1->left = r3;
-	r1->right = r4;
-	
-	
-	r4->left = r5;
-	r4->right = r6;
-	
-	
-	r2->right = r7;
+
+
+//	struct BinaryTreeNode *root = new BinaryTreeNode();
+//	struct BinaryTreeNode *r1 = new BinaryTreeNode();
+//	struct BinaryTreeNode *r2 = new BinaryTreeNode();
+//	struct BinaryTreeNode *r3 = new BinaryTreeNode();
+//	struct BinaryTreeNode *r4 = new BinaryTreeNode();
+//	struct BinaryTreeNode *r5 = new BinaryTreeNode();
+//	struct BinaryTreeNode *r6 = new BinaryTreeNode();	
+//	struct BinaryTreeNode *r7 = new BinaryTreeNode();
+//	
+//	root->data = 20;
+//	r1->data = 8;
+//	r2->data = 22;
+//	r3->data = 4;
+//	r4->data = 12;
+//	r5->data = 10;
+//	r6->data = 14;
+//	r7->data = 25;
+//		
+//	root->left  = r1;
+//	root->right = r2;
+//	
+//	r1->left = r3;
+//	r1->right = r4;
+//	
+//	
+//	r4->left = r5;
+//	r4->right = r6;
+//	
+//	
+//	r2->right = r7;
 	
 	
 //	r5->left  = r6->left  = NULL;
@@ -232,7 +236,7 @@ int main()
 	
 
 
-	BoundaryTraversal(root);
+//	BoundaryTraversal(root1);
 	
 }
 
