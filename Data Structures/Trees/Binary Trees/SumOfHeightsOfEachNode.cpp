@@ -1,4 +1,5 @@
-include<iostream>
+#include<iostream>
+#include<queue>
 
 using namespace std;
 
@@ -10,6 +11,31 @@ struct BinaryTreeNode{
 	BinaryTreeNode *left;
 	BinaryTreeNode *right;
 };
+
+
+int height(BinaryTreeNode *root)
+{
+	if(!root) return 0;
+	
+	else
+		return 1+max(height(root->left),height(root->right));
+}
+
+int SumHeights(BinaryTreeNode *root)
+{
+	//base condition
+	if(!root) return 0;
+	
+	return SumHeights(root->left)  + height(root) + SumHeights(root->right);
+	
+	
+	
+} //time complexity = O(nh)
+
+
+
+
+
 
 
 
@@ -70,17 +96,16 @@ int main()
 {
 	struct BinaryTreeNode *root1= NULL;
 	
-	Insert(&root1,7);
-	Insert(&root1,6);
-	Insert(&root1,5);
-	Insert(&root1,4);
-	Insert(&root1,3);
-	Insert(&root1,2);
 	Insert(&root1,1);
+	Insert(&root1,2);
+	Insert(&root1,3);
+	Insert(&root1,4);
+	Insert(&root1,5);
+//	Insert(&root1,2);
+//	Insert(&root1,1);
+	
+	cout<<SumHeights(root1);
+	
 
 
-
-int main()
-{
-	return 0;
 }
