@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-//program to print smallest node at each level of a binary tree
+//program to print largest nodes at each level of a binary tree
 
 struct BinaryTreeNode{
 	int data;
@@ -19,48 +19,48 @@ struct BinaryTreeNode{
 
 
 //function to find smallest element in a vector
-int smallest(vector<int> &v)
+int Largest(vector<int> &v)
 {
 	vector<int>::iterator i;
-	int small = v[0];
+	int large = v[0];
 	
 	for(i = v.begin(); i != v.end() ; i++ )
 	{
-		if( *i < small )
+		if( *i > large )
 		{
-			small = *i;	
+			large = *i;	
 		}	
 	}
 	
-	return small;
+	return large;
 }
 
 
 //function to store all the nodes at each level in a hash map
-void SmallestNodeUtil(BinaryTreeNode *root, map< int,vector<int> > &Map ,int level)
+void LargestNodeUtil(BinaryTreeNode *root, map< int,vector<int> > &Map ,int level)
 {
 	if(!root) return;
 	
 	
 	
 	//store each level as key and corresponding elements at that level in a vector
-	SmallestNodeUtil(root->left,Map,level+1);
+	LargestNodeUtil(root->left,Map,level+1);
 	
 	//storing all nodes at each same level in hash map inside a vector
 	Map[level].push_back(root->data);
 	
-	SmallestNodeUtil(root->right,Map,level+1);
+	LargestNodeUtil(root->right,Map,level+1);
 	
 }
 
 
-void SmallestNode(BinaryTreeNode *root)
+void LargestNode(BinaryTreeNode *root)
 {
 	map< int,vector<int> > Map;
 	map<int,vector<int> >::iterator it;
 	
 	//populating the map
-	SmallestNodeUtil(root,Map,0);
+	LargestNodeUtil(root,Map,0);
 	
 	cout<<"level "<<" "<<" Smallest Node"<<endl;
 	
@@ -71,7 +71,7 @@ void SmallestNode(BinaryTreeNode *root)
 		
 //		cout<<*min_element(it->second.begin(),it->second.end());
 		//or use custom function to find minimum element
-		cout<<smallest(it->second);
+		cout<<Largest(it->second);
 		 //finding smallest at that level	
 	
 		
@@ -84,13 +84,13 @@ void SmallestNode(BinaryTreeNode *root)
 
 //Approach B-using iterative level order traversal
 
-void SmallestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
+void LargestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
 	BinaryTreeNode *temp;
 	if(!root) return;
 	
-	int min = INT_MAX;
+	int max = INT_MIN;
 	
 	int level=0;
 	q.push(root);
@@ -102,9 +102,10 @@ void SmallestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
 		temp = q.front();
 		q.pop();
 		
+		//when temp becomes NULL it means we have traversed a level
 		if(temp==NULL)
 		{
-			cout<<"At level "<<level<<" minimum node is "<<min<<endl;
+			cout<<"At level "<<level<<" maximum node is "<<max<<endl;
 			
 			if(q.empty()) break;
 			
@@ -113,17 +114,17 @@ void SmallestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
 			level++;
 			
 			//resetting min for next level's minimum value
-			min = INT_MAX;
+			max = INT_MIN;
 			
 			continue;
 		}
 		
 		
-		//get minimum at every level
-		if(min > temp->data)
+		//get max at every level
+		if(max < temp->data)
 		{
 			
-			min = temp->data;
+			max = temp->data;
 			
 		}
 		
@@ -205,9 +206,9 @@ int main()
 		
 	
 	
-//	SmallestNode(root1);
-	
-	SmallestLevelNodeUsingLevelOrder(root1);	
+	LargestNode(root1);
+	cout<<endl;
+	LargestLevelNodeUsingLevelOrder(root1);	
 	
 	
 	return 0;
