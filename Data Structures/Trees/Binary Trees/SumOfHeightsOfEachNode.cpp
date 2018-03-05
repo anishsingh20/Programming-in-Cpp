@@ -1,9 +1,17 @@
 #include<iostream>
 #include<queue>
+#include<vector>
+#include<numeric>
 
 using namespace std;
 
 //program to find sum of heights of each node in a binary tree
+
+/* 2 Methods-to do this
+1) Efficient 
+2) Inefficient 
+
+*/
 
 
 struct BinaryTreeNode{
@@ -26,7 +34,7 @@ int SumHeights(BinaryTreeNode *root)
 	//base condition
 	if(!root) return 0;
 	
-	return SumHeights(root->left)  + height(root) + SumHeights(root->right);
+	return height(root) + SumHeights(root->left)  + SumHeights(root->right);
 	
 	
 	
@@ -34,9 +42,16 @@ int SumHeights(BinaryTreeNode *root)
 
 
 
+//SOLUTION-2 Efficient solution-The idea is to compute height and Sum in same recursive call
 
-
-
+int getHeightUtil(BinaryTreeNode *root)
+{
+	//base condition
+	if(!root) 
+		return 0;
+	
+		
+}
 
 
 void Insert( struct BinaryTreeNode **root,int data)
@@ -105,6 +120,13 @@ int main()
 //	Insert(&root1,1);
 	
 	cout<<SumHeights(root1);
+	
+	cout<<endl;
+	
+	
+	
+	
+	
 	
 
 
