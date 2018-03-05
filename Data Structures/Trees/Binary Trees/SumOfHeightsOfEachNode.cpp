@@ -44,15 +44,30 @@ int SumHeights(BinaryTreeNode *root)
 
 //SOLUTION-2 Efficient solution-The idea is to compute height and Sum in same recursive call
 
-int getHeightUtil(BinaryTreeNode *root)
+int getTotalHeightUtil(BinaryTreeNode *root,int &sum)
 {
-	//base condition
-	if(!root) 
-		return 0;
-	
+	if(root == NULL)
+        	return 0;
+ 
+    int lh = getTotalHeightUtil(root->left, sum);
+    int rh = getTotalHeightUtil(root->right, sum);
+    int h = max(lh, rh) + 1;
+ 
+    sum = sum + lh + h + rh;
+    return h;
+
 		
 }
 
+int getSumHeight(BinaryTreeNode *root)
+{
+	int sum = 0;
+	
+	//calling the Utility function
+	getTotalHeightUtil(root,sum);
+	
+	return sum;
+}
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -123,6 +138,9 @@ int main()
 	
 	cout<<endl;
 	
+	cout<<"efficient method:"<<endl;
+	int sum=0;
+	cout<<getSumHeight(root1);
 	
 	
 	
