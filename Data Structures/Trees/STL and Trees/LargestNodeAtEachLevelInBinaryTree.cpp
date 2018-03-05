@@ -69,9 +69,9 @@ void LargestNode(BinaryTreeNode *root)
 		
 		cout<<       it->first<<"   |    ";
 		
-//		cout<<*min_element(it->second.begin(),it->second.end());
+		cout<<*max_element(it->second.begin(),it->second.end());
 		//or use custom function to find minimum element
-		cout<<Largest(it->second);
+//		cout<<Largest(it->second);
 		 //finding smallest at that level	
 	
 		
