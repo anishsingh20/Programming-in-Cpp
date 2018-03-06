@@ -1,10 +1,15 @@
 #include<iostream>
 #include<map>
+#include<vector>
+#include<algorithm>
+#include<queue>
+#include<iomanip>
 
 
 using namespace std;
 
-//PROGRAM TO PRINT NODES AT EACH LEVEL IN SORTED MANNER USING MAPS
+//PROGRAM TO PRINT NODES AT EACH LEVEL IN SORTED MANNER USING MAPS-TIME COMPLEXITY = O(nlogn)
+//as maps are implemented using self balancing Binary search trees
 
 
 struct BinaryTreeNode{
@@ -15,7 +20,7 @@ struct BinaryTreeNode{
 
 
 
-void SortedLevelPrintUtil(struct BinaryTreeNode *root, map< int,<vector<int> > &Map,int level)
+void SortedLevelPrintUtil(struct BinaryTreeNode *root, map< int,vector<int> > &Map,int level)
 {
 	if(!root) return ;
 	
@@ -26,6 +31,35 @@ void SortedLevelPrintUtil(struct BinaryTreeNode *root, map< int,<vector<int> > &
 	SortedLevelPrintUtil(root->right,Map,level+1); //increment level as we recur to each right node
 }
 
+
+void SortedLevelPrint(struct BinaryTreeNode *root)
+{
+	map< int,vector<int> > Map;
+	
+	map< int,vector<int> >::iterator i;
+	
+	//fill the map
+	
+	SortedLevelPrintUtil(root,Map,0);
+	
+	cout<<"level"<<setw(10)<< " Sorted Level Nodes:"<<endl;
+	
+	for(i=Map.begin(); i!=Map.end();i++)
+	{
+		//now we just need to sort the vector
+		
+		cout<<i->first<<"      |    ";
+		
+		sort(i->second.begin(), i->second.end());
+		
+		for(int j= 0 ; j< i->second.size();j++)
+		{
+			cout<<i->second[j]<<" ";
+		}
+		
+		cout<<endl;
+	}
+}
 
 
 void Insert( struct BinaryTreeNode **root,int data)
@@ -86,13 +120,16 @@ int main()
 {
 	struct BinaryTreeNode *root1= NULL;
 	
-	Insert(&root1,1);
-	Insert(&root1,2);
+	Insert(&root1,7);
+	Insert(&root1,10);
 	Insert(&root1,3);
-	Insert(&root1,4);
-	Insert(&root1,5);
-//	Insert(&root1,2);
-//	Insert(&root1,1);
+	Insert(&root1,8);
+	Insert(&root1,100);
+	Insert(&root1,6);
+	Insert(&root1,9);
+	
+	
+	SortedLevelPrint(root1);
 
 return 0;
 
