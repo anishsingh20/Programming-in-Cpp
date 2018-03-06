@@ -165,7 +165,60 @@ void Insert( struct BinaryTreeNode **root,int data)
 
 
 
-//METHOD-3  : USING
+//METHOD-3  : USING LEVEL ORDER and MAP but extra memory is consumed
+
+void SortedLevelOrderMap(struct BinaryTreeNode *root)
+{
+	//a queue to store level and node
+	queue< pair<BinaryTreeNode*,int> > q;
+
+	//map to store level as key and their corresponding nodes at each level
+	map< int, vector<int> > Map;
+	
+	if(root==NULL) return;
+	
+	q.push(make_pair(root,0)); //level 0
+	
+	while(!q.empty())
+	{
+		pair<BinaryTreeNode*,int> Pair = q.front();
+		q.pop();
+		int level = Pair.second;//level
+		BinaryTreeNode *temp = Pair.first;//node
+		
+		//simply insert the level and nodes at eack level in map
+		Map[level].push_back(temp->data);
+		
+		if(temp->left) q.push(make_pair(temp->left,level+1));
+		
+		if(temp->right) q.push(make_pair(temp->right,level+1));
+		
+		
+	}
+	
+	
+	map< int,vector<int> >::iterator i;
+	
+	for(i = Map.begin(); i != Map.end(); i++ )
+	{
+		cout<<"level "<<i->first<<" has sorted : ";
+		
+		//sorting the vector of nodes inside map
+		sort(i->second.begin(),i->second.end());
+		
+		for(int j = 0; j < i->second.size(); ++j)
+		{
+			cout<<i->second[j]<<" ";
+			
+		}
+		
+		cout<<endl;
+		
+	}
+		
+} 
+
+
 
 
 
@@ -187,6 +240,10 @@ int main()
 	cout<<endl;
 	
 	SortedLevelOrderTraversal(root1);
+	
+	cout<<endl;
+	
+	SortedLevelOrderMap(root1);
 
 return 0;
 
