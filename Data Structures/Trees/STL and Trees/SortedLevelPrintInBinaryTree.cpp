@@ -165,6 +165,9 @@ void Insert( struct BinaryTreeNode **root,int data)
 
 
 
+//METHOD-3  : USING
+
+
 
 int main()
 {
