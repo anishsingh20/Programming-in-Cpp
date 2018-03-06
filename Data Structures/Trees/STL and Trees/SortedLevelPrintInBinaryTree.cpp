@@ -4,6 +4,7 @@
 #include<algorithm>
 #include<queue>
 #include<iomanip>
+#include<set>
 
 
 using namespace std;
@@ -61,6 +62,55 @@ void SortedLevelPrint(struct BinaryTreeNode *root)
 	}
 }
 
+
+//Method-2, simple method using level order traveral using a queue, and store each level data in a set
+//now set automatically sorts the data inside it. The only thing we need to care is tha we need to empty the set after
+//visiting each level
+
+void SortedLevelOrderTraversal(BinaryTreeNode *root)
+{
+	queue<BinaryTreeNode *>q;
+	BinaryTreeNode *temp;
+	set<int> S;
+	set<int>::iterator i;
+	
+	if(root==NULL) return;
+	
+	q.push(root);
+	q.push(NULL); //marker for completion of level-0
+	
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		
+		//when a level has been traversed
+		if(temp==NULL)
+		{
+			if(!q.empty())
+				q.push(NULL); //marker for completion of another level 
+				
+			for(i = S.begin(); i != S.end() ; i++ )
+			{
+				cout<<*i<<" ";
+			}
+			cout<<endl;
+			
+			S.clear(); //emptying the set after each level is traversed
+		}
+		
+		else
+		{
+			S.insert(temp->data);
+			
+			if(temp->left)	q.push(temp->left);
+			
+			if(temp->right) q.push(temp->right);
+		}
+	}
+}
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -130,6 +180,10 @@ int main()
 	
 	
 	SortedLevelPrint(root1);
+	
+	cout<<endl;
+	
+	SortedLevelOrderTraversal(root1);
 
 return 0;
 
