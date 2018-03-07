@@ -3,12 +3,16 @@
 #include<queue>
 #include<map>
 #include<algorithm>
+#include<set>
 
 using namespace std;
 
 
 
-//program to print largest nodes at each level of a binary tree
+//program to print largest nodes at each level of a binary tree-
+
+//various method- 1)Using Maps, 2) Using level order trversal 3) using level order and a set to store nodes at each level and simply
+//finding last element in that as sets are implemented using self balancing BST
 
 struct BinaryTreeNode{
 	int data;
@@ -136,6 +140,52 @@ void LargestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
 }
 
 
+
+//Method -3 ) Using Sets
+
+void LargestNodeAtEachLevelUsingSet(BinaryTreeNode *root)
+{
+	queue<BinaryTreeNode *>q;
+	BinaryTreeNode *temp;
+	set<int>Set;
+	if(!root) return;
+	
+	q.push(root);
+	q.push(NULL);
+	
+	int level = 0;
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp==NULL)
+		{
+			if(!q.empty())
+				q.push(NULL);
+			
+			
+			cout<<"At level "<<level<<" largest node is: "<< *Set.end() <<" "<<endl;
+			
+			level++;
+			
+			Set.clear();
+			
+		}
+		
+		else
+		{
+			Set.insert(temp->data);
+			
+			if(temp->left)	q.push(temp->left);
+			
+			if(temp->right) q.push(temp->right);
+		}
+	}
+			
+}
+
+
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -200,8 +250,8 @@ int main()
 	Insert(&root1,3);
 	Insert(&root1,2);
 	Insert(&root1,1);
-//	Insert(&root1,11);
-//	Insert(&root1,-1);
+	Insert(&root1,11);
+	Insert(&root1,-1);
 	
 		
 	
@@ -209,6 +259,10 @@ int main()
 	LargestNode(root1);
 	cout<<endl;
 	LargestLevelNodeUsingLevelOrder(root1);	
+	
+	cout<<endl;
+	
+	LargestNodeAtEachLevelUsingSet(root1);
 	
 	
 	return 0;

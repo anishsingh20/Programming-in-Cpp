@@ -137,6 +137,7 @@ void SmallestLevelNodeUsingLevelOrder(BinaryTreeNode *root)
 
 
 
+//Method-3 using SETS
 void SmallestNodeAtEachLevelUsingSet(BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
@@ -178,6 +179,58 @@ void SmallestNodeAtEachLevelUsingSet(BinaryTreeNode *root)
 	}
 			
 }
+
+
+
+//Method-4 Using a Vector
+
+void SmallestNodeAtEachLevelUsingVector(BinaryTreeNode *root)
+{
+	queue<BinaryTreeNode *>q;
+	BinaryTreeNode *temp;
+	vector<int>V;
+	if(!root) return;
+	
+	q.push(root);
+	q.push(NULL);
+	
+	int level = 0;
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp==NULL)
+		{
+			if(!q.empty())
+				q.push(NULL);
+			
+			//sorting the vector which contains nodes at each level
+			sort(V.begin(),V.end());
+			
+			//after sorting , the first element is the smallest in the vector
+			cout<<"At level "<<level<<" smallest node is: "<< *V.begin() <<" "<<endl;
+			
+			level++;
+			
+			V.clear();
+			
+		}
+		
+		else
+		{
+			V.push_back(temp->data);
+			
+			if(temp->left)	q.push(temp->left);
+			
+			if(temp->right) q.push(temp->right);
+		}
+	}
+			
+}
+
+
+
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -243,19 +296,26 @@ int main()
 	Insert(&root1,3);
 	Insert(&root1,2);
 	Insert(&root1,1);
-//	Insert(&root1,11);
-//	Insert(&root1,-1);
+	Insert(&root1,11);
+	Insert(&root1,-1);
 	
 		
 	
 	
 //	SmallestNode(root1);
 	
+	cout<<"Using simple level order"<<endl;
 	SmallestLevelNodeUsingLevelOrder(root1);	
 	
 	cout<<endl;
 	
+	cout<<"Using simple level order and Sets:"<<endl;
 	SmallestNodeAtEachLevelUsingSet(root1);
+	
+	cout<<endl;
+	
+	cout<<"Using simple level order and Vector:"<<endl;
+	SmallestNodeAtEachLevelUsingVector(root1);
 	
 	
 	return 0;
