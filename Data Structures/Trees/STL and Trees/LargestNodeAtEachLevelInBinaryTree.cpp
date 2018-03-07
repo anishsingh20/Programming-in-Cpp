@@ -66,7 +66,7 @@ void LargestNode(BinaryTreeNode *root)
 	//populating the map
 	LargestNodeUtil(root,Map,0);
 	
-	cout<<"level "<<" "<<" Smallest Node"<<endl;
+	cout<<"level "<<" "<<" largest Node"<<endl;
 	
 	for(it = Map.begin() ; it!=Map.end() ; it++)
 	{
@@ -147,7 +147,7 @@ void LargestNodeAtEachLevelUsingSet(BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
 	BinaryTreeNode *temp;
-	set<int>Set;
+	vector<int>V;
 	if(!root) return;
 	
 	q.push(root);
@@ -164,18 +164,19 @@ void LargestNodeAtEachLevelUsingSet(BinaryTreeNode *root)
 			if(!q.empty())
 				q.push(NULL);
 			
+			sort(V.begin(),V.end());
 			
-			cout<<"At level "<<level<<" largest node is: "<< *Set.end() <<" "<<endl;
+			cout<<"At level "<<level<<" largest node is: "<< *V.end() <<" "<<endl;
 			
 			level++;
 			
-			Set.clear();
+			V.clear();
 			
 		}
 		
 		else
 		{
-			Set.insert(temp->data);
+			V.push_back(temp->data);
 			
 			if(temp->left)	q.push(temp->left);
 			
