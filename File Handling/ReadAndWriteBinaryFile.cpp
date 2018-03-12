@@ -10,17 +10,17 @@ using namespace std;
 class Person{
 	
 	int age;
-	string name;
+	char name[80];
 	
 	public:
 	Person() {
-		name="noname";
+		strcpy(name,"noname");
 		age=0;
 	}
 	
-	Person(string name, int age)
+	Person(const char *name, int age)
 	{
-		this->name = name;
+		strcpy(this->name ,name);
 		this->age  = age;
 	}
 	
@@ -29,6 +29,11 @@ class Person{
 	{
 		cout<<"The name is "<<name<<" and age is "<<age<<endl;
 	}
+	
+	void change(){
+		strcpy(name,"anish Singh walia");
+		age=21;
+	}
 };
 
 
@@ -36,7 +41,7 @@ class Person{
 int main()
 {
 	Person Anish("Anish",20);
-	Person Anish2;
+
 	
 	//creating file object
 	fstream file("AnishBin.bin",ios::binary | ios::in | ios::out | ios::trunc);
@@ -47,6 +52,7 @@ int main()
 	}
 	else
 	{
+		Person Anish2;
 		//writing a block of data to the binary file
 		//write() function takes argument as data to write and the stream size of the data which is being written
 		file.write(  (char*)&Anish,sizeof(Person) );
@@ -56,17 +62,19 @@ int main()
 		file.seekg(0);
 		
 		
-		while(!file.eof())
-		{
-			//reading data from file and storing it in the object
-			file.read((char*)&Anish2,sizeof(Person) );
-		}
+	
+		//reading data from file and storing it in the object
+		file.read((char*)&Anish2,sizeof(Person) );
+		
 		
 		Anish.introduce();
 		cout<<endl;
 		Anish2.introduce();
 	
-	
+		Anish.change();
+		
+		Anish.introduce();
+		Anish2.introduce();	
 	
 		file.close();
 		
