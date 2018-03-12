@@ -3,7 +3,7 @@
 //COPY CONSTRUCTOR- it is simply a overloaded constructor which is called or used when we copy a object of type class to another object , inorder to
 //copy the data members of class to new temp object
 
-// due to copy constructor both the objects will contain the member values at different locations and maintain different values-whether the member values
+//due to copy constructor both the objects will contain the member values at different locations and maintain different values-whether the member values
 //are statically allocated or dynamically allocated during runtime
 
 //COPY CONSTRUCTOR-takes parameter as a reference to object of class Person , it should be always constant
