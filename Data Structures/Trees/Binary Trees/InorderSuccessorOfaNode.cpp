@@ -44,6 +44,17 @@ BinaryTreeNode* leftMost(BinaryTreeNode *root)
 }
 
 
+BinaryTreeNode *rightMost(BinaryTreeNode *root)
+{
+	if(!root) return NULL;
+	
+	if(root->left==NULL && root->right==NULL)
+		return root;
+		
+	rightMost(root->right);
+}
+
+
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -112,6 +123,8 @@ int main()
 	
 	
 	cout<<leftMost(root1)->data;
+	cout<<endl;
+	cout<<rightMost(root1)->data;
 	
 	
 }
