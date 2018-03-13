@@ -54,6 +54,55 @@ void DiagonalSum(struct BinaryTreeNode *root)
 	
 }
 
+
+//iterative approach- simply keep a variable sum to print sum of nodes on each diagonal line, then reset sum to 0.
+//we keep a delimitter NULL in queue to mark end of current diagonal and print sum, then reset sum.
+void SumDiagonalsIterative(struct BinaryTreeNode *root)
+{
+	if(!root) return;
+	
+	queue<BinaryTreeNode *> q;
+	BinaryTreeNode *curr;
+	int sum=0;
+	q.push(root);
+	q.push(NULL);
+	
+	while(!q.empty())
+	{
+		curr = q.front();
+		q.pop();
+		
+		if(curr==NULL)
+		{
+			//delimitter for starting of new diagonal
+			if(!q.empty())	q.push(NULL);
+			
+			
+			
+			cout<<sum<<" ";
+			
+			sum=0;
+			
+			cout<<endl;
+			
+		}
+		
+		else
+		{
+			while(curr)
+			{
+				sum += curr->data;
+				
+				if(curr->left)	q.push(curr->left);
+				
+				curr = curr->right;
+			}
+			
+		}
+	}		
+}
+
+
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
@@ -121,6 +170,10 @@ int main()
 	Insert(&root1,13);
 	
 	DiagonalSum(root1);
+	
+	cout<<endl;
+	
+	SumDiagonalsIterative(root1);
 	
 	cout<<endl;
 	
