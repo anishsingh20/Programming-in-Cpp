@@ -6,6 +6,8 @@
 
 /*Program to do DIAGONAL TRAVERSAL IN A BINARY TREE-logic is to do something similar to VERTICAL TRAVERSAL-but here
 we use the slope distances as the key  in map and a vector of nodes at that distance as value
+
+2) Method 2- Iterative method similar to level order traversal, but we only enqueue left subchild in the queue
 */
 
 using namespace std;
@@ -55,6 +57,49 @@ void DiagonalTraversal(struct BinaryTreeNode *root)
 		cout<<endl;
 	}
 	
+}
+
+
+void DiagonalTraversalIterative(struct BinaryTreeNode *root)
+{
+	//push only left child in the queue, and use a delimitter NULL for visiting current diagonal
+	queue<BinaryTreeNode *> q;
+	
+	if(!root) return ;
+	struct BinaryTreeNode *temp;
+	q.push(root);
+	
+	q.push(NULL);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		//completion of current diagonal
+		if(temp==NULL)
+		{
+			if(!q.empty())
+				q.push(NULL);
+				
+			cout<<endl;
+		}
+		
+		else{
+			while(temp)
+			{
+				
+				cout<<temp->data<<" ";
+			
+			
+				//only push left child in queue
+				if(temp->left) q.push(temp->left);
+			
+				//otherwise set temp to right child if it exists
+				temp = temp->right;
+			}	
+		}
+	}
 }
 
 void Insert( struct BinaryTreeNode **root,int data)
@@ -124,4 +169,8 @@ int main()
 	Insert(&root1,13);
 	
 	DiagonalTraversal(root1);
+	
+	cout<<endl;
+	
+	DiagonalTraversalIterative(root1);
 }
