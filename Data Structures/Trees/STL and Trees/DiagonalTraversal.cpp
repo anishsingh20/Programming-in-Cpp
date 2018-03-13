@@ -7,6 +7,10 @@
 /*Program to do DIAGONAL TRAVERSAL IN A BINARY TREE-logic is to do something similar to VERTICAL TRAVERSAL-but here
 we use the slope distances as the key  in map and a vector of nodes at that distance as value
 */
+
+using namespace std;
+
+
 struct BinaryTreeNode{
 	
 	int data;
@@ -14,7 +18,7 @@ struct BinaryTreeNode{
 };
 
 
-void PopulateMap(struct BinaryTreeNode *root,int d,map< int,vector<int> >&Map)
+void PopulateMap(struct BinaryTreeNode *root, map < int,vector<int> >&Map,int d)
 {
 	if(!root) return ;
 	
@@ -22,13 +26,36 @@ void PopulateMap(struct BinaryTreeNode *root,int d,map< int,vector<int> >&Map)
 	//now recursively traverse to left and right subtrees
 	
 	//we increase the vertical distance by 1 for each left node
-	PopulateMap(root->left,d+1,Map);
+	PopulateMap(root->left,Map,d+1);
 	
 	//for a right node it reamins the same
-	PopulateMap(root->right,d,Map);
+	PopulateMap(root->right,Map,d);
 	
 }
 
+
+void DiagonalTraversal(struct BinaryTreeNode *root)
+{
+	map< int,vector<int> > Map;
+	
+	//populating the map
+	PopulateMap(root,Map,0);
+	
+	//simply traverse the map 
+	map< int ,vector<int> >::iterator it;
+	for(it=Map.begin();it!=Map.end();it++)
+	{
+		cout<<it->first<<"-->";
+		
+		for(int i= 0 ;i < it->second.size();i++)
+		{
+			cout<<it->second[i]<<" ";
+		}
+		
+		cout<<endl;
+	}
+	
+}
 
 void Insert( struct BinaryTreeNode **root,int data)
 {
@@ -86,13 +113,15 @@ int main()
 {
 	struct BinaryTreeNode *root1= NULL;
 	
-	Insert(&root1,7);
-	Insert(&root1,6);
-	Insert(&root1,5);
-	Insert(&root1,4);
+	Insert(&root1,8);
 	Insert(&root1,3);
-	Insert(&root1,2);
+	Insert(&root1,10);
 	Insert(&root1,1);
-	Insert(&root1,11);
-	Insert(&root1,-1);
+	Insert(&root1,2);
+	Insert(&root1,6);
+	Insert(&root1,14);
+	Insert(&root1,7);
+	Insert(&root1,13);
+	
+	DiagonalTraversal(root1);
 }
