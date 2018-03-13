@@ -69,32 +69,32 @@ BinaryTreeNode *rightMost(BinaryTreeNode *root)
 
 
 
-BinaryTreeNode *RecursiveInorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x)
+BinaryTreeNode* findInorderRecursive(BinaryTreeNode* root, BinaryTreeNode* x )
 {
-	BinaryTreeNode *temp;
-	if(!root) return NULL;
 	
-	if(root == x || (temp == RecursiveInorderSuccessor(root->left,x)) || 
-		(temp == RecursiveInorderSuccessor(root->right,x)))
-		{
-			if(temp)
-			{
-				if(root->left == temp)
-				{
-					//root is the inorder successor of temp
-					cout<<root->data<<endl;
-					return NULL;
-				}	
-			}
-			
-			return root;
-		}
-		
-		
-		return NULL;	
-		
-		
+	BinaryTreeNode *temp;
+    if (!root)
+        return NULL;
+ 
+    if (root==x || (temp = findInorderRecursive(root->left,x)) ||
+                   (temp = findInorderRecursive(root->right,x)))
+    {
+        if (temp)
+        {
+            if (root->left == temp)
+            {
+                cout << "Inorder Successor of " << x->data;
+                cout << " is "<< root->data << "\n";
+                return NULL;
+            }
+        }
+ 
+        return root;
+    }
+ 
+    return NULL;
 }
+
 
 
 void InorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x)
@@ -111,6 +111,7 @@ void InorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x)
 	//Case 2:if right child is NULL
 	if(x->right==NULL)
 	{
+		int f = 0;
 		//Case 3: if x is the right most node in tree-then its inorder succcessor is NULL
 		BinaryTreeNode *rightmost = rightMost(root);
 		
@@ -120,7 +121,7 @@ void InorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x)
 		}
 		else
 		{
-			RecursiveInorderSuccessor(root,x);
+			findInorderRecursive(root,x);
 		}
 	}
 }
@@ -141,7 +142,7 @@ int main()
 //	cout<<endl;
 //	cout<<rightMost(root)->data;
 
-	InorderSuccessor(root,root->right->left);	
+	InorderSuccessor(root,root->left->right);	
 	
 
 	
