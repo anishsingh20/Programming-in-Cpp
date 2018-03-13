@@ -8,6 +8,9 @@
 we use the slope distances as the key  in map and a vector of nodes at that distance as value
 
 2) Method 2- Iterative method similar to level order traversal, but we only enqueue left subchild in the queue
+The idea is to use a queue to store only the left child of current node. 
+After printing the data of current node make the current node to its right child, if present.
+NULL is queue is used to mark the starting of new diagonal.
 */
 
 using namespace std;
@@ -62,7 +65,7 @@ void DiagonalTraversal(struct BinaryTreeNode *root)
 
 void DiagonalTraversalIterative(struct BinaryTreeNode *root)
 {
-	//push only left child in the queue, and use a delimitter NULL for visiting current diagonal
+	//push only left child in the queue, and use a delimitter NULL when a diagonal is visited
 	queue<BinaryTreeNode *> q;
 	
 	if(!root) return ;
