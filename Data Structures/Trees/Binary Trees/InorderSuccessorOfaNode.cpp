@@ -17,6 +17,19 @@ struct BinaryTreeNode{
 };
 
 
+//function to make a new node
+BinaryTreeNode *newNode(int data)
+{
+	BinaryTreeNode *temp = new BinaryTreeNode();
+	
+	temp->data = data;
+	
+	temp->right = temp->left = NULL;
+	
+	return temp;
+}
+
+
 //function to find the lest most node in a tree
 BinaryTreeNode* leftMost(BinaryTreeNode *root)
 {
@@ -61,7 +74,7 @@ BinaryTreeNode *RecursiveInorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x
 	BinaryTreeNode *temp;
 	if(!root) return NULL;
 	
-	if(root->data == x || (temp == RecursiveInorderSuccessor(root->left,x)) || 
+	if(root == x || (temp == RecursiveInorderSuccessor(root->left,x)) || 
 		(temp == RecursiveInorderSuccessor(root->right,x)))
 		{
 			if(temp)
@@ -84,73 +97,20 @@ BinaryTreeNode *RecursiveInorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x
 }
 
 
-void Insert( struct BinaryTreeNode **root,int data)
-{
-	struct BinaryTreeNode *new_node = new BinaryTreeNode();
-	struct BinaryTreeNode *temp;
-	queue<BinaryTreeNode *> q;
-	new_node->data = data;
-	new_node->left=NULL;
-	new_node->right=NULL;
-	
-	if(*root==NULL)
-	{
-		*root = new_node;
-		return;
-	}
-	
-	q.push(*root);
-	
-	while(!q.empty())
-	{
-		temp  = q.front();
-		q.pop();
-		
-		if(temp->left==NULL)
-		{
-			temp->left = new_node;
-			return;
-			
-			
-		}
-		
-		else
-		{
-			q.push(temp->left);
-		}
-			
-		if(temp->right==NULL)
-		{
-			temp->right = new_node;
-			return;
-			
-		}	
-		
-		else
-		{
-			q.push(temp->right);
-		}
-	}
-	
-	
-}
-
-
 int main()
 {
-	struct BinaryTreeNode *root1= NULL;
+
+
+	BinaryTreeNode *root = newNode(1);
+	root->left = newNode(2);
+	root->right = newNode(3);
+	root->left->left = newNode(4);
+	root->left->right = newNode(5);
+	root->right->right = newNode(6);
 	
-	Insert(&root1,1);
-	Insert(&root1,2);
-	Insert(&root1,3);
-	Insert(&root1,4);
-	Insert(&root1,5);
-	
-	
-	
-//	cout<<leftMost(root1)->data;
-//	cout<<endl;
-//	cout<<rightMost(root1)->data;
+	cout<<leftMost(root)->data;
+	cout<<endl;
+	cout<<rightMost(root)->data;
 	
 
 	
