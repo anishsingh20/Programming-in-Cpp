@@ -96,6 +96,57 @@ BinaryTreeNode* findInorderRecursive(BinaryTreeNode* root, BinaryTreeNode* x )
 }
 
 
+BinaryTreeNode* findPredecessorRecursive(BinaryTreeNode* root, BinaryTreeNode* x )
+{
+	
+	BinaryTreeNode *temp;
+    if (!root)
+        return NULL;
+ 
+    if (root==x || (temp = findInorderRecursive(root->left,x)) ||
+                   (temp = findInorderRecursive(root->right,x)))
+    {
+        if (temp)
+        {
+            if (root->right == temp)
+            {
+                cout << "Inorder Successor of " << x->data;
+                cout << " is "<< root->data << "\n";
+                return NULL;
+            }
+        }
+ 
+        return root;
+    }
+ 
+    return NULL;
+}
+
+//function to find inorder predecessor of a node
+void InorderPredecessor(BinaryTreeNode *root,BinaryTreeNode *x)
+{
+	//CASE-1: if x has a left child-then find the rightmost node in its left subtree
+	if(x->left!=NULL)
+	{
+		BinaryTreeNode *rightmost = rightMost(x->left);
+		
+		cout<<rightmost->data;
+	}
+	
+	//CASE-2: if left child is NULL
+	if(x->left==NULL)
+	{
+		//CASE-if x is left most node in tree, then its inorderPredecessor is NULL
+		BinaryTreeNode *leftleaf  = leftMost(root);
+		
+		if(x==leftleaf) cout<<"NULL, as it is left most node"<<endl;
+		
+		else
+			findPredecessorRecursive(root,x);	
+	}
+	
+	
+}
 
 void InorderSuccessor(BinaryTreeNode *root,BinaryTreeNode *x)
 {
@@ -142,7 +193,11 @@ int main()
 //	cout<<endl;
 //	cout<<rightMost(root)->data;
 
-	InorderSuccessor(root,root->left->right);	
+	InorderSuccessor(root,root->left->right);
+	
+	cout<<endl;
+	
+	InorderPredecessor(root,root->right);	
 	
 
 	
