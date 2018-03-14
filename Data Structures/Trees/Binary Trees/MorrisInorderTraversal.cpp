@@ -132,6 +132,36 @@ void MorrisTraversal(Node *root)
 }
 
 
+
+//algorithm to find reverse inorder traversal using morris traversal based on inorder successor of current node
+
+void MorrisReverseInorder(Node *root)
+{
+	
+	if(!root)	return ;
+	
+	Node *curr,*Insuccessor;
+	
+	curr=root;
+	
+	while(curr)
+	{
+		//case 1 if curr has no rightchild then visit current and move to left child
+		if(curr->right==NULL)
+		{
+			cout<<curr->data<<" ";
+			curr = curr->left;
+		}
+		
+		else
+		{
+			//find the inorder successor of current node i.e right most node in left subtree
+		}
+	}
+	
+	
+}
+
 int main()
 {
 	Node *root = newNode(1);
