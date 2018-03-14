@@ -66,13 +66,13 @@ void InorderThreadedTree(Node *root)
 	{
 		cout<<curr->data<<" ";
 		
-		//if curr has a rightthread pointing to its inorder successor-then go to its inorder successor
+		//if curr has a right thread pointing to its inorder successor-then go to its inorder successor
 		if(curr->rightThread)
 		{
 			curr = curr->rightThread;
 		}
 		
-		//if curr right child is not null-then go to its leftmost nodes in right subtree
+		//if curr right child is not null-then go to its leftmost node in right subtree
 		else
 		{
 			curr = leftMost(curr->right);
@@ -101,6 +101,12 @@ int main()
 	root->right->left->rightThread = root->right;
 	
 	root->right->right = newNode(7);
+	
+	
+	root->right->right->left = newNode(8);
+	root->right->right->left->rightThread = root->right->right;
+	
+	root->right->right->right = newNode(9);
 	
 		
 	InorderThreadedTree(root);
