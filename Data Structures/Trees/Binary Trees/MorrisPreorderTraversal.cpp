@@ -78,8 +78,15 @@ void MorrisPreTraversal(Node *root)
 
 //function to find reverse of pre order traversal using morris traversal and inorder successors of current nodes
 
-void MorrisReversePreorder(Node *root)
+void ReversePreorder(Node *root)
 {
+
+	if(!root) return;
+	
+	ReversePreorder(root->right);
+	ReversePreorder(root->left);
+	
+	cout<<root->data<<" ";
 	
 }
 
@@ -94,6 +101,10 @@ int main()
 	root->right->right = newNode(6);
 	
 	MorrisPreTraversal(root);
+	
+	cout<<"\nReverse Preorder traverasl is:"<<endl;
+	
+	ReversePreorder(root);
 
 
 	
