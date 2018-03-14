@@ -155,7 +155,32 @@ void MorrisReverseInorder(Node *root)
 		
 		else
 		{
-			//find the inorder successor of current node i.e right most node in left subtree
+			//find the inorder successor of current node i.e left most node in right subtree or right child itself
+			Insuccessor = curr->right;
+			
+			while(Insuccessor->left!=NULL && Insuccessor->left!=curr)
+				Insuccessor = Insuccessor->left;
+				
+			//if the left of inorder successor is NULL
+			if(Insuccessor->left==NULL)
+			{
+				//then connect left link to current node
+				Insuccessor->left = curr;
+				
+				//move current to right child
+				curr = curr->right;
+			}
+			
+			//otherwise inorder successor's left is not NULL and already left is linked with current node
+			else
+			{
+				Insuccessor->left=NULL;
+				
+				//visiting the current node
+				cout<<curr->data<<" ";
+				
+				curr = curr->left;
+			}
 		}
 	}
 	
@@ -173,8 +198,10 @@ int main()
 	root->right->right = newNode(6);
 	
 	MorrisTraversal(root);
+	
+	cout<<"\nReverse in order traversal is: "<<endl;
 
-
+	MorrisReverseInorder(root);
 	
 }
 
