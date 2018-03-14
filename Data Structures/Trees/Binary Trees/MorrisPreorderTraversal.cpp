@@ -45,6 +45,32 @@ void MorrisPreTraversal(Node *root)
 		else
 		{
 			//finding the rightmost node in currents left subtree i.e finding current node's inorder predecessor
+			
+			pre = curr->left;
+			
+			while(pre->right!=NULL && pre->right!=curr)
+				pre = pre->right;
+			
+			//if the right link of predecessor node is NULL-then we connect its right link to current node i.e make it threaded 
+			if(pre->right==NULL)
+			{
+				pre->right=curr;
+				
+				//visit the current node to preserve preorder's property
+				cout<<curr->data<<" ";
+				
+				//now move to the left
+				curr = curr->left;
+			}
+			
+			//if predecessor right link is not NULL i.e to move back to the current node i.e the inorder successor of predecessor node
+			else
+			{
+				pre->right=NULL;
+				
+				curr = curr->right;
+				
+			}
 		}
 	}
 }
