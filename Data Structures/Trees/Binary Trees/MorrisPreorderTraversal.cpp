@@ -76,6 +76,13 @@ void MorrisPreTraversal(Node *root)
 }
 
 
+//function to find reverse of pre order traversal using morris traversal and inorder successors of current nodes
+
+void MorrisReversePreorder(Node *root)
+{
+	
+}
+
 int main()
 {
 	Node *root = newNode(1);
