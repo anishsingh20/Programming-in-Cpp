@@ -47,12 +47,15 @@ void ReverseInorder(Node *root)
 	{
 		cout<<curr->data<<" ";
 		
+		//if the left thread exists i.e curr has its left pointing to its inorder predecessor
 		if(curr->leftThread)
 			curr = curr->leftThread;
 		
 		//otherwise simply find the righrtmost in the left subtree	
 		else
 		{
+			//move to the predecessor of current
+			//predecessor is the right most child of left subtree
 			curr  = rightMost(curr->left);
 		}
 		
