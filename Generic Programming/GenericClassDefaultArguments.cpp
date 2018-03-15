@@ -32,7 +32,7 @@ int main()
 {
 	
 	Person <> obj1(20,"anish");
-	s
+	
 	Person <float> obj2(20.0099,"anish singh");
 	
 	Person<string,int> obj3("anish walia",25);
