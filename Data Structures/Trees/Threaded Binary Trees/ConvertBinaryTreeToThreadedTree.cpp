@@ -145,7 +145,7 @@ void InorderTraversal(Node *root)
 		
 		//if the threaded right link exists
 		if(curr->isThreaded)
-			curr = curr->right;
+			curr = curr->right;//going to the inorder successor of current node via its right thread link
 			
 		else
 		//find the inorder successor which is the leftmost in the right subtree
@@ -153,6 +153,16 @@ void InorderTraversal(Node *root)
 		
 	}
 	
+}
+
+
+
+Node *rightMost(Node *root)
+{
+	while(root && root->right)
+		root= root->right;
+		
+	return root;
 }
 
 
@@ -176,6 +186,7 @@ int main()
 	
 	
 	InorderTraversal(root);
+	
 	
 }
 
