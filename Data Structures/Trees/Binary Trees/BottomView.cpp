@@ -28,41 +28,58 @@ Node *newNode(int data){
 
 
 
-//function to populate a map with node at each horizontal distance in Postorder
-//void PopulateMap(Node *root,map < int,int> &m, int hd )
-//{
-//	if(!root) return;
-//	
-//	
-//	
-//	//recur to left and right subtrees
-//	m[hd] = root->data;
-//	PopulateMap(root->left,m,hd-1);
-//	
-//	PopulateMap(root->right,m,hd+1);
-//	
-//	
-//}
-//
-//void BottomView(Node *root)
-//{
-//	
-//	map<int,int> Map;
-//	map<int,int>::iterator it;
-//	
-//	//populate the map
-//	
-//	PopulateMap(root,Map,0);
-//	
-//	for(it=Map.begin();it!=Map.end();it++)
-//	{
-//		cout<<it->first<<" ";
-//		//last node at each horizontal distance i.e last node in the vector
-//		cout<<it->second<<endl;
-//	}
-//	
-//	
-//}
+
+//Method-1 Using hash Map
+void BottomViewUtil(Node *root, int ht, int hd, map< int, pair<int,int> >&m)
+{
+	if(!root) return;
+	
+	//inserting in map
+	if(m.find(hd)==m.end())
+	{
+		m[hd] = make_pair(root->data,ht);
+	}
+	
+	//otherwise compare height of already present node and current node
+	else
+	{
+		pair<int,int> p = m[hd];
+		
+		//if height of new node is greater , then add that in the map
+		if(p.second <= ht)
+		{
+			m[hd].second = ht;
+			m[hd].first = root->data;
+		}
+		
+		
+	}
+	
+	
+	//simply recur to the left and right subtrees
+	
+	BottomViewUtil(root->left,ht+1,hd-1,m);
+	BottomViewUtil(root->right,ht+1,hd+1,m);
+}
+
+
+void BottomViewMap(Node *root)
+{
+	map< int,pair<int,int> > Map;
+	
+	map<int ,pair<int,int> >::iterator it;
+	
+	//populating the map
+	BottomViewUtil(root,0,0,Map);
+	
+	
+	for(it = Map.begin();it!=Map.end();it++)
+	{
+		cout<<it->first<<" ";
+		cout<<it->second.first<<endl;
+	}
+	
+}
 
 
 //similar to Top view using level order and a map
@@ -121,5 +138,5 @@ int main()
 	root->left->right->right = newNode(14);
 	root->right->right = newNode(25);
 	
-	BottomView(root);
+	BottomViewMap(root);
 }
