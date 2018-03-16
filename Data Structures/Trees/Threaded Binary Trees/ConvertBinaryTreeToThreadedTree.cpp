@@ -111,7 +111,7 @@ Node *createThreadedPredecessor(Node *root)
 	if(root->left!=NULL)
 	{
 		//rightmost in left subtree is predecessor node
-		Node *l = createThreaded(root->left);
+		Node *l = createThreadedPredecessor(root->left);
 		
 		//conecting right pointer of inorder predecessor of curr to current node
 		l->right = root;
@@ -123,7 +123,7 @@ Node *createThreadedPredecessor(Node *root)
 		return root;
 	
 	//recur to the right subtree
-	return createThreaded(root->right);
+	return createThreadedPredecessor(root->right);
 }
 
 
@@ -172,7 +172,7 @@ int main()
 	//creating a threaded binary tree
 //	createThreadedTree(root);
 
-	createThreaded(root);	
+	createThreadedPredecessor(root);	
 	
 	
 	InorderTraversal(root);
