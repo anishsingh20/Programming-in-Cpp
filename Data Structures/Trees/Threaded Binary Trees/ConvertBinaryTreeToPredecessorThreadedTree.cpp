@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 
 using namespace std;
 
@@ -6,6 +7,9 @@ using namespace std;
 
 A predecessor threaded binary tree is a type of threaded tree in which the left NULL pointers point to their inorder predecessors.
 This type of threaded tree is used in reverse inorder traversal and postorder traversal too.
+
+2 Methods-1) Using queue to store the reverse of inorder traversal-consumes extra space
+	  2) Using inorder successor link to the curent node-more efficient
 
 */
 
@@ -52,6 +56,74 @@ Node *ConvertPredecessorThreaded(Node *root)
 }
 
 
+//Method-1 Using a queue
+
+void PopulateQueue(Node *root, queue <Node*> *q )
+{
+	//storing the reverse inorder traverasl in queue-recur to Right subtree, visit current, recur to left subtree
+	if(!root) return;
+	
+	if(root->right)
+		PopulateQueue(root->right,q);
+	
+	q->push(root);
+	
+	
+	if(root->left)
+		PopulateQueue(root->left,q);
+}
+
+
+void ConvertThreadedUtil(Node *root,queue <Node*> *q)
+{
+	//again doing reverse inorder traversal, and popping from queue
+	//connecting the left null pointers to the front of queue i.e its inorder predecessor
+	
+	if(!root) return; 
+	
+	
+	if(root->right)
+		ConvertThreadedUtil(root->right,q);
+	
+	
+	q->pop();
+	
+	
+	
+	if(root->left)
+		ConvertThreadedUtil(root->right,q);
+		
+	
+	//othersise if left is null, then connect left null pointer to the front of queue which is current node's inorder predecessor
+	else
+	{
+		root->left = q->front();
+		root->isThreaded=true;
+	}
+		
+}
+
+
+
+//main function to populate the queue in reverse inorder and create left predecessor thread links
+void PredecessorThreaded(Node *root)
+{
+	
+	//populating the map
+	queue<Node*>q;
+	
+	PopulateQueue(root,&q);
+	
+	//creating predecessor threads
+	
+	ConvertThreadedUtil(root,&q);
+}
+
+
+
+
+
+
 //function to find the right most node in a tree
 Node *RightMost(Node *root)
 {
@@ -64,9 +136,10 @@ Node *RightMost(Node *root)
 //function to do reverse inorder traversal using the predecessor threaded tree
 void ReverseInorder(Node *root)
 {
-	Node *curr=RightMost(root);
+	if(!root) return;
+	Node *curr = RightMost(root);
 	
-	while(curr)
+	while(curr!=NULL)
 	{
 		//visit the rightmost node
 		cout<<curr->data<<" ";
@@ -95,7 +168,8 @@ int main()
 	root->left->right = newNode(5);
 	root->right->right = newNode(6);
 	
-	ConvertPredecessorThreaded(root);
+//	ConvertPredecessorThreaded(root);
+	PredecessorThreaded(root);
 	
 	ReverseInorder(root);
 	
