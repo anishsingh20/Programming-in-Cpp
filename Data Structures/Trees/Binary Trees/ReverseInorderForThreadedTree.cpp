@@ -92,6 +92,32 @@ void createThreadedTree(Node *root)
 
 
 
+//Method-2) using inorder successor of current node to connect its left null pointer to the current node
+Node *createThreadedSuccessor(Node *root)
+{
+	if(!root) return NULL;
+	
+	if(root->left==NULL && root->right==NULL) return root;
+	
+	//finding the successor node-if right is not NULL, we find the leftmost in the right subtree, or the right child itself
+	if(root->right!=NULL)
+	{
+		//inorder successor is the left most in right subtree
+		Node *r = createThreadedSuccessor(root->right);
+		
+		//conecting left pointer of inorder successor of curr to current node
+		r->left = root;
+		r->isThreaded = true;
+	}
+	
+	//if the right child of root is null, then return root;
+	if(root->left==NULL)
+		return root;
+	
+	//recur to the right subtree
+	return createThreadedSuccessor(root->left);
+}
+
 
 void ReverseInorder(Node *root)
 {
@@ -135,7 +161,7 @@ int main()
 	root->left->right = newNode(5);
 	root->right->right = newNode(6);
 	
-	createThreadedTree(root);
+	createThreadedSuccessor(root);
 	
 	cout<<"Reverse inorder traversal is:"<<endl;
 	ReverseInorder(root);
