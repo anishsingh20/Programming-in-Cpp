@@ -36,3 +36,40 @@ Node *LeftMost(Node *root)
 	LeftMost(root->left);
 }
 
+void PopulateMapInInorder(Node *root, queue<Node *> &q)
+{
+	//populate the map in inorder fashion
+	
+	//traverse to the left subtreee and left most node
+	if(root->left)
+		PopulateMapInInorder(root->left,q);
+	
+	//now push in queue
+	q.push(root);
+	
+	if(root->right)
+		PopulateMapInInorder(root->right,q);
+}
+
+
+//function to again do inorder traversal and connect all right NULl pointers to their inorder successors(if any)
+void createThread(Node *root,queue<Node *>& q)
+{
+	
+}
+
+
+
+
+int main()
+{
+	Node *root = newNode(1);
+	root->left = newNode(2);
+	root->right = newNode(3);
+	root->right->left = newNode(7);
+	root->left->left = newNode(4);
+	root->left->right = newNode(5);
+	root->right->right = newNode(6);
+	
+}
+
