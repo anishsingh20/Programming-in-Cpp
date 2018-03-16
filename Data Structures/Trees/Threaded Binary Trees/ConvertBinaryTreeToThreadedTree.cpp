@@ -97,8 +97,38 @@ void createThreadedTree(Node *root)
 	createThread(root,&q);
 }
 
-//making a function to do inorder traversal for a threaded tree using threaded links
 
+
+
+//Method-2) using inorder predecessor of current node to connect its right pointer to the current node
+Node *createThreadedPredecessor(Node *root)
+{
+	if(!root) return NULL;
+	
+	if(root->left==NULL && root->right==NULL) return root;
+	
+	//finding the predecessor node-if left is not NULL, we find the rightmost in the left subtree, or the left child itself
+	if(root->left!=NULL)
+	{
+		//rightmost in left subtree is predecessor node
+		Node *l = createThreaded(root->left);
+		
+		//conecting right pointer of inorder predecessor of curr to current node
+		l->right = root;
+		l->isThreaded = true;
+	}
+	
+	//if the right child of root is null, then return root;
+	if(root->right==NULL)
+		return root;
+	
+	//recur to the right subtree
+	return createThreaded(root->right);
+}
+
+
+
+//making a function to do inorder traversal for a threaded tree using threaded links
 void InorderTraversal(Node *root)
 {
 	if(!root) return;
@@ -140,8 +170,9 @@ int main()
 	
 	
 	//creating a threaded binary tree
-	createThreadedTree(root);
-	
+//	createThreadedTree(root);
+
+	createThreaded(root);	
 	
 	
 	InorderTraversal(root);
