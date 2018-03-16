@@ -68,10 +68,12 @@ void PopulateQueueInInorder(Node *root, queue <Node *> *q)
 void createThread(Node *root,queue<Node *> *q)
 {
 	if(!root) return ;
+	Node *temp;
 	if(root->left)
 		createThread(root->left,q);
 		
 	//pop node from queue
+//	temp = q->front();
 	q->pop();
 	
 	if(root->right)
@@ -80,6 +82,7 @@ void createThread(Node *root,queue<Node *> *q)
 	//case when root does not has a right child, then link its right pointer to the front of queue which is its inorder successor	
 	else
 	{
+		
 		root->right = q->front();
 		root->isThreaded= true;
 	}
@@ -157,6 +160,7 @@ void InorderTraversal(Node *root)
 
 
 
+
 Node *rightMost(Node *root)
 {
 	while(root && root->right)
@@ -164,8 +168,6 @@ Node *rightMost(Node *root)
 		
 	return root;
 }
-
-
 
 
 int main()
@@ -186,6 +188,10 @@ int main()
 	
 	
 	InorderTraversal(root);
+	
+	
+
+	
 	
 	
 }
