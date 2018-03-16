@@ -7,11 +7,17 @@ We simply have to link the right NULL pointers to their inorder successors and m
 Then again do inorder traversal pop the node and check if its right is NULL, then simply connect its right pointer to the front of queue which has its inorder successor.
 
 */
+
+
+using namespace std;
+
+
 struct Node {
 	
 	int data;
 	Node *left,*right;
-	Node *leftThread;
+	bool isThreaded;
+	
 };
 
 
@@ -20,7 +26,7 @@ Node *newNode(int data){
 	
 	temp->data = data;
 	temp->right=temp->left=NULL;
-	temp->leftThread=NULL;
+	
 	
 	return temp;
 }
@@ -28,33 +34,89 @@ Node *newNode(int data){
 
 Node *LeftMost(Node *root)
 {
-	if(!root) return NULL;
+	//traverse till left most node
+	while(root && root->left)
+		root = root->left;
 	
-	if(root->left==NULL && root->right==NULL)
-		return root;
-		
-	LeftMost(root->left);
+	return root;
 }
 
-void PopulateMapInInorder(Node *root, queue<Node *> &q)
+void PopulateQueueInInorder(Node *root, queue <Node *> *q)
 {
+	
+	if(!root) return;
 	//populate the map in inorder fashion
 	
 	//traverse to the left subtreee and left most node
 	if(root->left)
-		PopulateMapInInorder(root->left,q);
+		PopulateQueueInInorder(root->left,q);
 	
 	//now push in queue
-	q.push(root);
+	q->push(root);
 	
 	if(root->right)
-		PopulateMapInInorder(root->right,q);
+		PopulateQueueInInorder(root->right,q);
 }
 
 
 //function to again do inorder traversal and connect all right NULl pointers to their inorder successors(if any)
-void createThread(Node *root,queue<Node *>& q)
+void createThread(Node *root,queue<Node *> *q)
 {
+	if(!root) return ;
+	if(root->left)
+		createThread(root->left,q);
+		
+	//pop node from queue
+	q->pop();
+	
+	if(root->right)
+		createThread(root->right,q);
+		
+	//case when root does not has a right child, then link its right pointer to the front of queue which is its inorder successor	
+	else
+	{
+		root->right = q->front();
+		root->isThreaded= true;
+	}
+}
+
+
+
+void createThreadedTree(Node *root)
+{
+	//populating the queue with inorder nodes
+	queue<Node *> q;
+	PopulateQueueInInorder(root,&q);
+	
+	//creating the threaded links
+	createThread(root,&q);
+}
+
+//making a function to do inorder traversal for a threaded tree using threaded links
+
+void InorderTraversal(Node *root)
+{
+	if(!root) return;
+	
+	//finding the left most node
+	Node *curr = LeftMost(root);
+	
+	
+	
+	while(curr!=NULL)
+	{
+		//visit the left most
+		cout<<curr->data<<" ";
+		
+		//if the threaded right link exists
+		if(curr->isThreaded)
+			curr = curr->right;
+			
+		else
+		//find the inorder successor which is the leftmost in the right subtree
+			curr = LeftMost(curr->right);
+		
+	}
 	
 }
 
@@ -70,6 +132,14 @@ int main()
 	root->left->left = newNode(4);
 	root->left->right = newNode(5);
 	root->right->right = newNode(6);
+	
+	
+	//creating a threaded binary tree
+	createThreadedTree(root);
+	
+	
+	
+	InorderTraversal(root);
 	
 }
 
