@@ -52,6 +52,38 @@ Node *ConvertPredecessorThreaded(Node *root)
 }
 
 
+//function to find the right most node in a tree
+Node *RightMost(Node *root)
+{
+	while(root && root->right)
+		root=root->right;
+		
+	return root;
+}
+
+//function to do reverse inorder traversal using the predecessor threaded tree
+void ReverseInorder(Node *root)
+{
+	Node *curr=RightMost(root);
+	
+	while(curr)
+	{
+		//visit the rightmost node
+		cout<<curr->data<<" ";
+		
+		//if left predecessor thread exists
+		if(curr->isThreaded)
+			curr=curr->left;
+			
+		//otehrwise find the rightmost in the left subtree, to find the inorder predecessor
+		else
+			curr = RightMost(curr->left);
+			
+	}
+}
+
+
+
 int main()
 {
 	
@@ -64,6 +96,8 @@ int main()
 	root->right->right = newNode(6);
 	
 	ConvertPredecessorThreaded(root);
+	
+	ReverseInorder(root);
 	
 	
 	
