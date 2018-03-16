@@ -3,8 +3,13 @@
 
 /*PROGRAM TO CONVERT A BINARY TREE to THREADED BINARY TREE
 
+METHOD-1)Using Queue-
 We simply have to link the right NULL pointers to their inorder successors and make the tree threaded. Logic is to use a queue to store the inorder traversal nodes.
 Then again do inorder traversal pop the node and check if its right is NULL, then simply connect its right pointer to the front of queue which has its inorder successor.
+InEfficient technique as it cosumes O(n) extra memory due to usage of queue.
+
+METHOD-2 ) Using inorder predecessors of current node and then creating a thread link from the predecessor to current node-Efficient solution as it consumes constant
+extra memory.
 
 */
 
