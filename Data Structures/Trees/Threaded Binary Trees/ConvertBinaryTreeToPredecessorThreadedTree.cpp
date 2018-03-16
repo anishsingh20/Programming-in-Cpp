@@ -26,6 +26,7 @@ Node *newNode(int data){
 	
 	temp->data = data;
 	temp->right=temp->left=NULL;
+	temp->isThreaded=false;
 	
 	return temp;
 }
@@ -91,7 +92,7 @@ void ConvertThreadedUtil(Node *root,queue <Node*> *q)
 	
 	
 	if(root->left)
-		ConvertThreadedUtil(root->right,q);
+		ConvertThreadedUtil(root->left,q);
 		
 	
 	//othersise if left is null, then connect left null pointer to the front of queue which is current node's inorder predecessor
@@ -169,6 +170,7 @@ int main()
 	root->right->right = newNode(6);
 	
 //	ConvertPredecessorThreaded(root);
+
 	PredecessorThreaded(root);
 	
 	ReverseInorder(root);

@@ -161,8 +161,10 @@ int main()
 	root->left->right = newNode(5);
 	root->right->right = newNode(6);
 	
-	createThreadedSuccessor(root);
+//	createThreadedSuccessor(root);
 	
+	createThreadedTree(root);
+		
 	cout<<"Reverse inorder traversal is:"<<endl;
 	ReverseInorder(root);
 	
