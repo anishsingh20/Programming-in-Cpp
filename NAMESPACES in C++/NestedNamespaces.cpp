@@ -19,6 +19,19 @@ namespace parent {
 		}
 	}
 	
+	
+	//re-defining the child namespace
+	namespace child{
+		
+		int y;
+		
+		void howareyou()
+		{
+			cout<<y<<endl;
+		}
+		
+	}
+	
 	void display()
 	{
 		cout<<x;
@@ -31,5 +44,8 @@ int main()
 	parent::display();
 	cout<<endl;
 	parent::child::display();
+	
+	parent::child::y=200;
+	parent::child::howareyou();
 	
 }
