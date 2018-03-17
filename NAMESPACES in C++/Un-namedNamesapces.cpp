@@ -35,6 +35,33 @@ namespace {
 }
 
 
+
+//nesting un-named namespace inside a named namesapce 
+
+namespace fibonacci{
+
+	
+	namespace {
+	
+		int fibo(int n)
+		{
+			//base condition
+			if(n<=1)
+				return n;
+				
+			else return fibo(n-1) + fibo(n-2);
+		}
+	
+	}
+	
+	int x;
+	void displayFibo()
+	{
+		cout<<fibo(x);
+	}
+	
+}
+
 int main()
 {
 	
@@ -42,5 +69,12 @@ int main()
 	b::x=6;
 	b::fact();
 	
+	cout<<"\nFibonacci sequence"<<endl;
+	
+	fibonacci::x=10;
+	fibonacci::displayFibo();
+	cout<<endl;
+	
+	cout<<fibonacci::fibo(20);
 
 }
