@@ -4,7 +4,8 @@
 using namespace std;
 
 
-//Templates are an example of Compile time polymorphism
+//Templates are an example of Compile time polymorphism-The compiler during compile time generates a different instances of the generic function for different data types
+//using which the generic function is called. And all the local variables inside that generic function will have a separate copy for every different data type called in function .
 
 template <typename T> void fun(T x)
 {
