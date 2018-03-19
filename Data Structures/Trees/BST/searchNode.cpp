@@ -56,6 +56,40 @@ BSTnode *searchNode(BSTnode *root,int data)
 } //TIME COMPLEXITY  = O(n) worst case for a skew-tree, SPACE COMPLEXITY = O(n)-function call stack
 
 
+//non recursive implementation-T(n) = O(n), but space complexity = O(1)
+BSTnode *searchIterative(BSTnode *root,int data)
+{
+	if(!root) return NULL;
+	
+	while(root)
+	{
+		if(root->data == data)
+			return root;
+		
+		if(root->data > data)
+			root = root->left;
+		
+		if(root->data < data)
+			root = root->right;
+	}
+	
+	return NULL;
+}
+
+
+//largest node is the right most node in tree with no right child.
+BSTnode *maxNode(BSTnode*root)
+{
+	if(!root)	return NULL;
+	
+	if(root->right==NULL)
+		return root;
+		
+	//otherwise simply recur in right subtree
+	else return maxNode(root->right);
+}
+
+
 int main()
 {
 	
@@ -69,6 +103,13 @@ int main()
 	
 	
 	searchNode(root,12);
+	cout<<endl;
+	
+	cout<<searchIterative(root,9)->data;
+	cout<<endl;
+	
+	
+	cout<<maxNode(root)->data;
 	
 }
 
