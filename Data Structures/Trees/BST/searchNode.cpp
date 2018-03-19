@@ -114,13 +114,7 @@ BSTnode *insert(BSTnode *root,int data)
 		
 		
 		else
-			root->right = insert(root->right,data);
-		
-			
-	
-		
-		return root;
-		
+			root->right = insert(root->right,data);		
 		
 	}		
 }
@@ -152,7 +146,7 @@ int main()
 	
 	insert(root,12);
 	insert(root,2);
-	insert(root,4);
+	insert(root,1);
 	
 //	searchNode(root,12);
 //	cout<<endl;
