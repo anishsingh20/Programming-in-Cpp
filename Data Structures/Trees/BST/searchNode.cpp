@@ -90,26 +90,79 @@ BSTnode *maxNode(BSTnode*root)
 }
 
 
+BSTnode *insert(BSTnode *root,int data)
+{
+	BSTnode *temp  = new BSTnode();
+	temp->data = data;
+
+	
+	if(root==NULL)
+	{
+		
+		root=temp;
+		return temp;	
+		
+	}
+		
+	if(root->data >= temp->data)
+	{
+		root->left = insert(root->left,data);
+		
+	}
+	if(root->data < temp->data)
+	{
+		root->right = insert(root->right,data);
+		
+	}
+	
+	
+		
+		
+		
+
+	
+}
+
+
+void Inorder(BSTnode *root)
+{
+	if(!root)	return;
+	
+	Inorder(root->left);
+	cout<<root->data<<" ";
+	
+	Inorder(root->right);
+}
+
 int main()
 {
 	
 	BSTnode *root = newNode(7);
-	root->left = newNode(5);
-	root->right = newNode(9);
-	root->right->left = newNode(8);
-	root->left->left = newNode(2);
-	root->left->right = newNode(6);
-	root->right->right = newNode(11);
+//	root->left = newNode(5);
+//	root->right = newNode(9);
+//	root->right->left = newNode(8);
+//	root->left->left = newNode(2);
+//	root->left->right = newNode(6);
+//	root->right->right = newNode(11);
+
+	insert(root,3);
+	insert(root,10);
+	insert(root,12);
 	
 	
-	searchNode(root,12);
-	cout<<endl;
-	
-	cout<<searchIterative(root,9)->data;
-	cout<<endl;
-	
-	
+//	searchNode(root,12);
+//	cout<<endl;
+//	
+//	cout<<searchIterative(root,3)->data;
+//	cout<<endl;
+//	
+//	
 	cout<<maxNode(root)->data;
+	
+	cout<<endl;
+	
+	//inorder traversal gives us a sorted list for BST
+	Inorder(root);
 	
 }
 
