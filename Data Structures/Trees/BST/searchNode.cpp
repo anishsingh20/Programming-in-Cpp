@@ -96,31 +96,33 @@ BSTnode *insert(BSTnode *root,int data)
 	temp->data = data;
 
 	
+	//base condition-if root is NULL
 	if(root==NULL)
 	{
 		
-		root=temp;
+		root = temp;
 		return temp;	
 		
 	}
-		
-	if(root->data >= temp->data)
+	
+	else
 	{
-		root->left = insert(root->left,data);
 		
-	}
-	if(root->data < temp->data)
-	{
-		root->right = insert(root->right,data);
+		if(root->data >= temp->data)
+			root->left = insert(root->left,data);
 		
-	}
+		
+		
+		else
+			root->right = insert(root->right,data);
+		
+			
 	
-	
+		
+		return root;
 		
 		
-		
-
-	
+	}		
 }
 
 
@@ -136,8 +138,8 @@ void Inorder(BSTnode *root)
 
 int main()
 {
-	
-	BSTnode *root = newNode(7);
+	BSTnode *root=newNode(7);
+
 //	root->left = newNode(5);
 //	root->right = newNode(9);
 //	root->right->left = newNode(8);
@@ -147,8 +149,10 @@ int main()
 
 	insert(root,3);
 	insert(root,10);
-	insert(root,12);
 	
+	insert(root,12);
+	insert(root,2);
+	insert(root,4);
 	
 //	searchNode(root,12);
 //	cout<<endl;
