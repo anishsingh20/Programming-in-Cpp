@@ -55,13 +55,15 @@ BSTnode *MinIterative(BSTnode *root)
 
 BSTnode *insert(BSTnode *root,int data)
 {
+	BSTnode *new_node = new BSTnode();
 	
 	//base condition-if root is NULL-allocate memory and make node
 	if(root==NULL)
 	{
-		root = new BSTnode();
-		root->data = data;
-		return root;	
+		new_node->data = data;
+		new_node->left = new_node->right  = NULL;
+		
+		return new_node;
 		
 	}
 	
@@ -78,6 +80,8 @@ BSTnode *insert(BSTnode *root,int data)
 		
 	}	
 	
+	
+	//returning root of the updated binary tree
 	return root;	
 }
 
