@@ -23,7 +23,7 @@ struct BSTnode{
 
 
 
-//program to find distance between root node and key
+//program to find distance between root node and key or simply saying the level of a particular node
 int findLevel(BSTnode *root,int key,int d=0)
 {
 	if(!root)
@@ -41,6 +41,48 @@ int findLevel(BSTnode *root,int key,int d=0)
 	{
 		return findLevel(root->left,key,d+1);
 	}	
+}
+
+int findLevelIterative(BSTnode *root, int value,int level=0)
+{
+	if(!root) return -1;
+	
+	BSTnode *curr = root;
+	
+	while(curr != NULL)
+	{
+		if(curr->data < value)
+		{
+			
+			
+			
+			if(curr->data==value)
+			{
+				return level;
+				
+			}
+				
+			level++;	
+			
+			curr = curr->right;
+		}
+		
+		if(curr->data > value)
+		{
+			if(curr->data==value)
+			{
+				return level;
+			}
+				
+				
+			level++;
+			
+			curr = curr->left;
+		}
+	}
+	
+	return 0;
+	
 }
 
 
@@ -148,6 +190,9 @@ int main()
 	insert(root,20);	
 	
 	cout<<findLevel(root,12);
+	cout<<findLevelIterative(root,4);
+	
+	
 	cout<<endl;
 	cout<<distance(root,1,6);
 }
