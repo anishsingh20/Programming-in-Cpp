@@ -40,8 +40,38 @@ BSTnode* findParent(BSTnode *root,int n1)
 
 
 //Iterative method to find parent node
-BSTnode *findParentItrative(BSTnode *root,int value)
+BSTnode *findParentIterative(BSTnode *root,int value)
 {
+	if(!root) return NULL;
+	
+	while(root)
+	{
+		
+		//first searching for the node in left of right subtree
+		
+		if(root->data < value)
+		{
+			if(root->left->data == value || root->right->data==value)
+			{
+				return root;
+			}
+			
+			//otherwise go to the right subtree only
+			root = root->right;
+		}
+		
+		if(root->data > value)
+		{
+			//if parent is found
+			if(root->left->data == value || root->right->data==value)
+			{
+				return root;
+			}
+			
+			//otherwise go to the left subtree only
+			root = root->left;
+		}
+	}
 	
 }
 
@@ -98,6 +128,12 @@ int main()
 	insert(root,1);
 	insert(root,7);
 	insert(root,6);
+	
+	cout<<findParent(root,2)->data;
+	
+	cout<<endl;
+	
+	cout<<findParentIterative(root,2)->data;
 	
 	
 }
