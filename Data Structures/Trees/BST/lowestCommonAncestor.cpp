@@ -111,18 +111,90 @@ BSTnode *newNode(int data)
 }
 
 
+
+//function to find parent of a node
+BSTnode* findParent(BSTnode *root,BSTnode *n1)
+{
+	if(!root) return NULL;
+	
+	if(root)
+	{
+		if( root->left && root->left->data == n1->data || root->right && root->right->data==n1->data )
+		{
+			return root;
+		}
+	
+	//search for the node with key n1 if left or right subtree
+		if(root->data < n1->data)
+			return findParent(root->right,n1);
+		
+		if(root->data > n1->data)
+			return findParent(root->left,n1);
+	}
+	
+
+	
+}
+
+
+
+//simplified method to find LCA of 2 nodes using parent node
+BSTnode *findLCASimple(BSTnode *root,BSTnode *v1,BSTnode *v2)
+{
+	if(!root) return NULL;
+	
+	BSTnode *parent1 = findParent(root,v1);
+	
+	BSTnode *parent2 = findParent(root,v2);
+	
+	//if both have same parents
+	if(parent1==parent2)
+		return parent1;
+	
+	if(v1->left==v2 || v1->right==v2)
+		return v1;
+		
+	if(v2->left==v1 || v2->right == v1)
+		return v2;
+	
+	
+	//otherwise root node is the parent if none of the conditions match
+	return root;
+		
+	
+}
+
+
 int main()
 {
 	
-	BSTnode *root  = newNode(7);
+//	BSTnode *root  = newNode(4);
+//	
+//	insert(root,2);
+//	insert(root,3);
+//	
+//	
+//	insert(root,1);
+//	insert(root,7);
+//	insert(root,6);
+//	
+//	cout<<findLCA(root,2,3)->data;
+//	
+//	cout<<endl;
+//	
+//	cout<<findParent(root,6)->data;
+
+
+	BSTnode *root=newNode(7);
+
+	root->left = newNode(5);
+	root->right = newNode(9);
+	root->right->left = newNode(8);
+	root->left->left = newNode(2);
+	root->left->right = newNode(6);
+	root->right->right = newNode(11);
 	
-	insert(root,10);
-	insert(root,3);
 	
+	cout<<findLCASimple(root,root->left->left,root->left->right)->data;
 	
-	insert(root,12);
-	insert(root,2);
-	insert(root,1);
-	
-	cout<<findLCA(root,3,1)->data;
 }
