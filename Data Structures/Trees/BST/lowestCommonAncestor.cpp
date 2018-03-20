@@ -23,6 +23,51 @@ struct BSTnode{
 };
 
 
+BSTnode *findLCA(BSTnode *root,int n1,int n2)
+{
+	
+//	if(!root) return NULL;
+//	
+//	//LCA found between n1 and n2
+//	if(n1 < root->data && n2 > root->data || n1 > root->data && n2 < root->data)
+//		return root;
+//		
+//	if(n2 < root->data)
+//	{
+//		return findLCA(root->left,n1,n2);
+//	}
+//	
+//	else return findLCA(root->right,n1,n2);
+
+
+//	while(1)
+//	{
+//		if( (n1 < root->data && n2 > root->data) || (n1 > root->data && n2 < root->data) )
+//			return root;
+//			
+//		if(n1 < root->data)
+//			root = root->left;
+//			 
+//		else root=root->right;
+//		
+//	}
+
+
+	if(!root ) return NULL;
+	
+	if(root->data == n1 || root->data == n2)
+		return root;
+	BSTnode *left = findLCA(root->left,n1,n2);
+	
+	BSTnode *right = findLCA(root->right,n1,n2);
+	
+	if(left&&right)
+		return root;
+	
+	return (left) ? left : right;
+		
+}
+
 
 BSTnode *insert(BSTnode *root,int value)
 {
@@ -69,11 +114,14 @@ int main()
 {
 	
 	BSTnode *root  = newNode(7);
-
-	insert(root,3);
+	
 	insert(root,10);
+	insert(root,3);
+	
 	
 	insert(root,12);
 	insert(root,2);
 	insert(root,1);
+	
+	cout<<findLCA(root,3,1)->data;
 }
