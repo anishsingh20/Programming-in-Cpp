@@ -25,6 +25,7 @@ struct BSTnode{
 
 BSTnode *findLCA(BSTnode *root,int n1,int n2)
 {
+	//this method will onlt work for some cases-not all test cases are passed with this method
 	
 //	if(!root) return NULL;
 //	
