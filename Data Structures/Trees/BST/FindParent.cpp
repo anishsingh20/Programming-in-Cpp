@@ -73,7 +73,7 @@ BSTnode *findParentIterative(BSTnode *root,int value)
 		}
 	}
 	
-}
+}//SPACE COMPLEXITY = O(1)
 
 BSTnode *newNode(int data)
 {
@@ -133,7 +133,7 @@ int main()
 	
 	cout<<endl;
 	
-	cout<<findParentIterative(root,2)->data;
+	cout<<findParentIterative(root,3)->data;
 	
 	
 }
