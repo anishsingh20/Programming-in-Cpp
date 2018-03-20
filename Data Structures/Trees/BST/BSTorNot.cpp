@@ -6,10 +6,14 @@ using namespace std;
 /*PROGRAM TO CHECK IF A GIVEN BINARY TREE IS BST OR NOT-
 	
 Idea is to do something similar to inorder traversal-
-Methdod-1
+Methdod-1 - TIME COMPLEXITY = O(n^2), space complexity  = O(n) for recursion call stack
 1)We check if the current node's key is larger than it's inorder predecessor i.e the maximum in left subtree.
 2)We check if the current node's key is smaller than its inorder successor- i.e minimum in right subtree.
 3)We check the above 2 conditions recursively for the left and right subtrees and true , then it is a BST
+
+
+Method-2) Efficient method- to traverse the tree in inorder traversal and check if the current node is larger than
+the prev visited node ie its inorder predecessor.
 	
 */
 
@@ -72,6 +76,38 @@ int isBST(BSTnode *root)
 	return 1;
 		
 	
+} //TIME COMPLEXITY = O(n^2),SPACE = O(n)
+
+
+//Method-2-efficient method
+
+
+//we need to pass the previous as a pointer
+int isBSTInorder(BSTnode *root,int *prev)
+{
+	
+	if(!root)
+		return 1;
+		
+	//traverse in inorder
+	
+	if(!isBSTInorder(root->left,prev))
+		return 0;
+		
+	
+	//if the current node is smaller than its inorder predecessor i.e previous node, then false
+	if(root->data < *prev)
+		return 0;
+	
+	
+	
+//	cout<<prev<<endl;
+	
+	*prev = root->data;
+	
+	
+	return isBSTInorder(root->right,prev);
+	
 }
 
 
@@ -104,5 +140,11 @@ int main()
 	
 	cout<<FindMin(root)->data;
 	cout<<endl;
-	cout<<isBST(root);	
+	cout<<isBST(root);
+	cout<<endl;
+	
+	//initializing prev as INT_MIN 
+	int a = INT_MIN;
+	int *prev = &a;
+	cout<<isBSTInorder(root,prev);	
 }
