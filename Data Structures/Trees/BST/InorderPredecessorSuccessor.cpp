@@ -19,6 +19,57 @@ struct BSTnode{
 };
 
 
+void InorderPreSucc(BSTnode *root,BSTnode *& succ, BSTnode *& pre,int key)
+{
+	if(!root) return ;
+	
+	//if key is found
+	if(root->data==key)
+	{
+		
+		//inorder predecessor is the right most in left subtree i.e max in left subtree.
+		if(root->left)
+		{
+			BSTnode *temp = root->left;
+			
+			while(temp->right)
+				temp  = temp->right;
+			
+			pre  = temp;
+			
+		}
+		
+		//inorder successor is left most in right subtree i.e MIN in right subtree
+		if(root->right)
+		{
+			BSTnode *temp = root->right;
+			while(temp->left)	
+				temp = temp->left;
+			
+			succ = temp;
+			
+		
+		}
+		
+		return ;
+	}
+	
+	//otherwise simply serach for the key
+	if(root->data > key)
+	{
+		succ = root;
+		//recur in left subtree
+		InorderPreSucc(root->left,succ,pre,key);
+		
+	}
+	
+	else {
+		pre = root;
+		InorderPreSucc(root->right,succ,pre,key);
+	}
+}
+
+
 BSTnode *insert(BSTnode *root,int value)
 {
 	//we first need to find the appropiate location to insert data
@@ -61,6 +112,23 @@ BSTnode *newNode(int data)
 
 int main()
 {
+	BSTnode *root  = newNode(4);
+	
+	insert(root,2);
+	insert(root,3);
+	insert(root,1);
+	insert(root,7);
+	insert(root,6);
+	insert(root,12);
+	insert(root,20);	
+	
+	BSTnode *succ=NULL,*pre=NULL;
+	
+	InorderPreSucc(root,succ,pre,7);
+	
+	cout<<"Inorder Successor is- "<<succ->data<<endl;
+	cout<<"Inorder PRedecessor is- "<<pre->data<<endl;
+	
 	
 	return 0;	
 }
