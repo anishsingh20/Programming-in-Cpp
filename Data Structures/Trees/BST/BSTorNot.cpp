@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 
 using namespace std;
 
@@ -20,13 +21,32 @@ struct BSTnode{
 };
 
 
-int FindMax(BSTnode *root)
+BSTnode *FindMax(BSTnode *root)
 {
+	if(!root)
+		return NULL;
+		
+	//until we don't reach right most node which has no right child we recur
+	if(root->right!=NULL)
+		return FindMax(root->right);
+		
+	return root;
 	
+		
 }
 
-int FindMin(BSTnode *root)
+BSTnode* FindMin(BSTnode *root)
 {
+	if(!root)
+		return NULL;
+		
+	//if left most node has no left child, then it is mimimum node
+	if(root->left!=NULL)
+		return FindMin(root->left);
+		
+	return root;	
+		
+	
 	
 }
 
@@ -36,20 +56,20 @@ int isBST(BSTnode *root)
 		return 1;
 		
 	//if current node's data is larger than its inorder predecessor- i.e maximum(right most) in left subtree.
-	if(root->left && root->data > FindMax(root->left))
-		return 1;
+	if(root->left && root->data < FindMax(root->left)->data)
+		return 0;
 	
 	//if current node's data is smaller than its inorder successor- i.e minimum(left most) in right subtree.	
-	if(root->right && root->data < FindMin(root->right))
-		return 1;
+	if(root->right && root->data > FindMin(root->right)->data)
+		return 0;
 		
 	//now recursively check in left and right subtree
-	if(isBST(root->left)&& isBST(root->right))
-		return 1;
+	if(! isBST(root->left) || !isBST(root->right))
+		return 0;
 	
 	
 	//otherwise not a BST
-	return 0;
+	return 1;
 		
 	
 }
@@ -76,8 +96,13 @@ int main()
 	root->left = newNode(5);
 	root->right = newNode(9);
 	root->right->left = newNode(8);
-	root->left->left = newNode(2);
+	root->left->left = newNode(1);
 	root->left->right = newNode(6);
 	root->right->right = newNode(11);
 	
+	
+	
+	cout<<FindMin(root)->data;
+	cout<<endl;
+	cout<<isBST(root);	
 }
