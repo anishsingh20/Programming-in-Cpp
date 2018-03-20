@@ -93,6 +93,106 @@ BSTnode *deleteNode(BSTnode *root,int value)
 
 
 
+BSTnode* deleteNodeIterative(BSTnode *root,int value)
+{
+	if(!root) return NULL;
+	BSTnode *temp;
+	
+	//first find the node to be deleted
+	
+	while(root)
+	{
+		if(root->data > value)
+		{
+			
+			if(root->data == value)
+			{
+				if(root->left && root->right)
+				{
+					temp = maxNode(root->left);
+				
+					root->data = temp->data;
+				
+					root = root->left;
+					
+					
+					
+				}
+				
+				//if has only 1 child
+			
+				else
+				{
+					temp = root;
+				
+					if(root->left)
+						root=root->left;
+					
+					if(root->right)
+						root=root->right;
+					
+					delete temp;
+					
+				}
+				
+			}
+			
+			root = root->left;
+		}
+		
+		
+		if(root->data < value)
+		{
+			
+			
+			//if node to be deleted has both children
+			if(root->data == value)
+			{
+				if(root->left && root->right)
+				{
+					temp = maxNode(root->left);
+				
+					root->data = temp->data;
+				
+					root = root->left;
+					
+					
+					
+				}
+				
+				//if has only 1 child
+			
+				else
+				{
+					temp = root;
+				
+					if(root->left)
+						root=root->left;
+					
+					if(root->right)
+						root=root->right;
+					
+					delete temp;
+					
+				}
+				
+			}
+			
+			root = root->right;
+			
+			
+			
+			
+			
+			
+		}
+	}
+	
+	
+	return root;
+
+}
+
 
 
 BSTnode *newNode(int data)
@@ -165,7 +265,7 @@ int main()
 	cout<<endl;
 	
 	//deleting node with key 10
-	deleteNode(root,10);
+	deleteNodeIterative(root,10);
 	
 	Inorder(root);
 	
