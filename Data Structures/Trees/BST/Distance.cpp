@@ -35,6 +35,46 @@ int findLevel(BSTnode *root,int key,int d=0)
 	}	
 }
 
+
+
+BSTnode *findLCA(BSTnode *root, int n1,int n2)
+{
+	
+	if(!root ) return NULL;
+	
+	if(root->data == n1 || root->data == n2)
+		return root;
+	BSTnode *left = findLCA(root->left,n1,n2);
+	
+	BSTnode *right = findLCA(root->right,n1,n2);
+	
+	if(left&&right)
+		return root;
+	
+	return (left) ? left : right;
+}
+
+
+//function to find the distance between 2 nodes in a BST
+int distance(BSTnode *root,int v1,int v2)
+{
+	if(!root) return -1;
+	
+	//finding LCA of v1 and v2
+	BSTnode *LCA = findLCA(root,v1,v2);
+	
+	//distance between v1 and it's LCA
+	int distLCA1 = findLevel(LCA,v1);
+	
+	int distLCA2 = findLevel(LCA,v2);
+	
+	
+	return distLCA1 + distLCA2;
+	
+	
+}
+
+
 BSTnode *insert(BSTnode *root,int value)
 {
 	//we first need to find the appropiate location to insert data
@@ -91,4 +131,6 @@ int main()
 	insert(root,20);	
 	
 	cout<<findLevel(root,12);
+	cout<<endl;
+	cout<<distance(root,1,20);
 }
