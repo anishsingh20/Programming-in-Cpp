@@ -39,6 +39,12 @@ BSTnode* findParent(BSTnode *root,int n1)
 } //TIME COMPLEXITY = O(n), Space complexity = O(n) for recursion call stack
 
 
+//Iterative method to find parent node
+BSTnode *findParentItrative(BSTnode *root,int value)
+{
+	
+}
+
 BSTnode *newNode(int data)
 {
 	BSTnode *temp = new BSTnode();
