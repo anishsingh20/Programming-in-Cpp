@@ -72,7 +72,8 @@ BSTnode *FindSuccessor(BSTnode *root,int key)
 	
 	return succ;
 	
-}
+}// Time Complexity: O(n) and space complexity = O(1) as constant extra memory is consumed.
+
 
 BSTnode *insert(BSTnode *root,int value)
 {
