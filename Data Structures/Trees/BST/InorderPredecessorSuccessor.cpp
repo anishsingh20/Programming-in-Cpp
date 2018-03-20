@@ -18,6 +18,35 @@ struct BSTnode{
 	struct BSTnode *left,*right;
 };
 
+BSTnode *FindMax(BSTnode *root)
+{
+	if(!root)
+		return NULL;
+		
+	//until we don't reach right most node which has no right child we recur
+	if(root->right!=NULL)
+		return FindMax(root->right);
+		
+	return root;
+	
+		
+}
+
+BSTnode* FindMin(BSTnode *root)
+{
+	if(!root)
+		return NULL;
+		
+	//if left most node has no left child, then it is mimimum node
+	if(root->left!=NULL)
+		return FindMin(root->left);
+		
+	return root;	
+		
+	
+	
+}
+
 
 void InorderPreSucc(BSTnode *root,BSTnode *& succ, BSTnode *& pre,int key)
 {
@@ -30,24 +59,25 @@ void InorderPreSucc(BSTnode *root,BSTnode *& succ, BSTnode *& pre,int key)
 		//inorder predecessor is the right most in left subtree i.e max in left subtree.
 		if(root->left)
 		{
-			BSTnode *temp = root->left;
-			
-			while(temp->right)
-				temp  = temp->right;
-			
-			pre  = temp;
+//			BSTnode *temp = root->left;
+//			
+//			while(temp->right)
+//				temp  = temp->right;
+//			
+//			pre  = temp;
+			pre = FindMax(root->left);
 			
 		}
 		
 		//inorder successor is left most in right subtree i.e MIN in right subtree
 		if(root->right)
 		{
-			BSTnode *temp = root->right;
-			while(temp->left)	
-				temp = temp->left;
-			
-			succ = temp;
-			
+//			BSTnode *temp = root->right;
+//			while(temp->left)	
+//				temp = temp->left;
+//			
+//			succ = temp;
+			succ = FindMin(root->right);			
 		
 		}
 		
