@@ -4,6 +4,14 @@
 using namespace std;
 
 /*Program to find distance between 2 nodes in BST
+
+2 methods to find the distance between 2 nodes-
+
+a)distance(n1,n2) = dist(root,n1) +  dist(root,n2) - 2*dist(root,LCA(n1,n2))
+
+b)distacne(n1,n2) = dist(LCA(n1,n2) , n1)  + dist(LCA(n1,n2) , n2) 
+ 
+	
 */
 
 
@@ -64,13 +72,22 @@ int distance(BSTnode *root,int v1,int v2)
 	BSTnode *LCA = findLCA(root,v1,v2);
 	
 	//distance between v1 and it's LCA
-	int distLCA1 = findLevel(LCA,v1);
+//	int distLCA1 = findLevel(LCA,v1);
+//	
+//	int distLCA2 = findLevel(LCA,v2);
+//	
+//	
+//	return distLCA1 + distLCA2;
+
+
+	//method2-
 	
-	int distLCA2 = findLevel(LCA,v2);
+	int d1 = findLevel(root,v1);
+	int d2 = findLevel(root,v2);
 	
+	int distLCA = findLevel(root,LCA->data);
 	
-	return distLCA1 + distLCA2;
-	
+	return (d1+d2-2*distLCA);	
 	
 }
 
@@ -132,5 +149,5 @@ int main()
 	
 	cout<<findLevel(root,12);
 	cout<<endl;
-	cout<<distance(root,1,20);
+	cout<<distance(root,1,6);
 }
