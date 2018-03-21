@@ -8,8 +8,11 @@ using namespace std;
 1)Method-1 )Similar to the array version-1)Find middle node of list and make it as root
 					 2) Recursively do the same for left and right half of list.
 					 	2.1)left child is the middle node in lower half of list
-						2.2)right child is the middle node in upper half of list			
+						2.2)right child is the middle node in upper half of list
+	This method takes time O(nlogn)			
 
+
+	2)Efficient method which takes O(n) time. is to build the tree in bottom-up fashion
 */
 
 
@@ -19,6 +22,20 @@ struct node{
 	
 	node *next,*left,*right;
 };
+
+
+
+node *newNode(int data)
+{
+	node *temp = new node();
+	
+	temp->data = data;
+	
+	temp->left = temp->right = NULL;
+	temp->next = NULL;
+	
+	return temp;
+}
 
 
 //function to count the length of list i.e number of nodes
@@ -64,42 +81,52 @@ struct node *FindMiddle(struct node *head)
 }
 
 
-struct node *ListToBST(struct node *head)
+
+
+
+void Inorder(node *root)
 {
+	if(!root)	return;
 	
+	Inorder(root->left);
+	
+	cout<<root->data<<" ";
+	
+	Inorder(root->right);
 }
 
 
-void SortedInsert(node **root,int value)
+
+
+void push(struct node** head_ref, int new_data)
 {
-	
+    /* allocate node */
+    struct node* new_node = new node();
+    /* put in the data  */
+    new_node->data  = new_data;
+ 
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+ 
+    /* move the head to point to the new node */
+    (*head_ref)    = new_node;
 }
-
-
-
-node *newNode(int data)
-{
-	node *temp = new node();
-	
-	temp->data = data;
-	
-	temp->left = temp->right = NULL;
-	temp->next = NULL;
-	
-	return temp;
-}
-
 
 int main()
 {
-	struct node *head = newNode(1);
+
+	struct node* head = NULL;
+	    push(&head, 7);
+	    push(&head, 6);
+	    push(&head, 5);
+	    push(&head, 4);
+	    push(&head, 3);
+	    push(&head, 2);
+	    push(&head, 1);
+		
 	
-	head->next  = newNode(2);
-	head->next->next = newNode(3);
+	node *root = sortedListToBST(head);
 	
-	head->next->next->next = newNode(4);
-	
-	cout<<lengthList(head);
-	cout<<FindMiddle(head)->data<<endl;
+	Inorder(root);
 	
 }
