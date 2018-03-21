@@ -210,7 +210,7 @@ void SortedLevelOrderMap(struct BinaryTreeNode *root)
 		{
 			cout<<i->second[j]<<" ";
 			
-		}-=
+		}
 		
 		cout<<endl;
 		
