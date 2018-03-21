@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 
 
 using namespace std;
@@ -22,6 +23,30 @@ struct BSTnode{
 	int data;	
 	struct BSTnode *left,*right;
 };
+
+
+/*helper function needed
+1) TO copy nodes while doing inorder traversal to an array.
+2)Sorting the array.
+3) Again a method to copy array items back to the tree while doing inorder treaversal.
+*/
+
+
+//method to copy tree nodes to array
+void TreetoArray(BSTnode *root,vector<int>&v)
+{
+	if(!root) return;
+	
+	//first treverse to the left subtree
+	TreetoArray(root->left,v);
+	
+	//pushing contents of inorder traversal to vector/array
+	v.push_back(root->data);
+	
+	TreetoArray(root->right,v);	
+}
+
+
 
 
 
