@@ -54,6 +54,48 @@ int lengthList(struct node *head)
 	
 }
 
+
+
+//recursive function to build BST using bottom-up approach
+node *ListToBSTRecur(node **head,int start,int end)
+{
+	
+	//base condition
+	if(start>end)
+		return NULL;
+	
+	//finding middle index of list	
+	int mid = start + (end-start)/2;
+	
+	//recursively build the left subtree i.e till middle of list
+	node *LeftChild  = ListToBSTRecur(head,start,mid-1);
+	
+	
+	
+	//now generate root and link it with the left subtree
+	node *root = newNode((*head)->data);
+	root->left = LeftChild;
+	
+	//moving the head pointer of list
+	*head = (*head)->next;
+	
+	//no recursively generate right subtree and link it with the root
+	
+	root->right = ListToBSTRecur(head,mid+1,end);
+	
+	return root;
+	
+} //TIME COMPLEXITY = O(n)
+
+
+node *ListToBST(node *head)
+{
+	int n = lengthList(head);
+	
+	return ListToBSTRecur(&head,0,n-1);
+}
+
+
 //funtion to find the middle of the list
 struct node *FindMiddle(struct node *head)
 {
@@ -79,9 +121,6 @@ struct node *FindMiddle(struct node *head)
 	
 	
 }
-
-
-
 
 
 void Inorder(node *root)
@@ -125,7 +164,8 @@ int main()
 	    push(&head, 1);
 		
 	
-	node *root = sortedListToBST(head);
+	//converting list to a BST
+	node *root = ListToBST(head);
 	
 	Inorder(root);
 	
