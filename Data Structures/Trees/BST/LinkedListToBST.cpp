@@ -49,12 +49,13 @@ struct node *FindMiddle(struct node *head)
 	int h = lengthList(head);
 	int mid = l + (h-l)/2; //finding the middle index in list
 	
+	//traversing till mid of list
 	for(int i = 0 ; i < mid ; i++)
 	{
 		temp = temp->next;
 	}
 	
-	
+	//temp is now the pointer middle node
 	return temp;
 	
 	
