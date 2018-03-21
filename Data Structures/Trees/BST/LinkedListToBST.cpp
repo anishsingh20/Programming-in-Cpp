@@ -11,3 +11,50 @@ using namespace std;
 						2.2)right child is the middle node in upper half of list			
 
 */
+
+
+struct node{
+	
+	int data;
+	
+	node *next,*left,*right;
+};
+
+
+
+//funtion to find the middle of the list
+struct node *FindMiddle(struct node *head)
+{
+	
+}
+
+
+struct node *ListToBST(struct node *head)
+{
+	
+}
+
+
+void SortedInsert(node **root,int value)
+{
+	
+}
+
+
+
+node *newNode(int data)
+{
+	BSTnode *temp = new BSTnode();
+	
+	temp->data = data;
+	
+	temp->left = temp->right = NULL;
+	
+	return temp;
+}
+
+
+int main()
+{
+	
+}
