@@ -104,6 +104,19 @@ BSTnode *insert(BSTnode *root,int value)
 	return root;
 }
 
+
+void ReverseInorder(BSTnode *root)
+{
+	if(!root ) return ;
+	
+	ReverseInorder(root->right);
+	
+	cout<<root->data<<" ";
+	
+	ReverseInorder(root->left);
+}
+
+
 BSTnode *newNode(int data)
 {
 	BSTnode *temp = new BSTnode();
@@ -127,7 +140,11 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-	cout<<FindSuccessor(root,2)->data;	
+	ReverseInorder(root);
+	
+	cout<<endl;
+	
+	cout<<FindSuccessor(root,4)->data;	
 	
 }
 
