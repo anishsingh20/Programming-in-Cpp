@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 
 using namespace std;
@@ -33,21 +34,84 @@ struct BSTnode{
 
 
 //method to copy tree nodes to array
-void TreetoArray(BSTnode *root,vector<int>&v)
+void TreetoArray(BSTnode *root, int arr[],int *index)
 {
 	if(!root) return;
 	
 	//first treverse to the left subtree
-	TreetoArray(root->left,v);
+	TreetoArray(root->left,arr,index);
 	
 	//pushing contents of inorder traversal to vector/array
-	v.push_back(root->data);
+	arr[*index] = root->data;
+	(*index)++;
 	
-	TreetoArray(root->right,v);	
+	TreetoArray(root->right,arr,index);	
+}
+
+
+//helper function to copy array items one by one to the binary tree while doing inorder traversal which makes a BST
+void arrayToTree(int *arr,BSTnode *root,int *index)
+{
+	if(!root) return;
+	
+	arrayToTree(arr,root->left,index);
+	
+	root->data = arr[*index];
+	(*index)++;
+	
+	arrayToTree(arr,root->right,index);
+	
+}
+
+
+int countNodes(BSTnode *root)
+{
+	if(!root)	return 0;
+	
+	else return (countNodes(root->left)  + countNodes(root->right) + 1);
+}
+
+void BubbleSort(int  *arr,int size) {
+	
+	for(int i = 0 ; i < size; i++ ) {
+		for(int j=i+1 ; j < size ; j ++ ) {
+			
+			if(arr[i]>arr[j]) {
+				
+				swap(arr[i],arr[j]);
+			}	
+		}
+	}
+	
 }
 
 
 
+void BinaryTreeToBST(BSTnode *root)
+{
+
+	int size = countNodes(root);
+	
+	int *arr = new int[size];
+	int i=0;
+	
+	//copying the inorder traversal nodes to an vector/array
+	TreetoArray(root, arr, &i);
+	
+	//sorting the array
+	BubbleSort(arr,size-1);
+	
+	
+	//now copying array elements one by one to the inorder traversal
+	i = 0;
+	arrayToTree(arr,root,&i);
+	
+	
+	delete [] arr;
+
+	
+       
+}
 
 
 BSTnode *newNode(int data)
@@ -62,17 +126,41 @@ BSTnode *newNode(int data)
 }
 
 
+void Inorder(BSTnode *root)
+{
+	if(!root)	return;
+	
+	Inorder(root->left);
+	
+	cout<<root->data<<" ";
+	
+	Inorder(root->right);
+}
+
 int main()
 {
-	BSTnode *root=newNode(7);
+	BSTnode *root=newNode(5);
 
-	root->left = newNode(5);
+	root->left = newNode(7);
 	root->right = newNode(9);
-	root->right->left = newNode(8);
+	root->right->left = newNode(10);
 	root->left->left = newNode(1);
 	root->left->right = newNode(6);
 	root->right->right = newNode(11);
 	
+
+	cout<<"Inorder traversal of the binary tree: "<<endl;
+	Inorder(root);
+	
+	cout<<endl;
+	cout<<"Converting Binary tree to BST :"<<endl;
+	
+	BinaryTreeToBST(root);
+	
+	
+	cout<<"Inorder traversal of BST is a sorted list :"<<endl;
+	
+	Inorder(root);
 	
 	
 	
