@@ -19,6 +19,7 @@ struct BSTnode{
 
 
 
+{
 void StoreInorderInSet(BSTnode *root, set<int>&s)
 {
 	if(!root)
@@ -56,6 +57,7 @@ void SetToTree(set<int>&s,BSTnode *root)
 } //T(n) = O(nlogn) time
 
 
+//this is function which will convert the Binary tree to BST
 void BinaryTreeToBST(BSTnode *root)
 {
 	
@@ -72,7 +74,6 @@ void BinaryTreeToBST(BSTnode *root)
 }//Time complexity  =  O(nlogn) , Space complexity = O(n) as extra space for sets is consumed.
 
 BSTnode *newNode(int data)
-{
 	BSTnode *temp = new BSTnode();
 	
 	temp->data = data;
@@ -105,7 +106,7 @@ int main()
 	root->left->right = newNode(6);
 	root->right->right = newNode(11);
 	
-	//conveting the above Binary tree to BST
+	//converting the above Binary tree to BST
 	BinaryTreeToBST(root);
 	
 	cout<<"Inorder traversal of BST is: "<<endl;
