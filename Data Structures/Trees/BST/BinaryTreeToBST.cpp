@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-
+#include<math.h>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ using namespace std;
 /* Program to convert a Binary tree to a BST-
 Algorithm-
 1)While doing inorder traversal of the tree copy items in an temporary container-say array,set or vector.
-2)Now sort the container.
+2)Now sort the container- we can use Quick sort or merge sort for better time complexity and efficiency.
 3)Now again do inorder traversal of the tree and copy each item one by one from sorted container to the tree.
 
 We do inorder traversal becasue we know INORDER TRAVERSAL OF A BST GIVES US A SORTED LIST
@@ -71,20 +71,64 @@ int countNodes(BSTnode *root)
 	else return (countNodes(root->left)  + countNodes(root->right) + 1);
 }
 
-void BubbleSort(int  *arr,int size) {
+
+
+
+
+//Quick sort to sort the array
+int Partition(int arr[],int start,int end)
+{
+	//initially pindex is 0 index
+	int pindex = 0;
 	
-	for(int i = 0 ; i < size; i++ ) {
-		for(int j=i+1 ; j < size ; j ++ ) {
-			
-			if(arr[i]>arr[j]) {
-				
-				swap(arr[i],arr[j]);
-			}	
+	//pivot element is last
+	int Pivot = arr[end];
+	
+	for(int i = 0 ; i < end; i++ )
+	{
+		if(arr[i] < Pivot )
+		{
+			swap(arr[i],arr[pindex]);
+			pindex++;
 		}
 	}
 	
+	swap(arr[pindex],arr[end]);
+	
+	
+	
+	//returning the partition index
+	return pindex;
 }
 
+
+
+//randomized version of quick sort which chooses a random element as Pivot element, not the last element. This ensures that
+//the probability of O(nlogn) is highest i.e in worst case too(when array is already sorted) it gives O(nlogn) as time compexity.
+int RandomizedPartition(int *arr,int start, int end)
+{
+	int range = (end - start + 1);
+	int pindex = start + rand() % range;
+	
+	swap(arr[pindex],arr[end]);
+	
+	return Partition(arr,start,end);
+}
+
+void Qsort(int *arr,int start,int end)
+{
+	if(start < end)
+	{
+		//finding the partition index
+		int pindex = RandomizedPartition(arr,start,end);
+		
+		//recursively call Qsort of left half of Pivot
+		Qsort(arr,start,pindex-1);
+		
+		//recursively call Qsort on right half of Pivot
+		Qsort(arr,pindex+1,end);
+	}
+}//TIME COMPLEXITY = O(nlogn)
 
 
 void BinaryTreeToBST(BSTnode *root)
@@ -99,7 +143,7 @@ void BinaryTreeToBST(BSTnode *root)
 	TreetoArray(root, arr, &i);
 	
 	//sorting the array
-	BubbleSort(arr,size-1);
+	Qsort(arr,0,size-1);
 	
 	
 	//now copying array elements one by one to the inorder traversal
@@ -153,8 +197,9 @@ int main()
 	Inorder(root);
 	
 	cout<<endl;
+	cout<<endl;
 	cout<<"Converting Binary tree to BST :"<<endl;
-	
+	cout<<endl;
 	BinaryTreeToBST(root);
 	
 	
