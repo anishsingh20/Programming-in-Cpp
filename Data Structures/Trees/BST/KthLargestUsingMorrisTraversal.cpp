@@ -6,6 +6,8 @@ using namespace std;
 Reverse inorder traversal implemented using Stack or Recursion both consumes extra memory of order O(n). Hence to improve the efficieny we do traversal
 faster we use Morris traversal to do reverse inorder traversal which is based on THREAED TREES to do faster inorder traversal.
 
+We know that reverse inorder trversal for a BST will result in a sorted descending order list.
+
 */
 struct BSTnode{
 	
@@ -14,6 +16,85 @@ struct BSTnode{
 };
 
 
+
+BSTnode* FindMin(BSTnode *root)
+{
+	if(!root)
+		return NULL;
+		
+	//if left most node has no left child, then it is mimimum node
+	if(root->left!=NULL)
+		return FindMin(root->left);
+		
+	return root;	
+		
+	
+	
+}
+
+int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
+{
+
+	
+	BSTnode *curr  = root;
+	int Klargest= INT_MAX;
+	int count = 0;
+	
+	while(curr!=NULL)
+	{
+		//Case-1 if curr has no right child-them simply increment count and check for largest and move to its left child
+		if(curr->right==NULL)
+		{
+			
+			if(++count==k)
+				Klargest  = curr->data;
+			
+			
+			curr = curr->left;
+				
+		}
+		
+		
+		//Case-2 here we first find the inorder successor of current node which is the left most in right subtree or minimum
+		//in right subtree of current
+		else
+		{
+			//find inorder successor of current node
+			BSTnode *succ  = curr->right;
+			
+			while(succ->left != NULL && succ->left != curr)
+				succ=succ->left;
+			
+			if(succ->left==NULL)
+			{
+				//set left child of successor to the current node
+				succ->left = curr;
+				
+				//move current to its right
+				curr = curr->right;
+			}
+			
+			//case when we already have a threaded link between current node and its successor's left pointer 
+			else
+			{
+				
+				succ->left = NULL;
+				
+				
+				
+			
+				if(++count==k)
+					Klargest = curr->data;
+					
+				//move current to its left child
+				curr = curr->left;
+			}
+			
+		}
+	}
+	
+	return Klargest;
+}
 
 
 
@@ -70,8 +151,8 @@ int main()
 	insert(root,6);
 	insert(root,12);
 	insert(root,20);
-
-int main()
-{
-	return 0;
+	
+	
+	cout<<KthLargestUsingMorrisTraversal(root,1);	
+		
 }
