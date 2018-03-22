@@ -19,19 +19,67 @@ struct BSTnode{
 
 
 
-{
 void StoreInorderInSet(BSTnode *root, set<int>&s)
 {
 	if(!root)
 		return;
 		
-	StoreInorderInSet(root->left,s);
+//	StoreInorderInSet(root->left,s);
+//	
+//	s.insert(root->data); // insertion takes order of O(logn) for sets
+//	
+//	StoreInorderInSet(root->right,s);
+
+	BSTnode *curr = root;
+	BSTnode *pre;
+
+	while(curr)
+	{
+		//case-1 if current node has no left child
+		if(curr->left==NULL)
+		{
+			
+			s.insert(curr->data);
+			
+			curr = curr->right;
+				
+		}
+		
+		else
+		{
+			//find the inorder predecessor of current node
+			//inorder predecessor is the right most in left subtree i.e
+			//maximum element in left subtree or left child itself
+			pre = curr->left;
+			
+			while(pre->right!=NULL && pre->right!=curr)
+			{
+				pre = pre->right;	
+			}	
+			
+			//create threads
+			if(pre->right==NULL)
+			{
+				pre->right = curr;
+				
+				curr = curr->left;
+				
+			}
+			
+			//if the thread between current and its predecessor already exists.
+			else
+			{
+				pre->right = NULL;
+				
+				s.insert(curr->data);
+					
+				curr = curr->right;	
+					
+			}
+		}
 	
-	s.insert(root->data); // insertion takes order of O(logn) for sets
-	
-	StoreInorderInSet(root->right,s);
-	
-} //Time complexity  = O(nlogn) 
+	}
+} //Time complexity  = O(nlogn)  ,Space complexity - O(1) constant space as no recursion or stack is used to do inorder traversal
 
 
 //function to copy items of set one by one to the tree while doing inorder traversal
@@ -74,6 +122,9 @@ void BinaryTreeToBST(BSTnode *root)
 }//Time complexity  =  O(nlogn) , Space complexity = O(n) as extra space for sets is consumed.
 
 BSTnode *newNode(int data)
+{
+
+
 	BSTnode *temp = new BSTnode();
 	
 	temp->data = data;
