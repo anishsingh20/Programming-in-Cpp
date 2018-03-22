@@ -32,6 +32,48 @@ BSTnode* FindMin(BSTnode *root)
 	
 }
 
+
+BSTnode *FindSuccessor(BSTnode *root,int key)
+{
+	if(!root) return NULL;
+	
+	BSTnode *succ;
+	
+	if(root->data == key)
+	{
+		//successor is the minimum element in right subtree
+		if(root->right)
+			return FindMin(root->right);
+			
+	}
+	
+	//first search for the key
+	else
+	{
+		while(root)
+		{
+		//search in left subtree
+			if(root->data > key)
+			{
+				succ = root;
+				
+				root = root->left;
+				
+			}
+			
+			//otherwise search in the right subtree
+			else
+				root = root->right;
+		
+		}
+	
+	}
+	
+	return succ;
+	
+	
+}
+
 BSTnode *KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 {
 
@@ -64,6 +106,8 @@ BSTnode *KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 			
 			while(succ->left != NULL && succ->left != curr)
 				succ=succ->left;
+
+			
 	
 			
 			if(succ->left==NULL)
@@ -152,6 +196,8 @@ int main()
 	insert(root,6);
 	insert(root,12);
 	insert(root,20);
+	
+	
 	
 	
 	cout<<KthLargestUsingMorrisTraversal(root,2)->data;	
