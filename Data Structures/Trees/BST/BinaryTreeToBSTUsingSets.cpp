@@ -79,7 +79,7 @@ void StoreInorderInSet(BSTnode *root, set<int>&s)
 		}
 	
 	}
-} //Time complexity  = O(nlogn)  ,Space complexity - O(1) constant space as no recursion or stack is used to do inorder traversal
+} //Time complexity  = O(nlogn) ,Space complexity - O(1) constant space as no recursion or stack is used to do inorder traversal
 
 
 //function to copy items of set one by one to the tree while doing inorder traversal
@@ -101,6 +101,7 @@ void SetToTree(set<int>&s,BSTnode *root)
 	
 	//now move to right subtree and update items
 	SetToTree(s,root->right);
+
 	
 } //T(n) = O(nlogn) time
 
