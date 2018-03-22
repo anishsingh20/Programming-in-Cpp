@@ -2,7 +2,15 @@
 
 using namespace std;
 
-//Program to find Kth largest item in the BST.
+/*Program to find Kth largest item in the BST.
+
+We know that Inorder traversal of the BST results in a Sorted list. Hence Reverse Inorder traversal will find the list in 
+descending order i.e we first traverse the right subtree , then visit root and then traverse to the left subtree.
+
+Hence while doing reverse inorder traversal we maintain a count of number of visited nodes.
+
+
+*/
 
 struct BSTnode{
 	
