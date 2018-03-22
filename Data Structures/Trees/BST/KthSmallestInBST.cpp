@@ -15,25 +15,27 @@ struct BSTnode{
 };
 
 
-void KthSmallestNode(BSTnode *root,int k, int &count)
+void KthSmallestNode(BSTnode *root,int k)
 {
 	
+	static int count=0; 
 	
 	
 	if(root && count <= k)
 	{
 		//left most node is the smallest in tree
-		KthSmallestNode(root->left,k,count);
+		KthSmallestNode(root->left,k);
 		//keeping count of visited items in inorder traversal
 	
 		if( ++count==k )
 		{
 			cout<<root->data<<endl;
+			return;
 			
 		}
 	
 
-		KthSmallestNode(root->right,k,count);
+		KthSmallestNode(root->right,k);
 		
 	}
 		
@@ -94,10 +96,9 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-	int c = 0;
+
 	
-	
-	KthSmallestNode(root,1,c);
+	KthSmallestNode(root,2);
 	
 		
 }
