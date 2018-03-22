@@ -32,12 +32,12 @@ BSTnode* FindMin(BSTnode *root)
 	
 }
 
-int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
+BSTnode *KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 {
 
 	
 	BSTnode *curr  = root;
-	int Klargest= INT_MAX;
+	BSTnode *Klargest= NULL;
 	int count = 0;
 	
 	while(curr!=NULL)
@@ -47,7 +47,7 @@ int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 		{
 			
 			if(++count==k)
-				Klargest  = curr->data;
+				Klargest  = curr;
 			
 			
 			curr = curr->left;
@@ -64,6 +64,7 @@ int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 			
 			while(succ->left != NULL && succ->left != curr)
 				succ=succ->left;
+	
 			
 			if(succ->left==NULL)
 			{
@@ -84,7 +85,7 @@ int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 				
 			
 				if(++count==k)
-					Klargest = curr->data;
+					Klargest = curr;
 					
 				//move current to its left child
 				curr = curr->left;
@@ -95,7 +96,7 @@ int KthLargestUsingMorrisTraversal(BSTnode *root,int k)
 	
 	return Klargest;
 }
-
+//TIME COMPLEXITY = O(n) and SPACE COMPLEXITY = O(1)
 
 
 BSTnode *insert(BSTnode *root,int value)
@@ -153,6 +154,6 @@ int main()
 	insert(root,20);
 	
 	
-	cout<<KthLargestUsingMorrisTraversal(root,1);	
+	cout<<KthLargestUsingMorrisTraversal(root,2)->data;	
 		
 }
