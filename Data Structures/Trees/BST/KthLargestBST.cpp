@@ -1,12 +1,8 @@
 #include<iostream>
 
-
 using namespace std;
 
-
-//Program to find kth smallest element from a BST- The idea is to do inorder traverasl of BST as we know
-//inorder traversal outputs a sorted list and while traversing keep trach of number of elements visited
-
+//Program to find Kth largest item in the BST.
 
 struct BSTnode{
 	
@@ -15,41 +11,6 @@ struct BSTnode{
 };
 
 
-void KthSmallestNode(BSTnode *root,int k, int &count)
-{
-	
-	
-	
-	if(root && count <= k)
-	{
-		//left most node is the smallest in tree
-		KthSmallestNode(root->left,k,count);
-		//keeping count of visited items in inorder traversal
-	
-		if( ++count==k )
-		{
-			cout<<root->data<<endl;
-			
-		}
-	
-
-		KthSmallestNode(root->right,k,count);
-		
-	}
-		
-	
-}
-
-BSTnode *newNode(int data)
-{
-	BSTnode *temp = new BSTnode();
-	
-	temp->data = data;
-	
-	temp->left = temp->right = NULL;
-	
-	return temp;
-}
 
 
 BSTnode *insert(BSTnode *root,int value)
@@ -82,6 +43,18 @@ BSTnode *insert(BSTnode *root,int value)
 }
 
 
+BSTnode *newNode(int data)
+{
+	BSTnode *temp = new BSTnode();
+	
+	temp->data = data;
+	
+	temp->left = temp->right = NULL;
+	
+	return temp;
+}
+
+
 int main()
 {
 	BSTnode *root  = newNode(4);
@@ -96,8 +69,3 @@ int main()
 	
 	int c = 0;
 	
-	
-	KthSmallestNode(root,1,c);
-	
-		
-}
