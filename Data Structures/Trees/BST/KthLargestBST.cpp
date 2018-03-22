@@ -20,6 +20,31 @@ struct BSTnode{
 
 
 
+//function returns the pointer to the Kth largest node
+BSTnode *KthLargestBST(BSTnode *root,int k)
+{
+	static int count=0; //static count variable which counts the number of nodes traversed starting from rightmost node(largest node)
+	if(!root)	return NULL;
+	
+	//first traverse to the right subtree
+	BSTnode *right = KthLargestBST(root->right,k);
+	
+	if(right)
+		return right;
+
+
+	
+	if( ++count == k)
+	{
+//		cout<<root->data<<endl;
+		return root;
+	}
+	
+	return KthLargestBST(root->left,k);
+	
+}
+
+
 
 BSTnode *insert(BSTnode *root,int value)
 {
@@ -75,5 +100,7 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-	int c = 0;
 	
+	cout<<KthLargestBST(root,2)->data;
+	
+}
