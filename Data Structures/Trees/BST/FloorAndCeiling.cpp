@@ -15,6 +15,30 @@ struct BSTnode{
 
 
 
+BSTnode *FindFloor(BSTnode *root,int key)
+{
+	//base case
+	if(root==NULL) 
+		return root;
+	
+	//if key is equal to root's key
+	if(root->data==key)
+		return root;
+		
+	//if key is less than root's key , the the floor is definitely in left subtree,sor we search in left subtree
+	if( key < root->data)
+		return FindFloor(root->left,key);
+		
+		
+	//otherwise floor is in right subtree, so we search in right subtree
+	BSTnode *floor = FindFloor(root->right,key);
+	
+	//if floor in right subtree found, return it, otherwise floor is root
+	return (floor) ? floor : root;
+}
+
+
+
 BSTnode *newNode(int data)
 {
 
@@ -71,12 +95,19 @@ BSTnode *insert(BSTnode *root,int value)
 }
 int main()
 {
-	BSTnode *root=newNode(5);
+	
+	BSTnode *root  = newNode(4);
+	
+	insert(root,2);
+	insert(root,3);
+	insert(root,1);
+	insert(root,7);
+	insert(root,6);
+	insert(root,12);
+	insert(root,20);
+	
+	cout<<FindFloor(root,100)->data;
+	
 
-	root->left = newNode(7);
-	root->right = newNode(9);
-	root->right->left = newNode(10);
-	root->left->left = newNode(1);
-	root->left->right = newNode(6);
-	root->right->right = newNode(11);
 }
+
