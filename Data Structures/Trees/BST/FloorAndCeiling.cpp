@@ -38,6 +38,12 @@ BSTnode *FindFloor(BSTnode *root,int key)
 }
 
 
+void FindFloorCeil(BSTnode *root,int key)
+{
+	
+}
+
+
 
 //similar method to find the floor
 int Floor(BSTnode *root,int key)
