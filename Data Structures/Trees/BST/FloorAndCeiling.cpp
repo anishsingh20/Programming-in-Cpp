@@ -39,6 +39,13 @@ BSTnode *FindFloor(BSTnode *root,int key)
 
 
 
+//similar method to find the floor
+int Floor(BSTnode *root,int key)
+{
+	
+}
+
+
 BSTnode *newNode(int data)
 {
 
