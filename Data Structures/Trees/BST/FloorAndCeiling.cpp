@@ -42,7 +42,27 @@ BSTnode *FindFloor(BSTnode *root,int key)
 //similar method to find the floor
 int Floor(BSTnode *root,int key)
 {
+	if(!root)
+		return -1;
+		
+		
+	if(root->data==key)
+		return root->data;
+		
+	//case when floor will be in left subtree of root
+	if(root->data > key)
+		return Floor(root->left,key);
 	
+	//otherwise floor if in right subtree, or current node itself
+	if(root->data < key)
+	{
+		int floor = Floor(root->right,key);
+		
+		//imp condition
+		return (floor >= root->data) ? floor : root->data;
+	}
+
+
 }
 
 
@@ -114,7 +134,9 @@ int main()
 	insert(root,20);
 	
 	cout<<FindFloor(root,100)->data;
-	
+	cout<<endl;
+	cout<<"another method to find floor"<<endl;
+	cout<<Floor(root,13);
 
 }
 
