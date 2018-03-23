@@ -38,9 +38,32 @@ BSTnode *FindFloor(BSTnode *root,int key)
 }
 
 
+int f,c;
+
+
 void FindFloorCeil(BSTnode *root,int key)
 {
 	
+	if(!root)	return;
+	
+	if(root->data==key)
+	{
+		c=f=key;
+	}
+	
+	else if(root->data < key)
+	{
+		f = root->data;
+		FindFloorCeil(root->right,key);
+		
+	}
+	
+	else
+	{
+		c = root->data;
+		FindFloorCeil(root->left,key);
+		
+	}
 }
 
 
@@ -145,10 +168,16 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-	cout<<FindFloor(root,100)->data;
-	cout<<endl;
-	cout<<"another method to find floor"<<endl;
-	cout<<Floor(root,13);
+//	cout<<FindFloor(root,100)->data;
+//	cout<<endl;
+//	cout<<"another method to find floor"<<endl;
+//	cout<<Floor(root,13);
+
+	//finding floor and ceil
+	FindFloorCeil(root,10);
+	
+	cout<<f<<endl;
+	cout<<c<<endl;
 
 }
 
