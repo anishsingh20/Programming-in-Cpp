@@ -54,11 +54,17 @@ int Floor(BSTnode *root,int key)
 		return Floor(root->left,key);
 	
 	//otherwise floor if in right subtree, or current node itself
+	
 	if(root->data < key)
 	{
 		int floor = Floor(root->right,key);
+		/*floor of the key could be in the
+		right subtree, but only if there is a key smaller than or equal to the key in the right subtree;
+		if not (or if the key is equal to the the key at the root) then the floor is the current root.
 		
-		//imp condition
+		imp condition-if the key at root is smaller than or equal to the floor in right subtree
+		*/
+		
 		return (floor >= root->data) ? floor : root->data;
 	}
 
