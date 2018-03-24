@@ -47,7 +47,7 @@ void HeapSort(int arr[],int n)
 		heapify(arr,n,i);
 		
 	//one by one extract element from heap
-	for(int i= n-1; i>=-;i--)
+	for(int i= n-1; i>=0;i--)
 	{
 		//swap root and last node
 		swap(arr[0],arr[i]);
@@ -56,11 +56,21 @@ void HeapSort(int arr[],int n)
 		heapify(arr,i,0);
 	}
 	
-}
+}//Time complexity  = O(nlogn) = (best case, average case, worst case)
 
 
 int main()
 {
+	int arr[] = {9,10,2,3,6};
+	int size = sizeof(arr)/sizeof(arr[0]);
+	
+	HeapSort(arr,size);
+	
+	for(int i = 0 ; i < size ; i++)
+	{
+		cout<<arr[i]<<" ";
+	}
 	return 0;
 	
 }
+
