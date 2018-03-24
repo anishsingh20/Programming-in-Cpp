@@ -11,7 +11,7 @@ string ReverseRec(string str,int i,int j)
   	
 	
 	//base condition-terminating condition -recursion stops here
-	if(i>j) return str; //or when i==j
+	if(i>j) return str; //oor when i==j
 	
 	else
 	{

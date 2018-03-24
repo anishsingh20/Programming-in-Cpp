@@ -31,11 +31,39 @@ int palindrome(char *a)
 	
 		
 		
-	}	
+}
+
+bool PalindromeRec(string exp,int i,int j )
+{
+	
+	
+	//base condition-recursion terminates
+	if(i>j || exp[i]!=exp[j])	
+		return false;
+	
+	
+	if(exp[i]==exp[j])
+		return true;
+	
+	//otherwise simply keep checking for same digits by incrementing i and decrementing j	
+	if(i<=j)
+	{
+		return PalindromeRec(exp,i++,j--);	
+	}
+		
+	
+}	
 
 int main() {
 	
-	palindrome("nitin");
-	palindrome("anish");
+//	palindrome("nitin");
+//	palindrome("anish");
+	
+	cout<<endl;
+	
+	string str = "raar";
+	int i = 0;
+	int j = str.size()-1;
+	cout<<PalindromeRec(str,i,j);
 	return 0;
 }
