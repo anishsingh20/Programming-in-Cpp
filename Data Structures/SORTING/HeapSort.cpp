@@ -13,6 +13,32 @@ We will build a BINARY HEAP using array based implementation as it is space effi
 
 */
 
+//n is size of heap, i is the index of array
+void heapify(int arr[],int n,int i)
+{
+	int largest = i;//root node
+	int left = 2*i + 1; //left child
+	int right = 2*i + 2;//right child
+	
+	//if left child is larger than root, then make it as largest
+	if( left < n && arr[left] > arr[largest] )
+		largest  = left;
+		
+	//if right child is larger than root, then make it as largest
+	if( right < n && arr[right] > arr[largest] )
+		largest  = right;
+		
+	//if largest is not root
+	if(largest!=i)
+	{
+		swap(arr[i],arr[largest]);
+		
+		//recursively heapify the affected sub-tree
+		heapify(arr,n,largest);
+	}
+		
+} //Time complexity = O(logn), Space complexity = O(n)
+
 
 int main()
 {
