@@ -40,6 +40,25 @@ void heapify(int arr[],int n,int i)
 } //Time complexity = O(logn), Space complexity = O(n)
 
 
+void HeapSort(int arr[],int n)
+{
+	//build heap in bottom-up manner
+	for(int i = n/2 - 1 ; i >= 0 ;  i--)
+		heapify(arr,n,i);
+		
+	//one by one extract element from heap
+	for(int i= n-1; i>=-;i--)
+	{
+		//swap root and last node
+		swap(arr[0],arr[i]);
+		
+		//calling heapify on reduced heap
+		heapify(arr,i,0);
+	}
+	
+}
+
+
 int main()
 {
 	return 0;
