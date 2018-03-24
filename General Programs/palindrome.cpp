@@ -32,7 +32,7 @@ int palindrome(char *a)
 		
 		
 }
-
+//recursive program to find whether a string is palindrome or not-in POSTRORDER traversal
 bool PalindromeRec(string exp,int i,int j )
 {
 	
@@ -52,7 +52,7 @@ bool PalindromeRec(string exp,int i,int j )
 	}
 		
 	
-}	
+}//Time complexity = O(n), spcae complexity = O(n), for recursive call stack	
 
 int main() {
 	
