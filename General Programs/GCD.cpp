@@ -16,6 +16,20 @@ int GCDRecur(int a , int b)
 	
 }
 
+int EuclidGCD(int m,int n)
+{
+	while(m!=n)
+	{
+		if(m>n)
+			m = m-n;
+		else
+			n = n-m;
+			
+	}
+	
+	return n;
+}
+
 int GCD(int a, int b) {
 	
 	//converting negetive inputs to positive
@@ -37,12 +51,14 @@ int GCD(int a, int b) {
 
 int main() {
 
-	int gcd = GCD(120,72);
-	cout<<"The HCF is :"<<gcd; 
-	
+//	int gcd = GCD(120,72);
+//	cout<<"The HCF is :"<<gcd; 
+//	
+//	cout<<endl;
+//	
+//	cout<<GCDRecur(120,72);
 	cout<<endl;
-	
-	cout<<GCDRecur(120,72);
+	cout<<EuclidGCD(120,72);
 	
 	return 0;
 }
