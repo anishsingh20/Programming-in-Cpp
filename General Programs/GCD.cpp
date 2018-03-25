@@ -16,6 +16,8 @@ int GCDRecur(int a , int b)
 	
 }
 
+
+//Euclid's algorithm which is based on DIVIDE AND CONQUER STRATEGY TO FIND GCD-HCF of 2 numbers
 int EuclidGCD(int m,int n)
 {
 	while(m!=n)
