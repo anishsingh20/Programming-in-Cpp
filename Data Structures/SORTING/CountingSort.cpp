@@ -2,7 +2,7 @@
 #include<cstring>
 
 #define RANGE 255
-//ascii range
+//ascii range 
 
 using namespace std;
 
@@ -13,9 +13,11 @@ ALGORITHM-
 3)Then performing some airthmetic to calculate the position of each object in output sequence.
 
 4)COUNTING SORT is a STABLE SORTING ALGORITHM.
-5)TIME COMPLEXITY  = O(n+k) , S(n) = O(n+k)
+5)TIME COMPLEXITY  = O(n+k) , S(n) = O(n+k) , n=no of items to sort, k  = range of data
 6)It is only efficient when the range of data is significantly equivalent to the number of items to sort.
 i.e it is highly inefficient when the range of data is very large than the number of objects to be sorted.
+7) COunting sorts beats the lower bound of comparison based sorting algorithms with comparisons proportional to O(nlogn), whereas in Counting sort
+it is proportional to O(n).
 */
 
 
@@ -30,7 +32,7 @@ void CountSort(char *arr)
 	memset(count, 0, sizeof(count));
 	
 	//store count of each character
-	for(i = 0 ; arr[i];i++)
+	for(i = 0 ; arr[i] ; i++)
 	{
 		++count[arr[i]];
 	}
@@ -59,10 +61,16 @@ int main()
 {
 	char c[] = "zdecdea";
 	
+	
+	
 	//sorting a char array within range 0 to 255
 	CountSort(c);
 	
 	cout<<c;
+	
+
+	
+	
 	
 	
 	
