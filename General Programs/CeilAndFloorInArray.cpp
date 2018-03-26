@@ -20,31 +20,35 @@ void FindCeilFloor(int *arr,int key,int low,int high)
 
 		
 
-		int mid = low + (high-low)/2;
+		int mid = low + (high-low)/2;//O(1)
 		
 		if(arr[mid]==key)
 		{
-			ceil = floor = arr[mid];
+			ceil = floor = arr[mid];//O(1)
 			
 		}
+		
 		
 		if(arr[mid] > key)
 		{
 		//search for ceil and floor in left subarray
 			ceil = arr[mid];
-			FindCeilFloor(arr,key,low,mid-1);
+			FindCeilFloor(arr,key,low,mid-1); //T(n/2)
 		
 			
 		}
 	
+		//if key is greater then middle element, the floor is middle element and find ceil in right half recursively
 		if(arr[mid] < key )
 		{
 			floor = arr[mid];
-			FindCeilFloor(arr,key,mid+1,high);
+			FindCeilFloor(arr,key,mid+1,high); //T(n/2)
 			
 		}
 	
-}
+} //TIME COMPLEXITY = 2T(n/2) + c , on solving it gives O(logn)
+
+
 
 int main()
 {
