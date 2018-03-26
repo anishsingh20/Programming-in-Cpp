@@ -5,7 +5,7 @@ using namespace std;
 /*Program to find Ceil and floor of a key in an sorted array.
 2 approaches-
 a)Linear search
-b)Divide and Conquer- similar to Binary Search
+b)Divide and Conquer- similar to Binary Search (but the array needs to be sorted first)
 */
 
 int ceil=0,floor=0;
