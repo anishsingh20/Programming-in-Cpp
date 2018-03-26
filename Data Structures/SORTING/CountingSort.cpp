@@ -6,7 +6,16 @@
 
 using namespace std;
 
-/*Counting sort which is a non-comparison based sorting technique used fot data which is in a specific range.
+/*Counting sort which is a non-comparison based sorting technique used for data which is in a specific range.
+ALGORITHM-
+1)It  works by counting the number of distinct objects (kind of hashing)
+2)Then making a count array to store the count of each object.
+3)Then performing some airthmetic to calculate the position of each object in output sequence.
+
+4)COUNTING SORT is a STABLE SORTING ALGORITHM.
+5)TIME COMPLEXITY  = O(n+k) , S(n) = O(n+k)
+6)It is only efficient when the range of data is significantly equivalent to the number of items to sort.
+i.e it is highly inefficient when the range of data is very large than the number of objects to be sorted.
 */
 
 
