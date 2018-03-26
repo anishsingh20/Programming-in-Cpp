@@ -43,7 +43,7 @@ void floorAndCeil(int *arr,int key, int n)
     }
     
     
-}
+}//Time complexity = O(n) and space complexity = O(1)
 
 
 int main()
