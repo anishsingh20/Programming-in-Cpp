@@ -50,12 +50,45 @@ void FindCeilFloor(int *arr,int key,int low,int high)
 
 
 
+
+//linear search method- linear comparions
+
+void FindCeilFloorLinear(int *arr,int key,int n)
+{
+	if(n==1)
+	{
+		ceil = floor = arr[0];
+	}
+	
+	if(n==2)
+	{
+		ceil  = arr[1];
+		floor = arr[0];
+	}
+	
+	else
+	{
+		for(int i = 2;  i<n;i++)
+		{
+			if(arr[i] > key)
+			{
+				ceil = arr[i];
+			}
+		}
+	}
+	
+	
+}
+
+
 int main()
 {
 	int arr[] = {1,5,10,15,20,100,250};
 	int size = sizeof(arr)/sizeof(arr[0]);
 	
-	FindCeilFloor(arr,190,0,size-1);
+//	FindCeilFloor(arr,190,0,size-1);
 	
-	cout<<"The floor "<<floor<<" and the ceiling is ."<<ceil<<endl;
+	FindCeilFloorLinear(arr,12,size-1);
+	
+	cout<<"The floor "<<floor<<" and the ceiling is "<<ceil<<endl;
 }
