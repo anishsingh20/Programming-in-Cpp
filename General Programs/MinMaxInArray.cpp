@@ -79,6 +79,22 @@ struct minMax FindMaxMinDivide(int *arr,int low,int high)
 	
 	//if size of array is 2
 	if(high = low+1)
+	{
+		if(arr[low] < arr[high])
+		{
+			p.maxi = arr[high];
+			p.mini = arr[low];
+		}
+		else
+		{
+			p.maxi = arr[low];
+			p.mini = arr[high];
+		}
+		
+	}
+	
+	//otherwise find the middle index.
+	
 }
 
 
