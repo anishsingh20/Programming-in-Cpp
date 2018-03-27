@@ -140,6 +140,8 @@ struct minMax minMaxCompare(int *arr,int n)
 {
 	struct minMax m;
 	int i;
+	
+	//if array has even number of elements
 	if(n%2==0)
 	{
 		if(arr[0]>arr[1])
@@ -154,7 +156,7 @@ struct minMax minMaxCompare(int *arr,int n)
 			m.mini = arr[0];
 		}
 		
-		//set i =2
+		//set i = 2 for the loop
 		i = 2;
 	}
 	
@@ -167,7 +169,7 @@ struct minMax minMaxCompare(int *arr,int n)
 		m.maxi = arr[0];
 		m.mini = arr[0];
 		
-		i=1;
+		i=1; //setting the starting index for loop
 		
 	}
 	
