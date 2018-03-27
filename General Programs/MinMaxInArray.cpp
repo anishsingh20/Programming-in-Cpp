@@ -15,7 +15,7 @@ struct minMax{
 } p;
 
 
-//MEthod-1 Linear method with linear comparisons
+//Method-1 Linear method with linear comparisons
 struct minMax findMinMax(int *arr,int low,int high)
 {
 	
@@ -70,10 +70,11 @@ struct minMax findMinMax(int *arr,int low,int high)
 //Method 2  - DIVIDE AND CONQUER
 struct minMax FindMaxMinDivide(int *arr,int low,int high)
 {
+	struct minMax p,mml,mmr;
 	//if size of array is 1
 	if(low==high)
 	{
-		p.maxi = p.mini  = arr[0];
+		p.maxi = p.mini  = arr[low];
 		return p;
 	}
 	
@@ -91,19 +92,40 @@ struct minMax FindMaxMinDivide(int *arr,int low,int high)
 			p.mini = arr[high];
 		}
 		
+		return p;
+		
 	}
 	
 	//otherwise find the middle index.
+	int mid = low + (high-low)/2;
+	
+	 mml = FindMaxMinDivide(arr,low,mid-1);//left half
+	 mmr = FindMaxMinDivide(arr,mid+1,high);//right half
+	
+	if(mml.mini < mmr.mini)
+	{
+		p.mini  = mml.mini;
+	}
+	
+	else p.mini = mmr.mini;
+	
+	if(mml.maxi > mmr.maxi)
+		p.maxi = mml.maxi;
+		
+	else p.maxi = mmr.maxi;
+	
+	return p;
 	
 }
 
 
 int main()
 {
-	int arr[] = {12,9,1,10,12,15,6};
+	int arr[] = {1000, 11, 445, 1, 330, 3000};
 	int size = sizeof(arr)/sizeof(arr[0]);
-	struct minMax p  =  findMinMax(arr,0,size-1);
+//	struct minMax p  =  findMinMax(arr,0,size-1);
+	struct minMax c  = FindMaxMinDivide(arr,0,size-1);
 	
-	cout<<p.maxi<<endl;
-	cout<<p.mini<<endl; 
+	cout<<c.maxi<<endl;
+	cout<<c.mini<<endl; 
 }
