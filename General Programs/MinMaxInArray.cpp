@@ -127,6 +127,20 @@ struct minMax FindMaxMinDivide(int *arr,int low,int high)
 } //TIME COMPLEXITY  = 2T(n/2) + 2 and after solving this recurrence relation T(n) =  O(logn)
 
 
+
+/*Method 3- compare in pairs-
+algorithm-
+If n is odd then initialize min and max as first element.
+If n is even then initialize min and max as minimum and maximum of the first two elements respectively.
+For rest of the elements, pick them in pairs and compare their
+maximum and minimum with max and min respectively.
+*/
+
+struct minMax minMaxCompare(int arr,int n)
+{
+	
+}
+
 int main()
 {
 	int arr[] = {1000, 11, 445, 1, 330, 3000};
