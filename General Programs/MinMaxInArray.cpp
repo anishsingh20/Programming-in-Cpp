@@ -138,7 +138,42 @@ maximum and minimum with max and min respectively.
 
 struct minMax minMaxCompare(int arr,int n)
 {
+	struct minMax m;
+	int i;
+	if(n%2==0)
+	{
+		if(arr[0]>arr[1])
+		{
+			m.maxi = arr[0];
+			m.mini = arr[1];
+		}
+		
+		else
+		{
+			m.maxi = arr[1];
+			m.mini = arr[0];
+		}
+		
+		//set i =2
+		i = 2;
+	}
 	
+	//if odd no of elements
+	else
+	{
+		m.maxi = arr[0];
+		m.mini = arr[0];
+		
+		i=1;
+		
+	}
+	
+	
+	while(i < n-1)
+	{
+		
+		
+	}
 }
 
 int main()
