@@ -124,7 +124,7 @@ struct minMax FindMaxMinDivide(int *arr,int low,int high)
 	
 	return p;
 	
-} //TIME COMPLEXITY  = 2T(n/2) + 2 = O(logn)
+} //TIME COMPLEXITY  = 2T(n/2) + 2 and after solving this recurrence relation T(n) =  O(logn)
 
 
 int main()
