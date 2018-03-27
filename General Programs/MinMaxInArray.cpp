@@ -66,9 +66,25 @@ struct minMax findMinMax(int *arr,int low,int high)
 //worst case occurs when elements are sorted in descending order and best case occurs when elements are sorted in ascending order
 
 
+
+//Method 2  - DIVIDE AND CONQUER
+struct minMax FindMaxMinDivide(int *arr,int low,int high)
+{
+	//if size of array is 1
+	if(low==high)
+	{
+		p.maxi = p.mini  = arr[0];
+		return p;
+	}
+	
+	//if size of array is 2
+	if(high = low+1)
+}
+
+
 int main()
 {
-	int arr[] = { 12,9,1,10,12,15,6};
+	int arr[] = {12,9,1,10,12,15,6};
 	int size = sizeof(arr)/sizeof(arr[0]);
 	struct minMax p  =  findMinMax(arr,0,size-1);
 	
