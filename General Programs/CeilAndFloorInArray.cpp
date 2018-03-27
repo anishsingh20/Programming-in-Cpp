@@ -107,11 +107,7 @@ void FindFloor(int *arr,int key,int n)
 		
 		if( key < arr[i] && key >= arr[i-1])
 			floor = arr[i-1];
-			
-	 if( key <= arr[i+1] && key > arr[i])
-		{
-			ceil = arr[i+1];
-		}
+	
 	}
 	
 }
@@ -125,7 +121,7 @@ int main()
 	
 //	FindCeilFloor(arr,190,0,size-1);
 	
-	FindCeilFloorLinear(arr,22,size-1);
+	FindFloor(arr,3,size-1);
 	
 	cout<<"The floor "<<floor<<" and the ceiling is "<<ceil<<endl;
 }
