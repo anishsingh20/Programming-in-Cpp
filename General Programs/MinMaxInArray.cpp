@@ -158,7 +158,10 @@ struct minMax minMaxCompare(int *arr,int n)
 		i = 2;
 	}
 	
-	//if odd no of elements
+	//if odd no of elements-
+	/* If array has odd number of elements then 
+    	initialize the first element as minimum and 
+    	maximum */
 	else
 	{
 		m.maxi = arr[0];
