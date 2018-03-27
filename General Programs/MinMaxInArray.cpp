@@ -136,7 +136,7 @@ For rest of the elements, pick them in pairs and compare their
 maximum and minimum with max and min respectively.
 */
 
-struct minMax minMaxCompare(int arr,int n)
+struct minMax minMaxCompare(int *arr,int n)
 {
 	struct minMax m;
 	int i;
@@ -171,9 +171,33 @@ struct minMax minMaxCompare(int arr,int n)
 	
 	while(i < n-1)
 	{
+		if(arr[i] > arr[i+1])
+		{
+			if(arr[i] > m.maxi)
+			{
+				m.maxi  = arr[i];
+				
+			}
+			
+			if(arr[i+1] < m.mini)
+				m.mini  = arr[i+1];
+			
+		}
 		
+		else
+		{
+			if(arr[i] < m.mini)
+				m.mini = arr[i];
+			if(arr[i+1] > m.maxi)
+				m.maxi = arr[i+1];
+		}
+		
+		i += 2;
 		
 	}
+	
+	
+	return m;
 }
 
 int main()
@@ -181,7 +205,7 @@ int main()
 	int arr[] = {1000, 11, 445, 1, 330, 3000};
 	int size = sizeof(arr)/sizeof(arr[0]);
 //	struct minMax p  =  findMinMax(arr,0,size-1);
-	struct minMax c  = FindMaxMinDivide(arr,0,size-1);
+	struct minMax c  = minMaxCompare(arr,size-1);
 	
 	cout<<c.maxi<<endl;
 	cout<<c.mini<<endl; 
