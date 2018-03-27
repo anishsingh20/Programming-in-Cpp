@@ -67,7 +67,9 @@ struct minMax findMinMax(int *arr,int low,int high)
 
 
 
-//Method 2  - DIVIDE AND CONQUER
+//Method 2  - DIVIDE AND CONQUER - TOURNAMENT METHOD
+//Divide the array into two parts and compare the maximums and minimums of the the two parts to 
+//get the maximum and the minimum of the the whole array.
 struct minMax FindMaxMinDivide(int *arr,int low,int high)
 {
 	struct minMax p,mml,mmr;
@@ -122,7 +124,7 @@ struct minMax FindMaxMinDivide(int *arr,int low,int high)
 	
 	return p;
 	
-}
+} //TIME COMPLEXITY  = 2T(n/2) + 2 = O(logn)
 
 
 int main()
