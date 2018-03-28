@@ -102,11 +102,13 @@ int main()
 	
 	BSTnode *root2 = newNode(10);
 	
-	insert(root1,15);
-	insert(root1,30);
-	insert(root1,20);
-	insert(root1,5);
+	insert(root2,15);
+	insert(root2,30);
+	insert(root2,20);
+	insert(root2,5);
 	
+	//height of root1 =2, height of root2 = 3, both trees are different
+	cout<<height(root1)<<" "<<height(root2)<<endl;
 	
 	//both of the above trees have different structures although have same data
 	cout<<AreSameBST(root1,root2);
