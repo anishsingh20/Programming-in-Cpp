@@ -83,18 +83,16 @@ BSTnode *insert(BSTnode *root,int value)
 int main()
 {
 	
-	BSTnode *root  = newNode(4);
+	BSTnode *root  = newNode(20);
 	
-	insert(root,2);
-	insert(root,3);
-	insert(root,1);
-	insert(root,7);
-	insert(root,6);
+	insert(root,4);
+	insert(root,8);
 	insert(root,12);
-	insert(root,20);
+	insert(root,22);
 	
-//	RangePrint(root,5,12);
-	Top3Nodes(root);
+	
+	RangePrint(root,10,22);
+	
 	
 	
 	return 0;

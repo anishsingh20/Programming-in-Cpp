@@ -24,7 +24,7 @@ void Top3Nodes(BSTnode *root)
 		
 	Top3Nodes(root->left);	
 	
-}
+}//Time complexity = O(n) , Space - O(n) for stack space.
 
 
 BSTnode *newNode(int data)
