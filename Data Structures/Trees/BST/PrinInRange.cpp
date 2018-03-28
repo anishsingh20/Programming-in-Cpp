@@ -17,12 +17,20 @@ struct BSTnode{
 };
 
 //1)Recursive method-
-void RangePrint(BSTnode *root)
+void RangePrint(BSTnode *root,int low,int high)
 {
-	if(!root)	return;
+	if(!root) return;
 	
+	if(root->data >= low )
+		RangePrint(root->left,low,high);
 	
+	if(root->data <= high && root->data >= low)
+	{
+		cout<<root->data<<" ";
+	}
 	
+	if(root->data <= high)
+		RangePrint(root->right,low,high);
 	
 }
 
@@ -81,6 +89,8 @@ int main()
 	insert(root,6);
 	insert(root,12);
 	insert(root,20);
+	
+	RangePrint(root,5,12);
 	
 	return 0;
 }
