@@ -2,7 +2,7 @@
 
 using namespace std;
 
-/*Program to print data within a range say K1 and K2 in a BST-ASked in Microsoft and Flipkart.
+/*Program to print data within a range say K1 and K2 in a BST-Asked in Microsoft and Flipkart.
 1)Recursive method-
 2)Level order traverasl method
 3)Threaded tree and inorder successor using MORRIS TRAVERSAL-which is used to do inorder traverasl using the inorder predecessor thread, and 
@@ -37,7 +37,15 @@ void RangePrint(BSTnode *root,int low,int high)
 
 
 
+//Method-2:Using Level order traversal.
+void RangePrintLevelOrder(BSTnode *root,int low,int high)
+{
+	
+}
 
+
+
+//Method3-Using Threaded tree
 void RangePrintMorrisTraversal(BSTnode *root,int low,int high)
 {
 	if(!root) return;
