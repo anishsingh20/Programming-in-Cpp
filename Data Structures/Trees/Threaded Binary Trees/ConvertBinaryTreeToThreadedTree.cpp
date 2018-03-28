@@ -7,6 +7,7 @@ METHOD-1)Using Queue-
 We simply have to link the right NULL pointers to their inorder successors and make the tree threaded. Logic is to use a queue to store the inorder traversal nodes.
 Then again do inorder traversal pop the node and check if its right is NULL, then simply connect its right pointer to the front of queue which has its inorder successor.
 InEfficient technique as it cosumes O(n) extra memory due to usage of queue.
+But can use MORRIS TRAVERSAL TO consume constant O(1) extra memory.
 
 METHOD-2 ) Using inorder predecessors of current node and then creating a thread link from the predecessor to current node-Efficient solution as it consumes constant
 extra memory.
@@ -46,6 +47,8 @@ Node *LeftMost(Node *root)
 	return root;
 }
 
+
+//function to populate queue in in order-We can also use MORRIS TRAVERSAL TO DO EFFICIENT TRAVERSAL WITH O(1) constant extra space.
 void PopulateQueueInInorder(Node *root, queue <Node *> *q)
 {
 	

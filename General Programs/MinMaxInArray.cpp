@@ -139,7 +139,7 @@ maximum and minimum with max and min respectively.
 struct minMax minMaxCompare(int *arr,int n)
 {
 	struct minMax m;
-	int i;
+	int i=0;
 	
 	//if array has even number of elements
 	if(n%2==0)
@@ -191,13 +191,13 @@ struct minMax minMaxCompare(int *arr,int n)
 		
 		else
 		{
-			if(arr[i] < m.mini)
-				m.mini = arr[i];
 			if(arr[i+1] > m.maxi)
 				m.maxi = arr[i+1];
+			if(arr[i] < m.mini)
+				m.mini = arr[i];
 		}
 		
-		i += 2;
+		i = i +  2;
 		
 	}
 	
