@@ -35,6 +35,75 @@ void RangePrint(BSTnode *root,int low,int high)
 }//T(n) = O(n), S(n) = O(n) for recursion call stack space
 
 
+void RangePrintMorrisTraversal(BSTnode *root,int low,int high)
+{
+	if(!root) return;
+	
+	BSTnode *curr = root;
+	
+	if( low <= root->data <= high )
+		cout<<root->data<<" ";
+	
+	while(curr)
+	{
+		
+	
+
+	if(curr->left==NULL)
+	{
+		if(curr->data <= high && curr->data >= low)
+		{
+			cout<<curr->data<<" ";
+			
+			
+		}
+			
+			
+		curr = curr->right;
+	}
+	
+	else
+	{
+		BSTnode *pre = curr->left;
+		while(pre->right!=NULL && pre->right!=curr)
+			pre = pre->right;
+			
+		if(pre->right==NULL)
+		{
+			pre->right = curr;
+			
+		
+			curr = curr->left;
+		}
+		
+		else
+		{
+			pre->right  = NULL;
+			
+	
+			if(root->data <= high)
+				curr = curr->right;
+			
+				if(curr->data <= high && curr->data >= low)
+				{
+					cout<<curr->data<<" ";
+					
+					
+				}
+							
+					
+		curr = curr->right;
+		}
+	}
+
+	}
+}
+
+
+
+
+
+
 BSTnode *newNode(int data)
 {
 	BSTnode *temp = new BSTnode();
@@ -91,7 +160,10 @@ int main()
 	insert(root,22);
 	
 	
-	RangePrint(root,10,22);
+//	RangePrint(root,4,22);
+
+	RangePrintMorrisTraversal(root,20,22);
+
 	
 	
 	

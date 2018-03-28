@@ -27,6 +27,14 @@ void Top3Nodes(BSTnode *root)
 }//Time complexity = O(n) , Space - O(n) for stack space.
 
 
+void Top3UsingMorrisTraversal(BSTnode *root)
+{
+	int count = 0;
+	BSTnode *curr = root;
+	
+}
+
+
 BSTnode *newNode(int data)
 {
 	BSTnode *temp = new BSTnode();
