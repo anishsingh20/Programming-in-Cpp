@@ -24,92 +24,74 @@ int height(BSTnode *root)
 	return max(height(root->left),height(root->right)) + 1;
 }
 
-//Function to check if both BSTs have same structure as well
-void AreSameBSTUtil(BSTnode *root,vector<int>&v1)
-{
 
-	if(!root)	
-		return ;
-		
-	AreSameBSTUtil(root->left,v1);
-	
-	v1.push_back(root->data);
-	
-	AreSameBSTUtil(root->right,v1);
-	
-	
-
-}//TIME COMPLEXITY = O(n), Space  = O(n) stack space.
-
+//USing morris traverasl to check if 2 BST have same elements or not, Order does not matter
 
 bool AreSameBST(BSTnode *root1,BSTnode *root2)
 {
-	
-	if(!root1 && !root2)
-		return true;
-		
-	vector<int>v1;
-	vector<int>v2;
-	AreSameBSTUtil(root1,v1);
-	AreSameBSTUtil(root2,v1);
-	
-	return (v1==v2);
-	
-	
-}
 
-void PopulateSet(BSTnode *root,set<int>&S)
-{
-	if(!root)
-		return;
-	
-	PopulateSet(root->left,S);
-	
-	S.insert(root->data);
-		
-	PopulateSet(root->right,S);
-}
-
-
-bool SameOrNotUsingSet(BSTnode *root1,BSTnode *root2)
-{
-	
-			
-	//populate Set with data in Tree1
-	
-	set<int>S;
-	PopulateSet(root1,S);
-	
-	if(!root1||!root2)
-		return false;
-		
 		
 	
-	
-
-	
-	return SameOrNotUsingSet(root1,root2->left);
-	
-	set<int>::iterator it=S.begin();
-	
-	
-	if(root2->data == *it)
+	BSTnode *curr1=root1,*curr2=root2;
+	while(curr1 && curr2)
 	{
-		
-		return true;
-		
-	}	
+		if(curr1->left==NULL && curr2->left == NULL)
+		{
+			if(curr1->data!=curr2->data)
+			{
+				return false;
+			}
 			
-	S.erase(it);
-
+			curr1 = curr1->right;
+			curr2 = curr2->right;
+			
+		}
 		
-	return SameOrNotUsingSet(root1,root2->right);
+		else
+		{
+			BSTnode *pre1,*pre2;
+			pre1 = curr1->left;
+			pre2 = curr2->left;
+			
+			while(pre1->right!=NULL &&pre2->right!=NULL && pre1->right!=curr1 && pre2->right!=curr2)
+			{
+				pre1 = pre1->right;
+				pre2= pre2->right;
+			}
+			
+			if(pre1->right==NULL && pre2->right==NULL)
+			{
+				pre1->right = curr1;
+				pre2->right = curr2;
+				
+				curr1 = curr1->left;
+				curr2 = curr2->left;
+				
+			}
+			
+			else
+			{
+				pre1->right=NULL;
+				pre2->right=NULL;
+				
+				if(curr1->data!=curr2->data)
+				{
+					return false;
+				}
+				
+				curr1 = curr1->right;
+				curr2 = curr2->right;
+				
+			}
+			
+		}
+	}	
 	
 	
+	return true;
+} //Time complexity  = O(max(m,n)) ,Space complexity = O(1) as no recursion or stack is used to do inorder traversal
 
 
-	
-}
 
 
 BSTnode *newNode(int data)
@@ -167,8 +149,8 @@ int main()
 	BSTnode *root2 = newNode(10);
 	
 	insert(root2,20);
-	insert(root2,15);
 	insert(root2,30);
+	insert(root2,15);
 	insert(root2,5);
 	
 	
@@ -176,9 +158,14 @@ int main()
 	cout<<height(root1)<<" "<<height(root2)<<endl;
 	
 	//both of the above trees have different structures although have same data
-	cout<<AreSameBST(root1,root2);
+	if(AreSameBST(root1,root2))
+	{
+		cout<<"Yes"<<endl;
+	}
+	else
+		cout<<"No"<<endl;
 	cout<<endl;
-//	cout<<SameOrNotUsingSet(root1,root2);
+
 	
 	return 0;
 		
