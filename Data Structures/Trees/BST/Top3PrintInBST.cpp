@@ -2,37 +2,29 @@
 
 using namespace std;
 
-/*Progrma to print data within a range say K1 and K2 in a BST-ASked in Microsort and Flipkart.
-1)Recursive method-
-2)Level order traverasl method
-3)Threaded tree and inorder successor
 
-
-*/
 struct BSTnode{
 	
 	int data;	
 	struct BSTnode *left,*right;
 };
 
-//1)Recursive method-
-void RangePrint(BSTnode *root,int low,int high)
+//Function to find top3 nodes in BST-similar to finding Kth largest in BST
+//as reverse inorder traverasl of BST will give us a sorted list in descending order
+void Top3Nodes(BSTnode *root)
 {
-	if(!root) return;
+	static int count=0; //counter var to keep count of visited nodes
+	if(!root)	return;
 	
-	if(root->data >= low )
-		RangePrint(root->left,low,high);
-	
-	//if between the range , then simply print
-	if(root->data <= high && root->data >= low)
-	{
+	Top3Nodes(root->right);
+		
+	//till count is less than or equal to 3, print
+	if(++count<=3)
 		cout<<root->data<<" ";
-	}
+		
+	Top3Nodes(root->left);	
 	
-	if(root->data <= high)
-		RangePrint(root->right,low,high);
-	
-}//T(n) = O(n), S(n) = O(n) for recursion call stack space
+}
 
 
 BSTnode *newNode(int data)
@@ -45,7 +37,6 @@ BSTnode *newNode(int data)
 	
 	return temp;
 }
-
 
 
 BSTnode *insert(BSTnode *root,int value)
@@ -93,11 +84,5 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-//	RangePrint(root,5,12);
 	Top3Nodes(root);
-	
-	
-	return 0;
 }
-
-
