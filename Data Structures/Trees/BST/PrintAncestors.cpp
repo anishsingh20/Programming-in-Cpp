@@ -2,38 +2,39 @@
 
 using namespace std;
 
-/*Progrma to print data within a range say K1 and K2 in a BST-ASked in Microsort and Flipkart.
-1)Recursive method-
-2)Level order traverasl method
-3)Threaded tree and inorder successor
-
-
-*/
-
-struct BSTnode{
+struct BSTnode
+{
 	
 	int data;	
 	struct BSTnode *left,*right;
 };
 
-//1)Recursive method-
-void RangePrint(BSTnode *root,int low,int high)
+
+
+bool PrintAncestors(BSTnode *root, int key)
 {
-	if(!root) return;
+	if(!root)	return false;
+		
+	//when key is found , return true
+	if(root->data==key)
+		return true;
 	
-	if(root->data >= low )
-		RangePrint(root->left,low,high);
+	//otherwise, simply find the data in left or right subtree	
 	
-	//if between the range , then simply print
-	if(root->data <= high && root->data >= low)
+	if(key <= root->data)	
+		bool left = PrintAncestors(root->left,key);
+		
+	if(key >= root->data)	
+		bool right = PrintAncestors(root->right,key);
+	
+	if(left || right)
 	{
 		cout<<root->data<<" ";
+		return true;	
 	}
 	
-	if(root->data <= high)
-		RangePrint(root->right,low,high);
-	
-}//T(n) = O(n), S(n) = O(n)
+}
+
 
 
 BSTnode *newNode(int data)
@@ -93,11 +94,11 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-//	RangePrint(root,5,12);
+
 	
-	PrintAncestors(root,20);
+	PrintAncestors(root,1);
+	
 	
 	return 0;
 }
-
 
