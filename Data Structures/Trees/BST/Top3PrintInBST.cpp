@@ -11,18 +11,50 @@ struct BSTnode{
 
 //Function to find top3 nodes in BST-similar to finding Kth largest in BST
 //as reverse inorder traverasl of BST will give us a sorted list in descending order
+//We will do reverse inorder traverasl using reverse MORRIS TRAVERSAL as it is efficient and consumes constant extra space.
 void Top3Nodes(BSTnode *root)
 {
-	static int count=0; //counter var to keep count of visited nodes
+	int count=0; //counter var to keep count of visited nodes
 	if(!root)	return;
 	
-	Top3Nodes(root->right);
+	BSTnode *curr = root;
+	
+	while(curr)
+	{
+		if(curr->right==NULL)
+		{
+			if(++count<=3)
+				cout<<curr->data<<" ";
+				
+			curr = curr->left;
+		}
 		
-	//till count is less than or equal to 3, print
-	if(++count<=3)
-		cout<<root->data<<" ";
+		else
+		{
+			//finding the inorder successor of current node
+			BSTnode *succ = curr->right;
+			while(succ->left!=NULL && succ->left!=curr)
+				succ = succ->left;
+				
+			if(succ->left==NULL)
+			{
+				succ->left =curr;
+				curr = curr->right;
+			}
+			
+			else
+			{
+				succ->left = NULL;
+				
+				if(++count<=3)
+					cout<<curr->data<<" ";
+					
+				curr = curr->left;
+				
+			}
+		}
+	}
 		
-	Top3Nodes(root->left);	
 	
 }//Time complexity = O(n) , Space - O(n) for stack space.
 
