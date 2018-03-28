@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 
 using namespace std;
 
@@ -40,7 +41,31 @@ void RangePrint(BSTnode *root,int low,int high)
 //Method-2:Using Level order traversal.
 void RangePrintLevelOrder(BSTnode *root,int low,int high)
 {
+	if(!root)	return;
 	
+	queue<BSTnode*>q;
+	BSTnode *temp;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		
+		temp = q.front();
+		q.pop();
+		
+		if( temp->data >= low  && temp->data <= high)
+		{
+			cout<<temp->data<<" ";
+			
+		}
+		
+		if(temp->left && temp->data >= low)
+			q.push(temp->left);
+			
+		if(temp->right && temp->data <= high)
+			q.push(temp->right);
+	}	
 }
 
 
@@ -170,7 +195,11 @@ int main()
 	
 //	RangePrint(root,4,22);
 
-	RangePrintMorrisTraversal(root,20,22);
+	RangePrintMorrisTraversal(root,10,22);
+	
+	cout<<endl;
+	
+	RangePrintLevelOrder(root,10,22);
 
 	
 	
