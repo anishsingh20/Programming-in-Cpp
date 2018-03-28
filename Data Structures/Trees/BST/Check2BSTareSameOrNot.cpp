@@ -1,4 +1,6 @@
 #include<iostream>
+#include<set>
+#include<vector>
 
 using namespace std;
 
@@ -23,29 +25,91 @@ int height(BSTnode *root)
 }
 
 //Function to check if both BSTs have same structure as well
+void AreSameBSTUtil(BSTnode *root,vector<int>&v1)
+{
+
+	if(!root)	
+		return ;
+		
+	AreSameBSTUtil(root->left,v1);
+	
+	v1.push_back(root->data);
+	
+	AreSameBSTUtil(root->right,v1);
+	
+	
+
+}//TIME COMPLEXITY = O(n), Space  = O(n) stack space.
+
+
 bool AreSameBST(BSTnode *root1,BSTnode *root2)
 {
-	//if the BST have different structures , but same data or produce same list on inorder traversal, then they are different in structures.
-	int h1 = height(root1);
-	int h2 = height(root2);
 	
-	if(h1!=h2)
-		return false;
-	
-	if(!root1 || !root2)
-		return false;
-	
-	AreSameBST(root1->left,root2->left);
-	
-	if(root1->data==root2->data)
+	if(!root1 && !root2)
 		return true;
-	else
-		return false;	
+		
+	vector<int>v1;
+	vector<int>v2;
+	AreSameBSTUtil(root1,v1);
+	AreSameBSTUtil(root2,v1);
 	
-	AreSameBST(root1->right,root2->right);
+	return (v1==v2);
+	
+	
+}
+
+void PopulateSet(BSTnode *root,set<int>&S)
+{
+	if(!root)
+		return;
+	
+	PopulateSet(root->left,S);
+	
+	S.insert(root->data);
+		
+	PopulateSet(root->right,S);
+}
 
 
-}//TIME COMPLEXITY = O(n), Space  = O(n) stack space
+bool SameOrNotUsingSet(BSTnode *root1,BSTnode *root2)
+{
+	
+			
+	//populate Set with data in Tree1
+	
+	set<int>S;
+	PopulateSet(root1,S);
+	
+	if(!root1||!root2)
+		return false;
+		
+		
+	
+	
+
+	
+	return SameOrNotUsingSet(root1,root2->left);
+	
+	set<int>::iterator it=S.begin();
+	
+	
+	if(root2->data == *it)
+	{
+		
+		return true;
+		
+	}	
+			
+	S.erase(it);
+
+		
+	return SameOrNotUsingSet(root1,root2->right);
+	
+	
+
+
+	
+}
 
 
 BSTnode *newNode(int data)
@@ -102,16 +166,19 @@ int main()
 	
 	BSTnode *root2 = newNode(10);
 	
+	insert(root2,20);
 	insert(root2,15);
 	insert(root2,30);
-	insert(root2,20);
 	insert(root2,5);
+	
 	
 	//height of root1 =2, height of root2 = 3, both trees are different
 	cout<<height(root1)<<" "<<height(root2)<<endl;
 	
 	//both of the above trees have different structures although have same data
 	cout<<AreSameBST(root1,root2);
+	cout<<endl;
+//	cout<<SameOrNotUsingSet(root1,root2);
 	
 	return 0;
 		
