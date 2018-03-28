@@ -9,7 +9,6 @@ using namespace std;
 
 
 */
-
 struct BSTnode{
 	
 	int data;	
@@ -33,7 +32,7 @@ void RangePrint(BSTnode *root,int low,int high)
 	if(root->data <= high)
 		RangePrint(root->right,low,high);
 	
-}//T(n) = O(n), S(n) = O(n)
+}//T(n) = O(n), S(n) = O(n) for recursion call stack space
 
 
 BSTnode *newNode(int data)
@@ -93,9 +92,8 @@ int main()
 	insert(root,12);
 	insert(root,20);
 	
-//	RangePrint(root,5,12);
+	RangePrint(root,5,12);
 	
-	PrintAncestors(root,20);
 	
 	return 0;
 }
