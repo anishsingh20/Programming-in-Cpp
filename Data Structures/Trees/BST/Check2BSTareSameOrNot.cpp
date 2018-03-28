@@ -13,6 +13,23 @@ struct BSTnode{
 
 */
 
+//Function to check if both BSTs have same structure as well
+bool AreSameBST(BSTnode *root1,BSTnode *root2)
+{
+	if(!root1 || !root2)
+		return false;
+	
+	AreSameBST(root1->left,root2->left);
+	
+	if(root1->data==root2->data)
+		return true;
+	else
+		return false;	
+	
+	AreSameBST(root1->right,root2->right);
+
+
+}//TIME COMPLEXITY = O(n), Space  = O(n) stack space
 
 
 BSTnode *newNode(int data)
@@ -59,7 +76,23 @@ BSTnode *insert(BSTnode *root,int value)
 
 int main()
 {
+	BSTnode *root1  = newNode(20);
+	
+	insert(root1,4);
+	insert(root1,8);
+	insert(root1,12);
+	insert(root1,22);
 	
 	
+	BSTnode *root2 = newNode(20);
 	
+	insert(root1,4);
+	insert(root1,8);
+	insert(root1,12);
+	insert(root1,22);
+	
+	cout<<AreSameBST(root1,root2);
+	
+	return 0;
+		
 }
