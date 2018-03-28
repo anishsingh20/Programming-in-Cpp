@@ -13,9 +13,25 @@ struct BSTnode{
 
 */
 
+
+int height(BSTnode *root)
+{
+	if(!root)
+		return -1;
+		
+	return max(height(root->left),height(root->right)) + 1;
+}
+
 //Function to check if both BSTs have same structure as well
 bool AreSameBST(BSTnode *root1,BSTnode *root2)
 {
+	//if the BST have different structures , but same data or produce same list on inorder traversal, then they are different in structures.
+	int h1 = height(root1);
+	int h2 = height(root2);
+	
+	if(h1!=h2)
+		return false;
+	
 	if(!root1 || !root2)
 		return false;
 	
@@ -76,21 +92,23 @@ BSTnode *insert(BSTnode *root,int value)
 
 int main()
 {
-	BSTnode *root1  = newNode(20);
+	BSTnode *root1  = newNode(10);
 	
-	insert(root1,4);
-	insert(root1,8);
-	insert(root1,12);
-	insert(root1,22);
+	insert(root1,5);
+	insert(root1,20);
+	insert(root1,15);
+	insert(root1,30);
 	
 	
-	BSTnode *root2 = newNode(20);
+	BSTnode *root2 = newNode(10);
 	
-	insert(root1,4);
-	insert(root1,8);
-	insert(root1,12);
-	insert(root1,22);
+	insert(root1,15);
+	insert(root1,30);
+	insert(root1,20);
+	insert(root1,5);
 	
+	
+	//both of the above trees have different structures although have same data
 	cout<<AreSameBST(root1,root2);
 	
 	return 0;
