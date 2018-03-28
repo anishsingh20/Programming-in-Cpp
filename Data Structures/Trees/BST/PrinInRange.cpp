@@ -2,10 +2,11 @@
 
 using namespace std;
 
-/*Progrma to print data within a range say K1 and K2 in a BST-ASked in Microsort and Flipkart.
+/*Program to print data within a range say K1 and K2 in a BST-ASked in Microsoft and Flipkart.
 1)Recursive method-
 2)Level order traverasl method
-3)Threaded tree and inorder successor
+3)Threaded tree and inorder successor using MORRIS TRAVERSAL-which is used to do inorder traverasl using the inorder predecessor thread, and 
+consumes constant extra memory = O(1)
 
 
 */
@@ -35,69 +36,68 @@ void RangePrint(BSTnode *root,int low,int high)
 }//T(n) = O(n), S(n) = O(n) for recursion call stack space
 
 
+
+
 void RangePrintMorrisTraversal(BSTnode *root,int low,int high)
 {
 	if(!root) return;
 	
 	BSTnode *curr = root;
 	
-	if( low <= root->data <= high )
-		cout<<root->data<<" ";
+////	if( low <= root->data <= high )
+//		cout<<root->data<<" ";
 	
 	while(curr)
 	{
 		
 	
 
-	if(curr->left==NULL)
-	{
-		if(curr->data <= high && curr->data >= low)
+		if(curr->left==NULL)
 		{
-			cout<<curr->data<<" ";
-			
-			
-		}
-			
-			
-		curr = curr->right;
-	}
-	
-	else
-	{
-		BSTnode *pre = curr->left;
-		while(pre->right!=NULL && pre->right!=curr)
-			pre = pre->right;
-			
-		if(pre->right==NULL)
-		{
-			pre->right = curr;
-			
-		
-			curr = curr->left;
+			if(curr->data <= high && curr->data >= low)
+			{
+				cout<<curr->data<<" ";
+				
+				
+			}
+				
+				
+			curr = curr->right;
 		}
 		
 		else
 		{
-			pre->right  = NULL;
+			BSTnode *pre = curr->left;
+			while(pre->right!=NULL && pre->right!=curr)
+				pre = pre->right;
+				
+			if(pre->right==NULL)
+			{
+				pre->right = curr;
+				
 			
-	
-			if(root->data <= high)
-				curr = curr->right;
+				curr = curr->left;
+			}
 			
+			else
+			{
+				pre->right  = NULL;
+				
 				if(curr->data <= high && curr->data >= low)
 				{
+					
 					cout<<curr->data<<" ";
-					
-					
+						
+						
 				}
-							
+				
+				curr = curr->right;						
 					
-		curr = curr->right;
+			}
 		}
-	}
 
 	}
-}
+}//EFFICIENT SOLUTION-CONSUMES CONSTANT EXTRA SPACE = O(1), T(n)  = O(n)
 
 
 
