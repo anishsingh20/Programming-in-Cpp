@@ -66,7 +66,7 @@ void RangePrintLevelOrder(BSTnode *root,int low,int high)
 		if(temp->right && temp->data <= high)
 			q.push(temp->right);
 	}	
-}
+}//Time complexity = O(n), spcae complexity = O(n) consumed by queue
 
 
 
