@@ -41,8 +41,31 @@ long long int CatalanRecursive(int n)
 } //time complexity = exponential, not efficient technique.
 
 
+//Method-4-Most efficient method as it takes linear time O(n)
+long long int Catalan4(int n)
+{	
+
+	if(n<=1)
+		return 1;
+	static int res=1;
+	
+	
+		
+	for(int k = 2 ; k <= n; ++k){
+		
+		res = (res * (n+k)/k ) ;
+		
+	}
+	
+	return res;
+}
+
+
 
 int main()
 {
-	cout<<CatalanRecursive();
+	cout<<CatalanRecursive(4);
+	cout<<endl;
+	cout<<"linear time method"<<endl;
+	cout<<Catalan4(4);
 }
