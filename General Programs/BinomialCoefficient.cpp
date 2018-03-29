@@ -17,7 +17,7 @@ int fact(int n)
 	
 	else
 		return n*fact(n-1);
-} //Time complexity = O(n)
+} //Time complexity = O(n) , S(n)  = O(n) required by recursion call stack
 
 
 //function to find the binomial coefficient 
@@ -32,7 +32,7 @@ long long int BinCoeff(int n,int k)
 	return ( fact(n) / (fact(n-k)*fact(k))  )  ;
 	
 		
-}//Time complexity of this method is O(n*k)
+}//Time complexity of this method is O(n*k) , space = O(n) required by stack space
 
 int main()
 {
