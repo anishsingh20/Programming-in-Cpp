@@ -34,6 +34,27 @@ long long int BinCoeff(int n,int k)
 		
 }//Time complexity of this method is O(n*k) , space = O(n) required by stack space
 
+
+
+//Method-2 Efficinet solution to find binomial coefficient
+
+int binomEfficient(int n,int k)
+{
+	int res = 1;
+	
+	if(n==k)
+		return 1;
+	if(k==1)
+		return n;
+		
+		
+		
+	
+	
+	
+}
+
+
 int main()
 {
 	cout<<BinCoeff(12,10);
