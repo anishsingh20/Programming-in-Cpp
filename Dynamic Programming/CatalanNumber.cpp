@@ -55,8 +55,19 @@ long long int CatalanDP(int n)
 	if(n<=1)
 		return catalan_arr[n];
 		
-	
-}
+	//otherwise fill the array
+	for(int i = 2 ; i <= n ; i++)
+	{
+		catalan_arr[i] = 0;
+		 
+		for(int j = 0 ; j < i ; j++)
+		{
+			catalan_arr[i] += catalan_arr[j] * catalan_arr[i-j-1]; 
+		}
+	}
+		
+	return catalan_arr[n];
+}//Time complexity = O(n^2) - quadratic time algorithm
 
 
 
@@ -122,13 +133,26 @@ long long int CatalanBinom(int n)
 
 int main()
 {
-	cout<<CatalanRecursive(5);
-	cout<<endl;
 	
+//	cout<<CatalanRecursive(9);
+//	cout<<endl;
+//	
+//	
+//	cout<<"Catalan by binomial coefficient method:"<<endl;
+//	cout<<CatalanBinom(9);
+//	cout<<endl;
+//	
+//	
+//	cout<<"By dynamic programming"<<endl;
+//	cout<<CatalanDP(9);
+
+
+	//calculating the first 20 Cataaln numbers
+	cout<<"Number"<<"        "<<"Catalan Number"<<endl;
 	
-	cout<<"Catalan by binomial coefficient method:"<<endl;
-	cout<<CatalanBinom(5);
-	cout<<endl;
-	cout<<"linear time method"<<endl;
-	cout<<Catalan4(5);
+	for(int i=0 ; i<=20 ;i++)
+	{
+		cout<<i<< "                   "<< CatalanBinom(i);
+		cout<<endl;
+	}
 }
