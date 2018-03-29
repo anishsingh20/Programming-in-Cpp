@@ -42,31 +42,93 @@ long long int CatalanRecursive(int n)
 //S(n) = O(n) for recursion call stack
 
 
-//Method-4-Most efficient method as it takes linear time O(n)
-long long int Catalan4(int n)
-{	
 
+
+//Using Dynamic Programming to find catalan number in O(n^2)
+
+long long int CatalanDP(int n)
+{
+	long long int catalan_arr[n+1];
+	catalan_arr[0] = catalan_arr[1] = 1;
+	
+	//base case
 	if(n<=1)
+		return catalan_arr[n];
+		
+	
+}
+
+
+
+//Method-3) Uisng binomial coefficient to find catalan number. C(n) = BinomCoeff(2n,n) / n+1
+long long int binomEfficient(int n,int k)
+{
+	long long int res = 1;
+	
+	if(n==k)
 		return 1;
-	static int res=1;
+	if(k==1)
+		return n;
+		
+	//if  k > n-k then  k = n-k as // Since C(n, k) = C(n, n-k)
+	if( k > n-k)
+		k = n-k;
 	
-	
+	//calculating C(n,k) =  n!/ (n-k)! * k!
+	for(int i = 0 ; i < k ; i++)
+	{
+		res *= (n-i);
 		
-	for(int k = 2 ; k <= n; ++k){
-		
-		res = (res * (n+k)/k ) ;
-		
+		res /=  (i+1);
 	}
 	
 	return res;
+		
+} //Time complexity = O(k) and aux space  = O(1)
+
+
+
+long long int CatalanBinom(int n)
+{
+	if(n<=1)
+		return 1;
+	
+	long long int c = binomEfficient(2*n,n);
+	
+	return c/(n+1);
 }
+
+//Method-4-Most efficient method as it takes linear time O(n)
+//long long int Catalan4(int n)
+//{	
+//
+//	if(n<=1)
+//		return 1;
+//		
+// 	int res=1;
+//	
+//	
+//		
+//	for(int k = 2 ; k <=n ; k++){
+//		
+//		res =  ( res * ((n+k)/k) )      ;
+//		
+//	}
+//	
+//	return res;
+//}
 
 
 
 int main()
 {
-	cout<<CatalanRecursive(4);
+	cout<<CatalanRecursive(5);
+	cout<<endl;
+	
+	
+	cout<<"Catalan by binomial coefficient method:"<<endl;
+	cout<<CatalanBinom(5);
 	cout<<endl;
 	cout<<"linear time method"<<endl;
-	cout<<Catalan4(4);
+	cout<<Catalan4(5);
 }
