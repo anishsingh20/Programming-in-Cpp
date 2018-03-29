@@ -47,7 +47,7 @@ int binomEfficient(int n,int k)
 	if(k==1)
 		return n;
 		
-	//if  k > k-n
+	//if  k > n-k then  k = n-k as // Since C(n, k) = C(n, n-k)
 	if( k > n-k)
 		k = n-k;
 	
