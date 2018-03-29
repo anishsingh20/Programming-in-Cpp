@@ -38,7 +38,8 @@ long long int CatalanRecursive(int n)
 
 	return res;
 
-} //time complexity = exponential, not efficient technique.
+} //time complexity = exponential, not efficient technique i.e it is equivalent to the catalan number itself.
+//S(n) = O(n) for recursion call stack
 
 
 //Method-4-Most efficient method as it takes linear time O(n)
