@@ -21,7 +21,7 @@ int fact(int n)
 
 
 //function to find the binomial coefficient 
-long long int BinCoeff(int n,int k)
+int BinCoeff(int n,int k)
 {
 	if(n==k)
 		return 1;
@@ -47,15 +47,28 @@ int binomEfficient(int n,int k)
 	if(k==1)
 		return n;
 		
+	//if  k > k-n
+	if( k > n-k)
+		k = n-k;
+	
+	//calculating C(n,k) =  n!/ (n-k)! * k!
+	for(int i = 0 ; i < k ; i++)
+	{
+		res *= (n-i);
 		
+		res /=  (i+1);
+	}
 	
-	
-	
-	
-}
+	return res;
+		
+} //Time complexity = O(k) and aux space  = O(1)
 
 
 int main()
 {
-	cout<<BinCoeff(12,10);
+	cout<<BinCoeff(20,9);
+	cout<<endl;
+	cout<<"Efficient method"<<endl;
+	
+	cout<<binomEfficient(20,12);
 }
