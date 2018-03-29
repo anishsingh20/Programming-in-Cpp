@@ -17,10 +17,24 @@ int fact(int n)
 	
 	else
 		return n*fact(n-1);
-}
+} //Time complexity = O(n)
 
+
+//function to find the binomial coefficient 
+long long int BinCoeff(int n,int k)
+{
+	if(n==k)
+		return 1;
+	if(k==1)
+		return n;
+		
+		
+	return ( fact(n) / (fact(n-k)*fact(k))  )  ;
+	
+		
+}//Time complexity of this method is O(n*k)
 
 int main()
 {
-	cout<<fact(5);
+	cout<<BinCoeff(12,10);
 }
