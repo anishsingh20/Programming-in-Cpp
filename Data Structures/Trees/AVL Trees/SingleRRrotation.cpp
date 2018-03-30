@@ -22,17 +22,17 @@ int height(AVLnode *root)
 		return max(height(root->left),height(root->right)) + 1;
 }
 
-AVLnode *SingleleftRotation(AVLnode *X)
+AVLnode *SingleRightRotation(AVLnode *X)
 {
-	//we have to make the left child of X as root say(W is the left child of X) and move X as right of W
-	//then the right child of W should be made the left child of X
-	//then make X as right child of W
-	AVLnode *W = X->left;
-	X->left = W->right;
-	W->right  = X;
+	//we have to make the right child of X as root say(W is the right child of X) and move X to left of W
+	//then the left child of W should be made the right child of X
+	//then make X as left child of W
+	AVLnode *W = X->right;
+	X->right = W->left;
+	W->left  = X;
 	
 	X->height = max(height(X->left),height(X->right)) + 1;
-	W->height  = max(height(W->left), X->height) + 1;
+	W->height  = max(height(W->right), X->height) + 1;
 	
 	return W;//new root
 	
