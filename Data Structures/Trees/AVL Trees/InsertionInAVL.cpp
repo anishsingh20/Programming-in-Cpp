@@ -179,7 +179,7 @@ AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
 
 int main()
 {
-	AVLnode *root  = newNode(4);
+	AVLnode *root  = newNode(5);
 	
 	insert(root,root,2);
 	insert(root,root,3);
@@ -188,7 +188,8 @@ int main()
 	insert(root,root,6);
 	insert(root,root,12);
 	insert(root,root,20);
-	insert(root,root,25);
+	insert(root,root,10);
+	insert(root,root,9);	
 	
 	//constructed the AVL tree
 	
