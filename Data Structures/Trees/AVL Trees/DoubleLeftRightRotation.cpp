@@ -1,6 +1,5 @@
 #include<iostream>
-#include "SingleLLRotation.cpp"
-#include "SIngleRRrotation.cpp"
+
 
 using namespace std;
 
@@ -16,7 +15,8 @@ struct AVLnode {
 AVLnode *DoubleLeftRightRotation(AVLnode *X)
 {
 
-	X->left = SingleRightRotation(X->right);
+	X->left = SingleRightRotation(X->left);
 	
-	return SingleLeftRotation(X);  
+	return SingleLeftRotation(X); 
+	
 }
