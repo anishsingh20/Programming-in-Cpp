@@ -33,17 +33,19 @@ Hence we can have atmost log(xy) operations to calculate the GCD using Euclidean
 //recursive function to find GCD of 2 numbers-efficient version of Euclidean algorithm
 int GCDRecur(int a , int b)
 {
-	int count =0;
+	static int count =0;
 	if(b!=0)
 	{
 		count++;
-		int m = b;
-		b = a%b;
-		a = m ;
-		cout<<count<<endl;
+		
+		return GCDRecur(b,a%b);
+		
 		
 	 } 
-	else return a;
+	 
+	 cout<<"NUmber of operations to find GCD are "<< count<<endl;
+	
+	return a;
 	
 	
 }//This approach takes lesser oerations to find GCD then normal Euclidaen algorithm explained below
@@ -66,9 +68,10 @@ long long int EuclidGCD(long long int m,long long int n)
 	}
 	//when both number becomes equal, that number is the GCD
 	
-	cout<<"Number of Substraction: "<<count<<endl;
+	cout<<"Number of Substractions done to find GCD: "<<count<<endl;
 	return n;
 }
+
 
 int GCD(int a, int b) {
 	
@@ -96,9 +99,9 @@ int main() {
 //	
 //	cout<<endl;
 //	
-	cout<<GCDRecur(10,3);
+	cout<<GCDRecur(100393,9349);
 	cout<<endl;
-	cout<<EuclidGCD(10 ,3);
+	cout<<EuclidGCD(100393,9349);
 	
 	return 0;
 }
