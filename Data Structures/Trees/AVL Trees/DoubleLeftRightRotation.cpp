@@ -16,5 +16,7 @@ struct AVLnode {
 AVLnode *DoubleLeftRightRotation(AVLnode *X)
 {
 
+	X->left = SingleRightRotation(X->right);
 	
+	return SingleLeftRotation(X);  
 }
