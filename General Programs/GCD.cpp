@@ -33,12 +33,20 @@ Hence we can have atmost log(xy) operations to calculate the GCD using Euclidean
 //recursive function to find GCD of 2 numbers-efficient version of Euclidean algorithm
 int GCDRecur(int a , int b)
 {
-	
-	if(b!=0) return GCDRecur(b, a%b );
+	int count =0;
+	if(b!=0)
+	{
+		count++;
+		int m = b;
+		b = a%b;
+		a = m ;
+		cout<<count<<endl;
+		
+	 } 
 	else return a;
 	
 	
-}
+}//This approach takes lesser oerations to find GCD then normal Euclidaen algorithm explained below
 
 
 //Euclid's algorithm which is based on DIVIDE AND CONQUER STRATEGY TO FIND GCD-HCF of 2 numbers
@@ -88,9 +96,9 @@ int main() {
 //	
 //	cout<<endl;
 //	
-//	cout<<GCDRecur(120,72);
+	cout<<GCDRecur(10,3);
 	cout<<endl;
-	cout<<EuclidGCD(121393 ,75025);
+	cout<<EuclidGCD(10 ,3);
 	
 	return 0;
 }
