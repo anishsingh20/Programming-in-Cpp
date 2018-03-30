@@ -7,63 +7,22 @@
 
 using namespace std;
 
-//struct AVLnode {
-//	
-//	int data,height;
-//	struct AVLnode *left,*right;	
-//};
+struct AVLnode {
+	
+	int data,height;
+	struct AVLnode *left,*right;	
+};
 
 
-AVLnode *insert(AVLnode *root,int value)
+int Height(AVLnode *root)
 {
-	//we first need to find the appropiate location to insert data
-	if(root==NULL)
-	{
-		AVLnode *temp  = new AVLnode();
-		temp->data = value;
-		temp->height = 0;
-		temp->left = temp->right = NULL;
+	if(!root)
+		return -1;
 		
-		root = temp;
-	}
-	
-	//insetion in left subtree
-	else if(root->data > value)
-	{
-		root->left = insert(root->left,value);
-		//after insertion check for imbalances and do appropiate rotations to balance the tree
-		if(height(root->right)-height(root->left)==2)
-		{
-			if(root->left->data < value)
-				root = DoubleLeftRightRotation(root);
-				
-			else
-				root = SingleleftRotation(root);
-				
-		}
-	}
-		
-	else if(root->data < value)
-	{
-		root->right = insert(root->right,value);
-		
-		//after insertion check for imbalances and do appropiate rotations to balance the tree
-		if(height(root->right)-height(root->left)==2)
-		{
-			if(root->right->data < value)
-				root = DoubleRightLeftRotation(root);
-				
-			else
-				root = SingleRightRotation(root);
-				
-		}
-	}
-	
-	
-	
-	//returning root of the updated tree
-	return root;
+	else
+		return max(Height(root->left),Height(root->right)) + 1;
 }
+
 
 
 AVLnode *newNode(int data)
@@ -79,13 +38,33 @@ AVLnode *newNode(int data)
 
 void InorderTraverse(AVLnode *root)
 {
-	InorderTraverse(root->left);
+	if(root)
+	{
+		InorderTraverse(root->left);
 	
 	cout<<root->data<<" ";
 	
 	InorderTraverse(root->right);
+		
+	}
+	
 }
 
+
+void PreTraverse(AVLnode *root)
+{
+	if(root)
+	{
+		cout<<root->data<<" ";
+		PreTraverse(root->left);
+	
+		
+	
+		PreTraverse(root->right);
+		
+	}
+	
+}
 
 
 AVLnode *SingleleftRotation(AVLnode *X)
@@ -97,8 +76,8 @@ AVLnode *SingleleftRotation(AVLnode *X)
 	X->left = W->right;
 	W->right  = X;
 	
-	X->height = max(height(X->left),height(X->right)) + 1;
-	W->height  = max(height(W->left), X->height) + 1;
+	X->height = max(Height(X->left),Height(X->right)) + 1;
+	W->height  = max(Height(W->left), X->height) + 1;
 	
 	return W;//new root
 	
@@ -115,8 +94,8 @@ AVLnode *SingleRightRotation(AVLnode *X)
 	X->right = W->left;
 	W->left  = X;
 	
-	X->height = max(height(X->left),height(X->right)) + 1;
-	W->height  = max(height(W->right), X->height) + 1;
+	X->height = max(Height(X->left),Height(X->right)) + 1;
+	W->height  = max(Height(W->right), X->height) + 1;
 	
 	return W;//new root
 	
@@ -128,31 +107,94 @@ AVLnode *DoubleLeftRightRotation(AVLnode *X)
 
 	X->left = SingleRightRotation(X->left);
 	
-	return SingleLeftRotation(X); 
+	return SingleleftRotation(X); 
 	
 }
 
 AVLnode *DoubleRightLeftRotation(AVLnode *X)
 {
-	X->right = S::SingleLeftRotation(X->right);
+	X->right = SingleleftRotation(X->right);
 	
-	return N::SingleRightRotation(X);  
+	return SingleRightRotation(X);  
 
 }
+
+
+//insertion function while taking care of the balance factor and checking balance fator and doing appropiate rotations after every insertion
+AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
+{
+	//we first need to find the appropiate location to insert data
+	if(root==NULL)
+	{
+		AVLnode *temp  = new AVLnode();
+		temp->data = value;
+		temp->height = 0;
+		temp->left = temp->right = NULL;
+		
+		root = temp;
+	}
+	
+	//insetion in left subtree
+	else if(root->data > value)
+	{
+		root->left = insert(root->left,root,value);
+		//after insertion check for imbalances and do appropiate rotations to balance the tree
+		if( (Height(root->right)-Height(root->left)) == 2)
+		{
+			if(root->left->data < value)
+				root = DoubleLeftRightRotation(root);
+				
+			else
+				root = SingleleftRotation(root);
+				
+		}
+	}
+		
+	else if(root->data < value)
+	{
+		root->right = insert(root->right,root,value);
+		
+		//after insertion check for imbalances and do appropiate rotations to balance the tree
+		if( (Height(root->right)-Height(root->left)) ==2)
+		{
+			if(root->right->data < value)
+				root = SingleRightRotation(root);
+				
+			else
+				root = DoubleRightLeftRotation(root);
+				
+		}
+	}
+	
+	//else data is in the tree already
+	root->height = max(Height(root->left),Height(root->right)) + 1;
+	
+	//returning root of the updated tree
+	return root;
+}
+
+
+
+
+
 int main()
 {
 	AVLnode *root  = newNode(4);
 	
-	insert(root,2);
-	insert(root,3);
-	insert(root,1);
-	insert(root,7);
-	insert(root,6);
-	insert(root,12);
-	insert(root,20);
+	insert(root,root,2);
+	insert(root,root,3);
+	insert(root,root,1);
+	insert(root,root,7);
+	insert(root,root,6);
+	insert(root,root,12);
+	insert(root,root,20);
+	insert(root,root,25);
 	
-	InorderTraversal(root);
+	//constructed the AVL tree
 	
+	InorderTraverse(root); //outputs a sorted list
+	cout<<endl;
+	PreTraverse(root);
 	
 }
 
