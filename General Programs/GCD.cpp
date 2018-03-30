@@ -5,8 +5,19 @@
 using namespace std;
 
 
+/*TIME COMPLEXITY OF EUCLIDEAN ALGORITHM EXPLAINED-
+Euclidean algorithm is the most efficient way of calculating GCD of 2 numbers.
+It is based on the fact that when we substract larger number by smaller , then also the GCD of substracted no and other no will
+be same and not change.
 
-//recursive function to find GCD of 2 numbers
+So logic is to keep replacing the larger no by the difference between larger and smaller number until both the numbers become equal.
+When both numbers are equal that is the GCD(a,b).
+
+
+*/
+
+
+//recursive function to find GCD of 2 numbers-efficient version of Euclidean algorithm
 int GCDRecur(int a , int b)
 {
 	
@@ -18,10 +29,10 @@ int GCDRecur(int a , int b)
 
 
 //Euclid's algorithm which is based on DIVIDE AND CONQUER STRATEGY TO FIND GCD-HCF of 2 numbers
-int EuclidGCD(int m,int n)
+long long int EuclidGCD(long long int m,long long int n)
 {
 	//substract larger from smaller number until they both become equal is the logic of Euclidean algo
-	int count = 0;
+	long long int count = 0;
 	while(m!=n)
 	{
 		if(m>n)
@@ -66,7 +77,7 @@ int main() {
 //	
 //	cout<<GCDRecur(120,72);
 	cout<<endl;
-	cout<<EuclidGCD(10,3);
+	cout<<EuclidGCD(121393 ,75025);
 	
 	return 0;
 }
