@@ -21,6 +21,10 @@ T(n) = T(n/d^2) + 2c
 T(n) = T(n/d^3) + 3c
 		
 on solving the above recurrence relation we get
+T(n) = T(n/d^k) + Kc. ,  where  k = log(n) to the base d.
+
+so upper bound of the above algo is T(n) = O( log(xy))
+Hence we can have atmost log(xy) operations to calculate the GCD using Euclidean algorithm.
 
 
 */
