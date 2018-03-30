@@ -21,6 +21,7 @@ int GCDRecur(int a , int b)
 int EuclidGCD(int m,int n)
 {
 	//substract larger from smaller number until they both become equal is the logic of Euclidean algo
+	int count = 0;
 	while(m!=n)
 	{
 		if(m>n)
@@ -28,9 +29,12 @@ int EuclidGCD(int m,int n)
 		else
 			n = n-m;
 			
+		count++;
+			
 	}
 	//when both number becomes equal, that number is the GCD
 	
+	cout<<"Number of Substraction: "<<count<<endl;
 	return n;
 }
 
@@ -62,7 +66,7 @@ int main() {
 //	
 //	cout<<GCDRecur(120,72);
 	cout<<endl;
-	cout<<EuclidGCD(120,72);
+	cout<<EuclidGCD(10,3);
 	
 	return 0;
 }
