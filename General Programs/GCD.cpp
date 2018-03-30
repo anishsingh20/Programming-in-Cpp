@@ -13,6 +13,15 @@ be same and not change.
 So logic is to keep replacing the larger no by the difference between larger and smaller number until both the numbers become equal.
 When both numbers are equal that is the GCD(a,b).
 
+So say GCD(x,y) <= T(n) and n = x*y
+the decreasing factor d = x / (x%y).
+
+so T(n) = T(n/d) + C
+T(n) = T(n/d^2) + 2c
+T(n) = T(n/d^3) + 3c
+		
+on solving the above recurrence relation we get
+
 
 */
 
