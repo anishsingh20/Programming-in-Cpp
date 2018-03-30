@@ -20,6 +20,7 @@ int GCDRecur(int a , int b)
 //Euclid's algorithm which is based on DIVIDE AND CONQUER STRATEGY TO FIND GCD-HCF of 2 numbers
 int EuclidGCD(int m,int n)
 {
+	//substract larger from smaller number until they both become equal is the logic of Euclidean algo
 	while(m!=n)
 	{
 		if(m>n)
@@ -28,6 +29,7 @@ int EuclidGCD(int m,int n)
 			n = n-m;
 			
 	}
+	//when both number becomes equal, that number is the GCD
 	
 	return n;
 }
