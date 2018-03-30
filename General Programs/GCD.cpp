@@ -99,9 +99,9 @@ int main() {
 //	
 //	cout<<endl;
 //	
-	cout<<GCDRecur(1003938349849,9349028083);
+	cout<<GCDRecur(120,72);
 	cout<<endl;
-	cout<<EuclidGCD(1003938349849,9349028083);
+	cout<<EuclidGCD(120,72);
 	
 	return 0;
 }
