@@ -15,7 +15,7 @@ struct BSTnode {
 
 
 
-int Height(AVLnode *root)
+int Height(BSTnode *root)
 {
 	if(!root)
 		return -1;
@@ -28,10 +28,11 @@ int Height(AVLnode *root)
 int isBSTAVL(BSTnode *root)
 {
 	if(!root)
-		return 1;
+		return -1;
 	
 	if(Height(root->right)-Height(root->left)==2)
 		return 0;
+	
 		
 	if(root->left)
 		return isBSTAVL(root->left);
@@ -39,8 +40,8 @@ int isBSTAVL(BSTnode *root)
 	if(root->right)
 		return isBSTAVL(root->right);
 		
-		
-	return 1;
+	return 1;	
+	
 }
 
 
@@ -60,10 +61,14 @@ int main()
 {
 	BSTnode *root=newNode(7);
 
-	root->left = newNode(5);
+	root->left = newNode(6);
 	root->right = newNode(9);
 	root->right->left = newNode(8);
-	root->left->left = newNode(1);
-	root->left->right = newNode(6);
+	root->left->left = newNode(2);
+	root->left->right = newNode(5);
 	root->right->right = newNode(11);
+	root->right->right->right = newNode(12);
+//	root->right->right->right->right = newNode(13);
+	
+	cout<<isBSTAVL(root);
 }
