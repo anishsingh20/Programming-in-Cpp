@@ -141,6 +141,7 @@ AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
 		//after insertion check for imbalances and do appropiate rotations to balance the tree
 		if( (Height(root->right)-Height(root->left)) == 2)
 		{
+			//when insertion in the right subtree of the left child of root
 			if(root->left->data < value)
 				root = DoubleLeftRightRotation(root);
 				
@@ -159,7 +160,8 @@ AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
 		{
 			if(root->right->data < value)
 				root = SingleRightRotation(root);
-				
+			
+			//when insertion in the left subtree of the right child of root	
 			else
 				root = DoubleRightLeftRotation(root);
 				

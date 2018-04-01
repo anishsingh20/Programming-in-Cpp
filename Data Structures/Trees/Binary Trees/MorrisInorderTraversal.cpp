@@ -192,10 +192,10 @@ int main()
 	Node *root = newNode(1);
 	root->left = newNode(2);
 	root->right = newNode(3);
-	root->right->left = newNode(7);
+	root->right->left = newNode(6);
 	root->left->left = newNode(4);
 	root->left->right = newNode(5);
-	root->right->right = newNode(6);
+	root->right->right = newNode(7);
 	
 	MorrisTraversal(root);
 	

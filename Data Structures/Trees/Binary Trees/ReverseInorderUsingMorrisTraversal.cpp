@@ -37,7 +37,7 @@ void MorrisReverseInorder(Node *root)
 			}
 			
 			//otherwise inorder successor's left is not NULL and already left is linked with current node
-			else
+			elsex
 			{
 				Insuccessor->left=NULL;
 				
