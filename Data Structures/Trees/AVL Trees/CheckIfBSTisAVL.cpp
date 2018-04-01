@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<math.h>
 
 
 //program to check is a BST is AVL tree or not
@@ -30,7 +30,7 @@ int isBSTAVL(BSTnode *root)
 	if(!root)
 		return -1;
 	
-	if(Height(root->right)-Height(root->left)==2)
+	if(Height(root->right)-Height(root->left)==2 || abs(Height(root->left)-Height(root->right)) > 1 )  
 		return 0;
 	
 		
@@ -59,16 +59,19 @@ BSTnode *newNode(int data)
 
 int main()
 {
-	BSTnode *root=newNode(7);
+	BSTnode *root=newNode(8);
 
 	root->left = newNode(6);
-	root->right = newNode(9);
-	root->right->left = newNode(8);
-	root->left->left = newNode(2);
-	root->left->right = newNode(5);
-	root->right->right = newNode(11);
-	root->right->right->right = newNode(12);
-//	root->right->right->right->right = newNode(13);
+	root->left->right = newNode(7);
+//	root->right->left = newNode(8);
+//	root->left->left = newNode(2);
+//	root->left->right = newNode(5);
+//	root->right->right = newNode(11);
+//	root->right->right->right = newNode(12);
 	
-	cout<<isBSTAVL(root);
+	if(!isBSTAVL(root))
+		cout<<"BST is not an AVL tree"<<endl;
+	
+	else
+		cout<<"BST is an AVL tree"<<endl;
 }
