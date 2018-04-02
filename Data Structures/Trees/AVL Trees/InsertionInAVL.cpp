@@ -2,8 +2,16 @@
 
 
 
-//program to do insertion in an AVL tree. Similar to BST insertion with onlu caution that we check after every insertion
-// for the appropiate rotation to be applied for balancing the tree.
+/*program to do insertion in an AVL tree. Similar to BST insertion with onlu caution that we check after every insertion
+ for the appropiate rotation to be applied for balancing the tree.
+ 
+ a)Recursive insertions
+ Now the worst case time complexity will be O(logn) because, we keep the tree balanced via ROTATIONS.
+ and space complexity becomes O(logn) as space consumed is proportional to the height of recursion tree which is logn for balanced binary search trees. 
+ 
+ b) Iterative insertion- T(n) = O(logn), but space complexity is O(1) as no recursion is done
+ 
+ */
 
 using namespace std;
 
@@ -174,7 +182,7 @@ AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
 	//returning root of the updated tree
 	return root;
 }
-
+//TIME COMPLEXITY = O(logn), Space complexity = proportional to height of tree which is equal to logn , so O(logn)
 
 
 
