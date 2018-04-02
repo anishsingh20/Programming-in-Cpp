@@ -20,6 +20,7 @@ struct BSTnode{
 //1)Recursive method-
 void RangePrint(BSTnode *root,int low,int high)
 {
+	static int count = 0 ;
 	if(!root) return;
 	
 	if(root->data >= low )
@@ -29,6 +30,7 @@ void RangePrint(BSTnode *root,int low,int high)
 	if(root->data <= high && root->data >= low)
 	{
 		cout<<root->data<<" ";
+		count++;
 	}
 	
 	if(root->data <= high)
@@ -36,6 +38,28 @@ void RangePrint(BSTnode *root,int low,int high)
 	
 }//T(n) = O(n), S(n) = O(n) for recursion call stack space
 
+int RangeCount(BSTnode *root,int low,int high)
+{
+	static int count = 0 ;
+	if(!root) return -1;
+	
+	if(root->data >= low )
+		RangeCount(root->left,low,high);
+	
+	//if between the range , then simply print
+	if(root->data <= high && root->data >= low)
+	{
+
+		count++;
+	}
+	
+	if(root->data <= high)
+		RangeCount(root->right,low,high);
+		
+		
+	return count;
+	
+}//T(n) = O(n), S(n) = O(n) for recursion call stack space
 
 
 //Method-2:Using Level order traversal.
@@ -200,6 +224,8 @@ int main()
 	cout<<endl;
 	
 	RangePrintLevelOrder(root,10,22);
+	cout<<endl;
+	cout<<RangeCount(root,10,22);
 
 	
 	

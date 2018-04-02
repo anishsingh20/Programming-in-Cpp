@@ -57,7 +57,7 @@ void Inorder(Node *root)
 int main()
 {
 	
-	struct Node *root = FullBalancedBST(2);
+	struct Node *root = FullBalancedBST(3);
 	
 	Inorder(root);
 	
