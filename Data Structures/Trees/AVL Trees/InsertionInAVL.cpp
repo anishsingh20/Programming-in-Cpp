@@ -185,6 +185,12 @@ AVLnode *insert(AVLnode *root,AVLnode *parent,int value)
 //TIME COMPLEXITY = O(logn), Space complexity = proportional to height of tree which is equal to logn , so O(logn)
 
 
+//Iterative insertion-
+
+AVLnode *InsertIterative(AVLnode *root,int key)
+{
+	
+}
 
 
 int main()
