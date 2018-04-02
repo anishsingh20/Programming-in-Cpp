@@ -30,7 +30,7 @@ Node *FullBalancedBST(int h)
 	
 	temp->data = count++;
 	
-	temp->right = FullBalancedBST(h-1);
+	temp->right = FullBalancedBST(h-1); //redundant calculations
 	
 	return temp;
 	
