@@ -158,6 +158,8 @@ BSTnode* ClosestNodeInorderMorris(BSTnode *root,int key)
 	return closest;
 	
 }
+//TIME COMPLEXITY = O(n) for worst case 
+//SPACE COMPLEXITY = O(1)- as no recursion ot stack/queue is used.
 
 
 
