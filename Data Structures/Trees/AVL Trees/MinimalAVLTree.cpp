@@ -17,10 +17,12 @@ struct AVLnode {
 
 
 
+int count = 1;
+
 //given height of AVL tree- generate minimal AVL tree i.e AVL tree with minimum number of nodes
 AVLnode* GenerateMinimalAVL(int h)
 {
-	static int count = 1;
+	
 	AVLnode *temp = new AVLnode();
 	
 	if( h == 0 ) return NULL;
@@ -53,9 +55,9 @@ void Inorder(AVLnode *root)
 
 int main()
 {
-	struct AVLnode *root = GenerateMinimalAVL(3);
+	struct AVLnode *root = GenerateMinimalAVL(2);
 	
-//	Inorder(root);
+	Inorder(root);
 	
 	
 	
