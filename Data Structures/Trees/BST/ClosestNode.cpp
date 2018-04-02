@@ -98,7 +98,45 @@ BSTnode *ClosestNodeLevelOrder(BSTnode *root,int key)
 //Method-2 Using Morris Inorder traversal
 BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
 {
+	int diff = INT_MAX;
+	BSTnode *curr = root;
+	BSTnode *closest;
 	
+	while(curr)
+	{
+		if(curr->left==NULL)
+		{
+			if(diff > abs(curr->data-key))
+			{
+				diff = abs(curr->data-key);
+				closest = curr;
+				
+			}
+				
+			curr = curr->right;
+		}
+		
+		//finding the inorder predecessor
+		else{
+			BSTnode *pre = curr->left;
+			
+			while(pre->right && pre->right!=NULL)
+				pre = pre->right;
+				
+			if(pre->right==NULL)
+			{
+				pre->right =curr;
+				
+				curr = curr->left;
+			}
+			
+			//threaded link between curr and its predecessor already exists
+			else
+			{
+				
+			}
+		}
+	}
 }
 
 
