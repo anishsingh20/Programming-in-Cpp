@@ -2,6 +2,8 @@
 
 using namespace std;
 
+#define n 100 
+
 //Program to generate a full height balanced binary tree where balance factor is atmost 0 for all nodes.
 //balance factor(k) = height(left subtree)  - height(right subtree)
 
@@ -20,17 +22,20 @@ struct Node {
 //the function takes parameter as height of tree
 Node *FullBalancedBST(int h)
 {
+	
 	static int count=1;
 	Node *temp = new Node();
 	
 	if(h==-1)
 		return NULL;
 	
+	//recursively fill the left subtree first
 	temp->left = FullBalancedBST(h-1);
 	
 	temp->data = count++;
 	
-	temp->right = FullBalancedBST(h-1); //redundant calculations
+	//then go to the right subtree
+	temp->right = FullBalancedBST(h-1);
 	
 	return temp;
 	
@@ -52,7 +57,7 @@ void Inorder(Node *root)
 int main()
 {
 	
-	struct Node *root = FullBalancedBST(4);
+	struct Node *root = FullBalancedBST(20);
 	
 	Inorder(root);
 	
