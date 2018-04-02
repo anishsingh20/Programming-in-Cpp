@@ -19,7 +19,7 @@ struct Node {
 //nodes will be from 1 to 2^(h+1) - 1. As in a full binary tree max number of nodes can be 2^(h+1) - 1, if we assume height of a tree with
 //single node = 0  
 
-//the function takes parameter as height of tree
+//the function takes parameter as height of tree- we will traverse in inorder so as to satisfy the BST property
 Node *FullBalancedBST(int h)
 {
 	
@@ -57,7 +57,7 @@ void Inorder(Node *root)
 int main()
 {
 	
-	struct Node *root = FullBalancedBST(20);
+	struct Node *root = FullBalancedBST(2);
 	
 	Inorder(root);
 	
