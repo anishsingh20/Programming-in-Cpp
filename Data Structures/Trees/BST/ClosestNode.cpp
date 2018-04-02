@@ -8,6 +8,8 @@ using namespace std;
 
 1)Using Level order traversal
 2) Using Recursion
+3)Efficient-Using Morris Inorder traversal- as we know inorder traversal of a BST produces an sorted list, so we can iteratively search for the closest
+node starting from root to its left subtree and then rigt subtree i.e inorder traversal. 
 
 */
 
