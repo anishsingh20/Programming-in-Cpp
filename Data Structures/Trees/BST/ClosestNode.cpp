@@ -95,6 +95,13 @@ BSTnode *ClosestNodeLevelOrder(BSTnode *root,int key)
 
 
 
+//Method-2 Using Morris Inorder traversal
+BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
+{
+	
+}
+
+
 
 BSTnode *insert(BSTnode *root,int value)
 {
