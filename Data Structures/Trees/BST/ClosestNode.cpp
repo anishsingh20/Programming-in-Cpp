@@ -96,11 +96,11 @@ BSTnode *ClosestNodeLevelOrder(BSTnode *root,int key)
 
 
 //Method-2 Using Morris Inorder traversal
-BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
+BSTnode* ClosestNodeInorderMorris(BSTnode *root,int key)
 {
 	int diff = INT_MAX;
 	BSTnode *curr = root;
-	BSTnode *closest;
+	BSTnode *closest ;
 	
 	while(curr)
 	{
@@ -111,6 +111,7 @@ BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
 				diff = abs(curr->data-key);
 				closest = curr;
 				
+				
 			}
 				
 			curr = curr->right;
@@ -120,12 +121,12 @@ BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
 		else{
 			BSTnode *pre = curr->left;
 			
-			while(pre->right && pre->right!=NULL)
+			while(pre->right!=NULL && pre->right!=curr)
 				pre = pre->right;
 				
 			if(pre->right==NULL)
 			{
-				pre->right =curr;
+				pre->right = curr;
 				
 				curr = curr->left;
 			}
@@ -133,10 +134,27 @@ BSTnode *ClosestNodeInorderMorris(BSTnode *root,int key)
 			//threaded link between curr and its predecessor already exists
 			else
 			{
+				pre->right = NULL;
+				
+				if(diff > abs(curr->data-key))
+				{
+					diff = abs(curr->data-key);
+					closest = curr;
+					
+				
+				}
+				
+				curr = curr->right;
+				
 				
 			}
 		}
+		
+		
 	}
+	
+	return closest;
+	
 }
 
 
@@ -199,4 +217,6 @@ int main()
 	cout<<ClosestNode(root,15)->data;
 	cout<<endl;
 	cout<<ClosestNodeLevelOrder(root,15)->data;
+	cout<<endl;
+	cout<<ClosestNodeInorderMorris(root,8)->data;
 }
