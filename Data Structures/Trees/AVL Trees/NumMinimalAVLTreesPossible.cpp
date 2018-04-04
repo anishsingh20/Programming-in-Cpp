@@ -12,8 +12,32 @@ NT(h) = 2*NT(h-1)*NT(h-2) , NT(h) are no of Minimal AVL trees possible
 
 */
 
+struct AVLnode{
+	int data;
+	AVLnode *left,*right;
+};
+
+int numMinimalAVLTrees(int h)
+{
+	//base cases - if height = 0 , only one node -root
+	if(h==-1)
+		return 0;
+		
+		
+	if(h==0 || h==1)
+		return h+1;
+	
+	//if height is 1-then 2 diff AVL trees possible	
+	
+		
+	else
+		return 2*numMinimalAVLTrees(h-2)*numMinimalAVLTrees(h-1);
+	
+}//Time complexity = O(2^h)-exponential time algorithm, Space  = O(h)
 
 int main()
 {
+	
+	cout<<numMinimalAVLTrees(10);
 	
 }
