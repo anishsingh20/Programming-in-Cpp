@@ -30,13 +30,15 @@ int isBSTAVL(BSTnode *root)
 	if(!root)
 		return -1;
 	
+	//check a root
 	if(Height(root->right)-Height(root->left)==2 || abs(Height(root->left)-Height(root->right)) > 1 )  
 		return 0;
 	
-		
+	//then recursively check for left subtree for the balanced conidtion	
 	if(root->left)
 		return isBSTAVL(root->left);
 		
+	//then recursively check for right subtree for balanced condition
 	if(root->right)
 		return isBSTAVL(root->right);
 		
