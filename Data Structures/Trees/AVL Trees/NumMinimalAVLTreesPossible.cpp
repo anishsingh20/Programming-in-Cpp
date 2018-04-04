@@ -33,11 +33,38 @@ int numMinimalAVLTrees(int h)
 	else
 		return 2*numMinimalAVLTrees(h-2)*numMinimalAVLTrees(h-1);
 	
-}//Time complexity = O(2^h)-exponential time algorithm, Space  = O(h)
+}//Time complexity = O(2^h)-exponential time algorithm, Space  = O(h) i.e proportional to recursion tree's height
+
+
+
+/*
+Maximal AVL trees possible given height- MAximal AVL trees are nothing but FULL BST i.e a BALANCED BST , where each node has 
+balance factor = 0  i.e equal no of left and equal no of right child or same heights of left and right subtree.
+*/
+int numMaximalAVLTrees(int h)
+{
+	//base cases - if height = 0 , only one node -root
+	if(h==-1)
+		return 0;
+		
+		
+	if(h==0 || h==1)
+		return h+1;
+	
+	//if height is 1-then 2 diff AVL trees possible	
+	
+		
+	else
+		return 2*numMinimalAVLTrees(h-1)*numMinimalAVLTrees(h-1);
+	
+}//Time complexity = O(2^h)-exponential time algorithm, Space  = O(h) i.e proportional to recursion tree's height
+
+
+
 
 int main()
 {
 	
-	cout<<numMinimalAVLTrees(10);
+	cout<<numMinimalAVLTrees(2);
 	
 }
