@@ -52,8 +52,49 @@ int CountRangeMorris(AVLnode *root,int a,int b)
 	
 	while(curr)
 	{
+		if(curr->left==NULL)
+		{
+			//count if current's data lies in range
+			if( a <= curr->data && curr->data <= b)
+				count++;
+				
+			curr = curr->right;
+		}
 		
+		
+		else
+		{
+			//finding inorder predecessor- it is the rightmost in left subtree or left child iteself
+			AVLnode *pre = curr->left;
+			
+			while(pre->right!=NULL && pre->right!=curr)
+				pre = pre->right;
+				
+			if(pre->right==NULL)
+			{
+				pre->right = curr;
+				
+				curr = curr->left;
+				
+			}
+			
+			else
+			{
+				pre->right = NULL;
+				
+				if(a <= curr->data && curr->data <= b)
+					count++;
+					
+					
+				curr = curr->right;
+				
+				
+			}
+		}
 	}
+	
+	
+	return count;
 }
 
 
@@ -75,6 +116,10 @@ int main()
 	Insert(root,9);	
 	
 	cout<<CountRange(root,5,10);
+	
+	cout<<endl;
+	
+	cout<<CountRangeMorris(root,5,10);
 
 }
 
