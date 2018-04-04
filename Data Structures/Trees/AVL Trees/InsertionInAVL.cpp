@@ -270,25 +270,25 @@ AVLnode *Insert(AVLnode *root,int key)
 }//Time complexity = O(logn) as tree is balanced via rotations. Constant Extra space consumed =  O(1)
 
 
-int main()
-{
-	AVLnode *root  = newNode(5);
-	
-	Insert(root,2);
-	Insert(root,3);
-	Insert(root,1);
-	Insert(root,7);
-	Insert(root,6);
-	Insert(root,12);
-	Insert(root,20);
-	Insert(root,10);
-	Insert(root,9);	
-	
-	//constructed the AVL tree
-	
-	InorderTraverse(root); //outputs a sorted list
-	cout<<endl;
-	PreTraverse(root);
-	
-}
+//int main()
+//{
+//	AVLnode *root  = newNode(5);
+//	
+//	Insert(root,2);
+//	Insert(root,3);
+//	Insert(root,1);
+//	Insert(root,7);
+//	Insert(root,6);
+//	Insert(root,12);
+//	Insert(root,20);
+//	Insert(root,10);
+//	Insert(root,9);	
+//	
+//	//constructed the AVL tree
+//	
+//	InorderTraverse(root); //outputs a sorted list
+//	cout<<endl;
+//	PreTraverse(root);
+//	
+//}
 
