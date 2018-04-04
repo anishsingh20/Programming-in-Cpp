@@ -41,6 +41,20 @@ int CountRange(AVLnode *root,int a,int b)
 }
 
 
+//Morris traversal to do Inorder traversal with constant extra memory
+int CountRangeMorris(AVLnode *root,int a,int b)
+{
+	AVLnode *curr = root;
+	if(!root)
+		return -1;
+		
+	int count = 0;
+	
+	while(curr)
+	{
+		
+	}
+}
 
 
 int main()
