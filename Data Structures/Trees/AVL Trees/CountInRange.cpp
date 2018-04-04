@@ -1,5 +1,6 @@
 #include<iostream>
 #include "InsertionInAVL.cpp"
+#include<queue>
 
 using namespace std;
 
@@ -38,7 +39,7 @@ int CountRange(AVLnode *root,int a,int b)
 
 	return count;
 	
-}
+}//Time complexity  = O(logn), Space  = O(logn) stack space consumed, as the tree is balanced
 
 
 //Morris traversal to do Inorder traversal with constant extra memory
@@ -95,7 +96,41 @@ int CountRangeMorris(AVLnode *root,int a,int b)
 	
 	
 	return count;
-}
+}//Time compelxity = O(logn) , Space = O(1) constant memory consumed
+
+
+
+//method-3 )using level order traversal
+
+int CountRangeLevelOrder(AVLnode *root,int a,int b)
+{
+	queue<AVLnode *> q;
+	int count=0;
+	
+	AVLnode *temp;
+	
+	q.push(root);
+	
+	while(!q.empty())
+	{
+		temp = q.front();
+		q.pop();
+		
+		if(temp->data <= b && temp->data >= a)
+		{
+			count++;
+		}
+		
+		if(temp->left)	
+			q.push(temp->left);
+			
+		if(temp->right)
+			q.push(temp->right);
+	}
+	
+	return count;
+	
+}//Time complexity = O(logn) as it is an AVL tree, Space = O(n) for queue
 
 
 int main()
@@ -120,6 +155,10 @@ int main()
 	cout<<endl;
 	
 	cout<<CountRangeMorris(root,5,10);
+	
+	cout<<endl;
+	
+	cout<<CountRangeLevelOrder(root,5,10);
 
 }
 
