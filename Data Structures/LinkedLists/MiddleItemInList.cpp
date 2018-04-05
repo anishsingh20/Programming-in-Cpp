@@ -14,12 +14,14 @@ struct node {
 node *midItem(struct node **head)
 {
 	struct node *temp,*temp1;
+	
 	if(!head)
 		return NULL;
+		
 	temp = *head;
 	temp1 = *head;//pointer which moves 2 steps
 		
-	while(temp!=NULL && temp1->next != NULL)
+	while(temp && temp1)
 	{
 		
 		temp = temp->next;
@@ -94,7 +96,7 @@ int main()
 	head->next->next = newNode(3);
 	head->next->next->next = newNode(4);
 	head->next->next->next->next = newNode(5);
-//	head->next->next->next->next->next = newNode(6);
+	head->next->next->next->next->next = newNode(6);
 	
 	
 	cout<<midItem(&head)->data;

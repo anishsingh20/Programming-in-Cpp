@@ -79,7 +79,7 @@ node *ListToBSTRecur(node **head,int start,int end)
 	//moving the head pointer of list
 	*head = (*head)->next;
 	
-	//no recursively generate right subtree and link it with the root
+	//now recursively generate right subtree and link it with the root
 	
 	root->right = ListToBSTRecur(head,mid+1,end);
 	

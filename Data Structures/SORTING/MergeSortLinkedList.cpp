@@ -69,6 +69,7 @@ Node* SortedMerge(struct Node *headA, struct Node *headB)
 		new_head->next = SortedMerge(headA->next,headB );
 		
 	}
+	
 	else {
 		
 		new_head = headB;
