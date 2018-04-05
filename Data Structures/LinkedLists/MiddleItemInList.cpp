@@ -11,31 +11,25 @@ struct node {
 
 
 
-void midItem(struct node *head)
+node *midItem(struct node *head)
 {
-	struct node *temp=head;
-	struct node *temp1=head;
+	struct node *temp=head;//slow pointer
+	struct node *temp1=head;//fast pointer
 	
 	if(!head)
-		return ;
+		return NULL;
 		
 	
 	//important condition-until fast pointer is not null and fast pointer's next is not null	
 	while(temp1!=NULL && temp1->next!=NULL)
 	{
 			
-			temp = temp->next;
-			temp1 = temp1->next->next;
-	
-			
-	
-		
-			
-		
+			temp1 = temp1->next->next;//move temp1 by 2
+			temp = temp->next; //move temp by 1
 	}
 	
 	
-	cout<<temp->data;		
+	return temp;		
 	
 }
 
@@ -126,7 +120,7 @@ int main()
 	head->next->next->next->next->next->next = newNode(7);
 	
 	
-	midItem(head);
+	cout<<midItem(head)->data;
 	
 	
 	cout<<endl;
