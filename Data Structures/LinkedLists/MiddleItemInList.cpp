@@ -21,7 +21,7 @@ node *midItem(struct node *head)
 		
 	
 	//important condition-until fast pointer is not null and fast pointer's next is not null	
-	while(temp1!=NULL && temp1->next!=NULL)
+	while(temp1 && temp1->next)
 	{
 			
 			temp1 = temp1->next->next;//move temp1 by 2
