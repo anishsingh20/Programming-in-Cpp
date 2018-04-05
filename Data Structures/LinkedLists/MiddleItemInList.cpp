@@ -20,7 +20,7 @@ void midItem(struct node *head)
 		return ;
 		
 	
-		
+	//important condition-until fast pointer is not null and fast pointer's next is not null	
 	while(temp1!=NULL && temp1->next!=NULL)
 	{
 			
@@ -105,6 +105,8 @@ int printfromTail(node *head,int postail) {
 			
 		}
 		
+	
+		
 		temp=temp->next;
 	}
 	
@@ -129,7 +131,7 @@ int main()
 	
 	cout<<endl;
 	
-	cout<<printfromTail(head,1);
+	cout<<printfromTail(head,2);
 	cout<<endl;
 	cout<<MiddleNode(&head);
 	
