@@ -11,32 +11,31 @@ struct node {
 
 
 
-node *midItem(struct node **head)
+void midItem(struct node *head)
 {
-	struct node *temp,*temp1;
+	struct node *temp=head;
+	struct node *temp1=head;
 	
 	if(!head)
-		return NULL;
+		return ;
 		
-	temp = *head;
-	temp1 = *head;//pointer which moves 2 steps
+	
 		
-	while(temp && temp1)
+	while(temp!=NULL && temp1->next!=NULL)
 	{
+			
+			temp = temp->next;
+			temp1 = temp1->next->next;
+	
+			
+	
 		
-		temp = temp->next;
-		temp1 = temp1->next->next;
-		
+			
 		
 	}
 	
-	if(temp)
-		return temp;
-			
-			
 	
-		
-		
+	cout<<temp->data;		
 	
 }
 
@@ -96,10 +95,12 @@ int main()
 	head->next->next = newNode(3);
 	head->next->next->next = newNode(4);
 	head->next->next->next->next = newNode(5);
-	head->next->next->next->next->next = newNode(6);
+//
+//	head->next->next->next->next->next = newNode(6);
+//	head->next->next->next->next->next->next = newNode(7);
 	
 	
-	cout<<midItem(&head)->data;
+	midItem(head);
 	
 	
 	cout<<endl;
