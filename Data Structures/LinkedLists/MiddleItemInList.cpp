@@ -21,7 +21,7 @@ void midItem(struct node *head)
 		
 	
 		
-	while(temp!=NULL && temp1->next!=NULL)
+	while(temp1!=NULL && temp1->next!=NULL)
 	{
 			
 			temp = temp->next;
@@ -87,6 +87,30 @@ struct node *newNode(int data)
 	return temp;
 }
 
+
+//program to find nth node from end in a linked list
+int printfromTail(node *head,int postail) {
+	node *temp=head;
+	node *result=head; //a pointer to store the address of kth element from tail
+	
+	int k=0;
+	
+	//traversing the list
+	while(temp!=NULL) {
+		
+		
+		if(k++ > postail) {
+			
+			result=result->next;
+			
+		}
+		
+		temp=temp->next;
+	}
+	
+	return result->data;
+}
+
 int main()
 {
 	node *head = newNode(1);
@@ -95,9 +119,9 @@ int main()
 	head->next->next = newNode(3);
 	head->next->next->next = newNode(4);
 	head->next->next->next->next = newNode(5);
-//
-//	head->next->next->next->next->next = newNode(6);
-//	head->next->next->next->next->next->next = newNode(7);
+
+	head->next->next->next->next->next = newNode(6);
+	head->next->next->next->next->next->next = newNode(7);
 	
 	
 	midItem(head);
@@ -105,6 +129,8 @@ int main()
 	
 	cout<<endl;
 	
+	cout<<printfromTail(head,1);
+	cout<<endl;
 	cout<<MiddleNode(&head);
 	
 	
