@@ -19,7 +19,7 @@ struct node* midItem(struct node* head)
 	temp = head;
 	temp1= head;//pointer which moves 2 steps
 		
-	if(temp)
+	if(temp && temp1)
 	{
 		midItem(temp->next);
 		if(temp1->next!=NULL)
@@ -30,4 +30,20 @@ struct node* midItem(struct node* head)
 		
 		
 	}
+}
+
+
+struct node *newNode(int data)
+{
+	node *temp = new node();
+	temp->next=NULL;
+	
+	temp->data = data;
+	
+	return temp;
+}
+
+int main()
+{
+	node *head = newNode(1);
 }
