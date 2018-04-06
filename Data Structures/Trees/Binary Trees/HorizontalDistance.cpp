@@ -107,7 +107,7 @@ int main()
 	Insert(&root1,8);
 	Insert(&root1,9);
 	
-	HD(root1,8);
+	HD(root1,6);
 	return 0;
 	
 }

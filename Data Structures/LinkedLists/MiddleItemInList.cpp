@@ -11,7 +11,7 @@ struct node {
 
 
 
-node *midItem(struct node *head)
+struct node *midItem(struct node *head)
 {
 	struct node *temp=head;//slow pointer
 	struct node *temp1=head;//fast pointer
@@ -20,7 +20,8 @@ node *midItem(struct node *head)
 		return NULL;
 		
 	
-	//important condition-until fast pointer is not null and fast pointer's next is not null	
+	//important condition-until fast pointer is not null and fast pointer's next is not null
+	//it is because both are required in case of odd and even elements in list	
 	while(temp1 && temp1->next)
 	{
 			
