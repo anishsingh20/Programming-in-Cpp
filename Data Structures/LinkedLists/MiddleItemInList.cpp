@@ -10,7 +10,7 @@ struct node {
 
 
 
-
+//Approach-1 : Using fast and slow pointers
 struct node *midItem(struct node *head)
 {
 	struct node *temp=head;//slow pointer
@@ -49,6 +49,8 @@ int length(struct node *head) {
 	
 }
 
+
+//Approach 2 Using length of list and simply finding middle element
 //function to get the Middle of a list
 int MiddleNode(struct node **head,int start=0) 
 {
