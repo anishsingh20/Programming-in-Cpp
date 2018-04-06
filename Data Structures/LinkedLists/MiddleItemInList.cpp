@@ -1,6 +1,6 @@
 #include<iostream>
 
-//SINGLY LINKED LIST
+//SINGLY LINKED LIST-Program to find Middle element in a linked list
 using namespace std;
 
 struct node {
