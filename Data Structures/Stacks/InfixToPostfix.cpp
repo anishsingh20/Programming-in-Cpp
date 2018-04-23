@@ -31,12 +31,12 @@ string InfixToPostfix(string exp)
 	//if delimitter continue
 		if(exp[i]==' ' || exp[i]==',') continue;
 		
-		//if operator neing scanned has lower or equal precedence than alraedy in stack , 
+		//if operator being scanned has lower or equal precedence than alraedy in stack , 
 		//pop all with higher precedence
 		// push low precedence into stack
 		else if(isOperator(exp[i])) {
 			while(!S.empty() && S.top()!='(' && checkHighPrecedence(S.top(),exp[i])) {
-				postfix += S.top(); //add higher precedence opt to stack
+				postfix += S.top(); //add higher precedence opt to postfix expression
 				S.pop(); //pop higher precedence opt from stack	
 			}
 			//push lower precedence scanned opt to stack
