@@ -75,7 +75,22 @@ long long int EuclidGCD(long long int m,long long int n)
 //recursive approach to find GCD using Euclidean algorithm
 long long int EuclidGCDRecursive(long long int a,long long int b)
 {
-	
+
+	if(a==b)
+		return a;
+
+
+	if(a!=b)
+	{
+		
+		
+		if(a > b)
+			return EuclidGCDRecursive(a-b,b);
+			
+		else
+			return EuclidGCDRecursive(a,b-a);
+	}
+				
 	
 }
 
@@ -106,9 +121,12 @@ int main() {
 //	
 //	cout<<endl;
 //	
-	cout<<GCDRecur(120,72);
+	cout<<GCDRecur(55,100);
 	cout<<endl;
-	cout<<EuclidGCD(120,72);
+	cout<<EuclidGCD(100,55);
+	cout<<endl;
+	
+	cout<<EuclidGCDRecursive(120,72);
 	
 	return 0;
 }
