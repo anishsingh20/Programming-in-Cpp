@@ -8,7 +8,17 @@ using namespace std;
 
 bool leapOrNot(long int year)
 {
+	if(year % 4==0)
+		return 1;
+		
+	//if it is divisible by 100, and not divisible by 400, then not a leap year
+	if(year%100==0)
+	{
+		if(year%400==0)
+			return 1;
+	}
 	
+	return 0;
 }
 
 
@@ -16,6 +26,7 @@ bool leapOrNot(long int year)
 
 int main()
 {
+	cout<<leapOrNot(800);
 	
 }
 
