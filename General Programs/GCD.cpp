@@ -72,6 +72,13 @@ long long int EuclidGCD(long long int m,long long int n)
 	return n;
 }
 
+//recursive approach to find GCD using Euclidean algorithm
+long long int EuclidGCDRecursive(long long int a,long long int b)
+{
+	
+	
+}
+
 
 int GCD(int a, int b) {
 	

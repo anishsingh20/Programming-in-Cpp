@@ -36,7 +36,7 @@ void CountSort(char *arr)
 	{
 		++count[arr[i]];
 	}
-	
+	                               
 	//updating count with the sum of previous counts of elements
 	for(i = 1; i<=RANGE;i++)
 	{
