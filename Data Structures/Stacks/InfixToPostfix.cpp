@@ -35,7 +35,7 @@ string InfixToPostfix(string exp)
 		//pop all with higher precedence
 		// push low precedence into stack
 		else if(isOperator(exp[i])) {
-			while(!S.empty() && S.top()!='(' && checkHighPrecedence(S.top(),exp[i])) {
+			while(!S.empty() && S.top()!='(' && checkHighPrecedence(S.top(),exp[i]) ) {
 				postfix += S.top(); //add higher precedence opt to postfix expression
 				S.pop(); //pop higher precedence opt from stack	
 			}

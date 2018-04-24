@@ -43,7 +43,7 @@ long int GCDRecur(long long int a ,long long int b)
 		
 	 } 
 	 
-	 cout<<"NUmber of operations to find GCD are "<< count<<endl;
+	cout<<"NUmber of operations to find GCD are "<< count<<endl;
 	
 	return a;
 	
@@ -83,7 +83,7 @@ long long int EuclidGCDRecursive(long long int a,long long int b)
 	if(a!=b)
 	{
 		
-		
+		//replace the larger of 2 no(s) by the dfference between it and the smaller number
 		if(a > b)
 			return EuclidGCDRecursive(a-b,b);
 			
