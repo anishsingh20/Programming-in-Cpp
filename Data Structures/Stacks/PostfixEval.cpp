@@ -69,6 +69,7 @@ int getResult(string postfix)
 		}
 	}
 	
+	//top of stack contains the result so we return it.
 	return S.top(); //result stored at top of stack
 }
 
