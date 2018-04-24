@@ -24,7 +24,7 @@ bool isOperand(char opd);
 bool isOperator(char c);
 
 
-//for postfix expression evaluation
+//for postfix expression evaluation, we scan form left to right
 double getResult(string postfix) 
 {
 	//defining a stack from STL
