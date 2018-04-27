@@ -5,7 +5,7 @@ using namespace std;
 
 //Program to find NEON NUMBER- A neon number is a nunber if the sum of digits of the square of the number n equals itself.
 
-//eg-9 , sq(9) = 81, 8+1 = 9
+//example-9 , sq(9) = 81, 8+1 = 9
 
 bool NeonNumber(int n)
 {
