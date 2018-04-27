@@ -6,13 +6,13 @@ using namespace std;
 
 //Program to find PERFECT NUMBER- a perfect number is a number whose factors leaving itself when added equals to the number itself.
 
-//eg-6, its factors= 1,2,3 = 3+2+1=6
+//eg-6, its factors= 1,2,3 = 3+2+1=6 , 28 , factors(28) = 1,2,4,7,14 = 28
 
 //to check if a number is a perfect number or not
-bool PerfectNumber(int n)
+bool PerfectNumber( long int n)
 {
-	int factors=1;
-	int sum = 0;
+	long int factors=1;
+	long int sum = 0;
 	
 	while(n > factors)
 	{
@@ -59,7 +59,7 @@ void PerfectNumbersInRange(int range)
 int main()
 {
 	
-	PerfectNumbersInRange(100);
+	PerfectNumbersInRange(10000);
 	
 }
 
