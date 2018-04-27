@@ -36,15 +36,30 @@ bool PerfectNumber(int n)
 	
 }
 
+
+//function to find all the Perfect numbers till a range
 void PerfectNumbersInRange(int range)
 {
+	int i=1;
+	while(i<=range)
+	{
+		if(PerfectNumber(i))
+		{
+			cout<<i<<endl;
+		}
+		
+		i++;
+	
+	}
+		
 	
 }
 
 
 int main()
 {
-	cout<<PerfectNumber(6);
+	
+	PerfectNumbersInRange(100);
 	
 }
 
