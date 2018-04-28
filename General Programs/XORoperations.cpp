@@ -5,7 +5,7 @@ using namespace std;
 
 
 //Program demonstarting the XOR relation a XOR b = c, then to find sq(a) XOR sq(b) = c, then we can find b = sqrt( sq(a) XOR b )
-//eg-
+//eg- 11*11 XOR 12*12 = 233, then sqrt(11*11  XOR 233) = 12
 
 int XORops(int a,int c)
 {
