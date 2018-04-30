@@ -13,8 +13,8 @@ bool NeonNumber(int n)
 	int sum=0;
 	int sq = (n*n); //square of number
 	int digit;
-	//finding digits of number
-	
+
+	//finding digits from the square and adding them up
 	while(sq != 0)
 	{
 	 	int digit = sq%10;
