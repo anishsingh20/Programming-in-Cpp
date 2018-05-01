@@ -42,6 +42,11 @@ int getResultPre(string exp)
 			
 		}
 		
+		else if(isOperand(exp[i])) 
+		{
+			
+		}
+		
 	}
 }
 
