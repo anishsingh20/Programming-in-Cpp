@@ -8,3 +8,14 @@ It is similar to the Postfix evaluation using stack, in this case we just have t
 */
 
 using namespace std;
+
+//function protorypes-
+
+int getResultPre(string exp);
+
+bool isOperand(char c);
+
+bool isOperator(char c);
+
+
+
