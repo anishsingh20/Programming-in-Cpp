@@ -47,6 +47,7 @@ int getResultPre(string exp)
 		else if(isOperand(exp[i]) && !S.empty()) 
 		{
 			int op = 0;
+			
 			if(isdigit(exp[i]))
 			{
 				//converting the string to integer
