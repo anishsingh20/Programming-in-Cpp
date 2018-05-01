@@ -17,7 +17,7 @@ bool isOperand(char c);
 
 bool isOperator(char c);
 
-int PerfromOps(int a,int b ,char c);
+int PerformOps(int a,int b ,char c);
 
 int getResultPre(string exp)
 {
@@ -47,12 +47,15 @@ int getResultPre(string exp)
 		else if(isOperand(exp[i]) && !S.empty()) 
 		{
 			int op = 0;
-			
-			//converting the string to integer
-			op = (exp[i]-'0');
+			if(isdigit(exp[i]))
+			{
+				//converting the string to integer
+				op = (exp[i]-'0');
 			
 		
-			S.push(op);
+				S.push(op);	
+			}
+			
 		}
 		
 	}
@@ -85,6 +88,28 @@ bool isOperator(char c)
 	return false;
 }
 
+
+int PerformOps(int a , int b, char opt)
+{
+	switch(opt)
+	{
+		case '+':
+			return a+b;
+			break;
+		case '-':
+			return a-b;
+			break;
+		case '*'
+			return a*b;
+			break;
+		case '/'
+			return a/b;
+			break;
+		default:
+			cout<<"Incorrect operand";
+			break;
+	}
+}
 
 int main()
 {
