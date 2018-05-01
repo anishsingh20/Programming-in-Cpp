@@ -42,9 +42,17 @@ int getResultPre(string exp)
 			
 		}
 		
+		
+		//push it to the stack
 		else if(isOperand(exp[i])) 
 		{
+			int op = 0;
 			
+			//converting the string to integer
+			op = (exp[i]-'0');
+			
+		
+			S.push(op);
 		}
 		
 	}
