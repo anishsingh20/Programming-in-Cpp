@@ -23,12 +23,12 @@ int getResultPre(string exp)
 {
 	stack<int>S;
 	//scanning the expression from right to left
-	for(int i=exp.length();i > 0 ;i--)
+	for(int i = exp.length() ; i > 0 ; i--)
 	{
 		if(exp[i]=="," || exp[i]==" ") continue;
 		
 		//if the scanned input is an operator, then pop 2 operands from stack and operate them
-		else if(isOperator(exp[i]) && !s.empty())
+		else if(isOperator(exp[i]) && !S.empty())
 		{
 			int a = S.top(); S.pop();
 			
@@ -44,7 +44,7 @@ int getResultPre(string exp)
 		
 		
 		//push it to the stack
-		else if(isOperand(exp[i])) 
+		else if(isOperand(exp[i]) && !S.empty()) 
 		{
 			int op = 0;
 			
@@ -56,6 +56,33 @@ int getResultPre(string exp)
 		}
 		
 	}
+	
+	if(S.empty())
+	{
+		return 0;
+	}
+	
+	return S.top(); //result is stored at top;
+}
+
+
+bool isOperand(char c)
+{
+	if(c >= 'a' && c <= 'z' ) return true;
+	if(c >='A' && c<= 'Z') return true;
+	
+	if(c>='0' && c<='9') return true;
+	
+	
+	return false;
+}
+
+
+bool isOperator(char c)
+{
+	if(c=='+' || c=='-' || c=='*' || c=='/') return true;
+	
+	return false;
 }
 
 
