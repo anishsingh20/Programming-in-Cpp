@@ -1,5 +1,6 @@
 #include<iostream>
 #include<stack>
+#include<math.h>
 
 
 /*Program to do Prefix expression evaluation using stack
@@ -24,7 +25,7 @@ int getResultPre(string exp)
 {
 	stack<double>S;
 	//scanning the expression from right to left
-	for(int i = exp.length() ; i > 0 ; i--)
+	for(int i = exp.length() ; i >= 0 ; i--)
 	{
 		if(exp[i] == ',' || exp[i] == ' ') continue;
 		
@@ -45,7 +46,7 @@ int getResultPre(string exp)
 		
 		
 		//push it to the stack
-		else if(isOperand(exp[i]) && !S.empty()) 
+		else if(isOperand(exp[i])) 
 		{
 			int op = 0;
 			
@@ -62,18 +63,17 @@ int getResultPre(string exp)
 		
 	}
 	
-	if(S.empty())
-	{
-		return 0;
-	}
+
+	return abs(S.top()); //result is stored at top;
 	
-	return S.top(); //result is stored at top;
+		
 }
 
 
 bool isOperand(char c)
 {
 	if(c >= 'a' && c <= 'z' ) return true;
+	
 	if(c >='A' && c<= 'Z') return true;
 	
 	if(c>='0' && c<='9') return true;
@@ -91,7 +91,7 @@ bool isOperator(char c)
 }
 
 
-int PerformOps(int a , int b, char opt)
+int PerformOps(double a , double b, char opt)
 {
 	switch(opt)
 	{
@@ -101,10 +101,10 @@ int PerformOps(int a , int b, char opt)
 		case '-':
 			return a-b;
 			break;
-		case '*'
+		case '*' :
 			return a*b;
 			break;
-		case '/'
+		case '/' :
 			return a/b;
 			break;
 		default:
@@ -115,7 +115,7 @@ int PerformOps(int a , int b, char opt)
 
 int main()
 {
-	cout<<getResultPre("-+234");
+	cout<<getResultPre("/*+9233");
 	return 0;
 }
 
