@@ -17,24 +17,25 @@ bool isOperand(char c);
 
 bool isOperator(char c);
 
-int PerformOps(int a,int b ,char c);
+int PerformOps(double a,double b ,char c);
+
 
 int getResultPre(string exp)
 {
-	stack<int>S;
+	stack<double>S;
 	//scanning the expression from right to left
 	for(int i = exp.length() ; i > 0 ; i--)
 	{
-		if(exp[i]=="," || exp[i]==" ") continue;
+		if(exp[i] == ',' || exp[i] == ' ') continue;
 		
 		//if the scanned input is an operator, then pop 2 operands from stack and operate them
 		else if(isOperator(exp[i]) && !S.empty())
 		{
-			int a = S.top(); S.pop();
+			double a = S.top(); S.pop();
 			
-			int b = S.top() ; S.pop();
+			double b = S.top() ; S.pop();
 			
-			int result  = PerformOps(a,b,exp[i]);
+			double result  = PerformOps(a,b,exp[i]);
 			
 			//pusing the result in stack
 			S.push(result);
@@ -114,6 +115,7 @@ int PerformOps(int a , int b, char opt)
 
 int main()
 {
+	cout<<getResultPre("-+234");
 	return 0;
 }
 
