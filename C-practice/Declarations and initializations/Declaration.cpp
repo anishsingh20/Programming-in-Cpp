@@ -2,12 +2,14 @@
 #include<conio.h>
 
 
-
+int a  = 20; //a defined before the main function and its usage in main(), not need to declare it
 int main()
 {
-	extern int a;//declaration for a 
+
 	printf("%d",a); //prints 20
+	printf("%d",b); //error - b not declared, need to use extern b and declare b;
 	return 0;
 }
 
-int a  = 20;//definition of a, mamory and value initialized and allocated
+int b =10;//b is used frirst in the main function and then it is defiend afterwards, error 
+
