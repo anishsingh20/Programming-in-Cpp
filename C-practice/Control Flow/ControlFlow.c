@@ -23,16 +23,26 @@ int main()
 //			printf("This is case 2");
 //			break;
 //	}
-	int i=1;
-	for(;;)
- 	{
- 		printf("%d\n",i);
- 		i++;
- 		if(i > 10)	
- 			break;
-	 
-	 	
-	 }
+//	int i=1;
+//	for(;;)
+// 	{
+// 		printf("%d\n",i);
+// 		i++;
+// 		if(i > 10)	
+// 			break;
+//	 
+//	 	
+//	 }
+
+
+	float  a = 0.7; //prints Yes, as 0.7 is double and 0.7 is float
+	
+	if(0.7 > a)
+		printf("Yes");
+	else
+		printf("No");
+		
+		
  }
 
 
