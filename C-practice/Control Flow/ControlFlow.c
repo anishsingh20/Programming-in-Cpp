@@ -66,15 +66,27 @@ int main()
 //	
 //	return 0;
 
-	int i = 1 ;
-	while(i++!=0)
-		printf("%d",--i);
+//	int i = 1 ;
+//	while(i++!=0)
+//		printf("%d",--i);
+//	
+//	return 0; loops infinite times
+		
+		
+	//switch case-cannot work with flaot numbers
 	
-	return 0;
-		
-		
-		
-		
+//	float  i = 10.11;
+//	
+//	switch(i)
+//	{
+//		case 1.01 :
+//			printf("Hello");
+//			break;
+//		case 11.11:
+//			printf("Bye");
+//			break;
+//	}	
+//		
  }
 
 
