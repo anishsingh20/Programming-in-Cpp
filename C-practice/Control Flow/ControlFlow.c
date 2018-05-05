@@ -87,6 +87,20 @@ int main()
 //			break;
 //	}	
 //		
+
+	int x  = 3;
+	float y = 3.000;
+	
+	if(x==y)
+		printf("Yes");
+	else
+		printf("No");
+		
+		//outputs yes, as int is promoted to float during comparison
+	return 0;
+	
+	
+	
  }
 
 
