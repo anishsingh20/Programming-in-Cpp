@@ -50,11 +50,25 @@ int main()
 //		printf("No");
 		
 		
-	int i=0;
-	for( ; i < 500 ;i++);
-	
-	printf("%d",i);
-	
+//	int i=0;
+//	for( ; i < 500 ;i++);
+//	
+//	printf("%d",i);
+//	
+//	
+//	return 0;
+//		
+
+
+//	int x = 1, y =1;
+//	for( ;  y ; printf("%d %d\n",x,y) )
+//		 y = x++ <= 5;
+//	
+//	return 0;
+
+	int i = 1 ;
+	while(i++!=0)
+		printf("%d",--i);
 	
 	return 0;
 		
