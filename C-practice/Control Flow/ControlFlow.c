@@ -35,12 +35,22 @@ int main()
 //	 }
 
 
-	float  a = 0.7; //prints Yes, as 0.7 is double and 0.7 is float
-	
-	if(0.7 > a)
+//	float  a = 0.7; //prints Yes, as 0.7 is double and 0.7 is float
+//	
+//	if(0.7 > a)
+//		printf("Yes");
+//	else
+//		printf("No");
+
+	int i = 2, j=3;
+	if(10 % i = 15% 3) //lvalue required , need to put ==
 		printf("Yes");
+	
 	else
 		printf("No");
+		
+		
+		
 		
 		
  }
