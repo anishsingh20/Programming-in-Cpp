@@ -42,13 +42,21 @@ int main()
 //	else
 //		printf("No");
 
-	int i = 2, j=3;
-	if(10 % i = 15% 3) //lvalue required , need to put ==
-		printf("Yes");
-	
-	else
-		printf("No");
+//	int i = 2, j=3;
+//	if(10 % i = 15% 3) //lvalue required , need to put ==
+//		printf("Yes");
+//	
+//	else
+//		printf("No");
 		
+		
+	int i=0;
+	for( ; i < 500 ;i++);
+	
+	printf("%d",i);
+	
+	
+	return 0;
 		
 		
 		
