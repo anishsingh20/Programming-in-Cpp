@@ -99,8 +99,6 @@ int main()
 		//outputs yes, as int is promoted to float during comparison
 	return 0;
 	
-	
-	
  }
 
 
