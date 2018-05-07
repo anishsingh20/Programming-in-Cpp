@@ -125,6 +125,9 @@ void RangePrintMorrisTraversal(BSTnode *root,int low,int high)
 		else
 		{
 			BSTnode *pre = curr->left;
+			//finding the inorder predecessor-
+			//inorder predecessor is the right most in left subtree or the left child, i.e in BST
+			//it is the maximum(right most) in left subtree. 
 			while(pre->right!=NULL && pre->right!=curr)
 				pre = pre->right;
 				

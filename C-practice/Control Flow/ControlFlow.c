@@ -88,16 +88,21 @@ int main()
 //	}	
 //		
 
-	int x  = 3;
-	float y = 3.000;
+//	int x  = 3;
+//	float y = 3.000;
+//	
+//	if(x==y)
+//		printf("Yes");
+//	else
+//		printf("No");
+//		
+//		//outputs yes, as int is promoted to float during comparison
+//	return 0;
 	
-	if(x==y)
-		printf("Yes");
-	else
-		printf("No");
+	int x,y,z;
+	x=y=z=1;
 		
-		//outputs yes, as int is promoted to float during comparison
-	return 0;
+	printf("%d %d %d",++x,y++,++z);
 	
  }
 
