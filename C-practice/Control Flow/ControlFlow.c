@@ -99,10 +99,10 @@ int main()
 //		//outputs yes, as int is promoted to float during comparison
 //	return 0;
 	
-	int x,y,z;
-	x=y=z=1;
-		
-	printf("%d %d %d",++x,y++,++z);
+//	int x,y,z;
+//	x=y=z=1;
+//		
+//	printf("%d %d %d",++x,y++,++z);
 	
  }
 
