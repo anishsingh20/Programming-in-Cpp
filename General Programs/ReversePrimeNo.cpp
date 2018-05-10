@@ -5,10 +5,62 @@
 using namespace std;
 
 
-bool ReversePrime(int n)
+
+//function to check if a number n is prime or not-
+bool isPrime(long n,int i=2)
 {
-	vector<int>v; //vector to store the prime numbers
-	int i=2;
+	if(n==1)
+		return false;
+
+	if(n > i)
+	{
+		if(n%i==0)
+			return false;
+			
+		if(n%i!=0)
+		{
+			return isPrime(n,++i);
+		}
+	}
+	
+	return true;
+}
+
+
+void ReversePrime(long n)
+{
+	vector<int>v; 
+	//vector to store the prime numbers
+	int count = 0;
+	if(!isPrime(n))
+	{
+		cout<<"Not a prime number"<<endl;
+		return;
+	}
+	
+	for(int i=2;i<n;i++)
+	{
+		v.push_back(i);
+	}
+	
+	vector<int>::reverse_iterator it;
+	
+	for(it = v.rbegin();it!=v.rend();++it)
+	{
+		//if numbers in vector are prime, then print them
+		
+		if(isPrime(*it))
+		{
+			cout<<*it<<" ";
+			count++;
+			
+		}
+
+		
+			
+	}
+	cout<<endl;
+	cout<<"Count of prime numbers till"<<" "<< n<<" is :"<<count;
 	
 	
 }
@@ -16,5 +68,6 @@ bool ReversePrime(int n)
 
 int main()
 {
+	ReversePrime(19);
 	return 0;
 }
