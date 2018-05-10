@@ -27,6 +27,8 @@ bool isPrime(long n,int i=2)
 }
 
 
+
+//function to store all numbers from 2 till n in a vector, and print only prime in this rang in reverse order
 void ReversePrime(long n)
 {
 	vector<int>v; 
