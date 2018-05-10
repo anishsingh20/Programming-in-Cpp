@@ -19,13 +19,15 @@ int reverse(int n)
 	else
 		printf("%d\n",n);
 	
-	reverse(--n);	
+	n--;
+	reverse(n);
+	//but when reverse(--n);	
  } 
 
 int main()
 {
 	
 	printf("%u",main); //address of main() is printed
-	
+	reverse(10);
 	return 0;
 }
