@@ -6,7 +6,7 @@ using namespace std;
 
 /* Program to find the LCA of 2 nodes in a BST.
 
-if the root's data lies between n1 and n2  then that is the LCA of n1 and n2. If root->aata is less than n1, then LCA is in right subtree, otherwise LCA is in the
+if the root's data lies between n1 and n2  then that is the LCA of n1 and n2. If root->data is less than n1, then LCA is in right subtree, otherwise LCA is in the
 
 left subtree.
 

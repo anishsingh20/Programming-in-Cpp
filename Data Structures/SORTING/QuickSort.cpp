@@ -17,8 +17,8 @@ ALGORITHMIC STRATEGY- DIVIDE AND CONQUER
 2)Quick sort is an IN-PLACE sorting algorithm, i.e it requires constant amount of extra memory ,sorting without any extra space requirement.
 3)Also in worst case scenario of O(n^2) is often ignored due to the RANDOMIZED VERSION OF QUICK SORT which gives the highest probability of O(nlogn)
 
-Another thing is that it does not requires to create new AUX arrays like in Merge Sort to divide the problem into subproblems. It does all the re-arrangements in the
-same array itself. This makes it save some extra memory as compared to MERGE SORT
+Another thing is that it does not requires to create new AUX arrays like in Merge Sort to divide the problem into subproblems. 
+It does all the re-arrangements in the same array itself. This makes it save some extra memory as compared to MERGE SORT
 
 
 
@@ -48,7 +48,7 @@ int Partition(vector<int> &arr,int start, int end) {
 
 
 
-/*To avoid the worse Case i.e when rearrangements results in unbalanced partitions on left and right of PIVOT
+/*To avoid the worse Case i.e when the array is completely sorted-when rearrangements results in unbalanced partitions on left and right of PIVOT
 Complexity of Quick sort which results in T(n) = O(n^2) , we use randomized quick sort algorithm, in which
 we can select any random element of the array as PIVOT element. This reduces the prob of worst case to 0 , and increases the probability of 
 average case complextiy i.e O(nlogn)
