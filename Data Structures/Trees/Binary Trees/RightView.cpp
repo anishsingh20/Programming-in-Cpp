@@ -23,7 +23,15 @@ void RightView(node *root)
 	
 	while(!q.empty())
 	{
+		temp = q.front();
+		q.pop();
 		
+		cout<<temp->data;
+		
+		if(temp->right)
+			q.push(temp>right);
+			
+			
 	}
 }
 
