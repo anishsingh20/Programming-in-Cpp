@@ -27,7 +27,10 @@ int main()
 	char arrc[5];	
 	printf("%d %d\n",sizeof(arr),sizeof(&arr)); //&arr is the size of pointer 8 bytes
 	
-	printf("%d %d",sizeof(arrc),sizeof(&arrc));
+	printf("%d %d\n",sizeof(arrc),sizeof(&arrc));//prints 5 and 8 as c char
+	
+	int b = 5;
+	printf("%d %d",sizeof(b),sizeof(&b)); // prints 4 and 8
 	
 	return 0;
 	
