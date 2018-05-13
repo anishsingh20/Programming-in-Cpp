@@ -56,9 +56,9 @@ int main()
 	
 	p = (p + 16); //p now points to 50, as c char is 1 byte long
 
+	int *p1 = a;
 	
-	printf("%d",*p);
-	
+	printf("%d %d",*p,*(p1+4)); //both will point to 50	 
 	
 		
 	
