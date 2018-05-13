@@ -50,15 +50,21 @@ int main()
 
 	//program 4
 	
-	int a[] = {10,20,30,40,50};
+//	int a[] = {10,20,30,40,50};
+//	
+//	char *p  = (char*)a;//p points to the base address(address of 1st byte) of a i.e points to 10
+//	
+//	p = (p + 16); //p now points to 50, as c char is 1 byte long
+//
+//	int *p1 = a;
+//	
+//	printf("%d %d",*p,*(p1+4)); //both will point to 50
 	
-	char *p  = (char*)a;//p points to the base address(address of 1st byte) of a i.e points to 10
 	
-	p = (p + 16); //p now points to 50, as c char is 1 byte long
-
-	int *p1 = a;
+	//program 5
+		 
+	printf("%c",2["anish"]); //would print i
 	
-	printf("%d %d",*p,*(p1+4)); //both will point to 50	 
 	
 		
 	
