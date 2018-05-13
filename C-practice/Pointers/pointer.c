@@ -42,7 +42,8 @@ int main()
 	
 	k = &a;
 	
-	j = (float*)k;
+	j = k; //usually we require to typecast a void pointer when assigning values to and from a void pointer
+	//conversions are done automatically in gcc compilers
 	
 	printf("%f", *j);
 
