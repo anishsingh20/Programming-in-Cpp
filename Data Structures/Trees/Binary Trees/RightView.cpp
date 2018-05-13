@@ -22,6 +22,7 @@ void RightView(node *root)
 	queue<node*>q;
 	
 	q.push(root);
+	
 	while(!q.empty())
 	{
 		temp = q.front();
@@ -40,7 +41,7 @@ void RightView(node *root)
 		//if the current node has no right child, the left child is the only node
 		if(!temp->right)
 			cout<<temp->left->data<<" ";
-			
+			s
 			
 	}
 }
