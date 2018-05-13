@@ -35,17 +35,34 @@ int main()
 	//program 3
 	
 	
-	float a=10;
-	float *j;
-	
-	void *k;
-	
-	k = &a;
-	
-	j = k; //usually we require to typecast a void pointer when assigning values to and from a void pointer
+//	float a=10.5576;
+//	float *j;
+//	
+//	void *k;
+//	
+//	k = &a;
+//	
+//	j = k; //usually we require to typecast a void pointer when assigning values to and from a void pointer
 	//conversions are done automatically in gcc compilers
+
+//	printf("%lf ", *j );
 	
-	printf("%f", *j);
+
+	//program 4
+	
+	int a[] = {10,20,30,40,50};
+	
+	char *p  = (char*)a;//p points to the base address(address of 1st byte) of a i.e points to 10
+	
+	p = (p + 16); //p now points to 50, as c char is 1 byte long
+
+	
+	printf("%d",*p);
+	
+	
+		
+	
+	
 
 	
 	
