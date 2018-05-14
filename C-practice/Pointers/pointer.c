@@ -80,8 +80,8 @@ int main()
 	
 	pt = &j;
 	
-	printf("%c", *( (int*)pt)+ 1);//prints B
-	;
+	printf("%c", *( (int*)pt) + 1 );//prints B
+	
 	
 	
 	
