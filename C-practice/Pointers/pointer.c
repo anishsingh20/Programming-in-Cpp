@@ -2,6 +2,19 @@
 #include<conio.h>
 
 
+
+
+	void fun(char *p)
+	{
+		if(p[0]=='\0') return;
+		
+		fun(p+1);
+	
+		
+		printf("%c",p[0]);
+	}
+
+
 int main()
 {
 	//Program 1
@@ -68,25 +81,27 @@ int main()
 	
 	//program 6
 	
-	char *ch = "anish";
-	
-	int j=65;
-	
-	void *pt ;
-	
-	pt = ch;
-	
-	printf("%c ",  *((char*)pt+3)  + 2); //prints u
-	
-	pt = &j;
-	
-	printf("%c", *( (int*)pt) + 1 );//prints B
-	
+//	char *ch = "anish";
+//	
+//	int j=65;
+//	
+//	void *pt ;
+//	
+//	pt = ch;
+//	
+//	printf("%c ",  *((char*)pt+3)  + 2); //prints u
+//	
+//	pt = &j;
+//	
+//	printf("%c", *( (int*)pt) + 1 );//prints B
+//	
 	
 	
 	
 	
 	//program 7
+	
+	fun("123");
 		
 	
 	
