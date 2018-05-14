@@ -63,7 +63,7 @@ int main()
 	
 	//program 5
 		 
-	printf("%c",2["anish"]); //would print i
+	printf("%c",1["anish"]); //would print i
 	
 	
 		
