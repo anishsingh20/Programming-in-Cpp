@@ -63,7 +63,27 @@ int main()
 	
 	//program 5
 		 
-	printf("%c",1["anish"]); //would print i
+//	printf("%c",1["anish"]); //would print i
+	
+	
+	//program 6
+	
+	char *ch = "anish";
+	
+	int j=65;
+	
+	void *pt ;
+	
+	pt = ch;
+	
+	printf("%c ",  *((char*)pt+3)  + 2); //prints u
+	
+	pt = &j;
+	
+	printf("%c", *( (int*)pt)+ 1);//prints B
+	;
+	
+	
 	
 	
 		
