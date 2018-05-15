@@ -129,9 +129,16 @@ int main()
 	//program 9
 	
 	static char *s[] =  {"black","red","pink","violet"};
-	char **ptr = {s+3,s+2,s+1,s},***p;
+	char **ptr[] = {s+3,s+2,s+1,s},***p;
 	
 	p = ptr;
+	
+	++p;//goes to s+2
+	printf("%s\n",**p+1);//prints ink
+	
+	printf("%s",**(p+1));//goes to s+2 , goes to next element i.e s+1
+	
+	
 	
 
 	
