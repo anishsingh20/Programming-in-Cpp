@@ -9,6 +9,7 @@
 		if(p[0]=='\0') return;
 		
 		fun(p+1);
+		fun(p+1);
 	
 		
 		printf("%c",p[0]);
@@ -101,8 +102,11 @@ int main()
 	
 	//program 7
 	
-	fun("123");
+//	fun("123");
+
 		
+	//program 8
+	
 	
 	
 
