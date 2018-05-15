@@ -102,27 +102,36 @@ int main()
 	
 	//program 7
 	
-//	fun("123");
+//	fun("123"); make a recursion tree
 
 		
 	//program 8
 	
-	void *vp;
-	char ch = 74, *cp = "JACK";
+//	void *vp;
+//	char ch = 74; 
+//	char *cp = "JACK";
+//	
+//	int j = 65;
+//	
+//	vp = &ch;
+//	
+//	printf("%c",*(char*)vp); prints J
+//	
+//	vp = &j;
+//	
+//	printf("%c",*(char*)vp); prints A
+//	
+//	vp = cp;
+//	
+//	printf("%s",(char*)vp+2); //imp-will print CK
 	
-	int j = 65;
 	
-	vp = &ch;
+	//program 9
 	
-	printf("%c",*(char*)vp);
+	static char *s[] =  {"black","red","pink","violet"};
+	char **ptr = {s+3,s+2,s+1,s},***p;
 	
-	vp = &j;
-	
-	printf("%c",*(char*)vp);
-	
-	vp = cp;
-	
-	printf("%s",(char*)vp+2); //imp-will print CK
+	p = ptr;
 	
 
 	
