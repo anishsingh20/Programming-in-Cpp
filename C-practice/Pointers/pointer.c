@@ -146,9 +146,11 @@ int main()
 	
 	int n = strlen(s);
 	
-	for(int i=0;i<n;i++)
+	
+	for(int i=0 ; i<n ; i++)
 	{
-		printf("%s ",s++); //%s is for char pointers
+		printf("%s ",s++); 
+		//%s is for strings
 		
 	}
 	
