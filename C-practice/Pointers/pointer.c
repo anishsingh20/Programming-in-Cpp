@@ -137,7 +137,7 @@ int main()
 //	++p;//goes to s+2
 //	printf("%s\n",**p+1);//prints ink
 //	
-//	printf("%s",**(p+1));//goes to s+2 , goes to next element i.e s+1
+//	printf("%s",**(p+1));//goes to s+2 , goes to next element i.e s+1 prints red
 	
 	
 	//program 10
