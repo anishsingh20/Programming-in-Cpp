@@ -142,17 +142,21 @@ int main()
 	
 	//program 10
 	
-	char *s = "Anish";
+//	char *s = "Anish";
+//	
+//	int n = strlen(s);
+//	
+//	
+//	for(int i=0 ; i<n ; i++)
+//	{
+//		printf("%s ",s++); 
+//		//%s is for strings
+//		
+//	}
+
+
+	//program 11
 	
-	int n = strlen(s);
-	
-	
-	for(int i=0 ; i<n ; i++)
-	{
-		printf("%s ",s++); 
-		//%s is for strings
-		
-	}
 	
 
 	
