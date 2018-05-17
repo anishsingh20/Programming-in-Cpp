@@ -157,17 +157,27 @@ int main()
 
 	//program 11
 	
-	char str1[] = "anish" ; 
-	char str2[] ="walia" ;
-	
-	char *s1 = str1;
-	char *s2 = str2;
-	while( *s1++ = *s2++); //values changes in s1 pointer will be refelected in str1
+//	char str1[] = "anish" ; 
+//	char str2[] ="walia" ;
+//	
+//	char *s1 = str1;
+//	char *s2 = str2;
+//	while( *s1++ = *s2++); //values changes in s1 pointer will be refelected in str1
 		
-	printf("%s",str1); //str1 now becomes walia
+//	printf("%s",str1); //str1 now becomes walia
 	
 
+	//program 12
 	
+	int a[5] = {5,1,15,20,25};
+	int i,j,m;
+	
+	i = ++a[1];
+	j = a[1]++;
+	
+	m = a[i++];
+	
+	printf("%d %d %d",i,j,m);
 	
 	
 	
