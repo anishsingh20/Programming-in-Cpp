@@ -172,15 +172,29 @@ int main()
 	int a[5] = {5,1,15,20,25};
 	int i,j,m;
 	
-	i = ++a[1];
-	j = a[1]++;
+	i = ++a[1];//i becomes 3
+	printf("%d \n ",a[1]);// a[1] has become 2
+	j = a[1]++; // j is 2
 	
-	m = a[i++];
+	
+	
+	m = a[i++]; // m is 15
+	
+	//postfix operator associativity is from left to right
 	
 	printf("%d %d %d",i,j,m);
+//	
 	
 	
 	
+	
+//	char s[20] = "Hello";
+//	
+//	char *const p = s; //value at s[0] will change, even if p is a const pointer
+//	
+//	*p = 'M';
+//	
+//	printf("%s",s);
 	
 	return 0;
 	
