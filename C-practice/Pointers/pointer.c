@@ -198,6 +198,7 @@ int main()
 
 	
 	
+	//program 13
 	char a[] = "anish";
 	
 	char *b = "walia";
