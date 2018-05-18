@@ -169,20 +169,20 @@ int main()
 
 	//program 12
 	
-	int a[5] = {5,1,15,20,25};
-	int i,j,m;
-	
-	i = ++a[1];//i becomes 3
-	printf("%d \n ",a[1]);// a[1] has become 2
-	j = a[1]++; // j is 2
-	
-	
-	
-	m = a[i++]; // m is 15
-	
-	//postfix operator associativity is from left to right
-	
-	printf("%d %d %d",i,j,m);
+//	int a[5] = {5,1,15,20,25};
+//	int i,j,m;
+//	
+//	i = ++a[1];//i becomes 3
+//	printf("%d \n ",a[1]);// a[1] has become 2
+//	j = a[1]++; // j is 2
+//	
+//	
+//	
+//	m = a[i++]; // m is 15
+//	
+//	//postfix operator associativity is from left to right
+//	
+//	printf("%d %d %d",i,j,m);
 //	
 	
 	
@@ -195,6 +195,22 @@ int main()
 //	*p = 'M';
 //	
 //	printf("%s",s);
+
+	
+	
+	char a[] = "anish";
+	
+	char *b = "walia";
+	
+	printf("%d %d\n", sizeof(a),sizeof(b));
+	
+	printf("%d %d",sizeof(*a),sizeof(*b));
+	
+	
+	
+		
+		
+		
 	
 	return 0;
 	
