@@ -204,10 +204,10 @@ int main()
 	
 	printf("%d %d\n", sizeof(a),sizeof(b));
 	
-	printf("%c %c",*a,*b); //values at the base address so they are character, hence they are 1 bytes long
+	printf("%c %c\n",*a,*b); //values at the base address so they are character, hence they are 1 bytes long
 	
 	
-	
+	printf("%d %d\n", sizeof(*a),sizeof(*b));
 		
 		
 		
