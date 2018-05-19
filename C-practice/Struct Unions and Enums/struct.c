@@ -15,16 +15,30 @@ struct st{
 }s;
 
 
-struct bits{
+//struct bits{
+//	
+//	long int a : 1;
+//}bit;
+
+
+union u {
 	
-	long int a : 1;
-}bit;
+	int a;
+	int b,c;
+};
 
 int main()
 {
+	union u ut;
+	
+	ut.a = 10;
+	ut.b = 20;
+	ut.c = 1002;
+	
+	printf("%d ", ut.a);
 
 //	printf("%d",sizeof(s));
 
-	printf("%d",sizeof(bit));
+//	printf("%d",sizeof(bit));
 	return 0;
 }
