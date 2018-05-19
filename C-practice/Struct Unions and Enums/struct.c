@@ -23,19 +23,31 @@ struct st{
 
 union u {
 	
-	int a;
-	int b,c;
-};
+	double d;
+	char a;
+	
+} ut;
+
+
+ 
 
 int main()
 {
-	union u ut;
+
+	enum e {MON=-10,TUE,WED=10,THU,FRI,SAT,SUN } val;
+	printf("%d %d %d %d %d %d %d\n",MON,TUE,WED,THU,FRI,SAT,SUN);
+	//prints -10 -9 10 11 12 13 14
+	printf("%d\n",sizeof(val));
 	
-	ut.a = 10;
-	ut.b = 20;
-	ut.c = 1002;
+	printf("%d",sizeof(ut));
+
+//	union u ut;
+//	
+//	ut.a = 10;
+//	ut.b = 20;
+//	ut.c = 1002;
 	
-	printf("%d ", ut.a);
+//	printf("%d ", ut.a);
 
 //	printf("%d",sizeof(s));
 
