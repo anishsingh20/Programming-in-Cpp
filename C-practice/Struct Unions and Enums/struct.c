@@ -73,13 +73,14 @@ int main()
 
 
 	struct emp *e=(struct emp*)malloc(sizeof(struct emp));
-	
+	struct emp *t = e;
 	char newname[] = "Anish";
 	e->name = (char*)malloc(strlen(newname+1));
 	strcpy(e->name,newname);
 	e->age = 25;
 	
-	printf("%d %s",e->age,e->name);
+	printf("%d %s\n",e->age,e->name);
+	printf("%d %s",t->age,t->name);
 	
 
 	return 0;
