@@ -37,6 +37,12 @@ struct st{
  	struct node *ptr;
  };
 
+
+struct emp {
+	char name[20];
+	int age;
+	float bs;
+};
 int main()
 {
 
@@ -58,11 +64,15 @@ int main()
 //	printf("%d",sizeof(s));
 
 //	printf("%d",sizeof(bit));
-
-	struct node *p = (struct node*)malloc(sizeof(struct node));
-	struct node *q = (struct node*)malloc(sizeof(struct node));
 	
-	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
+	
+//	struct node *p = (struct node*)malloc(sizeof(struct node));
+//	struct node *q = (struct node*)malloc(sizeof(struct node));
+//	
+//	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
+
+
+	
 	
 
 	return 0;
