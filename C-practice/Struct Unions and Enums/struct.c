@@ -21,25 +21,32 @@ struct st{
 //}bit;
 
 
-union u {
-	
-	double d;
-	char a;
-	
-} ut;
+//union u {
+//	
+//	double d;
+//	char a;
+//	
+//} ut;
 
 
+ 
+ union a {
+ 
+ 	int i ;
+  	char ch[20];
+  	int a : 4;
+ };
  
 
 int main()
 {
 
-	enum e {MON=-10,TUE,WED=10,THU,FRI,SAT,SUN } val;
-	printf("%d %d %d %d %d %d %d\n",MON,TUE,WED,THU,FRI,SAT,SUN);
-	//prints -10 -9 10 11 12 13 14
-	printf("%d\n",sizeof(val));
-	
-	printf("%d",sizeof(ut));
+//	enum e {MON=-10,TUE,WED=10,THU,FRI,SAT,SUN } val;
+//	printf("%d %d %d %d %d %d %d\n",MON,TUE,WED,THU,FRI,SAT,SUN);
+//	//prints -10 -9 10 11 12 13 14
+//	printf("%d\n",sizeof(val));
+//	
+//	printf("%d",sizeof(ut));
 
 //	union u ut;
 //	
@@ -52,5 +59,12 @@ int main()
 //	printf("%d",sizeof(s));
 
 //	printf("%d",sizeof(bit));
+
+
+	union a b;
+	printf("%d",sizeof(b));
+	
+	
+
 	return 0;
 }
