@@ -30,13 +30,12 @@ struct st{
 
 
  
- union a {
  
- 	int i ;
-  	char ch[20];
-  	int a : 4;
+ struct node{
+ 	
+ 	int data;
+ 	struct node *ptr;
  };
- 
 
 int main()
 {
@@ -60,10 +59,10 @@ int main()
 
 //	printf("%d",sizeof(bit));
 
-
-	union a b;
-	printf("%d",sizeof(b));
+	struct node *p = (struct node*)malloc(sizeof(struct node));
+	struct node *q = (struct node*)malloc(sizeof(struct node));
 	
+	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
 	
 
 	return 0;
