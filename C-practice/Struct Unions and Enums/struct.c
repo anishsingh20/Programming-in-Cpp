@@ -39,7 +39,7 @@ struct st{
 
 
 struct emp {
-	char name[20];
+	char *name;
 	int age;
 	float bs;
 };
@@ -72,7 +72,14 @@ int main()
 //	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
 
 
+	struct emp *e=(struct emp*)malloc(sizeof(struct emp));
 	
+	char newname[] = "Anish";
+	e->name = (char*)malloc(strlen(newname+1));
+	strcpy(e->name,newname);
+	e->age = 25;
+	
+	printf("%d %s",e->age,e->name);
 	
 
 	return 0;
