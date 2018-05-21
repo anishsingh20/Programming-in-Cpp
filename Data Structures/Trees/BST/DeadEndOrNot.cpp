@@ -21,6 +21,28 @@ struct node *newNode(int data)
 }
 
 
+struct node* insert(node *root,int data)
+{
+	if(root==NULL)
+	{
+		return newNode(data);
+	}
+	
+	if(root->data > data)
+	{
+		root->left = insert(root->left,data);
+		
+	}
+	
+	if(root->data < data)
+	{
+		root->right = insert(root->right,data);
+	}
+		
+	return root;
+	
+}
+
 void FillHashMap(node *root,set<int> &allNodes,set<int>LeafNode)
 {
 	if(root==NULL)
@@ -50,6 +72,8 @@ bool DeadEndOrNot(node *root)
 	if(!root)
 		return false;
 		
+		
+	all_nodes.insert(0);
 	//populating the hash maps
 	FillHashMap(root,all_nodes,leafNodes);
 	
@@ -59,18 +83,51 @@ bool DeadEndOrNot(node *root)
 	{
 		int x =  (*i);//storing the leaf node
 		
-		if(all_nodes.find(x+1) != all_nodes.end() && 
-		   all_nodes.find(x-1) != all_nodes.end())
-		   	return true;
+		if(all_nodes.find(x+1) != all_nodes.end() && all_nodes.find(x-1) != all_nodes.end())
+		   {
+		   		return true;
+		   }
+		   
 	}
 	
-	return false;
+	
 		
 	
 }
 
 
+
+//recursive solution
+bool checkDeadEnd(node *root, int min, int max)
+{
+    if(root == NULL)
+        return(true);
+    if(root->data == min && root->data == max)
+        return(false);
+    return(checkDeadEnd(root->left, min, root->data-1) && checkDeadEnd(root->right, root->data+1, max));
+}
+
+bool isDeadEnd(node *root)
+{
+    return(!checkDeadEnd(root, 1, INT_MAX));
+}
+
+
 int main()
 {
-	return 0;
+	    
+    node *root = NULL;
+    root = insert(root, 8);
+    root = insert(root, 5);
+    root = insert(root, 2);
+    root = insert(root, 3);
+    root = insert(root, 7);
+    root = insert(root, 11);
+    root = insert(root, 4);
+    
+    
+   cout<<isDeadEnd(root)<<endl;
+	    
+	
+return 0;
 }
