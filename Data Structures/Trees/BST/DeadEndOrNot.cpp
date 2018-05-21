@@ -33,11 +33,35 @@ void FillHashMap(node *root,set<int> &allNodes,set<int>LeafNode)
 	if(root->left==NULL && root->right==NULL)
 	{
 		LeafNode.insert(root->data);
+		return;
 	}
 	
 	//recursively calling the function on left and right subtrees
 	FillHashMap(root->left,allNodes,LeafNode);
 	FillHashMap(root->right,allNodes,LeafNode);
+}
+
+
+
+bool DeadEndOrNot(node *root)
+{
+	set<int>all_nodes,leafNodes;
+	
+	if(!root)
+		return;
+		
+	//populating the hash maps
+	
+	FillHashMap(root,all_nodes,leafNodes);
+	
+	
+	//now checking if there exists a leaf x and nodes with x+1 or x-1
+	for(auto i = leafNodes.begin(); i != leafNodes.end() ; i++)
+	{
+		
+	}
+		
+	
 }
 
 
