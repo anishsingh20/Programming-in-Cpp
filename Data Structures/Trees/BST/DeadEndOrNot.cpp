@@ -48,18 +48,23 @@ bool DeadEndOrNot(node *root)
 	set<int>all_nodes,leafNodes;
 	
 	if(!root)
-		return;
+		return false;
 		
 	//populating the hash maps
-	
 	FillHashMap(root,all_nodes,leafNodes);
 	
 	
 	//now checking if there exists a leaf x and nodes with x+1 or x-1
-	for(auto i = leafNodes.begin(); i != leafNodes.end() ; i++)
+	for(set<int>::iterator i = leafNodes.begin(); i != leafNodes.end() ; i++)
 	{
+		int x =  (*i);//storing the leaf node
 		
+		if(all_nodes.find(x+1) != all_nodes.end() && 
+		   all_nodes.find(x-1) != all_nodes.end())
+		   	return true;
 	}
+	
+	return false;
 		
 	
 }
