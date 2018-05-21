@@ -75,6 +75,8 @@ int main()
 	struct emp *e=(struct emp*)malloc(sizeof(struct emp));
 	struct emp *t = e;
 	char newname[] = "Anish";
+	
+
 	e->name = (char*)malloc(strlen(newname+1));
 	strcpy(e->name,newname);
 	e->age = 25;
