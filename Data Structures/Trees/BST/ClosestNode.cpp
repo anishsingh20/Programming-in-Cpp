@@ -99,7 +99,7 @@ BSTnode *ClosestNodeLevelOrder(BSTnode *root,int key)
 
 
 
-//Method-2 Using Morris Inorder traversal
+//Method-2 Using Morris Inorder traversal-memory efficient method-No recursion, no stack/queue
 BSTnode* ClosestNodeInorderMorris(BSTnode *root,int key)
 {
 	int diff = INT_MAX;
@@ -110,6 +110,7 @@ BSTnode* ClosestNodeInorderMorris(BSTnode *root,int key)
 	{
 		if(curr->left==NULL)
 		{
+			//updating diff if the current diff is smaller than prev difference
 			if(diff > abs(curr->data-key))
 			{
 				diff = abs(curr->data-key);
@@ -224,5 +225,5 @@ int main()
 	cout<<endl;
 	cout<<ClosestNodeLevelOrder(root,15)->data;
 	cout<<endl;
-	cout<<ClosestNodeInorderMorris(root,8)->data;
+	cout<<ClosestNodeInorderMorris(root,10)->data;
 }
