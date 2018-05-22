@@ -21,7 +21,7 @@ struct node *newNode(int data)
 }
 
 
-truct node* insert(node *root,int data)
+struct node* insert(node *root,int data)
 {
 	if(root==NULL)
 	{
@@ -44,7 +44,36 @@ truct node* insert(node *root,int data)
 }
 
 
+//recursive implementation
+
+int getSum(node *root,int l,int h)
+{
+	if(!root)
+		return 0;
+		
+	if(root->data >= l)
+		return getSum(root->right,l,h);
+			
+	if(root->data <= h)
+		return getSum(root->left,l,h);
+		
+	if(root->data >= l && root->data <= h)
+	{
+		return ( getSum(root->left,l,h) + root->data + getSum(root->left,l,h) ); 
+		}	
+		
+	
+}
+
 int main()
 {
+	node *root  = newNode(20);
+   	insert(root,4);
+	insert(root,8);
+	insert(root,12);
+	insert(root,22);
+    
+    cout<<getSum(root,4,22);
+	
 	return 0;
 }

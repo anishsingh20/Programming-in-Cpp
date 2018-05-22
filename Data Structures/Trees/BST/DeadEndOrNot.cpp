@@ -117,13 +117,13 @@ int main()
 {
 	    
     node *root = NULL;
-    root = insert(root, 8);
-    root = insert(root, 5);
-    root = insert(root, 2);
-    root = insert(root, 3);
-    root = insert(root, 7);
-    root = insert(root, 11);
-    root = insert(root, 4);
+    insert(root, 8);
+    insert(root, 5);
+    insert(root, 2);
+    insert(root, 3);
+    insert(root, 7);
+    insert(root, 11);
+    insert(root, 4);
     
     
    cout<<isDeadEnd(root)<<endl;
