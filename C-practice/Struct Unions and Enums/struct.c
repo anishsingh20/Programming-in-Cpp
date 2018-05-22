@@ -66,10 +66,10 @@ int main()
 //	printf("%d",sizeof(bit));
 	
 	
-//	struct node *p = (struct node*)malloc(sizeof(struct node));
-//	struct node *q = (struct node*)malloc(sizeof(struct node));
-//	
-//	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
+	struct node *p = (struct node*)malloc(sizeof(struct node));
+	struct node *q = (struct node*)malloc(sizeof(struct node));
+	
+	printf("%d %d",sizeof(p),sizeof(q)); //will print the size of  pointer ie 8 bytes on 64-bit sys
 
 
 	struct emp *e=(struct emp*)malloc(sizeof(struct emp));
@@ -83,6 +83,7 @@ int main()
 	
 	printf("%d %s\n",e->age,e->name);
 	printf("%d %s",t->age,t->name);
+	
 	
 
 	return 0;
