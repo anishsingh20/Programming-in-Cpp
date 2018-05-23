@@ -20,8 +20,9 @@ int main()
 //	puts(ch);
 	
 	//program2
-	
-	printf("%%%%");//will print only 2 
+	int n;
+	scanf("%*d",&n);//* symbol after * means. current input is scanned but not stored
+	printf("%*d",n,n);//will print only 2 ,* after % in printf() means field width
 	
 	return 0;
 }
