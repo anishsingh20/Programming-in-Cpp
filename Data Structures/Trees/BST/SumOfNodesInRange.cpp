@@ -46,21 +46,75 @@ struct node* insert(node *root,int data)
 
 //recursive implementation
 
-int getSum(node *root,int l,int h)
+int getSum(node *root,int low,int high)
 {
-	if(!root)
-		return 0;
-		
-	if(root->data >= l)
-		return getSum(root->right,l,h);
-			
-	if(root->data <= h)
-		return getSum(root->left,l,h);
-		
-	if(root->data >= l && root->data <= h)
+		if(!root) return 0;
+	
+	node *curr = root;
+	
+	static int sum = 0;
+	
+////	if( low <= root->data <= high )
+//		cout<<root->data<<" ";
+	
+	while(curr)
 	{
-		return ( getSum(root->left,l,h) + root->data + getSum(root->left,l,h) ); 
-		}	
+		
+	
+
+		if(curr->left==NULL)
+		{
+			if(curr->data <= high && curr->data >= low)
+			{
+				
+				sum += curr->data;
+				return sum;
+				
+			}
+				
+				
+			curr = curr->right;
+		}
+		
+		else
+		{
+			node *pre = curr->left;
+			//finding the inorder predecessor-
+			//inorder predecessor is the right most in left subtree or the left child, i.e in BST
+			//it is the maximum(right most) in left subtree. 
+			while(pre->right!=NULL && pre->right!=curr)
+				pre = pre->right;
+				
+			if(pre->right==NULL)
+			{
+				pre->right = curr;
+				
+			
+				curr = curr->left;
+			}
+			
+			else
+			{
+				pre->right  = NULL;
+				
+				if(curr->data <= high && curr->data >= low)
+				{
+					
+						sum += curr->data;
+						return sum;
+						
+				}
+				
+				curr = curr->right;						
+					
+			}
+		}
+
+	}	
+			
+	
+	
+	
 		
 	
 }
