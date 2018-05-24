@@ -6,5 +6,5 @@
 int main()
 {
 	int x  = 4;
-	printf("%x ",x << 1); 
+	printf("%x ",(x << 1) >> 2); 
 }
