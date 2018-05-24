@@ -5,5 +5,6 @@
 
 int main()
 {
-	
+	int x  = 4;
+	printf("%x ",x << 1); 
 }
