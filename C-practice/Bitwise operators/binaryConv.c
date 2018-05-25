@@ -1,5 +1,7 @@
 
 #include <stdio.h>
+
+//program to convert a number to its binary equivalent
  
 int main()
 {
