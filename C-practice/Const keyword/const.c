@@ -9,7 +9,7 @@ int main()
 		};
 		
 		const union name n;
-		//n.age=20;
+		//n.age=20; age becomes a read only const object
 		printf("%d",n.age);
 		
 }
