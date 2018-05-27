@@ -3,7 +3,7 @@
 #include<stdarg.h>
 #include<stdlib.h>
 
-
+// best example of a variable arguments function is int printf(char const *,...)
  void fun(int num,...)
 {
 	va_list ptr;
