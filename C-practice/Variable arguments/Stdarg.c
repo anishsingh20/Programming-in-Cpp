@@ -18,7 +18,9 @@
 int main()
 {
 	
+	fun(20,'A','B','C');
 	
+	return 0;
 	
  }
 
