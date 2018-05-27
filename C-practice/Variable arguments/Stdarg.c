@@ -10,6 +10,9 @@
         va_start(ptr,num);
         int c = va_arg(ptr,int);
         c = va_arg(ptr,int);
+	  //va_arg used to extract an argument from the args list and 
+  //va_arg used to advance to next argument
+  //
 	printf("%d",c);
 	
 	
