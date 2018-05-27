@@ -6,7 +6,7 @@
 // best example of a variable arguments function is int printf(char const *,...)
  void fun(int num,...)
 {
-	va_list ptr;
+	va_list ptr;//holds the information of the arg list needed by va_arg
         va_start(ptr,num);
         int c = va_arg(ptr,int);
         c = va_arg(ptr,int);
