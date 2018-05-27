@@ -20,6 +20,7 @@ int main()
 	
 	fun(20,'A','B','C');
 	
+	//prints 66- ascii value of c
 	return 0;
 	
  }
