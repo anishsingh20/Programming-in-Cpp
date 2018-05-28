@@ -18,7 +18,7 @@
 	
 	}
 
- //when dealong with var no of arguments char and unsigned int is promoted to int 
+ //when dealing with var no of arguments char and unsigned int are promoted to int 
 //and the float is promoted to double
 int main()
 {
