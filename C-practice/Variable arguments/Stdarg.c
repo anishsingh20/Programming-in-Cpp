@@ -19,7 +19,7 @@
 	}
 
  //when dealong with var no of arguments char and unsigned int is promoted to int 
-//and the float is converted to double
+//and the float is promoted to double
 int main()
 {
 	
