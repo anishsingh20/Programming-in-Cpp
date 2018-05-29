@@ -3,7 +3,8 @@
 #include<stdarg.h>
 #include<stdlib.h>
 
-// best example of a variable arguments function is int printf(char const *,...)
+// best example of a variable arguments function is printf()
+//the prototype of is is int printf(char const *,...)
  void fun(int num,...)
 {
 	va_list ptr;//vah_list is an array which holds the information of the arg list needed by va_arg
