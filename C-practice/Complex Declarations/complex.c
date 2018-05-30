@@ -2,14 +2,17 @@
 #include<stdio.h>
 
 double i;
-double j;
+
 int main()
 {
 	
   (char)(float)(int)i;
-	printf("%d",sizeof(i));//prints size of a double
+	printf("%d\n",sizeof(i));//prints size of a double
 	
 	
-	printf("%d",sizeof((long double)(double)(char)(int)(float)i));
+	//but here it prints the size of a long double as i becomes a long double, and sizeof() operator has right to left associativity
+	//so left most is evaluated at last i.e long double
+ 	printf("%d",sizeof((long double)(double)(char)(int)(float)i)); //prints 16
 	
+		
 }
