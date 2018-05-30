@@ -7,12 +7,13 @@
 int main()
 {
 	int i;
-	char *s = "heyIam\0 Anish"; 
+	i = printf("How are you ?\n");
+	i = printf("%d\n",i);//prints 14 i.e the length of the above char sequence
+	printf("%d\n",i);	//prints length of the above seq i.e 3
 
 
 	
-	printf("%d\n", *(s++));//first prins the ascii value of the first element ie h	
-	printf("%d", *s);//now prints the ascii value of e, i.e second element in char sequence
+
 	return 0;
 	
 }
