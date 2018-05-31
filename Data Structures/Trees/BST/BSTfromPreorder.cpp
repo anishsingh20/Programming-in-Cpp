@@ -9,6 +9,8 @@ Method1)
 1)Using a stack
 */
 
+using namespace std;
+
 struct node {
 	int data;
 	struct node *left,*right;
@@ -29,19 +31,19 @@ node *PreorderToBSTStack(int pre[],int size)
 	//first element in preorder is the root of tree
 	node *root = newNode(pre[0]);
 	
-	stack<node *>s(size); //creating a stack
+	stack<node *>s; //creating a stack
 	
 	s.push(root);
 	
 	struct node *temp;
 	
-	for(int i=1; i < size ; i++ )
+	for(int i = 1; i < size ; i++ )
 	{
-		temp = NULL;
-		while(!s.empty() && pre[i] > s.top())
+		
+		while( !s.empty() && pre[i] > s.top()->data)
 		{
-			temp = s.top();
-			s.pop()
+			temp = s.top();	
+			s.pop();
 			
 		}
 		
@@ -69,9 +71,13 @@ node *PreorderToBSTStack(int pre[],int size)
 
 void Inorder(node *root)
 {
+	if(!root)
+		return;
+		
+		
 	Inorder(root->left);
 	
-	cout<<root->data;
+	cout<<root->data<<" ";
 	
 	Inorder(root->right);
 }
@@ -79,5 +85,13 @@ void Inorder(node *root)
 
 int main()
 {
+	int pre[] = {10,5,1,7,40,50};
+	
+	int size = ( sizeof(pre)/sizeof(pre[0]));
+	
+	struct node *root = PreorderToBSTStack(pre,size);
+	
+	Inorder(root);
+	
 	return 0;
 }
