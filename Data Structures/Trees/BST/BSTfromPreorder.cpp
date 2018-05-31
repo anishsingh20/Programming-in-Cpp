@@ -67,7 +67,7 @@ node *PreorderToBSTStack(int pre[],int size)
 	return root;
 
 }
-
+//Time complexity  = O(n), Space complexity  = O(n) for stack space
 
 void Inorder(node *root)
 {
