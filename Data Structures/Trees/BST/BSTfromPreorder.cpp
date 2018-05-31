@@ -45,15 +45,24 @@ node *PreorderToBSTStack(int pre[],int size)
 			
 		}
 		
+		//if the node in pre list is  > top of stack,make it the right of top node in stack
 		if(temp!=NULL)
 		{
 			
 			temp->right = newNode(pre[i]);
 			s.push(temp->right);	
 		}	
+		
+		//otherwise make it the left child and push it to stack
+		else
+		{
+			(s.top())->left = newNode(pre[i]);
+			s.push((s.top())->left);
 			
+		}	
 	}
 
+	return root;
 
 }
 
