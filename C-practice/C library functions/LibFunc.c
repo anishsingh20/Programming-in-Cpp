@@ -15,7 +15,7 @@ int main()
 
 
 	int c = scanf("%d %d %s");
-	printf("%d",c);//will print 3, ie the number fo inputs
+	printf("%d",c);//will print 3, ie the number of inputs
 	
 	
 
