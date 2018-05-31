@@ -13,9 +13,9 @@ int main()
 //	i = printf("%d\n",i);//prints 14 i.e the length of the above char sequence
 //	printf("%d\n",i);	//prints length of the above seq i.e 3
 
-	int i,j,k;
-	int c = scanf("%*d %*d",i,j);
-	printf("%d",c);
+
+	int c = scanf("%d %d %s");
+	printf("%d",c);//will print 3, ie the number fo inputs
 	
 	
 
