@@ -73,7 +73,39 @@ node *PreorderToBSTStack(int pre[],int size)
 
 node *PreorderToBSTRecursion(int pre[], int *preIndex,int key,int min,int max,int size)
 {
+	struct node *root;
+	if(*preIndex > size)
+		return NULL;
+		
+	if(key > min && key < max)
+ 	{
+		//make first item in preorder as root
+		root = newNode(key);
+		
+		*preIndex = *preIndex + 1; //incrementing the pre index
 	
+	
+		if( *preIndex < size )
+		{
+			
+			//constructing the left subtree.
+			root->left = PreorderToBSTRecursion(pre,preIndex,pre[*preIndex],min,key,size);
+			
+			//constructing the right subtree
+			root->right = PreorderToBSTRecursion(pre,preIndex,pre[*preIndex],key,max,size);
+			
+		}
+        }
+        
+        return root;
+}
+
+
+struct node *ConvertBST(int pre[],int size)
+{
+	int preIndex = 0;
+	
+	return PreorderToBSTRecursion(pre,&preIndex,pre[0],INT_MIN,INT_MAX,size);
 }
 
 
@@ -98,6 +130,12 @@ int main()
 	int size = ( sizeof(pre)/sizeof(pre[0]));
 	
 	struct node *root = PreorderToBSTStack(pre,size);
+	
+	Inorder(root);
+	
+	cout<<endl;
+	
+	struct node *root1 = ConvertBST(pre,size);
 	
 	Inorder(root);
 	
