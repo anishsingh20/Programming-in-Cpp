@@ -73,8 +73,8 @@ node *PreorderToBSTStack(int pre[],int size)
 
 node *PreorderToBSTRecursion(int pre[], int *preIndex,int key,int min,int max,int size)
 {
-	struct node *root;
-	if(*preIndex > size)
+	struct node *root = NULL;
+	if(*preIndex >= size)
 		return NULL;
 		
 	if(key > min && key < max)
@@ -101,7 +101,7 @@ node *PreorderToBSTRecursion(int pre[], int *preIndex,int key,int min,int max,in
 }
 
 
-struct node *ConvertBST(int pre[],int size)
+struct node *ConvertBSTPreorder(int pre[],int size)
 {
 	int preIndex = 0;
 	
@@ -109,17 +109,60 @@ struct node *ConvertBST(int pre[],int size)
 }
 
 
+
+
+node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max,int size)
+{
+	struct node *root=NULL;
+	if(*postIndex >= size)
+		return NULL;
+		
+	if(key > min && key < max)
+ 	{
+		//make first item in preorder as root
+		root = newNode(key);
+
+		*postIndex = *postIndex + 1; //incrementing the pre index
+	
+	
+		if( *postIndex < size )
+		{
+			
+			//constructing the left subtree.
+			root->left = PostorderToBSTRecursion(post,postIndex,post[*postIndex],min,key,size);
+			
+			//constructing the right subtree
+			root->right = PostorderToBSTRecursion(post,postIndex,post[*postIndex],key,max,size);
+			
+		}
+        }
+        
+        return root;
+}
+
+
+struct node *ConvertBSTPostorder(int post[],int size)
+{
+	int postIndex = 0;
+	
+	return PostorderToBSTRecursion(post,&postIndex,post[size-1],INT_MIN,INT_MAX,size);
+}
+
+
+
 void Inorder(node *root)
 {
-	if(!root)
-		return;
-		
-		
-	Inorder(root->left);
 	
-	cout<<root->data<<" ";
+	if(root)
+	{
+		Inorder(root->left);
 	
-	Inorder(root->right);
+		cout<<root->data<<" ";
+	
+		Inorder(root->right);
+	}
+		
+	
 }
 
 
@@ -127,17 +170,27 @@ int main()
 {
 	int pre[] = {10,5,1,7,40,50};
 	
-	int size = ( sizeof(pre)/sizeof(pre[0]));
+	int post[] = {1,7,5,50,40,10};
 	
-	struct node *root = PreorderToBSTStack(pre,size);
+	int sizePre = ( sizeof(pre)/sizeof(pre[0]));
+	int sizePost = ( sizeof(post)/sizeof(post[0]));
 	
-	Inorder(root);
 	
-	cout<<endl;
 	
-	struct node *root1 = ConvertBST(pre,size);
+//	struct node *root = PreorderToBSTStack(pre,size);
+//	
+//	Inorder(root);
+//	
+//	cout<<endl;
 	
-	Inorder(root);
+//	struct node *root1 = ConvertBSTPreorder(pre,size);
+//	
+//	Inorder(root1);
+
+	struct node *root2 = ConvertBSTPostorder(post,sizePost);
+	Inorder(root2);
+
+	
 	
 	return 0;
 }
