@@ -109,6 +109,13 @@ void Insert( struct BinaryTreeNode **root,int data)
 }
 
 
+
+void storeSumLevelOrder(BinaryTreeNode *root)
+{
+	
+}
+
+
 int main()
 {
 	struct BinaryTreeNode *root1= NULL;

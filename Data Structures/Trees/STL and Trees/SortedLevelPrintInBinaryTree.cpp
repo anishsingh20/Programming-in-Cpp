@@ -242,7 +242,7 @@ int main()
 	SortedLevelOrderTraversal(root1);
 	
 	cout<<endl;
-	
+	 
 	SortedLevelOrderMap(root1);
 
 return 0;
