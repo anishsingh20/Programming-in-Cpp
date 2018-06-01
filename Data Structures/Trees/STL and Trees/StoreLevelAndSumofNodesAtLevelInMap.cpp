@@ -2,10 +2,17 @@
 #include<map>
 #include<queue>
 #include<iomanip>
+#include<set>
 
 using namespace std;
 
-//Program to levels and sum of all nodes at that level in a MAP
+/*Program to levels and sum of all nodes at that level in a MAP
+
+1)Using a map
+
+2)using level order traversal and set or vector to store the current level nodes and find sum
+
+*/
 
 struct BinaryTreeNode{
 	int data;
@@ -114,6 +121,8 @@ void storeSumLevelOrder(BinaryTreeNode *root)
 {
 	queue<BinaryTreeNode *>q;
 	set<int>s; //set to store the nodes at each level
+	set<int>::iterator it;
+	int sum = 0;
 	
 	if(!root)
 		return;
@@ -131,7 +140,17 @@ void storeSumLevelOrder(BinaryTreeNode *root)
 			if(!q.empty())
 				q.push(NULL); //marker for next level
 				
+			for(it = s.begin();it!=s.end();it++)
+			{
+				sum += *it;
+				
+			}
 			
+			cout<<sum<<endl;
+			
+			sum = 0; //re-settings sum to 0, to store sum of nodes of next level
+			
+			s.clear();//clearing the set with current level nodes, and to store next level nodes
 			
 			
 		}
@@ -165,6 +184,11 @@ int main()
 	Insert(&root1,9);
 	
 	traverseMap(root1);
+	
+	cout<<endl;
+	
+	
+	storeSumLevelOrder(root1);
 
 	return 0;	
 		
