@@ -112,7 +112,41 @@ void Insert( struct BinaryTreeNode **root,int data)
 
 void storeSumLevelOrder(BinaryTreeNode *root)
 {
+	queue<BinaryTreeNode *>q;
+	set<int>s; //set to store the nodes at each level
 	
+	if(!root)
+		return;
+		
+	q.push(root);
+	q.push(NULL); //marker for completion of level-0
+	
+	while(!q.empty())
+	{
+		BinaryTreeNode *temp = q.front();
+		q.pop();
+		
+		if(temp==NULL)
+		{
+			if(!q.empty())
+				q.push(NULL); //marker for next level
+				
+			
+			
+			
+		}
+		
+		else
+		{
+			s.insert(temp->data); //storing the current node's data in set
+			
+			if(temp->left)	
+				q.push(temp->left);
+			
+			if(temp->right)	
+				q.push(temp->right);
+		}
+	}
 }
 
 
