@@ -6,7 +6,8 @@
 then any one of the postorder or pre-order traversals are enough.
 
 Method1)
-1)Using a stack
+1)Using a stack.-T(n) = o(n)
+2)Using recursion T(n) = O(n)
 */
 
 using namespace std;
@@ -68,6 +69,13 @@ node *PreorderToBSTStack(int pre[],int size)
 
 }
 //Time complexity  = O(n), Space complexity  = O(n) for stack space
+
+
+node *PreorderToBSTRecursion(int pre[], int *preIndex,int key,int min,int max,int size)
+{
+	
+}
+
 
 void Inorder(node *root)
 {
