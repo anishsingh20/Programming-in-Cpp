@@ -43,6 +43,53 @@ bool MirrorOrNot(struct BinaryTreeNode *root1, struct BinaryTreeNode *root2)
 
 }
 
+
+
+//another iterative method to tell if a tree is symmetric or not
+bool isSymmetric(TreeNode* root) {
+        
+         queue<TreeNode *>q;
+        
+        if(!root)
+                return true;
+        
+        TreeNode *temp,*temp1;
+        
+        q.push(root);
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            temp = q.front();
+            q.pop();
+            temp1 = q.front();
+            q.pop();
+            
+            if(!temp1 && !temp) continue;
+            
+            if(!temp1 || !temp    )    return false;
+            
+            if(temp->val!=temp1->val)   return false;
+             
+                    q.push(temp->left);
+            
+            
+                    q.push(temp1->right);
+            
+            
+                    q.push(temp->right);
+            
+            
+                    q.push(temp1->left);
+        }     
+        return true;
+    
+    }
+    
+    
+    
+    
+
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();
