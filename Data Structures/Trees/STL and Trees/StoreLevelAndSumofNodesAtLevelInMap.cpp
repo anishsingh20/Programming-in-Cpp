@@ -157,7 +157,8 @@ void storeSumLevelOrder(BinaryTreeNode *root)
 		
 		else
 		{
-			s.insert(temp->data); //storing the current node's data in set
+			s.insert(temp->data);//O(logn)
+			 //storing the current node's data in set
 			
 			if(temp->left)	
 				q.push(temp->left);
@@ -167,6 +168,7 @@ void storeSumLevelOrder(BinaryTreeNode *root)
 		}
 	}
 }
+//Time complexity = O(nlogn) and space complexity = O(n)
 
 
 int main()

@@ -103,7 +103,7 @@ void SortedLevelOrderTraversal(BinaryTreeNode *root)
 		
 		else
 		{
-			S.insert(temp->data);
+			S.insert(temp->data);//O(logn)
 			
 			if(temp->left)	q.push(temp->left);
 			
