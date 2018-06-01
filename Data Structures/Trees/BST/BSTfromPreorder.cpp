@@ -119,20 +119,23 @@ node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max
 		
 	if(key > min && key < max)
  	{
-		//make first item in preorder as root
+		//make last item in postorder list as root
 		root = newNode(key);
-
-		*postIndex = *postIndex + 1; //incrementing the pre index
+		
+		*postIndex = *postIndex - 1; //decrementing the postIndex
 	
 	
 		if( *postIndex < size )
 		{
 			
-			//constructing the left subtree.
-			root->left = PostorderToBSTRecursion(post,postIndex,post[*postIndex],min,key,size);
 			
 			//constructing the right subtree
 			root->right = PostorderToBSTRecursion(post,postIndex,post[*postIndex],key,max,size);
+			
+			//constructing the left subtree.
+			root->left = PostorderToBSTRecursion(post,postIndex,post[*postIndex],min,key,size);
+			
+			
 			
 		}
         }
@@ -143,7 +146,7 @@ node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max
 
 struct node *ConvertBSTPostorder(int post[],int size)
 {
-	int postIndex = 0;
+	int postIndex = size-1;//initially post index is last index
 	
 	return PostorderToBSTRecursion(post,&postIndex,post[size-1],INT_MIN,INT_MAX,size);
 }
@@ -153,14 +156,16 @@ struct node *ConvertBSTPostorder(int post[],int size)
 void Inorder(node *root)
 {
 	
-	if(root)
-	{
+	if(!root)
+		return;
+		
+	
 		Inorder(root->left);
 	
 		cout<<root->data<<" ";
 	
 		Inorder(root->right);
-	}
+	
 		
 	
 }
