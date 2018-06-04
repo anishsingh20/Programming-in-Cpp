@@ -569,10 +569,10 @@ Node *ReverseListRec(Node *head)
 		
 	}
 	
-	//simply travese the list recursively until we reach last node
+	//simply travese the list recursively until we reach the second last node
 	
 		
-		ReverseListRec(head->next);
+		ReverseListRec(head->next);//
 		
 		struct Node *prev;
 		
