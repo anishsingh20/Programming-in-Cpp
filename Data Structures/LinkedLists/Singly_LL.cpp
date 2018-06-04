@@ -277,7 +277,7 @@ bool has_cycle(Node* head) {
         //traversing the list and checking for cycles
       while(temp->next!=NULL && temp1!=NULL){
       	temp=temp->next;
-      	temp1=temp1->next->next; //one node ahead
+      	temp1=temp1=->next->next; //one node ahead
       	
       	
       	//if temp and temp1 pointers have same addresses
@@ -290,7 +290,34 @@ bool has_cycle(Node* head) {
       
       return false;
 }         
-         
+     
+     
+//function to return the starting node of the cycle 
+Node *detectCycle(Node *head) {
+        
+    struct Node *slow = head, *fast = head ;
+    while(fast && fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        
+        //if cycle exists i.e fast = slow
+        if(slow==fast)
+        {
+            slow = head;
+            while(slow!=fast)
+            {
+                slow = slow->next;
+                fast= fast->next;
+            }
+            return slow;
+        }
+        
+    }
+   
+    return NULL;
+        
+    }      
 	 
 //function to insert in a Sorted linked list
 void sortedInsert(struct Node** head,int data) {

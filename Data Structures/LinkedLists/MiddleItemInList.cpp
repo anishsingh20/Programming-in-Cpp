@@ -126,11 +126,11 @@ int main()
 	cout<<midItem(head)->data;
 	
 	
-	cout<<endl;
-	
-	cout<<printfromTail(head,2);
-	cout<<endl;
-	cout<<MiddleNode(&head);
+//	cout<<endl;
+//	
+//	cout<<printfromTail(head,2);
+//	cout<<endl;
+//	cout<<MiddleNode(&head);
 	
 	
 }

@@ -35,7 +35,7 @@ long long int Pow1(int x,int n)
 	{
 		return x*Pow1(x,n-1);
 	}
-	
+	pow
 }
 
 using namespace std;
