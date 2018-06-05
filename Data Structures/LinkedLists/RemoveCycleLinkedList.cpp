@@ -35,10 +35,10 @@ ListNode *newNode(int data)
 }
 
 //function to get the starting of the cycle in a list-uses Floyd's algorithm
-struct ListNode *detectStartCycle(struct ListNode *head) {
+ListNode *detectStartCycle(struct ListNode *head) {
     
     	if(!head)
-                return NULL;
+                return NULL ;
         
         struct ListNode *temp = head;
         struct ListNode *temp1 = head;
@@ -52,28 +52,90 @@ struct ListNode *detectStartCycle(struct ListNode *head) {
             //cycle is there when both fast and slow are equal
             if(temp==temp1)
             {
-                
-                while(temp!=head)
-                {
-                	temp = temp->next;
-			head = head->next;
-				
-		}
+                temp1 = head;
+        	while(temp!=temp1)
+        	{
+               		temp = temp->next;
+			temp1 = temp1->next;
+			
+        	}
 		
-		return temp;
+		//returning the first node of the cycle
+		return temp;	 
             }
             
         }
         
-        return NULL;
-        
-    
+       return NULL;
 }
 
 
-bool RemoveCycle(ListNode *head)
+//main program to remove the cycle by making the last node of cycle point to NULL
+struct ListNode *RemoveCycle(ListNode **head)
 {
+	//getting the starting node of the cycle
+	ListNode *start = detectStartCycle(*head);
+
+	ListNode *last = start;
 	
+	while(last->next!=start)
+	{
+		last = last->next;
+	}
+	
+	cout<<last->val<<endl;
+	//breaking the cycle.
+	last->next = NULL;
+	return *head;	
+}
+
+bool hasCycle(ListNode *head) {
+        
+	if(head==NULL || head->next==NULL)
+    {
+        return false;
+    }
+    
+    struct ListNode *temp = head;
+    struct ListNode *temp1 = head;
+    
+    while(temp!=temp1)
+    {
+       
+       if( temp1->next==NULL || temp1==NULL)
+       {
+           return false;
+        }
+        
+        temp = temp->next;
+        temp1 = temp1->next->next;
+        
+	}
+	
+	return true;
+}
+
+
+void TraverseList(ListNode *head)
+{
+	if(head)
+	{
+		cout<<head->val<<" ";
+		TraverseList(head->next);
+	}
+}
+
+void TraverseCLL(ListNode *head)
+{
+	ListNode *temp  = head;
+	
+	while(temp->next!=head)
+	{
+		cout<<temp->val<<" ";
+		temp = temp->next;
+	 } 
+	 
+	 
 }
 
 int main()
@@ -90,11 +152,17 @@ int main()
 	head->next = n1;
 	n1->next = n2;
 	
-	n2->next = n3;
+	n2->next = head;
 	
-	n3->next = head;
+	n3->next = NULL;
 	
-	cout<<detectStartCycle(head)->val;
+	
+
+	RemoveCycle(&head);
+	
+	//to verify if the cycle is removed
+	TraverseList(head);
+	
 	return 0;
 	
 }
