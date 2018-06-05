@@ -15,3 +15,5 @@ int main()
 	cout<< setw(10) << setfill('#') << setprecision(4) << oct << 100.3344;
 	return 0;
 }
+
+
