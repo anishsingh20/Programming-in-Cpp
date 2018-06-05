@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//program to detect a cycle in linked list and remove it.
+//program to detect a cycle in linked list and remove it.-Asked in Amazon,Microsoft, Ebay etc
 
 /*
 1)Method1
@@ -34,6 +34,42 @@ ListNode *newNode(int data)
 	return temp;
 }
 
+//function to get the starting of the cycle in a list-uses Floyd's algorithm
+struct ListNode *detectStartCycle(struct ListNode *head) {
+    
+    	if(!head)
+                return NULL;
+        
+        struct ListNode *temp = head;
+        struct ListNode *temp1 = head;
+        
+        while(temp1 && temp1->next)
+        { 
+             
+            temp = temp->next;
+            temp1 = temp1->next->next;
+            
+            //cycle is there when both fast and slow are equal
+            if(temp==temp1)
+            {
+                
+                while(temp!=head)
+                {
+                	temp = temp->next;
+			head = head->next;
+				
+		}
+		
+		return temp;
+            }
+            
+        }
+        
+        return NULL;
+        
+    
+}
+
 
 bool RemoveCycle(ListNode *head)
 {
@@ -56,7 +92,9 @@ int main()
 	
 	n2->next = n3;
 	
-	n3->next = n2;
+	n3->next = head;
+	
+	cout<<detectStartCycle(head)->val;
 	return 0;
 	
 }
