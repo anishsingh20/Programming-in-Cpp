@@ -29,7 +29,7 @@ void SplitList(struct Node *head, Node **headA, Node **headB)
 		(*headB) = NULL;	
 		 return;	
 	}
-	
+		
 	
 	//assigning headA of sublist as head
 	(*headA) = head;

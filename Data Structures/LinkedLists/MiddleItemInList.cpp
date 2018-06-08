@@ -1,6 +1,10 @@
 #include<iostream>
 
-//SINGLY LINKED LIST-Program to find Middle element in a linked list
+/*SINGLY LINKED LIST-Program to find Middle element in a linked list-IMP INTERVIEW QUESTION
+3 Methods-
+
+*/
+
 using namespace std;
 
 struct node {
@@ -10,7 +14,7 @@ struct node {
 
 
 
-//Approach-1 : Using fast and slow pointers
+//Approach-1 : Using fast and slow pointers, when fast pointer reaches NULL, then the slow one will always be at middle of list
 struct node *midItem(struct node *head)
 {
 	struct node *temp=head;//slow pointer

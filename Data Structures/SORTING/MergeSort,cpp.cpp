@@ -65,7 +65,7 @@ void MergeSort(int arr[],int l ,int m,int r) {
 	}
 	
 	//if left subarray has left overs,then copy them to A[k]
-	while(i < nL) {
+	while(i < nL2) {
 		arr[k]=L[i];
 		i++;
 		k++;
