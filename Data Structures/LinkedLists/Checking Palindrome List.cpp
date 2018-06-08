@@ -103,6 +103,19 @@ bool compareLists(Node *headA,Node *headB)
 	if(!headA || !headB) return false;
 	if(headA==NULL && headB==NULL)	return true;
 	
+	while(headA && headB)
+	{
+		if(headA->data != headB->data){
+			return false;
+			break;
+		}
+		
+		headA = headA->next;
+		headB = headB->next;
+	}
+	
+	return true;
+	
 	
 }
 	   	
@@ -145,6 +158,7 @@ int main() {
 	traverse(n1);
 	struct Node *new_head = reverseList(n1);
 	cout<<endl;
-	traverse(new_head);
+
+	cout<<compareLists(n1,new_head);
 	return 0;	
 }
