@@ -118,7 +118,23 @@ bool compareLists(Node *headA,Node *headB)
 	
 	
 }
-	   	
+
+
+//main function to check if list is palindrome
+bool CheckPalindrome(struct Node *head)
+{
+	if(head==NULL)	return true;
+	
+	//reverse of list
+	struct Node *new_head = reverseList(head);
+	
+	//if the lists on reversal are same
+	if(compareLists(head,new_head))
+		return true;
+		
+	else	return false;
+		  
+}	   	
 	   	
 int main() {
 	
@@ -137,7 +153,7 @@ int main() {
 	n2->next = n3;
 	n3->data=1;
 	n3->next = n4;
-	n4->data = 3;
+	n4->data = 4;
 	n4->next = NULL;
 	
 //	struct Node *temp=n1;
@@ -154,11 +170,9 @@ int main() {
 //	cout<<"\n"<<endl;
 //	
 //	cout<<Palindrome(n1,s);
+	
+	cout<<CheckPalindrome(n1);
 
-	traverse(n1);
-	struct Node *new_head = reverseList(n1);
-	cout<<endl;
-
-	cout<<compareLists(n1,new_head);
+	
 	return 0;	
 }
