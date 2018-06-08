@@ -2,6 +2,11 @@
 
 /*SINGLY LINKED LIST-Program to find Middle element in a linked list-IMP INTERVIEW QUESTION
 3 Methods-
+1)Using fast and slow pointers.
+2)Using the count of list and traversing till count/2 elements.
+3)using count and strating from mid as head, increment mid when count is odd.Then when head reaches NULL,
+the mid will only be at the middle. 
+
 
 */
 
@@ -76,6 +81,25 @@ int MiddleNode(struct node **head,int start=0)
 }
 
 
+int MiddleOddCount(node *head)
+{
+	node *mid = head;
+	int count=0;
+	
+	while(head)
+	{
+		//if count is odd, then increment mid to next
+		if(count & 1)
+			mid = mid->next;
+			
+		++count;
+		head = head->next;
+	}
+	
+	return mid->data;
+}
+
+
 struct node *newNode(int data)
 {
 	node *temp = new node();
@@ -128,7 +152,8 @@ int main()
 	
 	
 	cout<<midItem(head)->data;
-	
+	cout<<endl;
+	cout<<MiddleOddCount(head);
 	
 //	cout<<endl;
 //	
