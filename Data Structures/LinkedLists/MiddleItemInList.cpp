@@ -138,6 +138,7 @@ int printfromTail(node *head,int postail) {
 	return result->data;
 }
 
+
 int main()
 {
 	node *head = newNode(1);

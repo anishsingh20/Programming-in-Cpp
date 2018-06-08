@@ -77,7 +77,34 @@ int Palindrome(struct Node *head,stack<int>&s)
 //TIME COMPLEXITY  =  O(n)
 	   	
 
+Node *reverseList(struct Node *head)
+{
+	Node *curr=head,*prev=NULL,*next;
+	
+	if(!head)  return NULL;
+	
+	while(curr)
+	{
+		next = curr->next;
+		curr->next = prev; //making backwards link
+		prev = curr;
+		curr = next;
+		
+	}
+	
+	
+	if(prev!=NULL)	head = prev;
+	
+	return head;
+}
 
+bool compareLists(Node *headA,Node *headB)
+{
+	if(!headA || !headB) return false;
+	if(headA==NULL && headB==NULL)	return true;
+	
+	
+}
 	   	
 	   	
 int main() {
@@ -97,23 +124,27 @@ int main() {
 	n2->next = n3;
 	n3->data=1;
 	n3->next = n4;
-	n4->data = 2;
+	n4->data = 3;
 	n4->next = NULL;
 	
-	struct Node *temp=n1;
-	//pusing all items inside the stack
-	while(temp!=NULL) {
-		
-		s.push(temp->data);
-		temp=temp->next;
-	}
+//	struct Node *temp=n1;
+//	//pusing all items inside the stack
+//	while(temp!=NULL) {
+//		
+//		s.push(temp->data);
+//		temp=temp->next;
+//	}
+//
+//		
+//	
+//	
+//	cout<<"\n"<<endl;
+//	
+//	cout<<Palindrome(n1,s);
 
-		
-	
 	traverse(n1);
-	cout<<"\n"<<endl;
-	
-	cout<<Palindrome(n1,s);
-
+	struct Node *new_head = reverseList(n1);
+	cout<<endl;
+	traverse(new_head);
 	return 0;	
 }
