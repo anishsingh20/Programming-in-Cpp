@@ -77,13 +77,16 @@ int Palindrome(struct Node *head,stack<int>&s)
 //TIME COMPLEXITY  =  O(n)
 	   	
 
-Node *reverseList(struct Node *head)
-{
-	Node *curr=head,*prev=NULL,*next;
+struct ListNode* reverseList(struct ListNode *head) {
+        
+    if(!head) return NULL;
+        
+        struct ListNode *curr=head,*prev=NULL,*next;
 	
-	if(!head)  return NULL;
+
 	
 	while(curr)
+	
 	{
 		next = curr->next;
 		curr->next = prev; //making backwards link
@@ -91,50 +94,32 @@ Node *reverseList(struct Node *head)
 		curr = next;
 		
 	}
-	
-	
-	if(prev!=NULL)	head = prev;
-	
-	return head;
-}
 
-bool compareLists(Node *headA,Node *headB)
-{
-	if(!headA || !headB) return false;
-	if(headA==NULL && headB==NULL)	return true;
-	
-	while(headA && headB)
-	{
-		if(headA->data != headB->data){
-			return false;
-			break;
-		}
-		
-		headA = headA->next;
-		headB = headB->next;
-	}
-	
-	return true;
-	
-	
+	return prev;
 }
 
 
-//main function to check if list is palindrome
-bool CheckPalindrome(struct Node *head)
-{
-	if(head==NULL)	return true;
-	
-	//reverse of list
-	struct Node *new_head = reverseList(head);
-	
-	//if the lists on reversal are same
-	if(compareLists(head,new_head))
-		return true;
-		
-	else	return false;
-		  
-}	   	
+bool isPalindrome(struct ListNode* head) {
+        
+        if(head==NULL||head->next==NULL)
+            return true;
+        struct ListNode* slow=head;
+        struct ListNode* fast=head;
+        while(fast->next!=NULL&&fast->next->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        
+        slow->next=reverseList(slow->next);//reversing the next half of list
+        slow=slow->next;//slow now points to the element next to mid
+        while(slow!=NULL){
+            if(head->val!=slow->val)
+                return false;
+            head=head->next;
+            slow=slow->next;
+        }
+        return true;
+}	
 	   	
 int main() {
 	
@@ -147,14 +132,13 @@ int main() {
 	struct Node *n4  = new Node();	
 	
 	
-	n1->data=2;
+	n1->data=1;
 	n1->next=n2;
 	n2->data=1;
+
 	n2->next = n3;
 	n3->data=1;
-	n3->next = n4;
-	n4->data = 4;
-	n4->next = NULL;
+	n3->next = NULL;
 	
 //	struct Node *temp=n1;
 //	//pusing all items inside the stack
@@ -170,8 +154,9 @@ int main() {
 //	cout<<"\n"<<endl;
 //	
 //	cout<<Palindrome(n1,s);
-	
-	cout<<CheckPalindrome(n1);
+
+
+//	cout<<CheckPalindrome(n1);
 
 	
 	return 0;	
