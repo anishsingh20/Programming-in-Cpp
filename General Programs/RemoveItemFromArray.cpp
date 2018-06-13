@@ -1,25 +1,47 @@
 #include<iostream>
-
+#include<vector>
 
 using namespace std;
 
-int *RemoveItem(int *a,int val,int size)
+
+//this function returns the new size of the array after removing val
+int RemoveItem(int *nums,int val,int size)
 {
-	int i=0;
+	
 	int count=0;
 	for(int i = 0 ; i < size; i++)
 	{
-		if(a[i]!=val)
-			a[count++] = a[i];
+		if(nums[i] != val)
+		{
+			nums[count++] = nums[i];
+		}
+			
 		
 	}
 	
-	return *a;
+	return count;
 }
+	
+
+
 
 int main()
 {
 	int arr[]  =  {1,2,3,3,5,2};
+	
+
+	int size = (sizeof(arr)/sizeof(arr[0]));
+	
+	//ns is the new updated size of the array after removing the items
+	int ns = RemoveItem(arr,2,size);
+	
+	for(int i = 0 ; i < ns ; i++)
+	{
+		cout<<arr[i]<<endl;
+	}
+	cout<<endl;
+	
+	
 	
 	return 0;
 }
