@@ -50,7 +50,7 @@ node *SmallestNumGreaterThanN(struct node *root,int n)
 	
 	return small;
 }
-
+//Time complexity = O(n), space compelxity =  O(n) for queue
 
 node* newNode(int item)
 {
@@ -63,10 +63,70 @@ node* newNode(int item)
 
 
 //method-2
-node *SmallestNumGreaterThanNUsing Morris(node *root,int n)
+node *SmallestNumGreaterThanNUsingMorris(node *root,int n)
 {
+	if(!root) return NULL;
 	
+	node *curr = root;
+	node *small;
+	
+	int diff = INT_MAX;
+	while(curr)
+	{
+		if(!curr->left)
+		{
+			if(curr->data >= n)
+			{
+				if(diff  > abs(curr->data-n))
+				{
+					diff = abs(curr->data - n );
+					small=curr;
+				}
+			}
+			
+			curr = curr->right;
+		}
+		
+		else
+		{
+			//finding the inorder predecessor
+			node *pre = curr->left;
+			
+			while(pre->right!=NULL && pre->right!=curr)
+			{
+				pre = pre->right;
+			}
+			
+			//building thread
+			if(pre->right==NULL)
+			{
+				pre->right = curr;
+				curr = curr->left;
+			}
+			
+			//if thraded link already exists
+			else
+			{
+				pre->right = NULL;
+				if(curr->data >= n)
+				{
+					if(diff  > abs(curr->data-n))
+					{
+						diff = abs(curr->data - n );
+						small=curr;
+					}
+				}
+				
+				curr = curr->right;
+				
+			}
+		}
+	}
+	
+	
+	return small;
 }
+//Time complexity = O(n), Space complexity = O(1)
 
 int main()
 {
@@ -84,6 +144,10 @@ int main()
 	
 	
 	cout<<SmallestNumGreaterThanN(root,0)->data;
+	
+	cout<<endl;
+	
+	cout<<SmallestNumGreaterThanNUsingMorris(root,0)->data;
 	
 	
 	return 0;
