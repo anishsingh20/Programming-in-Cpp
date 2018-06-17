@@ -18,18 +18,42 @@ node* newNode(int item)
 }
 
 
+//doing reverse inorder traversal and counting the nodes visited, until the count is less than K, we add up those current nodes.
+int SumKLargestRecursion(node *root,int k)
+{
+	if(!root)
+		return -1;
+	
+	static int sum=0;	
+	static int count = 0;//count of visited nodes
+	
+	if(root->right)
+		SumKLargestRecursion(root->right,k);
+		
+	if(++count <= k)
+	{
+		sum += root->data;
+	}
+	
+	if(root->left)
+		SumKLargestRecursion(root->left,k);
+		
+		
+	return sum;
+}
+
 int main()
 {
-	struct node *root = newNode(19);
+	struct node *root = newNode(8);
 	
+	root->right = newNode(10);
 	root->left = newNode(7);
-	root->right = newNode(21);
+	root->left->left = newNode(2);
 	
-	root->left->left = newNode(3);
-	
-	root->right->right = newNode(11);
+	root->right->right = newNode(13);
 	
 	root->right->left = newNode(9);
-	root->right->right = newNode(14);
+	
+	cout<<SumKLargestRecursion(root,2);
 	
 }
