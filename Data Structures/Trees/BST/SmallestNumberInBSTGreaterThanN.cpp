@@ -6,6 +6,8 @@ using namespace std;
 
 /*program to find smallest number in BST greater than equal to N
 1)Method-1 Using level order traversal.
+2)Using Morris traversal.
+3)using Recurion and inorder traversal
 */
 
 struct node {
@@ -59,6 +61,12 @@ node* newNode(int item)
     return temp;
 }
 
+
+//method-2
+node *SmallestNumGreaterThanNUsing Morris(node *root,int n)
+{
+	
+}
 
 int main()
 {
