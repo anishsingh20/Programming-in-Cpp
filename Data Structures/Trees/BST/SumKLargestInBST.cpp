@@ -40,7 +40,8 @@ int SumKLargestRecursion(node *root,int k)
 		
 		
 	return sum;
-}
+	
+}//T(n) = O(n), space complexity = O(n) for implicit stack space(recursive stack)
 
 int main()
 {
