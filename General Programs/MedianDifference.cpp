@@ -2,6 +2,7 @@
 #include<vector>
 #include<set>
 #include<cmath>
+#include<algorithm>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ long MedianDiff(int *v,int size)
 	while(i<j)
 	{
 		//again finding difference between all items of array
-		while(i<j)
+		while(j > i)
 		{
 			s.push_back(abs(v[i]-v[j--]));
 		}
@@ -23,15 +24,21 @@ long MedianDiff(int *v,int size)
 		i++;
 	}
 	
-	for(vector<int>::iterator it = s.begin(); it!=s.end();it++)
-	{
-		cout<<*it<<" ";
-	}
+	//sorting the vector of differences to find the median
+	stable_sort(s.begin(),s.end());
+	
+
+	int start = 0;
+	int end = s.size()-1;
+	int mid = start + (end-start)/2;
+	
+	return s[mid];
+	
 }
 
 int main()
 {	
 	int v[] = {1,3,2,4};
-	MedianDiff(v,4);
+	cout<<MedianDiff(v,4);
 	return 0;
 }
