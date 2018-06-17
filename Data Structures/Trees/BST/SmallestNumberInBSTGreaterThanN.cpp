@@ -128,6 +128,41 @@ node *SmallestNumGreaterThanNUsingMorris(node *root,int n)
 }
 //Time complexity = O(n), Space complexity = O(1)
 
+
+
+//method 3 using recursion
+node *SmallestNumGreaterThanNUsingRecursion(node *root,int n)
+{
+	int diff  = INT_MAX;
+	if(!root)
+		return NULL;
+		
+	if (root->left == NULL && root->right == NULL 
+                                && root->data < n)
+        	return NULL;
+		
+	
+	
+	
+	if( (root->data >= n && root->left==NULL) || (root->data >=n && root->left->data < n ) )
+	{
+		return root;	
+	}
+	
+	
+	if(root->data <= n)
+	{
+		return SmallestNumGreaterThanNUsingRecursion(root->right,n);
+	}
+	
+	else
+		return SmallestNumGreaterThanNUsingRecursion(root->left,n);
+	
+	
+		
+}
+
+
 int main()
 {
 	struct node *root = newNode(19);
@@ -143,11 +178,13 @@ int main()
 	root->right->right = newNode(14);
 	
 	
-	cout<<SmallestNumGreaterThanN(root,0)->data;
-	
-	cout<<endl;
-	
-	cout<<SmallestNumGreaterThanNUsingMorris(root,0)->data;
+//	cout<<SmallestNumGreaterThanN(root,0)->data;
+//	
+//	cout<<endl;
+//	
+//	cout<<SmallestNumGreaterThanNUsingMorris(root,0)->data;
+//	
+	cout<<SmallestNumGreaterThanNUsingRecursion(root,10)->data;
 	
 	
 	return 0;
