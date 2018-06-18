@@ -18,7 +18,7 @@ node* newNode(int item)
 }
 
 
-//doing reverse inorder traversal and counting the nodes visited, until the count is less than K, we add up those current nodes.
+//doing reverse inorder traversal and counting the nodes visited, until the count becomes K, we add up those current nodes.
 int SumKLargestRecursion(node *root,int k)
 {
 	if(!root)

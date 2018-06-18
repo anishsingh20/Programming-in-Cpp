@@ -15,7 +15,7 @@ class Animal{
 		}
 }; 
 
-class Tiger : virtual public Animal{
+class Tiger :  public Animal{
 	public:
 		Tiger() {
 			cout<<"Tiger constructor called"<<endl;
@@ -23,7 +23,7 @@ class Tiger : virtual public Animal{
 };
 
 
-class Lion : virtual public Animal{
+class Lion :  public Animal{
 	
 	public:
 		
@@ -45,7 +45,7 @@ class Liger:  public Tiger, private Lion {
 
 int main() {
 	Liger l; 
-	l.getAnimal(); //error if virtual inheritence is not used-'getAnimal' is ambiguous, as compiler will not know from which instance of Tiger or Lion will be used to call
+//	l.getAnimal(); //error if virtual inheritence is not used-'getAnimal' is ambiguous, as compiler will not know from which instance of Tiger or Lion will be used to call
 	//getAnimal() of Animal class
 	
 	// when virtual inheritence is not used- 
