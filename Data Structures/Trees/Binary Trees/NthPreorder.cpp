@@ -2,6 +2,11 @@
 
 using namespace std;
 
+struct node {
+	int data;
+	struct node *left,*right;
+};
+
 
 void nthPreorder(node *root,int n)
 {
@@ -25,6 +30,15 @@ void nthPreorder(node *root,int n)
 	
 }
 
+node* newNode(int item)
+{
+    node* temp = new node;
+    temp->data = item;
+    temp->left = temp->right = NULL;
+ 
+    return temp;
+}
+
 void Preorder(node *root)
 {
 	if(root)
@@ -37,9 +51,23 @@ void Preorder(node *root)
 	}
 }
 
-
 int main()
 {
+
+	struct node *root = newNode(19);
+	
+	root->left = newNode(7);
+	root->right = newNode(21);
+	
+	root->left->left = newNode(3);
+	
+	root->right->right = newNode(24);
+	
+	cout<<"preorder traversal is "<<endl;
+	Preorder(root);
+	cout<<endl;
+	nthPreorder(root,2);
+	
 	
 	return 0;
 }
