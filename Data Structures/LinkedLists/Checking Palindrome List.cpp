@@ -110,13 +110,18 @@ bool isPalindrome(struct ListNode* head) {
             fast=fast->next->next;
         }
         
-        slow->next=reverseList(slow->next);//reversing the next half of list
-        slow=slow->next;//slow now points to the element next to mid
-        while(slow!=NULL){
-            if(head->val!=slow->val)
+//        slow->next=reverseList(slow->next);//reversing the next half of list
+//        slow=slow->next;//slow now points to the element next to mid
+
+	struct node *mid = reverseList(slow->next);
+	slow->next = NULL;
+	
+        while(mid!=NULL){
+        	
+            if(head->val!=mid->val)
                 return false;
             head=head->next;
-            slow=slow->next;
+            mid=mid->next;
         }
         return true;
 }	
@@ -134,11 +139,13 @@ int main() {
 	
 	n1->data=1;
 	n1->next=n2;
-	n2->data=1;
+	n2->data=2;
 
 	n2->next = n3;
 	n3->data=1;
 	n3->next = NULL;
+	
+	cout<<isPalindrome(head);
 	
 //	struct Node *temp=n1;
 //	//pusing all items inside the stack

@@ -88,6 +88,9 @@ void ReversePreorder(Node *root)
 	
 	cout<<root->data<<" ";
 	
+	
+	
+	
 }
 
 int main()

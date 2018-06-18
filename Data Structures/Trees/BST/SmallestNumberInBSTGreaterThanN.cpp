@@ -77,7 +77,7 @@ node *SmallestNumGreaterThanNUsingMorris(node *root,int n)
 		{
 			if(curr->data >= n)
 			{
-				if(diff  > abs(curr->data-n))
+				if(diff  < abs(curr->data-n))
 				{
 					diff = abs(curr->data - n );
 					small=curr;
@@ -163,6 +163,41 @@ node *SmallestNumGreaterThanNUsingRecursion(node *root,int n)
 }
 
 
+//
+void nthPreorder(node *root,int n)
+{
+	if(!root) return;
+	static int k = 0;
+	node *kthnode;
+	
+	if( ++k == n)
+	{
+		cout<<root->data;
+		return;
+	}
+	
+	if(root->left)
+		nthPreorder(root->left,n);
+	
+	if(root->right)
+		nthPreorder(root->right,n);
+		
+	
+	
+}
+
+void Preorder(node *root)
+{
+	if(root)
+	{
+		cout<<root->data<<" ";
+		
+		Preorder(root->left);
+		
+		Preorder(root->right);
+	}
+}
+
 int main()
 {
 	struct node *root = newNode(19);
@@ -172,19 +207,23 @@ int main()
 	
 	root->left->left = newNode(3);
 	
-	root->right->right = newNode(11);
-	
-	root->right->left = newNode(9);
-	root->right->right = newNode(14);
+	root->right->right = newNode(24);
 	
 	
-//	cout<<SmallestNumGreaterThanN(root,0)->data;
+	
+	
+//	cout<<SmallestNumGreaterThanN(root,10)->data;
 //	
 //	cout<<endl;
 //	
 //	cout<<SmallestNumGreaterThanNUsingMorris(root,0)->data;
 //	
-	cout<<SmallestNumGreaterThanNUsingRecursion(root,10)->data;
+	
+	Preorder(root);
+	
+	cout<<endl;
+	
+	nthPreorder(root,5);
 	
 	
 	return 0;
