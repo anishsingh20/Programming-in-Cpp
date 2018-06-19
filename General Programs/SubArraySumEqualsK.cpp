@@ -46,7 +46,7 @@ int subarraySum(vector<int>& nums, int k) {
         
         return count;
     }
-
+//T(n) = O(n*n),space = O(1)
 
 int main()
 {
