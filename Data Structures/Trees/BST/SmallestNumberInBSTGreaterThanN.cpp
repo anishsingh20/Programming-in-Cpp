@@ -186,17 +186,7 @@ void nthPreorder(node *root,int n)
 	
 }
 
-void Preorder(node *root)
-{
-	if(root)
-	{
-		cout<<root->data<<" ";
-		
-		Preorder(root->left);
-		
-		Preorder(root->right);
-	}
-}
+
 
 int main()
 {
