@@ -28,6 +28,7 @@ void ShuffleArray(int *arr,int l , int h)
 	
 	ShuffleArray(arr,mid+1,h);//recursively call the function on right half
 }
+//T(n) = O(nlogn), space  = O(n) for recursion call stack
 
 int main()
 {
