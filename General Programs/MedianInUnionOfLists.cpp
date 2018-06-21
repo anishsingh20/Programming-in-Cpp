@@ -28,7 +28,7 @@ int MedianInUnion(vector<int> &v1,vector<int>&v2)
 	int mid = start + (end-start)/2;
 	for(int i  = start; i < end; i++)
 	{
-		cout<<v1[i];
+		cout<<v1[i]<<" ";
 	}
 	
 	return v1[mid] ;  
