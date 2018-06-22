@@ -103,8 +103,47 @@ node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max
         }
         
         return root;
-}
+}//T(n) = O(n) and space = O(n)
 
+
+node *BSTfromPost(int arr[],int start,int end)
+{
+	node *root;
+
+	int ls ;
+	//base case only one item.
+	if(start > end) return NULL;
+	
+	if(start == end) 
+	{
+		root = newNode(arr[start]);
+		return root;
+	}
+
+	//otherwise root is the last item in postorder list
+	root = newNode(arr[end]);
+
+
+	for(int i = start ; i <= end-1 ; i++)
+	{
+		if( arr[i+1] > root->data && arr[i] < root->data  )
+		{
+			ls = i;
+			
+			root->left = BSTfromPost(arr,start,ls);
+			root->right = BSTfromPost(arr,ls+1,end-1);
+		
+		}
+			
+	}	
+	
+
+	
+
+	return root;
+	
+	
+}
 
 struct node *ConvertBSTPostorder(int post[],int size)
 {
@@ -135,12 +174,17 @@ void Inorder(node *root)
 
 int main()
 {
-	int post[] = {1, 7, 5, 50, 40, 10};
+	int post[] = {1, 7, 5, 50,40,10};
 	int sizePost = (sizeof(post)/sizeof(post[0]));
 	
-	struct node *root = ConvertBSTPostorder(post,sizePost);
-	Inorder(root);
-	cout<<endl;
+//	struct node *root = ConvertBSTPostorder(post,sizePost);
+//	Inorder(root);
+//	cout<<endl;
+
+//	struct node *root = BSTfromPost(post,0,sizePost-1);
+//	
+//	Inorder(root);
+	cout<<max(1,2,3);
 		
 //	struct node *root1 = ConvertBSTPostorder(post,sizePost);
 //	Inorder(root1);

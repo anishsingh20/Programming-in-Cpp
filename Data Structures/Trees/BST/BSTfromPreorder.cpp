@@ -125,7 +125,7 @@ node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max
 		*postIndex = *postIndex - 1; //decrementing the postIndex
 	
 	
-		if( *postIndex < size )
+		if( *postIndex >= 0 )
 		{
 			
 			
