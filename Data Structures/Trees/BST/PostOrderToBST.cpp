@@ -92,8 +92,9 @@ void Inorder(node *root)
 int main()
 {
 	int post[] = {1,7,5,50,40,10};
+	int sizePost = ( sizeof(post)/sizeof(post[0]));
 	
 	struct node *root = ConvertBSTPostorder(post,sizePost);
-	Inorder(root)
+	Inorder(root);
 
 }
