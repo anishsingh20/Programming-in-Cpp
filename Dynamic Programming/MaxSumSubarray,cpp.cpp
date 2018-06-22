@@ -13,7 +13,7 @@ int Max(int a,int b , int c)
 }   
     
     
-int maxSubArrayDnQ(vector<int>&nums,int start,int end)
+int maxSubArrayDnQ(int nums[],int start,int end)
 {
      int leftBorderSum = 0,rightBorderSum = 0 , maxLeftBorderSum = INT_MIN , maxRightborderSum = INT_MIN;
         
@@ -49,12 +49,19 @@ int maxSubArrayDnQ(vector<int>&nums,int start,int end)
 }
     
     
-    int maxSubArray(vector<int>& nums) {
+int maxSubArray(int arr[],int n) {
         
-        int start = 0 ;
-        int end = nums.size();
-         
-        return maxSubArrayDnQ(nums,start,end-1) ;
+        return maxSubArrayDnQ(arr,0,n-1) ;
        
         
     }
+    
+    
+int main()
+{
+	int arr[] = {-1,-1,-2,-2};
+	
+	int size = sizeof(arr)/sizeof(arr[0]);
+	
+	cout<<maxSubArray(arr,size);
+}
