@@ -28,6 +28,48 @@ struct node *newNode(int data)
 }
 
 
+node *BSTfromPostorderStack(int post[],int size)
+{	
+
+ 	stack<node*>s;
+
+	node *root =  newNode(post[size-1]);//last node of the traversal is root
+	
+	node *temp;
+	s.push(root);
+	int i = size-2 ;
+	while(i>=0)
+	{
+	    while(!s.empty() && post[i] < s.top()->data)
+	    {
+	        temp = s.top();
+	
+	        s.pop();
+	    }
+	    
+	    //right child of current root
+	    if(temp!=NULL)
+	    {
+	        temp->left = newNode(post[i]);
+	        s.push(temp->left);
+	    }
+	    
+	    //left subtree
+	    else
+	    {
+	        (s.top())->right = newNode(post[i]);
+	        s.push( (s.top())->right);
+	    }
+	    
+	    i--;
+	    
+	}
+	
+	
+	
+		return root;
+
+}
 
 node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max,int size)
 {
@@ -43,17 +85,19 @@ node *PostorderToBSTRecursion(int post[], int *postIndex,int key,int min,int max
 		*postIndex = *postIndex - 1; //decrementing the postIndex
 	
 	
-		if( *postIndex < size )
+		if( *postIndex >= 0 )
 		{
 			
 			
 			//constructing the right subtree
 			root->right = PostorderToBSTRecursion(post,postIndex,post[*postIndex],key,max,size);
 			
+			
 			//constructing the left subtree.
 			root->left = PostorderToBSTRecursion(post,postIndex,post[*postIndex],min,key,size);
 			
 			
+		
 			
 		}
         }
@@ -66,7 +110,7 @@ struct node *ConvertBSTPostorder(int post[],int size)
 {
 	int postIndex = size-1;//initially post index is last index
 	
-	return PostorderToBSTRecursion(post,&postIndex,post[size-1],INT_MIN,INT_MAX,size);
+	return PostorderToBSTRecursion(post,&postIndex,post[postIndex],INT_MIN,INT_MAX,size);
 }
 
 
@@ -91,10 +135,15 @@ void Inorder(node *root)
 
 int main()
 {
-	int post[] = {1,7,5,50,40,10};
-	int sizePost = ( sizeof(post)/sizeof(post[0]));
+	int post[] = {1, 7, 5, 50, 40, 10};
+	int sizePost = (sizeof(post)/sizeof(post[0]));
 	
 	struct node *root = ConvertBSTPostorder(post,sizePost);
 	Inorder(root);
+	cout<<endl;
+		
+//	struct node *root1 = ConvertBSTPostorder(post,sizePost);
+//	Inorder(root1);
+
 
 }
