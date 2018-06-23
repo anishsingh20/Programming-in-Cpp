@@ -5,13 +5,31 @@ using namespace std;
 
 int Max(int a,int b , int c)
 {
-    if(a > b && a > c) return a;
+    if(a >= b && a >= c) return a;
     
-    else if(b > a && b > c) return b;
+    else if(b >= a && b >= c) return b;
     
     else return c;
 }   
     
+    
+    
+    
+//simplified method to find maximum sum of continious subarray-
+int maxSumSubarraySimple(int nums[],int size)
+{
+	int curSum = nums[0];
+	int maxSum = nums[0];
+	
+	for(int i = 1; i < size ; i++)
+	{
+		curSum = max(nums[i],nums[i]+curSum);
+		
+		maxSum = max(maxSum,curSum);
+	}
+	
+	return maxSum;
+}    
     
 int maxSubArrayDnQ(int nums[],int start,int end)
 {
@@ -32,8 +50,13 @@ int maxSubArrayDnQ(int nums[],int start,int end)
         for(int i = mid ; i >= start ; i--)
         {
             leftBorderSum += nums[i];
+            
             if(leftBorderSum > maxLeftBorderSum)
-                    maxLeftBorderSum = leftBorderSum;
+            {
+            	maxLeftBorderSum = leftBorderSum;
+            
+	    }
+                    
         }
         
         
@@ -42,10 +65,14 @@ int maxSubArrayDnQ(int nums[],int start,int end)
             rightBorderSum += nums[j];
             
             if(rightBorderSum > maxRightborderSum )
-                    maxRightborderSum = rightBorderSum;
+            {
+            	maxRightborderSum = rightBorderSum;
+            	
+	    }
+                    
         }
         
-        return Max(leftSum,rightSum,maxLeftBorderSum+maxRightborderSum);
+        return Max(leftSum,rightSum,max(maxLeftBorderSum,maxRightborderSum));
 }
     
     
@@ -54,14 +81,16 @@ int maxSubArray(int arr[],int n) {
         return maxSubArrayDnQ(arr,0,n-1) ;
        
         
-    }
+}
     
     
 int main()
 {
-	int arr[] = {-1,-1,-2,-2};
+	int arr[] = {-1,2,3,-2};
 	
 	int size = sizeof(arr)/sizeof(arr[0]);
 	
-	cout<<maxSubArray(arr,size);
+//	cout<<maxSubArray(arr,size);
+
+	cout<<maxSumSubarraySimple(arr,size-1);
 }
