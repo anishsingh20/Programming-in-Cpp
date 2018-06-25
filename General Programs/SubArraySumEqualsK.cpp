@@ -29,7 +29,7 @@ using namespace std;
 //        return count;
 //}
 
-int subarraySum(vector<int>& nums, int k) {
+vector<int> subarraySum(vector<int>& nums, int k) {
         
       int count = 0 ;
         
@@ -40,11 +40,14 @@ int subarraySum(vector<int>& nums, int k) {
             {
                 sum += nums[j];
                 if(sum == k)
-                        count++;
+                {
+                	return {i,j};
+		}
+                        
             }
         }
         
-        return count;
+        
     }
 //T(n) = O(n*n),space = O(1)
 
@@ -55,7 +58,8 @@ int main()
 	v.push_back(1);
 	v.push_back(1);
 	v.push_back(1);
+	v.push_back(2);
 	
-	cout<<subarraySum(v,2);	
+	subarraySum(v,2);	
 	
 }

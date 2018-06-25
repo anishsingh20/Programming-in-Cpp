@@ -23,7 +23,7 @@ long long int factorial(int n)
 	F[n] = n*factorial(n-1);
 	return F[n];
 	
-} //as efficient as simple recursive implementation or factorial program , but consumes more space  
+} //as efficient as simple recursive implementation or factorial program 
 
 
 int main()
