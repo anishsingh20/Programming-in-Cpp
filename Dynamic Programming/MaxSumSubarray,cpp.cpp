@@ -20,8 +20,25 @@ int Max(int a,int b , int c)
 
 int maxSumUsingDp(int arr[],int size)
 {
+	int dp[size+1];
 	
-    }    
+	dp[0]=arr[0];
+	int Max = arr[0];
+	
+	for(int i = 1 ; i < size ; i++)
+	{
+		dp[i] = arr[i] + (dp[i-1]>0 ? dp[i-1] : 0);
+	}
+	
+	for(int i = 0 ; i< size ; i++)
+	{
+		if(Max < dp[i])
+			Max = dp[i];
+	}
+	
+	return Max;
+		
+}    //T(n) = O(n) and S(n) = O(n) for aux array
     
 //simplified method to find maximum sum of continious subarray-
 int maxSumSubarraySimple(int nums[],int size)
@@ -101,4 +118,8 @@ int main()
 //	cout<<maxSubArray(arr,size);
 
 	cout<<maxSumSubarraySimple(arr,size-1);
+	
+	cout<<endl;
+	
+	cout<<maxSumUsingDp(arr,size);
 }
