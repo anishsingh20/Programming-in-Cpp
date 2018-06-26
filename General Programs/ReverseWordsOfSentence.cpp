@@ -17,15 +17,15 @@ void ReverseWords(string &s)
 	
 	int count  = 0 ;
 	
+	//iterating till first word's end
 	while(*it != ' ')
 	{	
-		count++;
 		it++;
 	}
 		
 		
-	reverse(s.begin(),s.begin()+count);
-	reverse(s.begin() + count , s.end());
+	reverse(s.begin(),it);
+	reverse(it , s.end());
 		
 		
 	
@@ -43,7 +43,7 @@ void ReverseWords(string &s)
 int main()
 {
 	
-	string s = "whats up nigga";
+	string s = "hello world!";
 	
 	ReverseWords(s);	
 	return 0;
