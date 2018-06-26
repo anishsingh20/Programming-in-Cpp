@@ -9,8 +9,9 @@ int MaxSumDp(int arr[],int size)
 {
 	int dp[size];
 	
-	dp[0] = arr[0];
-	dp[1] = max(arr[0],arr[1]);
+	//for case when first item is negetive
+	dp[0] = arr[0] > 0 ? arr[0]  : 0;
+ 	dp[1] = max(arr[0],arr[1]);
 	int maxSum = arr[0];
 	
 	for(int i = 2 ; i < size ; i++)
@@ -54,14 +55,14 @@ int MaxSum(int arr[],int size)
 
 //int MaxSumSimple(int arr[],int size)
 //{
-//	int curSum = 0;
-//	int mSum = 0;
-//	
-//	for(int i = 0 ; i < size ; i++)
+//	int curSum = arr[0] ;
+//	int mSum = INT_MIN;
+////
+//	for(int i = 2 ; i < size ; i++)
 //	{
-//		curSum += max(arr[i] + arr[i+2],arr[i+1]);
+//		curSum = max(arr[i]+curSum,arr[i-1]);
 //		
-//		mSum += max(mSum,curSum); 
+//		mSum = max(mSum,curSum); 
 //	}
 //	
 //	return mSum;
@@ -71,11 +72,12 @@ int MaxSum(int arr[],int size)
 
 int main()
 {
-	int arr[] = {-1,1,2,3,-2};
+	int arr[] = {1,2,3,6,7};
 	int size = sizeof(arr)/sizeof(arr[0]);
-//	cout<<MaxSum(arr,size);
-//	cout<<endl;
-//	cout<<MaxSumSimple(arr,size);
+	cout<<MaxSum(arr,size);
+	cout<<endl;
+	cout<<MaxSumSimple(arr,size);
+	cout<<endl;
 	cout<<MaxSumDp(arr,size);
 	
 	return 0;

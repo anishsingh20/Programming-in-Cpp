@@ -15,6 +15,14 @@ int Max(int a,int b , int c)
     
     
     
+  
+//using Dp-an aux array
+
+int maxSumUsingDp(int arr[],int size)
+{
+	
+    }    
+    
 //simplified method to find maximum sum of continious subarray-
 int maxSumSubarraySimple(int nums[],int size)
 {
