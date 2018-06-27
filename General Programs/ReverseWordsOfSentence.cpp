@@ -1,6 +1,7 @@
 #include<iostream>
 #include<stack>
 #include<algorithm>
+#include<cstring>
 
 
 using namespace std;
@@ -42,11 +43,35 @@ void ReverseWords(string &s)
 }	
 
 
+//function to count words
+int countWords(string s)
+{
+	int count = 0 ;
+        int word = 0;
+	
+	int i = 0 ;
+	int size = s.size()-1;
+	
+	while(i <= size)
+	{
+		if(s[i] == ' ') word = 0;
+		
+		else if(++word==1)
+			count++;
+		
+		i++;
+	}
+	
+	return count;
+}
+
 int main()
 {
 	
-	string s = " hey  how are you";
+	string s = "  hey   how are you";
 	
-	ReverseWords(s);	
+	ReverseWords(s);
+	
+	cout<<endl<<countWords(s);	
 	return 0;
 }
