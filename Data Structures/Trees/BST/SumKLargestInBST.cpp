@@ -17,6 +17,58 @@ node* newNode(int item)
     return temp;
 }
 
+int SumKLargestUsingReverseMorrisTraversal(node *root,int k)
+{
+	node *curr = root;
+	int sum = 0 ;
+	int count = 0;
+	//while doing reverse inorder traversal keep track of visited nodes
+	
+	while(curr)
+	{
+		if(curr->right==NULL)
+		{
+		
+			if( ++count <= k)
+			{
+				sum += curr->data;
+			}
+			
+			curr = curr->left;
+		}
+		
+		else
+		{
+			//finding the inorder successor node
+			//inorder successor is the left most in right subtree
+			node *succ = curr->right;
+			while(succ->left && succ->left!=curr)
+				succ = succ->left;
+				
+			if(succ->left==NULL)
+			{
+				succ->left = curr;
+				
+				curr =  curr->right;
+			}
+			
+			else
+			{
+				succ->left = NULL;
+				
+				
+				if(++count <= k)
+					sum += curr->data;
+					
+				curr = curr->left;
+						
+			}
+			
+		}
+	}
+	
+	return sum;
+}
 
 //doing reverse inorder traversal and counting the nodes visited, until the count becomes K, we add up those current nodes.
 int SumKLargestRecursion(node *root,int k)
@@ -56,5 +108,9 @@ int main()
 	root->right->left = newNode(9);
 	
 	cout<<SumKLargestRecursion(root,2);
+	
+	cout<<endl;
+	
+	cout<<SumKLargestUsingReverseMorrisTraversal(root,3);
 	
 }

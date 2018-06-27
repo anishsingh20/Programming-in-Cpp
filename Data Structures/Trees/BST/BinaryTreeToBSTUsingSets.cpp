@@ -90,6 +90,8 @@ void SetToTree(set<int>&s,BSTnode *root)
 	if(!root)
 		return;
 	
+
+	
 	//first move to the left subtree and update items
 	SetToTree(s,root->left);
 	
@@ -98,6 +100,7 @@ void SetToTree(set<int>&s,BSTnode *root)
 	
 	root->data = *it; //copying the item in set(sorted) to the tree while inorder traversal
 	s.erase(it);//now erasing the beginning item.
+	
 	
 	//now move to right subtree and update items
 	SetToTree(s,root->right);
