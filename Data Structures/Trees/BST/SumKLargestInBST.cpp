@@ -68,7 +68,7 @@ int SumKLargestUsingReverseMorrisTraversal(node *root,int k)
 	}
 	
 	return sum;
-}
+}//T(n) = o(n) and space  - O(1), constant extra space consumed
 
 //doing reverse inorder traversal and counting the nodes visited, until the count becomes K, we add up those current nodes.
 int SumKLargestRecursion(node *root,int k)
