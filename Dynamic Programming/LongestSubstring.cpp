@@ -3,6 +3,47 @@
 
 using namespace std;
 
+
+
+bool CheckUnique(string s, int start,int end)
+{
+	set<char>a;
+	
+	for(int i = start ; i < end ; i++)
+	{
+		//if item already found in set return false
+		if( a.find(s[i]) != a.end()) return false;
+		
+		else a.insert(s[i]);
+ 	}
+ 	
+ 	return true;
+
+}
+
+
+//brute force-checking all possible sub strings, and checking if they are unique
+int lenOfSubstring(string s)
+{
+	int n  = s.size();
+	int len = 0 ;
+	for(int i = 0 ; i < n ; i++)
+	{
+		for(int j = i+1 ; j <= n ; j++)
+		{
+			if(CheckUnique(s,i,j))  len = max(len,j-i);
+		}
+	
+		
+	}
+	
+	return len;
+	
+}
+
+
+
+//using sliding window concept.
 int lengthOfLongestSubstring(string s) {
         
        set<char>a;
@@ -15,7 +56,7 @@ int lengthOfLongestSubstring(string s) {
             //if set does not containes a char, we simply insert it
             if(a.find(s[j]) == a.end())
             {
-            	cout<<s[j]<<endl;
+            	
                 a.insert(s[j++]);
                 
                 len = max(len,j-i);
@@ -39,5 +80,7 @@ int main()
 	
 	
 	cout<<lengthOfLongestSubstring("abcbcad");
+	
+	cout<<endl<<lenOfSubstring("abcbcad");
 	return 0;
 }
