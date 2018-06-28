@@ -17,7 +17,7 @@ void findBin(int num)
 		findBin(num/2); 
 		
 		//print bin value in postorder
-		cout<<bin<<" ";	
+		cout<<bin;	
 	
 	}
 	
@@ -25,10 +25,20 @@ void findBin(int num)
 }
 
 
+void PrintBinary(int n)
+{
+	for(int i = n; i>=2 ;i--)
+	{
+		findBin(i);
+		cout<<" ";
+	}
+}
+
 int main()
 {
-	findBin(6);
+	//findBin(3);
 	
+	PrintBinary(6);
 	
 	return 0;
 }
