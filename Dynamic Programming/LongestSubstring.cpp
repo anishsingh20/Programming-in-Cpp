@@ -40,7 +40,7 @@ int lenOfSubstring(string s)
 	return len;
 	
 }
-
+//T(n) = O(n*n*n)-inefficient solution-
 
 
 //using sliding window concept.
@@ -79,8 +79,8 @@ int main()
 {
 	
 	
-	cout<<lengthOfLongestSubstring("abcbcad");
+	cout<<lengthOfLongestSubstring("AABEBCDD");
 	
-	cout<<endl<<lenOfSubstring("abcbcad");
+	cout<<endl<<lenOfSubstring("AABEBCDD");
 	return 0;
 }
