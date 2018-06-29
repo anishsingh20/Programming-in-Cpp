@@ -2,8 +2,13 @@
 
 
 using namespace std;
+/*longest common subsequence problem-
+1)Brute force - T(n) = O(n*2^n)
 
+2)recursion - T(n) = O(2^n)- has overlapping subproblems which are computed repetedly.
 
+3)DP = T(n) = O(n*n) -Most efficient
+*/
 
 //recrsive implementation
 int LCS(string &a,string &b,int n,int m)
