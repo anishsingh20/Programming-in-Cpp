@@ -7,7 +7,7 @@ using namespace std;
 
 
 //DP solution-efficient)By making a 2-D table which contains the length of subsequence-
-int LCS_DP(string &a,string &b,int m,int n)
+void PrintLCS(string &a,string &b,int m,int n)
 {
 	int L[m+1][n+1]; //a 2-d table
 	
@@ -28,7 +28,45 @@ int LCS_DP(string &a,string &b,int m,int n)
 	}
 	
 	//max length stored in last index
-	return L[m][n];
+	int LCSlen =  L[m][n];
+	//getting the length of LCS
+	//making the array to store the common letters
+	char LCS[LCSlen+1];
+	
+	LCS[LCSlen] = ' '; //setting the terminating char
+	
+	int i = 0 , j = 0;
+	
+	while(i < m && j < n )
+	{
+		if(a[i]==b[j])
+		{
+			LCS[LCSlen] = a[i];
+			i++; j++; LCSlen--;
+		}
+		
+		else if(L[i+1][j] > L[i][j+1])
+			i++;
+		else j++;
+		
+		
+	}
+	
+	
+	cout<<LCS;
 }
-//T(n) = O(mn) which is very efficient
 
+
+
+
+int main()
+{
+	string a  = "aassfafg";
+	string  b = "anbsgf";
+	
+	int n = a.size();
+	int m = b.size();
+	
+	PrintLCS(a,b,n,m);
+	
+}
