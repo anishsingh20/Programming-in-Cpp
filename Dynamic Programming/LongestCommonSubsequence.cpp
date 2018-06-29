@@ -10,12 +10,35 @@ using namespace std;
 3)DP = T(n) = O(n*n) -Most efficient
 */
 
+
+
+//DP solution-efficient)By making a 2-D table which contains the length of subsequence-
+int LCS_DP(string &a,string &b,int m,int n)
+{
+	int L[m+1][n+1]; //a 2-d table
+	
+	for(int i = 0 ; i  < m ; i++)
+	{
+		for(int  j = 0 ; j < n;j++)
+		{
+			if(i==0 || j==0)
+				L[i][j] = 0;
+			
+			else if(a[i]==b[j])
+				
+		}
+	}
+}
+
+
+
+
 //recrsive implementation
 int LCS(string &a,string &b,int n,int m)
 {
 	
 	
-	//base case when we reach start of strings
+	base case when we reach start of strings
 	if(m==0 || n==0)
 		return 0;
 	
@@ -27,6 +50,9 @@ int LCS(string &a,string &b,int n,int m)
 	else
 		return max(LCS(a,b,n-1,m),LCS(a,b,n,m-1));
 		
+	
+	
+	
 		
 	
 } //T(n) = O(2^n) exponential algorithm-and so a string of length n has 2^n different possible sub-seq.
