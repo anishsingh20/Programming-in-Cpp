@@ -75,8 +75,7 @@ int main()
 	int arr[] = {1,2,3,6,7};
 	int size = sizeof(arr)/sizeof(arr[0]);
 	cout<<MaxSum(arr,size);
-	cout<<endl;
-	cout<<MaxSumSimple(arr,size);
+
 	cout<<endl;
 	cout<<MaxSumDp(arr,size);
 	
