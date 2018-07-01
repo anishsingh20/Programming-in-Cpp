@@ -7,7 +7,7 @@ using namespace std;
 */
 
 //Naive recursive approach to find LCS
-int LCS(string a,string reva,int n,int m)
+int LCS(char *a,char *reva,int n,int m)
 {
 	//base case
 	if(n==0 || m==0)
@@ -22,4 +22,31 @@ int LCS(string a,string reva,int n,int m)
 
 
 //function to find length of longest palindromic subseq where we reverse the string and pass it to LCS function
-int LPS()
+int LPS(char *a)
+{
+	//reverse of string a
+	char *rev;
+	int i = 0,j = strlen(a)-1;
+	int size = strlen(a);
+	int sizerev;
+	
+	while(i<=j)
+	{
+		rev[i++] = a[j--]; 
+	}
+	
+	sizerev = strlen(rev);
+	
+	int len = LCS(a,rev,size,sizerev)
+	
+	return len;
+}
+
+
+
+int main()
+{
+	
+	
+	return 0;
+}
