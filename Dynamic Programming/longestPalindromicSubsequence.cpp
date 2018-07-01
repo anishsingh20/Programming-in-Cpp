@@ -1,4 +1,6 @@
 #include<iostream>
+#include<cstring>
+#include<algorithm>
 
 using namespace std;
 
@@ -7,7 +9,7 @@ using namespace std;
 */
 
 //Naive recursive approach to find LCS
-int LCS(char *a,char *reva,int n,int m)
+int LCS(string a,string reva,int n,int m)
 {
 	//base case
 	if(n==0 || m==0)
@@ -20,33 +22,50 @@ int LCS(char *a,char *reva,int n,int m)
 }
 
 
-
-//function to find length of longest palindromic subseq where we reverse the string and pass it to LCS function
-int LPS(char *a)
+int LCS_DP(string &a,string &b,int m,int n)
 {
-	//reverse of string a
-	char *rev;
-	int i = 0,j = strlen(a)-1;
-	int size = strlen(a);
-	int sizerev;
+	int L[m+1][n+1]; //a 2-d table
 	
-	while(i<=j)
+	for(int i = 0 ; i  <= m ; i++)
 	{
-		rev[i++] = a[j--]; 
+		for(int  j = 0 ; j <= n;j++)
+		{
+			if(i==0 || j==0)
+				L[i][j] = 0;
+			
+			//if same char found-increase the length by 1
+			else if(a[i]==b[j])
+				L[i][j] = L[i-1][j-1] + 1;
+				
+			else L[i][j] = max(L[i-1][j],L[i][j-1]);
+				
+		}
 	}
 	
-	sizerev = strlen(rev);
-	
-	int len = LCS(a,rev,size,sizerev)
-	
-	return len;
+	//max length stored in last index
+	return L[m][n];
 }
+//T(n) = O(mn) which is very efficient
+
+
+
+//function to find length of longest palindromic subseq where we reverse the string and pass it to LCS function
+int LPS(string a)
+{
+	string rev = a;
+	reverse(rev.begin(),rev.end());
+	
+	return LCS_DP(a,rev,a.size(),rev.size());
+	}
+
 
 
 
 int main()
 {
+	string a = "nitinaaabs";
 	
+	cout<<LPS(a);
 	
 	return 0;
 }
