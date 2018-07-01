@@ -5,6 +5,11 @@
 using namespace std;
 
 /*Finding longest length of palindromic subsequence using LCS
+1)Simply make a function to find LCS of 2 strings using DP
+2) Use function LCS as a subroutine call in another function LPS which simply reverses the string
+and passes both of them as arguments in LCS subroutine.
+
+As LCS of the reverse of a string and that string will give us LPS 
 
 */
 
@@ -22,8 +27,10 @@ int LCS(string a,string reva,int n,int m)
 }
 
 
-int LCS_DP(string &a,string &b,int m,int n)
+int LCS_DP(string &a,string &b)
 {
+	int m = a.size();
+	int n = b.size();
 	int L[m+1][n+1]; //a 2-d table
 	
 	for(int i = 0 ; i  <= m ; i++)
@@ -34,7 +41,7 @@ int LCS_DP(string &a,string &b,int m,int n)
 				L[i][j] = 0;
 			
 			//if same char found-increase the length by 1
-			else if(a[i]==b[j])
+			else if(a[i-1]==b[j-1])
 				L[i][j] = L[i-1][j-1] + 1;
 				
 			else L[i][j] = max(L[i-1][j],L[i][j-1]);
@@ -55,15 +62,16 @@ int LPS(string a)
 	string rev = a;
 	reverse(rev.begin(),rev.end());
 	
-	return LCS_DP(a,rev,a.size(),rev.size());
-	}
+	return LCS_DP(a,rev);
+}
+//T(n) = O(n*n) quadratic , very efficnet
 
 
 
 
 int main()
 {
-	string a = "nitinaaabs";
+	string a = "cbbd";
 	
 	cout<<LPS(a);
 	

@@ -25,7 +25,7 @@ int LCS_DP(string &a,string &b,int m,int n)
 				L[i][j] = 0;
 			
 			//if same char found-increase the length by 1
-			else if(a[i]==b[j])
+			else if(a[i-1]==b[j-1])
 				L[i][j] = L[i-1][j-1] + 1;
 				
 			else L[i][j] = max(L[i-1][j],L[i][j-1]);
@@ -68,8 +68,8 @@ int LCS(string &a,string &b,int n,int m)
 
 int main()
 {
-	string a  = "anish";
-	string  b = "manish";
+	string a  = "cbbd";
+	string  b = "dbbc";
 	
 	int n = a.size();
 	int m = b.size();

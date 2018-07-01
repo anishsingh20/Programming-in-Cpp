@@ -19,7 +19,7 @@ void PrintLCS(string &a,string &b,int m,int n)
 				L[i][j] = 0;
 			
 			//if same char found-increase the length by 1
-			else if(a[i]==b[j])
+			else if(a[i-1]==b[j-1])
 				L[i][j] = L[i-1][j-1] + 1;
 				
 			else L[i][j] = max(L[i-1][j],L[i][j-1]);
@@ -29,25 +29,27 @@ void PrintLCS(string &a,string &b,int m,int n)
 	
 	//max length stored in last index
 	int LCSlen =  L[m][n];
+	
 	//getting the length of LCS
 	//making the array to store the common letters
-	char LCS[LCSlen+1];
+	string LCS(LCSlen+1,'\0');
+
 	
-	LCS[LCSlen] = ' '; //setting the terminating char
+	int i = m , j = n;
 	
-	int i = 0 , j = 0;
-	
-	while(i < m && j < n )
+	while(i > 0 && j >0)
 	{
-		if(a[i]==b[j])
+		if(a[i-1]==b[j-1])
 		{
-			LCS[LCSlen] = a[i];
-			i++; j++; LCSlen--;
+			LCS[LCSlen-1] = a[i-1];
+			i--; j--; LCSlen--;
 		}
 		
-		else if(L[i+1][j] > L[i][j+1])
-			i++;
-		else j++;
+		//go in direction of larger value
+	 	if(L[i-1][j] > L[i][j-1])  
+		 	i-- ;
+		 	
+		 else j--;
 		
 		
 	}
@@ -61,8 +63,8 @@ void PrintLCS(string &a,string &b,int m,int n)
 
 int main()
 {
-	string a  = "aassfafg";
-	string  b = "anbsgf";
+	string a  = "AGGTAB";
+	string  b = "GXTXAYB";
 	
 	int n = a.size();
 	int m = b.size();
