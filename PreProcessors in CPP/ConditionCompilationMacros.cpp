@@ -4,7 +4,7 @@ using namespace std;
 //CONDITIONAL COMPILATION MACROS
 
 #define WIN 1
-#define LIN 2
+#define LIN 1
 #define MAC 3
 
 
@@ -12,6 +12,7 @@ using namespace std;
 int main()
 {
 	
+		
 	#if OS == WIN
 		cout<<"Windows OS macro"<<endl;
 	
@@ -21,8 +22,8 @@ int main()
 	#else
 		cout<<"MAC OS macro"<<endl;
 		
-	
-	#endif
+	#endif	
+
 	
 	return 0;
 }
