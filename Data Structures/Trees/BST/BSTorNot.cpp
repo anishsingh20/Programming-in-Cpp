@@ -1,5 +1,6 @@
 #include<iostream>
 #include<iomanip>
+#include<vector>
 
 using namespace std;
 
@@ -122,29 +123,67 @@ BSTnode *newNode(int data)
 	return temp;
 }
 
+void StoreInorder(BSTnode *root,vector<int>&v)
+{
+    if(!root)
+        return;
+    
+   
+        StoreInorder(root->left,v);
+        
+        v.push_back(root->data);
+        
+    
+        StoreInorder(root->right,v);
+}
+
+bool isBSTSimple(BSTnode* root) {
+    // Your code here
+    
+    vector<int>v; //to store the inorder traversal
+    
+    StoreInorder(root,v);
+    
+    int prev = v[0];
+    for(int i = 1 ; i < v.size(); i++)
+    {
+    
+        if(v[i] > prev) prev = 	v[i];
+        
+        else {
+        	return false;
+        	break;
+	}
+    }
+    
+    return true;
+}
+
 
 
 int main()
 {
 	
-	BSTnode *root=newNode(7);
+	BSTnode *root=newNode(1);
 
-	root->left = newNode(5);
-	root->right = newNode(9);
-	root->right->left = newNode(8);
-	root->left->left = newNode(1);
-	root->left->right = newNode(6);
-	root->right->right = newNode(11);
+	root->left = newNode(3);
+	root->right = newNode(2);
+//	root->right->left = newNode(8);
+//	root->left->left = newNode(1);
+//	root->left->right = newNode(6);
+//	root->right->right = newNode(11);
+//	
 	
 	
-	
-	cout<<FindMin(root)->data;
-	cout<<endl;
-	cout<<isBST(root);
-	cout<<endl;
+//	cout<<FindMin(root)->data;
+//	cout<<endl;
+//	cout<<isBST(root);
+//	cout<<endl;
 	
 	//initializing prev as INT_MIN 
 	int a = INT_MIN;
 	int *prev = &a;
-	cout<<isBSTInorder(root,prev);	
+//	cout<<isBSTInorder(root,prev);	
+
+	cout<<isBSTSimple(root);
 }
