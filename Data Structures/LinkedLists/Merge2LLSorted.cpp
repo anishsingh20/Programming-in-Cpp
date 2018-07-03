@@ -75,12 +75,12 @@ Node* MergeList(Node *headA, Node *headB) {
 		if(headA->data <= headB->data)  {
 			temp->next=headA;
 			temp=headA; 
-			headA=temp->next;
+			headA=headA->next;
 		}
 		else {
 			temp->next=headB; //temp links to headB
 			temp=headB;//temp becomes headB node
-			headB=temp->next;//headB moves to next to temp
+			headB=headB->next;//headB moves to next to temp
 		}
 		
 	}
@@ -88,16 +88,19 @@ Node* MergeList(Node *headA, Node *headB) {
 	if(headA==NULL) temp->next=headB; //when List A is finished
 	if(headB==NULL) temp->next=headA; //when list B is finished
 	
-	while(new_head!=NULL) {
-		
-		cout<<new_head->data<<endl;
-		new_head = new_head->next;
-	}
 	
 	return(new_head); //will return the new header of the sorted merged LL
 }
 
 
+void traverse(Node *head)
+{
+	while(head)
+	{
+		cout<<head->data<<" ";
+		head = head->next;
+	}
+}
 
 int main() 
 {
@@ -139,7 +142,9 @@ int main()
 	m4->next = NULL;
 	
 	
-	cout<<MergeList(n1,m2);
+	Node *new_head = MergeListsRec(n1,m1);
+	
+	traverse(new_head);
 	
 	
 	

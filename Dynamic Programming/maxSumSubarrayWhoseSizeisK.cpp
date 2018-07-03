@@ -8,11 +8,11 @@ using namespace std;
 int maxSum(int arr[],int size,int k)
 {
     int Max = 0,curMax;
-     for(int i = 0 ; i <= (size-k) ; i++)
+     for(int i = 0 ; i < (size-k) ; i++)
      {
     
         curMax = 0;
-        for(int j = i ; j < i+k ; j++)
+        for(int j = i ; j <= k ; j++)
         {
             curMax += arr[j];
         
