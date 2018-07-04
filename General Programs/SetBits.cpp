@@ -29,18 +29,29 @@ int CountSet(int n)
 	while(n)
 	{
 		count += n & 1;
-		n >>= 1; //simply right shift the no by 1 
-		
+	//	n >>= 1; //simply right shift the no by 1 
+		//right shift is equivalent to division by 2
+		n /= 2;	
 	}
 	
 	return count;
 }
 
+//int countUnset(int n){
+//	
+//	int count = 0;
+//	while(n)
+//	{
+//		count += n | 1;
+//		
+//		n /= 2;
+//	}
+//}
+
 int main()
 {
-	//cout<<CountSet(10);
-	int n =  __builtin_popcount(7);
+	cout<<CountSet(7);
+//	cout<<endl<<countUnset(5);
 	
-	cout<<n;
 	return 0;
 }

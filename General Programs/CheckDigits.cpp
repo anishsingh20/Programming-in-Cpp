@@ -9,17 +9,17 @@ int fun(int n,int m)
 	int s = sum;
 	int c1 = 0,c2=0;
 	int nn = n;
-	while(s>0)
+	while(s /= 10)
 	{
 		c1++;
-		s /= 10;
+		
 		
 	}
 	
-	while(nn>0)
+	while(nn /= 10)
 	{
 		c2++;
-		nn /= 10;
+		
 	}
 	
 	if(c1==c2) return sum;
@@ -29,6 +29,6 @@ int fun(int n,int m)
 
 int main()
 {
-	cout<<fun(10,121);
+	cout<<fun(100,121);
 	return 0;
 }
