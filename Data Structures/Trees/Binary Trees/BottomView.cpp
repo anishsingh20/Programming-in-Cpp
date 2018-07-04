@@ -127,6 +127,36 @@ void BottomView(Node *root)
 }
 
 
+void UtilBottomView(Node *root,map<int,vector<int> >&m,int hd=0)
+{
+    if(!root) return;
+    
+    UtilBottomView(root->left,m,hd-1);
+    
+    m[hd].push_back(root->data);
+    
+    UtilBottomView(root->right,m,hd+1);
+    
+}
+void bottomView(Node *root)
+{
+    
+    map<int,vector<int> >m;
+    map<int,vector<int> >::iterator it;
+    //populating the map
+    UtilBottomView(root,m);
+   
+    for(it = m.begin();it != m.end();it++)
+    {
+         
+         int j = it->second.size()-1;
+         
+         cout<<it->second[j]<<" ";
+         
+    }
+    
+}
+
 int main()
 {
 	Node *root = newNode(20);
@@ -138,5 +168,8 @@ int main()
 	root->left->right->right = newNode(14);
 	root->right->right = newNode(25);
 	
-	BottomViewMap(root);
+	BottomView(root);
+	cout<<endl;
+	
+	bottomView(root);
 }
