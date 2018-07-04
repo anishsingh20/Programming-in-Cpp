@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void isAutomorphic(int n)
+bool isAutomorphic(int n)
 {
     int sq = (n*n);
     int count = 0;
@@ -17,14 +17,24 @@ void isAutomorphic(int n)
     int dig = pow(10,count);
     
      int d = (sq % dig);
-     if(d==n) cout<<"Automorpihc";
+     if(d==n) return true;
     
-     else cout<<"Not Automorphic";
+     else return false;
 }
 
 
+void nAutomorphic(int n)
+{
+	for(int i = 1 ; i <= n; i++)
+	{
+		if(isAutomorphic(i)) cout<<i<<endl;
+		
+		
+	}	
+}
+
 int main()
 {
-	isAutomorphic(76);
+ 	nAutomorphic(200);
 	return 0;
 }
