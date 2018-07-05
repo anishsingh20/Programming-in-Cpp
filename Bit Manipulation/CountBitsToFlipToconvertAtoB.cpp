@@ -26,5 +26,6 @@ int main()
 {
 	cout<<CountFlip(7,10);
 	
+
 	return 0;
 }
