@@ -23,6 +23,17 @@ int CountBits(int n)
 }
 
 
+int countSetUsing(int n)
+{
+	int count= 0 ;
+	while(n)
+	{
+		n &= (n-1);
+		count++;
+	}
+	
+	return count;
+}
 int CountSet(int n)
 {
 	int count=0;
@@ -50,7 +61,7 @@ int CountSet(int n)
 
 int main()
 {
-	cout<<CountSet(7);
+	cout<<countSetUsing(19);
 //	cout<<endl<<countUnset(5);
 	
 	return 0;
