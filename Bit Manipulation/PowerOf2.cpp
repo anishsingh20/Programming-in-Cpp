@@ -14,10 +14,23 @@ int powerof2(int n)
 	else return false;
 }
 
+int powerofTwo(int n)
+{
+	if(n==1) return 0;
+	
+	return ((n & n-1)==0)	;
+	
+}
+/*In the above method if n is a power of 2 , then n-1 will have all the bits set from lSB to the set bit of n, as every power
+of 2 has only 1 set bit. And when we do n & n-1 , if it is 0 then n is a power of 2
+*/
+
+
 int main()
 {
 	
 	cout<<powerof2(1024);
+
 	
 	return 0;
 }
