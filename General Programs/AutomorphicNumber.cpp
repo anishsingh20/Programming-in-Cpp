@@ -35,6 +35,7 @@ void nAutomorphic(int n)
 
 int main()
 {
- 	nAutomorphic(200);
+	nAutomorphic(200);
 	return 0;
+
 }
