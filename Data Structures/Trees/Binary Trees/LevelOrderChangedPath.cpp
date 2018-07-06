@@ -32,7 +32,8 @@ void levelOrderChanged(node *root)
 		sz = q.size();
  
         // Do a normal level order traversal
-        	for (int i = 0; i < sz; i++) {
+        	for (int i = 0; i < sz; i++)
+		 {
             	
 		    	temp  = q.front();
 			q.pop();
