@@ -33,7 +33,6 @@ void PrintLCS(string &a,string &b,int m,int n)
 	//getting the length of LCS
 	//making the array to store the common letters
 	string LCS(LCSlen+1,'\0');
-NULL
 	
 	int i = m , j = n;
 	
