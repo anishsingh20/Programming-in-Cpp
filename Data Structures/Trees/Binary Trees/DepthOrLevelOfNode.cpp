@@ -54,31 +54,7 @@ int height(BinaryTreeNode *root)
 }
 
 
-BinaryTreeNode *deepestNode(BinaryTreeNode *root)
-{
-	//base condition
-	if(root==NULL) return NULL;
-	
-	//findind depths of left and right subtree
-	int hl = height(root->left);
-	int hr = height(root->right);
-	
-	//if we have found the deepest leaf node-i.e both left and right pointer NULL
-	if(root->left==NULL && root->right==NULL)
-	{
-		return root;
-	}
-	
-	//othewise recur to left and right subtree to find it-whichever has greater depth/or height
-	
-	if(hl > hr)
-	{
-		return deepestNode(root->left);
-	}
-	
-	else
-		return deepestNode(root->right);
-}
+
 
 
 
