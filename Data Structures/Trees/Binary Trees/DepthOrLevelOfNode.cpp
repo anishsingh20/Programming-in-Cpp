@@ -53,12 +53,6 @@ int height(BinaryTreeNode *root)
 	return (1+max(height(root->left),height(root->right)));
 }
 
-
-
-
-
-
-
 void Insert( struct BinaryTreeNode **root,int data)
 {
 	struct BinaryTreeNode *new_node = new BinaryTreeNode();

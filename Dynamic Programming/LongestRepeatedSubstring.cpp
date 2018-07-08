@@ -17,14 +17,14 @@ string LongestRepeatedSubstr(string s)
 		{
 			sub = s.substr(i,j);
 			
-			//if not found , insert in map and set count to 1;
-			if(m.find(sub)!=m.end() )
+			//if substring found again, simply increase the count;
+			if(m.find(sub)!=m.end())
 			{
 				m[sub]++;
 			}
 			
 			
-			//otherwise,if again found-increase its count
+			//otherwise,if not found insert it in map with count as 1
 			else m[sub] = 1;
 		}
 		
@@ -50,7 +50,7 @@ string LongestRepeatedSubstr(string s)
 
 int main()
 {
-	string str = "GEEKSFORGANDU";
+	string str = "abcpqrabpqpq";
 	
 	cout<<LongestRepeatedSubstr(str);
 	return 0;
