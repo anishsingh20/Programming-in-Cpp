@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 
 using namespace std;
 
@@ -48,6 +49,7 @@ string LRS(string a,int m)
 			j--;
 	}
 	
+	reverse(lrs.begin(),lrs.end());
 	return lrs;
 }
 
