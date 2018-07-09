@@ -1,6 +1,5 @@
 #include<iostream>
 #include<stack>
-#include<algorithm>
 using namespace std;
 
 /*Algorithm-
@@ -11,7 +10,7 @@ using namespace std;
 
 bool isOperator(char c)
 {
-	return (!isdigit(c) && isalpha(c));
+	return (!isdigit(c) && !isalpha(c));
 }
 
 int getPriority(char c)
@@ -27,95 +26,76 @@ int getPriority(char c)
 	return 0;
 }
 
-string infixToPostfix(string infix)
-{
-    
-    int l = infix.size();
-    stack<char> char_stack;
-    string output;
- 
-    for (int i = 0; i < l; i++) {
- 
-        // If the scanned character is an 
-        // operand, add it to output.
-        if (isalpha(infix[i]) || isdigit(infix[i]))
-            output += infix[i];
- 
-        // If the scanned character is an
-        // ‘(‘, push it to the stack.
-        else if (infix[i] == '(')
-            char_stack.push('(');
- 
-        // If the scanned character is an
-        // ‘)’, pop and output from the stack 
-        // until an ‘(‘ is encountered.
-        else if (infix[i] == ')') {
- 
-            while (char_stack.top() != '(') {
-                output += char_stack.top();
-                char_stack.pop();
-            }
- 
-            // Remove '(' from the stack
-            char_stack.pop(); 
-        }
- 
-        // Operator found 
-        else {
-             
-            if (isOperator(char_stack.top())) {
-                while (getPriority(infix[i])
-                   <= getPriority(char_stack.top())) {
-                    output += char_stack.top();
-                    char_stack.pop();
-                }
- 
-                // Push current Operator on stack
-                char_stack.push(infix[i]);
-            }
-        }
-    }
-    return output;
-}
- 
- 
 
- 
-string infixToPrefix(string infix)
+string InfixToPostfix(string infix)
 {
-    /* Reverse String
-     * Replace ( with ) and vice versa
-     * Get Postfix
-     * Reverse Postfix  *  */
-    int l = infix.size();
- 
-    // Reverse infix
-    reverse(infix.begin(), infix.end());
- 
-    // Replace ( with ) and vice versa
-    for (int i = 0; i < l; i++) {
- 
-        if (infix[i] == '(') {
-            infix[i] = ')';
-            i++;
-        }
-        else if (infix[i] == ')') {
-            infix[i] = '(';
-            i++;
-        }
-    }
- 
-    string prefix = infixToPostfix(infix);
- 
-    // Reverse postfix
-    reverse(prefix.begin(), prefix.end());
- 
-    return prefix;
+	infix = '(' + infix + ')';
+	int len = infix.size();
+	string output;
+	
+	stack<char>s;
+	
+	for(int i = 0 ; i < len; i++)
+	{
+		//if operand-add it to the postfix expression
+		if(isalpha(infix[i]) || isdigit(infix[i]))
+			output += infix[i];
+			
+		//if opening brace then push it to stack
+		else if(infix[i]=='(')
+			s.push(infix[i]);
+			
+		else if(infix[i]==')')
+		{
+			while(!s.empty() && s.top() != '(')
+			{
+				output += s.top();
+				s.pop();
+			}
+			
+			//remove ( from stack
+			s.pop();
+		}
+		
+		//if operator is found
+		else
+		{
+		
+			if(isOperator(infix[i]))
+			{
+				while(!s.empty() && getPriority(infix[i]) <= getPriority(s.top()))
+				{
+					output += s.top();
+					s.pop();
+				}
+				
+				//push current lower priority operator on stack
+				s.push(infix[i]);
+					
+			}	
+		}
+			
+	}
+	
+	
+	//if remaining elements in stack, make it empty	
+	while(!s.empty())
+	{
+		output += s.top();
+		s.pop();
+	}
+		
+
+	
+	return output;
+	
 }
+
+
 
 int main()
 {
-	string s = "(A*B+C/D)";
-	cout<<infixToPostfix(s);
+	string s= InfixToPostfix("(a-b/c)*(a/k-l)");
+	cout<<s;
 	return 0;
 }
