@@ -67,6 +67,7 @@ string InfixToPostfix(string infix)
 				{
 					output += s.top();
 					s.pop();
+				
 				}
 				
 				//push current lower priority operator on stack
