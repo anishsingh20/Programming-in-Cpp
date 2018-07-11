@@ -50,7 +50,7 @@ string LongestRepeatedSubstr(string s)
 
 int main()
 {
-	string str = "abcpqrabpqpq";
+	string str = "geeksforgeeks";
 	
 	cout<<LongestRepeatedSubstr(str);
 	return 0;

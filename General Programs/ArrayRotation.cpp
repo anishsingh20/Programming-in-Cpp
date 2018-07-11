@@ -112,6 +112,7 @@ void RotateEffi(int arr[],int d,int n)
 }
 //T(n) = O(n*d)
 
+rotate()
 int main()
 {
 	int arr[]  = {1,2,3,4,5,6,7};
