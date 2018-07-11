@@ -31,23 +31,42 @@ int SpecialSub(string s)
 		}
 	}
 	
+	string up=s;
+	string ups ="";
 	for(int i = 0 ; i < len ; i++)
 	{	
-		subs ="";
+		ups="";
 		for(int j = 1 ; j <= len-i; j++)
 		{
-			subs = s.substr(i,j);
-//			subs = Uppercase(subs);
-			sub.push_back(subs);	
+			ups = s.substr(i,j);
+			string upper = "";
+			int len = ups.size();
+		
+			for(int k = 0;k < len;k++)
+			{
+				for(int l = 1; l <= len-i ;l++)
+				{
+					upper = Uppercase(ups,k,l);
+			
+					sub.push_back(upper);	
+				}
+			
+			}
+			
+			
+	
 		}
+		
+	
+		
+
 	}
-	
-	
 	
 	for(int i = 0 ; i < sub.size();i++)
 	{
 		cout<<sub[i]<<" ";
 	}
+	
 	return sub.size();
 }
 
@@ -57,20 +76,14 @@ void SpecialSubMain(string s)
 {
 	int lower = SpecialSub(s);
 	
-//	string upper = Uppercase(s);
-//	
-//	int upp = SpecialSub(upper);
-//	
-//	
-//	cout<<lower+upp; 
-//	
-
 	cout<<lower;
+	
 }
 
 int main()
 {
-//	SpecialSubMain("ab");
-	cout<<Uppercase("anish",1,2);
-	
+
+	SpecialSubMain("ab");
+//	cout<<Uppercase("a",0,1);
+
 }
