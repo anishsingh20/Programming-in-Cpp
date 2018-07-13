@@ -1,6 +1,5 @@
 #include<iostream>
 #include<vector>
-#include<cctype>
 #include<algorithm>
 #include <string>
 
@@ -80,10 +79,51 @@ void SpecialSubMain(string s)
 	
 }
 
+
+int binomEfficient(int n,int k)
+{
+	int res = 1;
+	
+	if(n==k)
+		return 1;
+	if(k==1)
+		return n;
+		
+	//if  k > n-k then  k = n-k as // Since C(n, k) = C(n, n-k)
+	if( k > n-k)
+		k = n-k;
+	
+	//calculating C(n,k) =  n!/ (n-k)! * k!
+	for(int i = 0 ; i < k ; i++)
+	{
+		res *= (n-i);
+		
+		res /=  (i+1);
+	}
+	
+	return res;
+		
+} //Time complexity = O(k) and aux space  = O(1)
+
+
+//void Special(string s)
+//{
+//	int i=0;
+//	int j=1;
+//	cout << s.substr(i,j);
+//	j++;
+//	Special(s.substr)
+//}
+
+
+
+
 int main()
 {
 
 	SpecialSubMain("ab");
-//	cout<<Uppercase("a",0,1);
+
+	
+	cout<<num;
 
 }
