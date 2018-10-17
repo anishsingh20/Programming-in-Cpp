@@ -1,4 +1,4 @@
-# Programming in C++
+# C++ Programming
 
 This project includes all the C++ implementation done by me during the course of learning in-depth about the C++ programming language.
 
