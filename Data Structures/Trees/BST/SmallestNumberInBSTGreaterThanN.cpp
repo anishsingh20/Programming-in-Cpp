@@ -9,6 +9,7 @@ using namespace std;
 1)Method-1 Using level order traversal.
 2)Using Morris traversal.
 3)using Recurion and inorder traversal
+4)By finding floor is also an space efficient approach
 */
 
 struct node {
@@ -62,6 +63,76 @@ node* newNode(int item)
     return temp;
 }
 
+// C++ code to find the smallest value greater
+// than or equal to N
+#include <bits/stdc++.h>
+using namespace std;
+ 
+struct Node {
+    int key;
+    Node *left, *right;
+};
+ 
+// To create new BST Node
+Node* newNode(int item)
+{
+    Node* temp = new Node;
+    temp->key = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+ 
+// To insert a new node in BST
+Node* insert(Node* node, int key)
+{
+    // if tree is empty return new node
+    if (node == NULL)
+        return newNode(key);
+ 
+    // if key is less then or grater then
+    // node value then recur down the tree
+    if (key < node->key)
+        node->left = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);
+ 
+    // return the (unchanged) node pointer
+    return node;
+}
+ 
+// Returns smallest value greater than or 
+// equal to key.
+int findFloor(Node* root, int key)
+{
+    Node *curr = root, *ans = NULL;
+ 
+    // traverse in the tree
+    while (curr) {
+ 
+        // if the node is smaller than N,
+        // move right.
+        if (curr->key > key) {
+            ans = curr;
+            curr = curr->left;
+        }       
+             
+         
+        // if it is equal to N, then it will be
+        // the answer
+        else if (curr->key == key) {
+            ans = curr;
+            break;
+        }
+             
+        else // move to the right of the tree
+            curr = curr->right;
+    }
+     
+    if (ans != NULL)
+       return ans->key;
+     
+    return -1;
+}
 
 //method-2
 node *SmallestNumGreaterThanNUsingMorris(node *root,int n)
