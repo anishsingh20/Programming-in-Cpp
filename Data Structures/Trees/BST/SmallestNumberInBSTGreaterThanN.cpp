@@ -76,9 +76,10 @@ node *SmallestNumGreaterThanNUsingMorris(node *root,int n)
 	{
 		if(!curr->left)
 		{
+			
 			if(curr->data >= n)
 			{
-				if(diff  < abs(curr->data-n))
+				if(diff  > abs(curr->data-n))
 				{
 					diff = abs(curr->data - n );
 					small=curr;
@@ -207,14 +208,9 @@ int main()
 //	
 //	cout<<endl;
 //	
-//	cout<<SmallestNumGreaterThanNUsingMorris(root,0)->data;
+	cout<<SmallestNumGreaterThanNUsingMorris(root,8)->data;
 //	
-	
-	Preorder(root);
-	
-	cout<<endl;
-	
-	nthPreorder(root,5);
+
 	
 	
 	return 0;

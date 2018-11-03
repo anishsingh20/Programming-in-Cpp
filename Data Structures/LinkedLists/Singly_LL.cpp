@@ -206,6 +206,7 @@ Node* RemoveDuplicates(Node *head) //O(n)-TIME COMPLEXITY
     temp=head;
     while(temp->next!=NULL) {
         temp1=temp->next;
+        
         if(temp->data == temp1->data) {
             
             
